@@ -1,3 +1,7 @@
 from django.db import models
+from tours.models import Tour
 
-# Create your models here.
+
+class Article(models.Model):
+    date
+    view_count = 0
