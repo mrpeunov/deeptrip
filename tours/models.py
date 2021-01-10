@@ -7,12 +7,18 @@ from maps.models import Position
 class City(models.Model):
     name = models.CharField("Название города", max_length=32)
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
-    seo_description = models.CharField("Заголовок страницы (SEO)", max_length=128)
+    seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
     slug = models.SlugField("Slug (название в URL)", max_length=16)
-    tours_count = models.IntegerField("Количество туров в городе", default=0)
+    tours_count = models.IntegerField("Количество экскурсий в городе", default=0)
     orders_count = models.IntegerField("Количество заказов в городе", default=0)
     image_city = models.ImageField("Изображение")
 
+    def __str__(self):
+        return "Город " % self.name
+
+    class Meta:
+        verbose_name = "город"
+        verbose_name_plural = "Города"
 
 class Category(models.Model):
     title = models.CharField("Название категории", max_length=32)
