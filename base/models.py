@@ -18,18 +18,19 @@ class SingletonModel(models.Model):
 
 
 class Config(SingletonModel):
-    site_name = 0
-    number_phone = 0
-    user_agreement = 0
-    help_title = 0  # помощь в выборе заголовок
-    help_text = 0  # помощь в выборе текст
-    map_title = 0  # найти экскурсии на карте
-    map_text = 0  # покажем, что есть в шаговой доступности
+    site_name = models.CharField("Название сайта", max_length=32)
+    seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
+    number_phone = models.CharField("Номер телефона", max_length=10)
+    user_agreement = models.TextField('Пользовательноское соглашение')
+    help_title = models.CharField("'Помощь в выборе' заголовок", max_length=32)
+    help_text = models.TextField("'Помощь в выборе' текст")
+    map_title = models.CharField("'Экскурсии на карте' заголовок", max_length=32)
+    map_text = models.TextField("'Экскурсии на карте' текст")
 
 
 class SocialNetwork(models.Model):
-    icon = 0
-    name = 0
-    link = 0
+    icon = models.ImageField("Иконка")
+    name = models.CharField("Название")
+    link = models.URLField("Ссылка")
 
 

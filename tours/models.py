@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
+from maps.models import Position
 
 
 class City(models.Model):
@@ -44,6 +45,7 @@ class Tour(models.Model):
 
     description = RichTextField("Описание категории")
     include = RichTextField("Описание категории")
+
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Заголовок страницы (SEO)", max_length=128)
     seat_request = models.BooleanField("Показывать блок 'Запросить места'", default=True)
@@ -54,6 +56,8 @@ class Tour(models.Model):
     time = models.TimeField("Продолжительность экскурсии")
     image = models.ImageField("Основная фотография")
     offer = models.ForeignKey(Offer, null=True, default=True)
+    categories = models.ManyToManyField(Category)
+    positions = models.ManyToManyField(Position)
 
 
 class Comment(models.Model):

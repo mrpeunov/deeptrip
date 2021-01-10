@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'base',  # базовое приложение для главной страницы
+    'articles',  # приложение для статей
+    'maps',  # приложение для поиска экскурсий по близости
+    'orders',  # приложение для заказов и всего, что с ними связано
+    'tours',  # для экскурсий
 ]
 
 MIDDLEWARE = [
@@ -107,9 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
