@@ -30,7 +30,7 @@ class Config(SingletonModel):
 
 class SocialNetwork(models.Model):
     icon = models.ImageField("Иконка")
-    name = models.CharField("Название")
+    name = models.CharField("Название", max_length=16)
     link = models.URLField("Ссылка")
 
 

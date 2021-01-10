@@ -30,7 +30,7 @@ class Offer(models.Model):
     )
 
     text = models.CharField("Текст предложения", max_length=32)
-    color = models.CharField("Цвет", choices=COLOR_CHOICES)
+    color = models.CharField("Цвет", max_length=7, choices=COLOR_CHOICES)
 
 
 class Tour(models.Model):
@@ -55,7 +55,7 @@ class Tour(models.Model):
     group = models.BooleanField("Тип", choices=GROUP_CHOICES)
     time = models.TimeField("Продолжительность экскурсии")
     image = models.ImageField("Основная фотография")
-    offer = models.ForeignKey(Offer, null=True, default=True)
+    offer = models.ForeignKey(Offer, on_delete=models.PROTECT, null=True, default=True)
     categories = models.ManyToManyField(Category)
     positions = models.ManyToManyField(Position)
 
@@ -75,5 +75,5 @@ class ImageItem(models.Model):
 
 
 class RecommendedTour(models.Model):
-    main = models.ForeignKey(Tour, verbose_name="tour_main")
-    add = models.ForeignKey(Tour, verbose_name="tour_add")
+    main = models.ForeignKey(Tour, related_name="tour_main", on_delete=models.PROTECT)
+    add = models.ForeignKey(Tour, related_name="tour_add", on_delete=models.PROTECT)
