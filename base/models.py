@@ -27,10 +27,41 @@ class Config(SingletonModel):
     map_title = models.CharField("'Экскурсии на карте' заголовок", max_length=32)
     map_text = models.TextField("'Экскурсии на карте' текст")
 
+    def __str__(self):
+        return "Конфиг"
+
+    class Meta:
+        verbose_name = "Конфиг"
+        verbose_name_plural = "Конфиг"
+
 
 class SocialNetwork(models.Model):
     icon = models.ImageField("Иконка")
     name = models.CharField("Название", max_length=16)
     link = models.URLField("Ссылка")
+
+    def __str__(self):
+        return "Социальная сеть {}".format(self.name)
+
+    class Meta:
+        verbose_name = "Социальная сеть"
+        verbose_name_plural = "Социальные сети"
+
+
+class City(models.Model):
+    name = models.CharField("Название города", max_length=32)
+    seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
+    seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
+    slug = models.SlugField("Slug (название в URL)", max_length=16, unique=True)
+    tours_count = models.IntegerField("Количество экскурсий в городе", default=0)
+    orders_count = models.IntegerField("Количество заказов в городе", default=0)
+    image_city = models.ImageField("Изображение")
+
+    def __str__(self):
+        return "Город '{}'".format(self.name)
+
+    class Meta:
+        verbose_name = "город"
+        verbose_name_plural = "города"
 
 
