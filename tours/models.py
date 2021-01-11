@@ -2,31 +2,23 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from maps.models import Position
+from base.models import City
 
-
-class City(models.Model):
-    name = models.CharField("Название города", max_length=32)
-    seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
-    seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
-    slug = models.SlugField("Slug (название в URL)", max_length=16)
-    tours_count = models.IntegerField("Количество экскурсий в городе", default=0)
-    orders_count = models.IntegerField("Количество заказов в городе", default=0)
-    image_city = models.ImageField("Изображение")
-
-    def __str__(self):
-        return "Город " % self.name
-
-    class Meta:
-        verbose_name = "город"
-        verbose_name_plural = "Города"
 
 class Category(models.Model):
     title = models.CharField("Название категории", max_length=32)
     description = RichTextField("Описание категории")
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
-    seo_description = models.CharField("Заголовок страницы (SEO)", max_length=128)
+    seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
     important = models.BooleanField("Показывать в числе первых")
-    slug = models.SlugField("Slug (название в URL)", max_length=16)
+    slug = models.SlugField("Slug (название в URL)", max_length=16, unique=True)
+
+    def __str__(self):
+        return "Категория '{}'".format(self.title)
+
+    class Meta:
+        verbose_name = "категорию"
+        verbose_name_plural = "категории"
 
 
 class Offer(models.Model):
@@ -38,6 +30,13 @@ class Offer(models.Model):
     text = models.CharField("Текст предложения", max_length=32)
     color = models.CharField("Цвет", max_length=7, choices=COLOR_CHOICES)
 
+    def __str__(self):
+        return "Специальное предложение '{}'".format(self.text)
+
+    class Meta:
+        verbose_name = "специальное предложение"
+        verbose_name_plural = "специальные предложение"
+
 
 class Tour(models.Model):
     GROUP_CHOICES = (
@@ -46,24 +45,33 @@ class Tour(models.Model):
     )
     city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1)
 
-    title = models.CharField("Название страницы", max_length=64)
-    slug = models.SlugField("Slug (название в URL)", max_length=16)
-
-    description = RichTextField("Описание категории")
-    include = RichTextField("Описание категории")
+    title = models.CharField("Название экскурсии", max_length=64)
+    slug = models.SlugField("Slug (название в URL)", max_length=64)
 
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
-    seo_description = models.CharField("Заголовок страницы (SEO)", max_length=128)
+    seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
+
+    description = RichTextField("Описание экскурсии")
+    include = RichTextField("Включено")
+
     seat_request = models.BooleanField("Показывать блок 'Запросить места'", default=True)
     count_comment = models.SmallIntegerField('Количество отзывов', default=0)
     rating = models.FloatField("Рейтинг", validators=[MinValueValidator(0), MaxValueValidator(5)], default=5)
     price = models.PositiveIntegerField("Цена (для главной)")
     group = models.BooleanField("Тип", choices=GROUP_CHOICES)
-    time = models.TimeField("Продолжительность экскурсии")
+    time = models.CharField("Продолжительность экскурсии", max_length=32)
     image = models.ImageField("Основная фотография")
-    offer = models.ForeignKey(Offer, on_delete=models.PROTECT, null=True, default=True)
-    categories = models.ManyToManyField(Category)
-    positions = models.ManyToManyField(Position)
+    offer = models.ForeignKey(Offer, on_delete=models.PROTECT, blank=True)
+    categories = models.ManyToManyField(Category, verbose_name="Категории")
+    positions = models.ManyToManyField(Position, verbose_name="Точки на карте")
+    notes = models.CharField("Примечания", max_length=64, default="Пусто")
+
+    def __str__(self):
+        return "Экскурсия '{}'".format(self.title)
+
+    class Meta:
+        verbose_name = "экскурсию"
+        verbose_name_plural = "экскурсии"
 
 
 class Comment(models.Model):
@@ -72,14 +80,36 @@ class Comment(models.Model):
     content = models.TextField("Текст комментария")
     date = models.DateField("Дата", auto_now=True)
     grade = models.SmallIntegerField("Рейтинг", validators=[MinValueValidator(0), MaxValueValidator(5)], default=5)
+    show = models.BooleanField("Отображать", default=True)
+
+    def __str__(self):
+        return "Коммментарий от '{}'".format(self.name)
+
+    class Meta:
+        verbose_name = "комментарий"
+        verbose_name_plural = "комментарии"
 
 
 class ImageItem(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.PROTECT)
-    image = models.ImageField("Основная фотография")
-    description = models.TextField("Описание фотографии", max_length=128)
+    image = models.ImageField("Дополнительная фотография")
+    description = models.CharField("Описание фотографии", max_length=128)
+
+    def __str__(self):
+        return "Дополнительная фотография к туру {} № {}".format(self.tour, self.id)
+
+    class Meta:
+        verbose_name = "дополнительная фотография"
+        verbose_name_plural = "дополнительные фотографии"
 
 
 class RecommendedTour(models.Model):
-    main = models.ForeignKey(Tour, related_name="tour_main", on_delete=models.PROTECT)
-    add = models.ForeignKey(Tour, related_name="tour_add", on_delete=models.PROTECT)
+    main = models.ForeignKey(Tour, verbose_name="Основная экскурсия", related_name="tour_main", on_delete=models.PROTECT)
+    add = models.ForeignKey(Tour, verbose_name="Рекомендованная экскурсия", related_name="tour_add", on_delete=models.PROTECT)
+
+    def __str__(self):
+        return "Рекомендованная экскурсия {} {}".format(self.main, self.add)
+
+    class Meta:
+        verbose_name = "Рекомендованная экскурсия"
+        verbose_name_plural = "Рекомендованные экскурсии"

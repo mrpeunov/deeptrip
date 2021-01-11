@@ -10,6 +10,13 @@ class Article(models.Model):
     views = models.IntegerField("Количество просмотров", default=0)
     comments = models.IntegerField("Количество комментов", default=0)
 
+    def __str__(self):
+        return "Статья {}".format(self.title)
+
+    class Meta:
+        verbose_name = "Статья"
+        verbose_name_plural = "Статьи"
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.PROTECT)
@@ -17,3 +24,9 @@ class Comment(models.Model):
     content = models.TextField("Текст комментария")
     date = models.DateField("Дата", auto_now=True)
 
+    def __str__(self):
+        return "Комментарий от {}".format(self.name)
+
+    class Meta:
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комметарии"
