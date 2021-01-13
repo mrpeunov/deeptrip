@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
 
-</body>
-</html>
+{% block content %}
+    {% include 'base/elements/city_header.html' %}
+
+    {% include 'base/elements/main_maps.html' %}
+
+    {% include 'tours/filter.html' %}
+{% endblock %}

@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    {% block head %}
+        {% block title %} <title>Title</title>{% endblock %}
 
+        <meta charset="UTF-8">
+    {% endblock %}
+</head>
+
+<body>
+    {% block menu %}
+        {% include 'base/elements/menu.html' %}
+    {% endblock %}
+
+	{% block content %}
+        Ко ко ко
+	{% endblock %}
 </body>
+
+{% block footer %}
+    {% include 'base/elements/footer.html' %}
+{% endblock %}
 </html>
