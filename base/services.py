@@ -16,8 +16,12 @@ def _get_social_networks():
 class FooterAndMenuTemplateView(TemplateView):
     http_method_names = ['get']
 
+    def add_in_context(self, context):
+        pass
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        self.add_in_context(context)
         context.update(_get_menu())
         context.update(_get_config())
         context.update(_get_social_networks())

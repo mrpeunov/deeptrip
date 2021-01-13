@@ -11,11 +11,9 @@ class CityPage(FooterAndMenuTemplateView):
     """
     template_name = 'base/city.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def add_in_context(self, context):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['tours'] = Tour.objects.all()
-        return context
 
 
 class ToursFilterPage(FooterAndMenuTemplateView):
@@ -24,32 +22,49 @@ class ToursFilterPage(FooterAndMenuTemplateView):
     """
     template_name = 'tours/filter.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def add_in_context(self, context):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['tours'] = Tour.objects.all()
-        return context
 
 
-def tour_page(request, city_slug, tour_slug):
+class TourPage(FooterAndMenuTemplateView):
     """
     Страница одной экскурсии
     """
-    tour = Tour.objects.get(city__slug=city_slug, slug=tour_slug)
-    return render(request, 'tours/tour.html', locals())
+    template_name = 'tours/tour.html'
+
+    def add_in_context(self, context):
+        context['tour'] = Tour.objects.get(
+            city__slug=context['city_slug'],
+            slug=context['tour_slug'])
 
 
-def categories_page(request, city_slug):
-    return HttpResponse("Все категории")
-
-
-def category_page(request, city_slug, category_slug):
+class CategoriesPage(FooterAndMenuTemplateView):
     """
-    Страница категорий
+    Страница всех категорий
     """
-    category = Category.objects.get(city__slug=city_slug, slug=category_slug)
-    return HttpResponse(category)
+    template_name = "tours/categories.html"
+
+    def add_in_context(self, context):
+        context['city'] = City.objects.get(slug=context['city_slug'])
+        context['categories'] = Category.objects.all()
 
 
-def maps_page(request, city_slug):
-    return HttpResponse("Старица карт")
+class CategoryPage(FooterAndMenuTemplateView):
+    """
+    Страница категории
+    """
+    template_name = "tours/categories.html"
+
+    def add_in_context(self, context):
+        context['category'] = Category.objects.get(slug=context['category_slug'], city__slug=context['city_slug'])
+
+
+class MapsPage(FooterAndMenuTemplateView):
+    """
+    Страница карт
+    """
+    template_name = "tours/maps.html"
+
+    def add_in_context(self, context):
+        pass
