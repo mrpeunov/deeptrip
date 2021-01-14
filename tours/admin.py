@@ -25,6 +25,11 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = ("important", )
 
 
+@admin.register(Position)
+class PositionsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'lat', 'lon')
+
+
 @admin.register(Offer)
 class OfferAdmin(admin.ModelAdmin):
     list_display = ('text', 'color')

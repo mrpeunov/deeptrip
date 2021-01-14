@@ -1,11 +1,12 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
-from maps.models import Position
+from django.urls import reverse
 from base.models import City
 
 
 class Category(models.Model):
+    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1)
     title = models.CharField("Название категории", max_length=32)
     description = RichTextField("Описание категории")
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
@@ -16,9 +17,25 @@ class Category(models.Model):
     def __str__(self):
         return "Категория '{}'".format(self.title)
 
+    def get_absolute_url(self):
+        return reverse('tour_page', args=[str(self.city.slug), str(self.slug)])
+
     class Meta:
         verbose_name = "категорию"
         verbose_name_plural = "категории"
+
+
+class Position(models.Model):
+    name = models.CharField("Название позиции", max_length=32)
+    lat = models.FloatField("Широта")
+    lon = models.FloatField("Долгота")
+
+    def __str__(self):
+        return "Точка '{}'".format(self.name)
+
+    class Meta:
+        verbose_name = "точка на карте"
+        verbose_name_plural = "точки на карте"
 
 
 class Offer(models.Model):
@@ -46,7 +63,7 @@ class Tour(models.Model):
     city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1)
 
     title = models.CharField("Название экскурсии", max_length=64)
-    slug = models.SlugField("Slug (название в URL)", max_length=64)
+    slug = models.SlugField("Slug (название в URL)", max_length=64, unique=True)
 
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
@@ -69,6 +86,10 @@ class Tour(models.Model):
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)
 
+    def get_absolute_url(self):
+        #return reverse('', args=[str(self.city.slug), str(self.slug)])
+        return None
+
     class Meta:
         verbose_name = "экскурсию"
         verbose_name_plural = "экскурсии"
@@ -83,11 +104,11 @@ class Comment(models.Model):
     show = models.BooleanField("Отображать", default=True)
 
     def __str__(self):
-        return "Коммментарий от '{}'".format(self.name)
+        return "Отзыв от '{}'".format(self.name)
 
     class Meta:
-        verbose_name = "комментарий"
-        verbose_name_plural = "комментарии"
+        verbose_name = "отзыв"
+        verbose_name_plural = "отзывы"
 
 
 class ImageItem(models.Model):
