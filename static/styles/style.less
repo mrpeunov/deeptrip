@@ -1,16 +1,27 @@
 #colors(){
   blue: #4b6b8e;
-  display: flex;
+  white: #fff;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
 }
 
 .menu{
   background: #colors[blue];
 
+  display: flex;
+
+  &_items{
+    display: flex;
+  }
+
   &_item{
-    color: #fff;
+    display: flex;
   }
 
   &_link{
-
+    color: #colors[white];
   }
 }

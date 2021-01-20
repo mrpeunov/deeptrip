@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,10 @@
         {% block title %} <title>Title</title>{% endblock %}
         <meta charset="UTF-8">
     {% endblock %}
-    <link rel="stylesheet" href="styles/style.css" type="text/css" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" type="text/css" />
+    <script src="{% static 'vue/vue.js' %}"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js" integrity="sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ==" crossorigin="anonymous" >
+    </script>
 </head>
 
 <body>
@@ -14,11 +19,12 @@
     {% endblock %}
 
 	{% block content %}
-        Ко ко ко
+
 	{% endblock %}
 </body>
 
 {% block footer %}
     {% include 'base/elements/footer.html' %}
 {% endblock %}
+<script src="{% static 'vue/test.js' %}"> </script>
 </html>

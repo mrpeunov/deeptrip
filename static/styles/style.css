@@ -1,7 +1,19 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 .menu {
   background: #4b6b8e;
+  display: flex;
+}
+.menu_items {
+  display: flex;
 }
 .menu_item {
+  display: flex;
+}
+.menu_link {
   color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

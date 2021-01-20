@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect
 from tours.models import Tour, Category
 from base.models import City
 from base.services import FooterAndMenuTemplateView
+from rest_framework.viewsets import ModelViewSet
+
+from tours.serializers import TourSerializer
 
 
 class CityPage(FooterAndMenuTemplateView):
@@ -68,3 +71,11 @@ class MapsPage(FooterAndMenuTemplateView):
 
     def add_in_context(self, context):
         pass
+
+
+# api
+
+class ToursApiView(ModelViewSet):
+    queryset = Tour.objects.all()
+    serializer_class = TourSerializer
+
