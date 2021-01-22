@@ -1,7 +1,56 @@
+@font-face {
+  font-family: "Source Sans Pro", Sans-Serif;
+  src: local("Source Sans Pro"), url("../fonts/sourcesanspro.ttf");
+}
+@font-face {
+  font-family: "Womby", Sans-Serif;
+  src: local("wombyrusbydaymarius"), url("../fonts/womby.ttf");
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+.logo {
+  font-family: "Womby", sans-serif;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  font-size: 1.8rem;
+}
 .menu {
   background: #4b6b8e;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+}
+.menu_button {
+  display: none;
+}
+.menu_logo {
+  display: flex;
+  align-items: center;
+}
+.menu_items {
+  display: flex;
 }
 .menu_item {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.menu_item:hover {
+  background: #597a9d;
+}
+.menu_link {
   color: #fff;
+  text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */

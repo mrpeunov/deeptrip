@@ -87,8 +87,8 @@ class Tour(models.Model):
         return "Экскурсия '{}'".format(self.title)
 
     def get_absolute_url(self):
-        #return reverse('', args=[str(self.city.slug), str(self.slug)])
-        return None
+        return reverse('tour_page', args=[str(self.city.slug), str(self.slug)])
+
 
     class Meta:
         verbose_name = "экскурсию"

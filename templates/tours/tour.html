@@ -1,5 +1,54 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <div>{{ tour.title }}</div>
+    <div class="tour_head">
+        <div class="tour_bread_crumbs">
+            к другим экскурсиям
+        </div>
+        <div class="tour_like"></div>
+    </div>
+
+    <div class="tour_title">
+        <h1 class="tour_title_text">Конная прогулка по горным ущельям</h1>
+
+    </div>
+    <div class="tour_gallery">
+        <div class="tour_gallery_main"></div>
+        <div class="tour_gallery_list">
+            <div class="tour_gallery_list_item"></div>
+            <div class="tour_gallery_list_item"></div>
+        </div>
+    </div>
+    <div class="tour_calculate">
+        Ещё непродуманный калькулятор
+    </div>
+    <div class="tour_descriptions">
+        <div class="tour_description">
+            <h2 class="tour_description_title">Описание экскурсии</h2>
+            <div class="tour_description_text">
+                <p>Маршрут проложен по руслу реки Хобза вдоль горного ущелья</p>
+                <p>Стартуем из лесистого ранчо, на пути лежат: наполненный запахом хвойный лес, самшитовая роща с рубиновым отливом и бескрайние чайные плантации на лысых холмах...</p>
+            </div>
+        </div>
+        <div class="tour_includes">
+            <ul>
+                <li>-Трансфер в раддиусе 5 км</li>
+                <li>-Услуги гида</li>
+                <li>-Доступ к беседкам</li>
+            </ul>
+        </div>
+    </div>
+    <div class="tour_node">
+        <h2>Обратите внимание</h2>
+    </div>
+    <div class="tour_comment">
+        <h2>Отзывы</h2>
+    </div>
+    <div class="tour_booking">
+
+    </div>
+    <div class="tour_add_list">
+
+    </div>
+
 {% endblock %}

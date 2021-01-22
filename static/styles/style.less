@@ -1,16 +1,75 @@
 #colors(){
   blue: #4b6b8e;
-  display: flex;
+  cyan: #77a3b0;
+  white: #fff;
+  green: #00be8b;
+  blue-active: #597a9d;
+}
+
+@font-face {
+  font-family: "Source Sans Pro", Sans-Serif;
+  src: local("Source Sans Pro"), url("../fonts/sourcesanspro.ttf");
+}
+
+@font-face {
+  font-family: "Womby", Sans-Serif;
+  src: local("wombyrusbydaymarius"), url("../fonts/womby.ttf");
+}
+
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.logo{
+  font-family: "Womby", sans-serif;
+  font-weight: 800;
+  color: #colors[white];
+  margin: 0;
+  font-size: 1.8rem;
 }
 
 .menu{
   background: #colors[blue];
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+
+  &_button{
+    display: none;
+  }
+
+  &_logo{
+    display: flex;
+    align-items: center;
+  }
+
+  &_items{
+    display: flex;
+  }
 
   &_item{
-    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: 0.2s;
+
+
+    &:hover{
+      background: #colors[blue-active];
+    }
   }
 
   &_link{
-
+    color: #colors[white];
+    text-decoration: none;
   }
 }
