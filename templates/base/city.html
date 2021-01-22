@@ -1,18 +1,10 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    {% verbatim %}
-    <div class="container" id="tours">
-        <div class="container_test" v-for="tour in tours">
-            <div>  Name: {{ tour.title }}</div>
-
-        </div>
-    </div>
-    {% endverbatim %}
 
     {% include 'base/elements/city_header.html' %}
 
-    {% include 'base/elements/main_maps.html' %}
+    {% include 'base/elements/city_maps.html' %}
 
-    {% include 'tours/filter.html' %}
+    {% include 'base/elements/city_filter.html' %}
 {% endblock %}

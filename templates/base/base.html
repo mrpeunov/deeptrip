@@ -2,29 +2,36 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% block head %}
-        {% block title %} <title>Title</title>{% endblock %}
+    <head>
         <meta charset="UTF-8">
-    {% endblock %}
-    <link rel="stylesheet" href="{% static 'styles/style.css' %}" type="text/css" />
-    <script src="{% static 'vue/vue.js' %}"> </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js" integrity="sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ==" crossorigin="anonymous" >
-    </script>
-</head>
+        <title>
+           {% block title %} Title {% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}" type="text/css" />
+        <script
+          src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous">
+        </script>
+    </head>
 
-<body>
-    {% block menu %}
-        {% include 'base/elements/menu.html' %}
-    {% endblock %}
+    <body>
+        {% block menu %}
+            {% include 'base/elements/menu.html' %}
+        {% endblock %}
 
-	{% block content %}
+        {% block content %}
 
-	{% endblock %}
-</body>
+        {% endblock %}
+    </body>
 
-{% block footer %}
-    {% include 'base/elements/footer.html' %}
-{% endblock %}
-<script src="{% static 'vue/test.js' %}"> </script>
+    <footer>
+        {% block footer %}
+            {% include 'base/elements/footer.html' %}
+        {% endblock %}
+        {% block all_page_scripts %}
+
+        {% endblock %}
+        {% block one_page_scripts %} {% endblock %}
+    </footer>
 </html>
