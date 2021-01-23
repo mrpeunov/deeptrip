@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from tours.models import Tour, Category
+from tours.models import *
 from base.models import City
 from base.services import FooterAndMenuTemplateView
 from rest_framework.viewsets import ModelViewSet
@@ -37,9 +37,14 @@ class TourPage(FooterAndMenuTemplateView):
     template_name = 'tours/tour.html'
 
     def add_in_context(self, context):
-        context['tour'] = Tour.objects.get(
+        tour = Tour.objects.get(
             city__slug=context['city_slug'],
             slug=context['tour_slug'])
+        context['tour'] = tour
+        context['comments'] = Comment.objects.filter(tour=tour)
+        context['image_items'] = ImageItem.objects.filter(tour=tour)
+        print(context['image_items'])
+        context['recommended_tours'] = RecommendedTour.objects.filter(main=tour)
 
 
 class CategoriesPage(FooterAndMenuTemplateView):

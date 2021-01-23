@@ -4,6 +4,7 @@
   white: #fff;
   green: #00be8b;
   blue-active: #597a9d;
+  grey: #f0f1f5;
 }
 
 @font-face {
@@ -22,6 +23,10 @@ html, body{
   padding: 0;
 }
 
+body{
+  background: #colors[grey];
+}
+
 html{
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
@@ -38,8 +43,9 @@ html{
 @max350: ~"(max-width: 350px)";
 @max576: ~"(max-width: 576px)";
 @max768: ~"(max-width: 768px)";
-@max992: ~"(max-width: 768px)";
+@max992: ~"(max-width: 992px)";
 @max1200: ~"(max-width: 1200px)";
+@max1400: ~"(max-width: 1400px)";
 
 .logo{
   font-family: "Womby", sans-serif;
@@ -54,7 +60,7 @@ html{
   height: 60px;
   display: flex;
   justify-content: space-between;
-  padding: 0 10%;
+  padding: 0 7%;
 
   @media @max768{
     position: relative;
@@ -185,5 +191,30 @@ html{
   &_link{
     color: #colors[white];
     text-decoration: none;
+  }
+}
+
+.container{
+  background: #colors[white];
+  margin: 0 auto;
+  width: 86%;
+
+  @media @max1200{
+    width: 90%;
+  }
+
+  @media @max992{
+    width: 100%;
+  }
+}
+
+.tour{
+  &_gallery{
+    padding: 20px;
+
+    &_list{
+      display: flex;
+      overflow: auto;
+    }
   }
 }

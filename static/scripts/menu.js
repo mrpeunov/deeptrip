@@ -17,7 +17,7 @@ $(function() {
 	});
 
 	//обработаем клик по body
-    $(".container", "footer").click(function (){
+    $(".container").click(function (){
         if ($container.hasClass('body_pointer')){
             open_or_close();
 		}

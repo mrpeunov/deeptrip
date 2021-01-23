@@ -11,6 +11,9 @@ body {
   margin: 0;
   padding: 0;
 }
+body {
+  background: #f0f1f5;
+}
 html {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
@@ -33,14 +36,14 @@ html {
   height: 60px;
   display: flex;
   justify-content: space-between;
-  padding: 0 10%;
+  padding: 0 7%;
 }
 @media (max-width: 768px) {
   .menu {
     position: relative;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .menu {
     padding: 0 0;
   }
@@ -161,5 +164,27 @@ html {
 .menu_link {
   color: #fff;
   text-decoration: none;
+}
+.container {
+  background: #fff;
+  margin: 0 auto;
+  width: 86%;
+}
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+.tour_gallery {
+  padding: 20px;
+}
+.tour_gallery_list {
+  display: flex;
+  overflow: auto;
 }
 /*# sourceMappingURL=style.css.map */
