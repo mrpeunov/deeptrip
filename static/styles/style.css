@@ -11,33 +11,140 @@ body {
   margin: 0;
   padding: 0;
 }
+body {
+  background: #f0f1f5;
+}
 html {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
+}
+.none {
+  display: none;
+}
+.body_pointer * {
+  cursor: pointer;
 }
 .logo {
   font-family: "Womby", sans-serif;
   font-weight: 800;
   color: #fff;
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 .menu {
   background: #4b6b8e;
   height: 60px;
   display: flex;
   justify-content: space-between;
-  padding: 0 10%;
+  padding: 0 7%;
+}
+@media (max-width: 768px) {
+  .menu {
+    position: relative;
+  }
+}
+@media (max-width: 992px) {
+  .menu {
+    padding: 0 0;
+  }
+}
+@media (max-width: 1200px) {
+  .menu {
+    padding: 0 5%;
+  }
 }
 .menu_button {
   display: none;
+  width: 37px;
+  height: 21px;
+  position: absolute;
+  border-bottom: 3px solid white;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  cursor: pointer;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .menu_button {
+    display: block;
+    top: 19.5px;
+    left: 18px;
+  }
+}
+.menu_button:before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  content: "";
+  display: block;
+  height: 3px;
+  background: #fff;
+  transition: all 0.3s;
+}
+.menu_button:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  content: "";
+  display: block;
+  height: 3px;
+  background: #fff;
+  transition: transform 0.3s, width 2s;
+}
+.menu_button_active {
+  border: 0;
+  width: 34px;
+  height: 34px;
+  top: 13px;
+}
+.menu_button_active:before {
+  content: "";
+  display: block;
+  width: 100%;
+  transform: rotate(45deg);
+  background: #fff;
+  top: 100%;
+  margin-top: -55%;
+  left: 0;
+  margin-left: 0%;
+}
+.menu_button_active:after {
+  content: "";
+  display: block;
+  width: 100%;
+  transform: rotate(-45deg);
+  background: #fff;
+  top: 100%;
+  margin-top: -55%;
+  left: 0;
+  margin-left: 0;
 }
 .menu_logo {
   display: flex;
   align-items: center;
 }
+@media (max-width: 768px) {
+  .menu_logo {
+    width: 100%;
+    justify-content: center;
+  }
+}
 .menu_items {
   display: flex;
+}
+@media (max-width: 768px) {
+  .menu_items {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #4b6b8e;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
 }
 .menu_item {
   display: flex;
@@ -49,8 +156,35 @@ html {
 .menu_item:hover {
   background: #597a9d;
 }
+@media (max-width: 768px) {
+  .menu_item {
+    padding: 10px 20px;
+  }
+}
 .menu_link {
   color: #fff;
   text-decoration: none;
+}
+.container {
+  background: #fff;
+  margin: 0 auto;
+  width: 86%;
+}
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+.tour_gallery {
+  padding: 20px;
+}
+.tour_gallery_list {
+  display: flex;
+  overflow: auto;
 }
 /*# sourceMappingURL=style.css.map */

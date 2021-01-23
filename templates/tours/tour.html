@@ -1,22 +1,34 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block content %}
     <div class="tour_head">
         <div class="tour_bread_crumbs">
-            к другим экскурсиям
+            <a href="/">к другим экскурсиям</a>
         </div>
-        <div class="tour_like"></div>
+        <div class="tour_like">
+            <img src="" alt="">
+        </div>
     </div>
 
     <div class="tour_title">
-        <h1 class="tour_title_text">Конная прогулка по горным ущельям</h1>
-
+        <h1 class="tour_title_text">{{ tour.title }}</h1>
     </div>
+    
     <div class="tour_gallery">
-        <div class="tour_gallery_main"></div>
+        <div class="tour_gallery_main">
+            <img src="{{ tour.image.url }}" alt="">
+        </div>
         <div class="tour_gallery_list">
-            <div class="tour_gallery_list_item"></div>
-            <div class="tour_gallery_list_item"></div>
+            <div class="tour_gallery_list_item">
+                <img src="{{ tour.image.url }}" alt="">
+            </div>
+
+            {% for image_item in image_items %}
+            <div class="tour_gallery_list_item">
+                <img src="{{ image_item.image.url }}" alt="">
+            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="tour_calculate">
@@ -26,8 +38,8 @@
         <div class="tour_description">
             <h2 class="tour_description_title">Описание экскурсии</h2>
             <div class="tour_description_text">
-                <p>Маршрут проложен по руслу реки Хобза вдоль горного ущелья</p>
-                <p>Стартуем из лесистого ранчо, на пути лежат: наполненный запахом хвойный лес, самшитовая роща с рубиновым отливом и бескрайние чайные плантации на лысых холмах...</p>
+                {% autoescape off %} {{ tour.description }} {% endautoescape %}
+
             </div>
         </div>
         <div class="tour_includes">
@@ -41,8 +53,24 @@
     <div class="tour_node">
         <h2>Обратите внимание</h2>
     </div>
-    <div class="tour_comment">
+    <div class="tour_comments">
         <h2>Отзывы</h2>
+        <div class="tour_comment">
+            <div class="tour_comment_head">
+                <div class="tour_comment_photo">
+                    <img src="{% static 'img/comment.png' %}" alt="">
+                </div>
+                <div class="tour_comment_middle">
+                    <div class="tour_comment_name">Анатолия</div>
+                    <div class="tour_comment_date">02.06.2020</div>
+                </div>
+                <div class="tour_comment_stars">
+                </div>
+            </div>
+            <div class="tour_comment_text">
+                Нихуёво покатались потеряли сына в лесу, рекомендую
+            </div>
+        </div>
     </div>
     <div class="tour_booking">
 
