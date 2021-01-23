@@ -27,12 +27,26 @@ html{
   font-size: 16px;
 }
 
+.none{
+  display: none;
+}
+
+.body_pointer * {
+	cursor: pointer;
+}
+
+@max350: ~"(max-width: 350px)";
+@max576: ~"(max-width: 576px)";
+@max768: ~"(max-width: 768px)";
+@max992: ~"(max-width: 768px)";
+@max1200: ~"(max-width: 1200px)";
+
 .logo{
   font-family: "Womby", sans-serif;
   font-weight: 800;
   color: #colors[white];
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.75rem;
 }
 
 .menu{
@@ -42,17 +56,114 @@ html{
   justify-content: space-between;
   padding: 0 10%;
 
+  @media @max768{
+    position: relative;
+  }
+
+  @media @max992{
+    padding: 0 0;
+  }
+
+  @media @max1200{
+    padding: 0 5%;
+  }
+
   &_button{
     display: none;
+    width: 37px;
+    height: 21px;
+    position: absolute;
+    border-bottom: 3px solid white;
+    box-sizing: border-box;
+    transition: all .3s;
+    cursor: pointer;
+    overflow: hidden;
+
+    @media @max768{
+      display: block;
+      top: 19.5px;
+      left: 18px;
+    }
+
+    &:before {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      content: "";
+      display: block;
+      height: 3px;
+      background: #colors[white];
+      transition: all .3s;
+    }
+
+    &:after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      content: "";
+      display: block;
+      height: 3px;
+      background: #colors[white];
+      transition: transform .3s, width 2s;
+    }
+
+    &_active{
+      border: 0;
+      width: 40px;
+      height: 40px;
+      top: 10px;
+
+      &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        transform: rotate(45deg);
+        background: #colors[white];
+        top: 100%;
+        margin-top: -55%;
+        left: 0;
+        margin-left: -0%;
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        transform: rotate(-45deg);
+        background: #colors[white];
+        top: 100%;
+        margin-top: -55%;
+        left: 0;
+        margin-left: 0;
+      }
+    }
   }
 
   &_logo{
     display: flex;
     align-items: center;
+
+    @media @max768{
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   &_items{
     display: flex;
+
+    @media @max768{
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #colors[blue];
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 30px;
+    }
   }
 
   &_item{
@@ -62,9 +173,12 @@ html{
     cursor: pointer;
     transition: 0.2s;
 
-
     &:hover{
       background: #colors[blue-active];
+    }
+
+    @media @max768{
+      padding: 10px 20px;
     }
   }
 
