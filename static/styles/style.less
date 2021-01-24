@@ -8,9 +8,15 @@
 }
 
 @font-face {
-  font-family: "Source Sans Pro", Sans-Serif;
-  src: local("Source Sans Pro"), url("../fonts/sourcesanspro.ttf");
+  font-family: "Source Sans Pro Regular", Sans-Serif;
+  src: local("Source Sans Pro Regular"), url("../fonts/SourceSansPro-Regular.ttf");
 }
+
+@font-face {
+  font-family: "Source Sans Pro SemiBold", Sans-Serif;
+  src: local("Source Sans Pro SemiBold"), url("../fonts/SourceSansPro-SemiBold.ttf");
+}
+
 
 @font-face {
   font-family: "Womby", Sans-Serif;
@@ -23,12 +29,17 @@ html, body{
   padding: 0;
 }
 
+h1, h2, h3{
+  font-family: "Source Sans Pro SemiBold", sans-serif;
+  margin: 0;
+}
+
 body{
   background: #colors[grey];
 }
 
 html{
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Source Sans Pro Regular", sans-serif;
   font-size: 16px;
 }
 
@@ -195,7 +206,6 @@ html{
 }
 
 .container{
-  background: #colors[white];
   margin: 0 auto;
   width: 86%;
 
@@ -209,12 +219,149 @@ html{
 }
 
 .tour{
+  &_head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+
+    &_bread_crumbs{
+      vertical-align: center;
+    }
+    &_like{
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+
+
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+  &_box{
+    display: flex;
+  }
+
+  &_main{
+    width: 70%;
+    margin-right: 20px;
+    background: #colors[white];
+    border-radius: 10px;
+    padding: 0 25px;
+  }
+
+  &_title{
+    margin: 10px 0;
+
+    &_text{
+      margin: 10px 0;
+    }
+  }
+
   &_gallery{
-    padding: 20px;
+    &_main{
+      padding-right: 20px;
+      width: 100%;
+      margin-bottom: 15px;
+
+      img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
 
     &_list{
       display: flex;
-      overflow: auto;
+      overflow-x: auto;
+      position: absolute; right: -30px;
+      padding: 0 30px 0 0;
+      width: 100%;
+      height: 110px;
+      overflow-y: scroll;
+
+      &_wrapper{
+        position: relative;
+        width: 100%;
+        height: 90px;
+        overflow: hidden;
+      }
+
+      &_item{
+        height: 100%;
+        width: 160px;
+        margin-right: 15px;
+
+        img{
+          object-fit: cover;
+          width: 160px;
+          height: 90px;
+        }
+      }
     }
+  }
+
+  &_sidebar{
+    width: 30%;
+
+    &_information{
+      color: #colors[white];
+      background-image: url("../img/bg_maininfo.png");
+      border-radius: 10px;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+.rating-wrapper {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.rating-input {
+  position: absolute;
+  left: 0;
+  top: -50px;
+}
+
+.rating-star:hover,
+.rating-star:hover~.rating-star {
+  background-position: 0 0;
+}
+
+.rating-wrapper:hover .rating-star:hover,
+.rating-wrapper:hover .rating-star:hover~.rating-star,
+.rating-input:checked~.rating-star {
+  background-position: 0 0;
+}
+
+.rating-star,
+.rating-wrapper:hover .rating-star {
+  float: right;
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: url('../img/stars.png') 0 -14px;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 640px) {
+  .responsive-ad {
+    display: none;
+    text-align: center;
+  }
+  .responsive-ad-device {
+    display: block;
+  }
+}
+
+@media screen and (min-device-width: 960px) {
+  .responsive-ad-device {
+    display: none;
+  }
+  .responsive-ad {
+    display: block;
+    text-align: center;
   }
 }

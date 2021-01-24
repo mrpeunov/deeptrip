@@ -31,6 +31,11 @@ ALLOWED_HOSTS = ['192.168.1.66',
                  '93.100.229.38',
                  '127.0.0.1']
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
 
 # Application definition
 
