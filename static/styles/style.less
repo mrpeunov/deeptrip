@@ -9,6 +9,8 @@
   dark_text6: #666666;
   dark_text9: #999999;
   non-active: #cccccc;
+  select: #cecece;
+  option: #fbfbfb;
 }
 
 @SSPRegular: "Source Sans Pro Regular", Sans-Serif;
@@ -232,7 +234,7 @@ html{
 }
 
 .tour{
-  &_first, &_second{
+  &_block{
     background: #colors[white];
     border-radius: 10px;
     padding: 15px 25px;
@@ -341,15 +343,61 @@ html{
     }
   }
 
+  &_comment{
+    margin: 10px 0;
+    padding: 10px 0;
+
+
+    &_head{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &_photo{
+      width: 60px;
+
+      img{
+        width: 100%;
+      }
+    }
+
+    &_name{
+      font-family: @SSPSemiBold;
+    }
+
+    &_date{
+      font-family: @SSPLight;
+      padding-bottom: 10px;
+    }
+
+    &_text{
+      font-family: @SSPLight;
+    }
+
+    &_middle{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: 10px;
+    }
+
+    &_stars{
+    }
+  }
+
   &_sidebar{
     width: 25%;
+
+    &_block{
+      border-radius: 10px;
+      padding: 15px 15px 20px 15px;
+      margin-bottom: 25px;
+    }
 
     &_information{
       color: #colors[white];
       background-image: url("../img/bg_maininfo.png");
-      border-radius: 10px;
-      padding: 15px 15px 20px 15px;
-
 
       h3{
         font-family: @SSPSemiBold;
@@ -367,12 +415,62 @@ html{
         font-family:  @SSPRegular;
       }
     }
+
+    &_calculate{
+      background: #colors[white];
+
+      &_total{
+        font-family: @SSPLight;
+        margin-bottom: 10px;
+        font-size: 1rem;
+      }
+
+      &_number{
+        font-family: @SSPSemiBold;
+      }
+
+      &_button{
+        background: #colors[blue];
+        border-radius: 10px;
+        height: 35px;
+        color: #colors[white];
+        outline: none;
+        border: none;
+        width: 70%;
+      }
+
+      &_form{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+        &_select{
+          font-family: @SSPRegular;
+          font-size: 1rem;
+          border-radius: 10px;
+          height: 35px;
+          margin-bottom: 10px;
+          border-color: #colors[select];
+          outline: none;
+
+          option{
+            background: #colors[option];
+            border-radius: 10px;
+          }
+
+          option:hover{
+            background: #colors[option];
+          }
+        }
+      }
+    }
   }
 }
 
 .rating-wrapper {
   overflow: hidden;
-  display: inline-block;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .rating-input {
