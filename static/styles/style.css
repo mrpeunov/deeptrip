@@ -25,6 +25,17 @@ h3 {
   font-family: "Source Sans Pro SemiBold", sans-serif;
   margin: 0;
 }
+button {
+  font-family: "Source Sans Pro SemiBold", Sans-Serif;
+  font-size: 1.15rem;
+  background: #7aa3c6;
+  border-radius: 10px;
+  height: 35px;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
 body {
   background: #f0f1f5;
 }
@@ -315,6 +326,7 @@ html {
 }
 .tour_sidebar {
   width: 25%;
+  position: relative;
 }
 .tour_sidebar_block {
   border-radius: 10px;
@@ -340,23 +352,27 @@ html {
 }
 .tour_sidebar_calculate {
   background: #fff;
+  margin-top: 25px;
+}
+.tour_sidebar_calculate_fixed {
+  position: fixed;
+  top: 0;
+}
+.tour_sidebar_calculate_bottom {
+  position: absolute;
+  bottom: 0;
+  top: auto;
 }
 .tour_sidebar_calculate_total {
   font-family: "Source Sans Pro Light", Sans-Serif;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 1rem;
 }
 .tour_sidebar_calculate_number {
   font-family: "Source Sans Pro SemiBold", Sans-Serif;
 }
 .tour_sidebar_calculate_button {
-  background: #4b6b8e;
-  border-radius: 10px;
-  height: 35px;
-  color: #fff;
-  outline: none;
-  border: none;
-  width: 70%;
+  width: 100%;
 }
 .tour_sidebar_calculate_form {
   display: flex;
@@ -378,6 +394,15 @@ html {
 }
 .tour_sidebar_calculate_form_select option:hover {
   background: #fbfbfb;
+}
+.tour_booking {
+  display: flex;
+  justify-content: center;
+}
+.tour_booking_button {
+  width: 250px;
+  height: 60px;
+  border-radius: 30px;
 }
 .rating-wrapper {
   overflow: hidden;

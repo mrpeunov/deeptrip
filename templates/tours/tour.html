@@ -151,20 +151,20 @@
                     </tr>
                 </table>
             </div>
-            <div class="tour_sidebar_calculate tour_sidebar_block">
+            <div class="tour_sidebar_calculate tour_sidebar_block" id="sidebar_calculate">
                 <h2>Расчёт стоимости</h2>
                 <form action="" class="tour_sidebar_calculate_form">
-                    <select name="" id="" class="tour_sidebar_calculate_form_select">
+                    <select class="tour_sidebar_calculate_form_select">
                         <option value="v1" selected>Двухчасовая</option>
                         <option value="v2">Трехчасовая</option>
                     </select>
 
-                    <select name="" id="" class="tour_sidebar_calculate_form_select">
+                    <select class="tour_sidebar_calculate_form_select">
                         <option value="v1" selected>1 взрослый</option>
                         <option value="v2">2 взрослых</option>
                     </select>
 
-                    <select name="" id="" class="tour_sidebar_calculate_form_select">
+                    <select class="tour_sidebar_calculate_form_select">
                         <option value="v1" selected>Без детей</option>
                         <option value="v2">1 ребёнок</option>
                     </select>
@@ -181,8 +181,29 @@
         </div>
     </div>
 
+    <div class="tour_booking">
+        <button class="tour_booking_button">
+            Перейти к брони
+        </button>
+    </div>
+
+    <div class="tour_recommended">
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block one_page_scripts %}
-     <script src="{% static 'scripts/gallery.js' %}"></script>
+    <script src="{% static 'scripts/gallery.js' %}"></script>
+    <script src="{% static 'scripts/sidebar.js' %}"></script>
 {% endblock %}

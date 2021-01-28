@@ -1,6 +1,7 @@
 #colors(){
   blue: #4b6b8e;
   cyan: #77a3b0;
+  button-cyan: #7aa3c6;
   white: #fff;
   green: #00be8b;
   blue-active: #597a9d;
@@ -47,6 +48,18 @@ html, body{
 h1, h2, h3{
   font-family: "Source Sans Pro SemiBold", sans-serif;
   margin: 0;
+}
+
+button{
+  font-family: @SSPSemiBold;
+  font-size: 1.15rem;
+  background: #colors[button-cyan];
+  border-radius: 10px;
+  height: 35px;
+  color: #colors[white];
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 body{
@@ -388,6 +401,7 @@ html{
 
   &_sidebar{
     width: 25%;
+    position: relative;
 
     &_block{
       border-radius: 10px;
@@ -418,10 +432,22 @@ html{
 
     &_calculate{
       background: #colors[white];
+      margin-top: 25px;
+
+      &_fixed{
+        position: fixed;
+        top: 0;
+      }
+
+      &_bottom{
+        position: absolute;
+        bottom: 0;
+        top: auto;
+      }
 
       &_total{
         font-family: @SSPLight;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         font-size: 1rem;
       }
 
@@ -430,13 +456,7 @@ html{
       }
 
       &_button{
-        background: #colors[blue];
-        border-radius: 10px;
-        height: 35px;
-        color: #colors[white];
-        outline: none;
-        border: none;
-        width: 70%;
+        width: 100%;
       }
 
       &_form{
@@ -464,6 +484,21 @@ html{
         }
       }
     }
+  }
+
+  &_booking{
+    display: flex;
+    justify-content: center;
+
+    &_button{
+      width: 250px;
+      height: 60px;
+      border-radius: 30px;
+    }
+  }
+
+  &_recommended{
+
   }
 }
 
