@@ -25,6 +25,17 @@ h3 {
   font-family: "Source Sans Pro SemiBold", sans-serif;
   margin: 0;
 }
+button {
+  font-family: "Source Sans Pro SemiBold", Sans-Serif;
+  font-size: 1.15rem;
+  background: #7aa3c6;
+  border-radius: 10px;
+  height: 35px;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
 body {
   background: #f0f1f5;
 }
@@ -193,8 +204,7 @@ html {
     width: 100%;
   }
 }
-.tour_first,
-.tour_second {
+.tour_block {
   background: #fff;
   border-radius: 10px;
   padding: 15px 25px;
@@ -283,14 +293,49 @@ html {
   width: 160px;
   height: 90px;
 }
+.tour_comment {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+.tour_comment_head {
+  display: flex;
+  justify-content: space-between;
+}
+.tour_comment_photo {
+  width: 60px;
+}
+.tour_comment_photo img {
+  width: 100%;
+}
+.tour_comment_name {
+  font-family: "Source Sans Pro SemiBold", Sans-Serif;
+}
+.tour_comment_date {
+  font-family: "Source Sans Pro Light", Sans-Serif;
+  padding-bottom: 10px;
+}
+.tour_comment_text {
+  font-family: "Source Sans Pro Light", Sans-Serif;
+}
+.tour_comment_middle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+}
 .tour_sidebar {
   width: 25%;
+  position: relative;
+}
+.tour_sidebar_block {
+  border-radius: 10px;
+  padding: 15px 15px 20px 15px;
+  margin-bottom: 25px;
 }
 .tour_sidebar_information {
   color: #fff;
   background-image: url("../img/bg_maininfo.png");
-  border-radius: 10px;
-  padding: 15px 15px 20px 15px;
 }
 .tour_sidebar_information h3 {
   font-family: "Source Sans Pro SemiBold", Sans-Serif;
@@ -305,9 +350,64 @@ html {
   width: 50%;
   font-family: "Source Sans Pro Regular", Sans-Serif;
 }
+.tour_sidebar_calculate {
+  background: #fff;
+  margin-top: 25px;
+}
+.tour_sidebar_calculate_fixed {
+  position: fixed;
+  top: 0;
+}
+.tour_sidebar_calculate_bottom {
+  position: absolute;
+  bottom: 0;
+  top: auto;
+}
+.tour_sidebar_calculate_total {
+  font-family: "Source Sans Pro Light", Sans-Serif;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+.tour_sidebar_calculate_number {
+  font-family: "Source Sans Pro SemiBold", Sans-Serif;
+}
+.tour_sidebar_calculate_button {
+  width: 100%;
+}
+.tour_sidebar_calculate_form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.tour_sidebar_calculate_form_select {
+  font-family: "Source Sans Pro Regular", Sans-Serif;
+  font-size: 1rem;
+  border-radius: 10px;
+  height: 35px;
+  margin-bottom: 10px;
+  border-color: #cecece;
+  outline: none;
+}
+.tour_sidebar_calculate_form_select option {
+  background: #fbfbfb;
+  border-radius: 10px;
+}
+.tour_sidebar_calculate_form_select option:hover {
+  background: #fbfbfb;
+}
+.tour_booking {
+  display: flex;
+  justify-content: center;
+}
+.tour_booking_button {
+  width: 250px;
+  height: 60px;
+  border-radius: 30px;
+}
 .rating-wrapper {
   overflow: hidden;
-  display: inline-block;
+  display: flex;
+  flex-direction: row-reverse;
 }
 .rating-input {
   position: absolute;
