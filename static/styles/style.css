@@ -43,9 +43,6 @@ html {
   font-family: "Source Sans Pro Regular", sans-serif;
   font-size: 16px;
 }
-.none {
-  display: none;
-}
 .body_pointer * {
   cursor: pointer;
 }
@@ -398,11 +395,45 @@ html {
 .tour_booking {
   display: flex;
   justify-content: center;
+  padding-bottom: 25px;
 }
 .tour_booking_button {
   width: 250px;
   height: 60px;
   border-radius: 30px;
+}
+.tour_recommended {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.tour_recommended_item {
+  width: 30%;
+  margin-bottom: 25px;
+}
+.tour_preview {
+  width: 100%;
+  height: 320px;
+  background: #fff;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.tour_preview_head {
+  height: 60%;
+}
+.tour_preview_head img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+.tour_preview_content {
+  padding: 10px;
+  height: 40%;
+}
+.tour_preview_content_footer {
+  display: flex;
 }
 .rating-wrapper {
   overflow: hidden;
@@ -449,5 +480,8 @@ html {
     display: block;
     text-align: center;
   }
+}
+.none {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

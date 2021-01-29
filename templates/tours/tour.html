@@ -21,6 +21,7 @@
                         <div class="tour_title_stars_text">4 отзыва</div>
                     </div>
                 </div>
+
                 <div class="tour_gallery">
                     <div class="tour_gallery_main">
                         <img src="{{ tour.image.url }}" alt="">
@@ -117,9 +118,11 @@
                     </div>
                 </div>
             </div>
-            <div class="tour_booking">
+
+            <div class="tour_booking none">
 
             </div>
+
             <div class="tour_add_list">
 
             </div>
@@ -188,6 +191,18 @@
     </div>
 
     <div class="tour_recommended">
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+
         <div class="tour_recommended_item">
             {% include 'tours/elements/tour_preview.html' %}
         </div>
