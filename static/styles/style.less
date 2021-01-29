@@ -312,20 +312,30 @@ html{
 
   &_gallery{
     &_main{
-      padding-right: 20px;
       width: 100%;
       margin-bottom: 15px;
+      position: relative;
 
       img{
         object-fit: cover;
         width: 100%;
         height: 100%;
       }
+
+      &_button{
+        position: absolute;
+        background: #colors[white];
+        height: 50px;
+        width: 50px;
+        top: calc(50% - 25px);
+        border-radius: 50%;
+        cursor: pointer;
+      }
     }
 
     &_list{
       display: flex;
-      overflow-x: auto;
+      overflow-x: overlay;
       position: absolute; right: -30px;
       padding: 0 30px 0 0;
       width: 100%;
@@ -344,11 +354,31 @@ html{
         height: 100%;
         width: 160px;
         margin-right: 15px;
+        -webkit-filter: brightness(77%);
+        filter: brightness(77%);
+        position: relative;
 
         img{
           object-fit: cover;
           width: 160px;
           height: 90px;
+        }
+
+        &_current{
+          -webkit-filter: none;
+          filter: none;
+          opacity: 90%;
+          z-index: 2;
+
+          .cyan{
+            position: absolute;
+            background: #colors[button-cyan];
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            top: 0;
+            opacity: 10%;
+          }
         }
       }
     }
@@ -534,6 +564,30 @@ html{
         display: flex;
       }
     }
+  }
+}
+
+#prev{
+  left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img{
+    width: 16px;
+    height: 30px;
+  }
+}
+
+#next{
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img{
+    width: 16px;
+    height: 30px;
   }
 }
 
