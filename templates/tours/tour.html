@@ -21,19 +21,28 @@
                         <div class="tour_title_stars_text">4 отзыва</div>
                     </div>
                 </div>
+
                 <div class="tour_gallery">
                     <div class="tour_gallery_main">
-                        <img src="{{ tour.image.url }}" alt="">
+                        <img src="{{ tour.image.url }}" id="main_photo" alt="">
+                        <div class="tour_gallery_main_button" id="prev">
+                            <img src="{% static 'img/left.png' %}" alt="">
+                        </div>
+                        <div class="tour_gallery_main_button" id="next">
+                            <img src="{% static 'img/right.png' %}" alt="">
+                        </div>
                     </div>
                     <div class="tour_gallery_list_wrapper">
                         <div class="tour_gallery_list">
-                            <div class="tour_gallery_list_item">
+                            <div class="tour_gallery_list_item tour_gallery_list_item_current">
                                 <img src="{{ tour.image.url }}" alt="">
+                                <div class="cyan"></div>
                             </div>
 
                             {% for image_item in image_items %}
                             <div class="tour_gallery_list_item">
                                 <img src="{{ image_item.image.url }}" alt="">
+                                <div class="cyan"></div>
                             </div>
                             {% endfor %}
                         </div>
@@ -117,9 +126,11 @@
                     </div>
                 </div>
             </div>
-            <div class="tour_booking">
+
+            <div class="tour_booking none">
 
             </div>
+
             <div class="tour_add_list">
 
             </div>
@@ -188,6 +199,18 @@
     </div>
 
     <div class="tour_recommended">
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+
+        <div class="tour_recommended_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+
         <div class="tour_recommended_item">
             {% include 'tours/elements/tour_preview.html' %}
         </div>

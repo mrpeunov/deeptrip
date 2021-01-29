@@ -43,9 +43,6 @@ html {
   font-family: "Source Sans Pro Regular", sans-serif;
   font-size: 16px;
 }
-.none {
-  display: none;
-}
 .body_pointer * {
   cursor: pointer;
 }
@@ -257,18 +254,27 @@ html {
   color: #666666;
 }
 .tour_gallery_main {
-  padding-right: 20px;
   width: 100%;
   margin-bottom: 15px;
+  position: relative;
 }
 .tour_gallery_main img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
+.tour_gallery_main_button {
+  position: absolute;
+  background: #fff;
+  height: 50px;
+  width: 50px;
+  top: calc(50% - 25px);
+  border-radius: 50%;
+  cursor: pointer;
+}
 .tour_gallery_list {
   display: flex;
-  overflow-x: auto;
+  overflow-x: overlay;
   position: absolute;
   right: -30px;
   padding: 0 30px 0 0;
@@ -287,11 +293,29 @@ html {
   height: 100%;
   width: 160px;
   margin-right: 15px;
+  -webkit-filter: brightness(77%);
+  filter: brightness(77%);
+  position: relative;
 }
 .tour_gallery_list_item img {
   object-fit: cover;
   width: 160px;
   height: 90px;
+}
+.tour_gallery_list_item_current {
+  -webkit-filter: none;
+  filter: none;
+  opacity: 90%;
+  z-index: 2;
+}
+.tour_gallery_list_item_current .cyan {
+  position: absolute;
+  background: #7aa3c6;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  top: 0;
+  opacity: 10%;
 }
 .tour_comment {
   margin: 10px 0;
@@ -398,11 +422,65 @@ html {
 .tour_booking {
   display: flex;
   justify-content: center;
+  padding-bottom: 25px;
 }
 .tour_booking_button {
   width: 250px;
   height: 60px;
   border-radius: 30px;
+}
+.tour_recommended {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.tour_recommended_item {
+  width: 30%;
+  margin-bottom: 25px;
+}
+.tour_preview {
+  width: 100%;
+  height: 320px;
+  background: #fff;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.tour_preview_head {
+  height: 60%;
+}
+.tour_preview_head img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+.tour_preview_content {
+  padding: 10px;
+  height: 40%;
+}
+.tour_preview_content_footer {
+  display: flex;
+}
+#prev {
+  left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#prev img {
+  width: 16px;
+  height: 30px;
+}
+#next {
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#next img {
+  width: 16px;
+  height: 30px;
 }
 .rating-wrapper {
   overflow: hidden;
@@ -449,5 +527,8 @@ html {
     display: block;
     text-align: center;
   }
+}
+.none {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
