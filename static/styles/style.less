@@ -18,6 +18,8 @@
 @SSPRegular: "Source Sans Pro Regular", Sans-Serif;
 @SSPSemiBold: "Source Sans Pro SemiBold", Sans-Serif;
 @SSPLight: "Source Sans Pro Light", Sans-Serif;
+@MB: "Montserrat-Black", Sans-Serif;
+@LR: "Lato", Sans-Serif;
 
 @font-face {
   font-family: @SSPRegular, Sans-Serif;
@@ -39,6 +41,17 @@
   font-family: "Womby", Sans-Serif;
   src: local("wombyrusbydaymarius"), url("../fonts/womby.ttf");
 }
+
+@font-face {
+  font-family: "Montserrat-Black", Sans-Serif;
+  src: local("Montserrat-Black"), url("../fonts/Montserrat-Black.ttf");
+}
+
+@font-face {
+  font-family: "Lato", Sans-Serif;
+  src: local("Lato"), url("../fonts/Lato-Regular.ttf");
+}
+
 
 
 html, body{
@@ -245,6 +258,51 @@ html{
   }
 }
 
+.footer{
+  background: #colors[white];
+  padding-bottom: 50px;
+
+  &_links{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &_link{
+      font-family: @SSPRegular;
+      font-size: 1.16rem;
+      text-decoration: none;
+      color: #colors[dark_text3];
+      padding: 50px 25px;
+    }
+  }
+
+  &_info{
+    display: flex;
+    margin: 0 25px;
+
+    &_logo{
+      &_first{
+        font-family: @MB;
+        font-weight: 900;
+      }
+
+      &_second {
+        font-family: @LR;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &_social{
+    width: 40px;
+    margin-left: 40px;
+
+    img{
+      width: 100%;
+    }
+  }
+}
+
 .tour{
   &_block{
     background: #colors[white];
@@ -373,7 +431,7 @@ html{
           z-index: 2;
 
           img{
-            outline: 5px solid #colors[outline];
+            outline: #5d7a9a solid 5px;
             outline-offset: -5px;
           }
 
@@ -732,3 +790,4 @@ html{
 .none{
   display: none;
 }
+

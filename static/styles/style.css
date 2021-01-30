@@ -14,6 +14,14 @@
   font-family: "Womby", Sans-Serif;
   src: local("wombyrusbydaymarius"), url("../fonts/womby.ttf");
 }
+@font-face {
+  font-family: "Montserrat-Black", Sans-Serif;
+  src: local("Montserrat-Black"), url("../fonts/Montserrat-Black.ttf");
+}
+@font-face {
+  font-family: "Lato", Sans-Serif;
+  src: local("Lato"), url("../fonts/Lato-Regular.ttf");
+}
 html,
 body {
   margin: 0;
@@ -201,6 +209,41 @@ html {
     width: 100%;
   }
 }
+.footer {
+  background: #fff;
+  padding-bottom: 50px;
+}
+.footer_links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.footer_links_link {
+  font-family: "Source Sans Pro Regular", Sans-Serif;
+  font-size: 1.16rem;
+  text-decoration: none;
+  color: #333333;
+  padding: 50px 25px;
+}
+.footer_info {
+  display: flex;
+  margin: 0 25px;
+}
+.footer_info_logo_first {
+  font-family: "Montserrat-Black", Sans-Serif;
+  font-weight: 900;
+}
+.footer_info_logo_second {
+  font-family: "Lato", Sans-Serif;
+  font-weight: 400;
+}
+.footer_social {
+  width: 40px;
+  margin-left: 40px;
+}
+.footer_social img {
+  width: 100%;
+}
 .tour_block {
   background: #fff;
   border-radius: 10px;
@@ -310,7 +353,7 @@ html {
   z-index: 2;
 }
 .tour_gallery_list_item_current img {
-  outline: 5px solid #5d7a9a;
+  outline: #5d7a9a solid 5px;
   outline-offset: -5px;
 }
 .tour_gallery_list_item_current .cyan {
