@@ -1,1 +1,18 @@
-Тут фотка города
+<header  style="background-image: url('{{ city.image.url }}')">
+    <div class="header container">
+        <div class="header_info">
+            <div class="header_info_logo">
+                <div class="header_info_logo_first">{{ config.site_name }}</div>
+                <div class="header_info_logo_second">{{ config.site_description }}</div>
+            </div>
+            <div class="header_info_links">
+                <a class="header_info_links_active" href="">Экскурсии</a>
+                <a href="">Журнал</a>
+            </div>
+            <a href="" class="header_info_place">Разместить свою экскурсию</a>
+        </div>
+        <h1 class="header_title">{{ city.h1 }}</h1>
+        <h2 class="header_subtitle">{{ city.h2 }}</h2>
+        <button class="header_button">Карта экскурсий</button>
+    </div>
+</header>

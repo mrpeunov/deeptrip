@@ -1,25 +1,27 @@
 {% load static %}
 
-<div class="tour_preview">
-    <div class="tour_preview_head">
-        <img src="{% static 'img/tmp_add.png' %}" alt="">
-        <div class="tour_preview_head_like"></div>
-        <div class="tour_preview_head_stars"></div>
-        <div class="tour_preview_head_offer">
-            <span>-20%</span>
-        </div>
+<div class="preview">
+    <div class="preview_gallery owl-carousel owl-theme">
+        <img src="{{ preview.image.url }}" alt="">
+        <img src="{{ preview.image.url }}" alt="">
+        <img src="{{ preview.image.url }}" alt="">
+        <img src="{{ preview.image.url }}" alt="">
+        <img src="{{ preview.image.url }}" alt="">
     </div>
-    <div class="tour_preview_content">
-        <h3 class="tour_preview_content_title">Горный квадротур</h3>
-        <div class="tour_preview_content_text">Чайные плантации, самшитовая роща, хвойная чаща и горная заводь</div>
-        <div class="tour_preview_content_footer">
-            <div class="tour_preview_content_footer_price"> <span class="tour_preview_content_footer_price_number">
-                2500 ₽
-            </span>за экскурсии</div>
-            <div class="tour_preview_content_footer_info">
-                <div class="tour_preview_content_footer_info_group"></div>
-                <div class="tour_preview_content_footer_info_timer-icon"></div>
-                <div class="tour_preview_content_footer_info_time">2 часа 50 минут</div>
+    <div class="preview_content">
+        <div class="preview_content_title">{{ preview.title }}</div>
+        <div class="preview_content_description"> {{ preview.description|truncatechars:80 }}</div>
+        <div class="preview_content_footer">
+            <div class="preview_content_footer_price">
+                <span>{{ preview.price }} руб. </span> за квадрцикл
+            </div>
+            <div class="preview_content_footer_time">
+                <img src="{% static 'img/preview/time.png' %}" alt="">
+                {{ preview.time }}
+            </div>
+            <div class="preview_content_footer_rating">
+                <img src="{% static 'img/preview/star.png' %}" alt="">
+                <span>{{ preview.rating }} </span>({{ preview.count_comment }})
             </div>
         </div>
     </div>

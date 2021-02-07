@@ -1,25 +1,16 @@
-<nav class="menu">
-    <div class="menu_button">
-    </div>
-    <div class="menu_logo">
-        <h2 class="logo">TOUR4</h2>
-    </div>
-    <div class="menu_items">
-        <a class="menu_item">
-            <div class="menu_link" href="#">Экскурсии</div>
-        </a>
-        <div class="menu_item">
-            <a class="menu_link" href="#">Карта экскурсий</a>
-        </div>
-        <div class="menu_item">
-            <a class="menu_link" href="#">Статьи</a>
-        </div>
-        <div class="menu_item">
-            <a class="menu_link" href="#">Горячая линия</a>
-        </div>
+{% load static %}
 
-        <div class="menu_item">
-            <a class="menu_link" href="#">Разместить экскурсию</a>
-        </div>
-    </div>
+<nav class="menu">
+    <a href="" class="menu_item">
+        <img src="{% static 'img/city/map.png' %}" alt="" class="menu_item_icon">
+        <div class="menu_item_name">Карта</div>
+    </a>
+    <a href="" class="menu_item">
+        <img src="{% static 'img/city/like.png' %}" alt="" class="menu_item_icon">
+        <div class="menu_item_name">Избранное</div>
+    </a>
+    <a href="" class="menu_item">
+        <img src="{% static 'img/city/filter.png' %}" alt="" class="menu_item_icon">
+        <div class="menu_item_name">Фильтры</div>
+    </a>
 </nav>

@@ -1,12 +1,14 @@
 from django.views.generic import TemplateView
 
+from base.models import Config
+
 
 def _get_menu():
     return {"пример": "20 см"}
 
 
 def _get_config():
-    return {"пример": "25 см"}
+    return {"config": Config.objects.all().values()[0]}
 
 
 def _get_social_networks():

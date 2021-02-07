@@ -1,10 +1,18 @@
-{% extends 'base/base.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block header %}
 
     {% include 'base/elements/city_header.html' %}
 
-    {% include 'base/elements/city_maps.html' %}
+{% endblock %}
+
+{% block content %}
+
+    {% include 'base/elements/city_tours.html' %}
 
     {% include 'base/elements/city_filter.html' %}
+
+    {% include 'base/elements/city_articles.html' %}
+
 {% endblock %}
+

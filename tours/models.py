@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db.models import TextField
 from django.urls import reverse
 from base.models import City
 
@@ -68,7 +69,7 @@ class Tour(models.Model):
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
 
-    description = RichTextField("Описание экскурсии")
+    description = TextField("Описание экскурсии")
     include = RichTextField("Включено")
 
     seat_request = models.BooleanField("Показывать блок 'Запросить места'", default=True)
@@ -88,7 +89,6 @@ class Tour(models.Model):
 
     def get_absolute_url(self):
         return reverse('tour_page', args=[str(self.city.slug), str(self.slug)])
-
 
     class Meta:
         verbose_name = "экскурсию"
