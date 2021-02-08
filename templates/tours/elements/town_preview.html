@@ -1,0 +1,13 @@
+<a href="" class="towns_item">
+    <div class="towns_item_img"
+         {% if town.image %}
+            style="background: url('{{ town.image.url }}')"
+         {% else %}
+            style="background: #caffa5"
+         {% endif %}>
+    </div>
+    <div class="towns_item_content">
+        <div class="towns_item_title">{{ town.name }}</div>
+        <div class="towns_item_count">{{ town.tour_set.count }} экскурсий</div>
+    </div>
+</a>

@@ -1,0 +1,11 @@
+{% load next %}
+
+<div class="towns">
+    {%  for column in towns %}
+            <div class="towns_column">
+                {% for town in column %}
+                    {% include 'tours/elements/town_preview.html' %}
+                {% endfor %}
+            </div>
+    {% endfor %}
+</div>

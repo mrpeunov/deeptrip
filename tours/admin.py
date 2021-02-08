@@ -35,6 +35,11 @@ class OfferAdmin(admin.ModelAdmin):
     list_display = ('text', 'color')
 
 
+@admin.register(Town)
+class TownAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+
+
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
     list_display = ('title', 'notes', 'rating', 'count_comment')

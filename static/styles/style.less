@@ -2,6 +2,7 @@
 
 #colors(){
   white: #ffffff;
+  map_preview: #8e94a6;
   dark3: #333333;
   dark9: #999999;
 }
@@ -35,12 +36,20 @@ img{
   justify-content: center;
   width: 100%;
   z-index: 10;
-  height: 10vh;
+  height: 60px;
 
   &_item{
     text-decoration: none;
-    margin: 0 50px;
+    margin: 10px 50px;
     text-align: center;
+
+    img{
+      width: 25px;
+    }
+
+    &_name{
+      font-size: 0.7rem;
+    }
   }
 }
 
@@ -53,6 +62,7 @@ header{
   max-width: 1500px;
   padding-left: 80px;
   padding-right: 80px;
+  margin: 0 auto;
 }
 
 .header{
@@ -134,20 +144,49 @@ header{
 }
 
 .tours{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 50px 0;
+  &_items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
   &_item{
-    width: calc(100%/3 - 30px);
-    margin-bottom: 50px;
+    width: 30%;
+    margin-top: 50px;
+  }
+
+  &_more{
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+
+    button{
+      border: none;
+      outline: none;
+      border-radius: 20px;
+      background: #colors[white];
+      color: #colors[dark3];
+      font-size: 0.9rem;
+      font-weight: bold;
+      box-shadow: 0 0 2px 2px rgba(1, 1, 1, 0.2);
+      padding: 15px 30px;
+    }
   }
 }
 
 .preview{
-  img{
-    width: 100%;
+  position: relative;
+
+  &_like{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 20;
+    cursor: pointer;
+
+    img{
+      width: 30px;
+    }
   }
 
   &_gallery{
@@ -189,7 +228,7 @@ header{
         font-size: 0.9rem;
 
         img{
-          width: 20px;
+          width: 15px;
         }
       }
 
@@ -204,7 +243,7 @@ header{
 
 
         img{
-          width: 20px;
+          width: 15px;
         }
       }
     }
@@ -247,6 +286,74 @@ header{
 
     span{
       outline: none;
+    }
+  }
+}
+
+.search{
+  background: #colors[map_preview];
+  height: 100%;
+  border-radius: 15px;
+  position: relative;
+
+  h3{
+    font-size: 2.3rem;
+    margin: 0;
+    padding-top: 30px;
+    padding-left: 20px;
+    width: 1px;
+    color: #colors[white];
+  }
+
+  button{
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    background: #colors[white];
+    color: #colors[dark3];
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 0;
+    padding: 15px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+}
+
+.towns{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 0;
+
+  &_column{
+    width: 20vw;
+  }
+
+  &_item{
+    display: flex;
+    margin-bottom: 15px;
+
+    &_img{
+      width: 70px;
+      height: 70px;
+      border-radius: 15px;
+    }
+
+    &_content{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 15px;
+    }
+
+    &_title{
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    &_count{
+      font-size: 0.9rem;
     }
   }
 }

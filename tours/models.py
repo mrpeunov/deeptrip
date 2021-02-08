@@ -56,6 +56,23 @@ class Offer(models.Model):
         verbose_name_plural = "специальные предложение"
 
 
+class Town(models.Model):
+    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1)
+    name = models.CharField("Название", max_length=64)
+    description = TextField("Описание")
+    seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
+    h1 = models.CharField("Заговок h1", max_length=64)
+    h2 = models.CharField("Заговок h2", max_length=64)
+    image = models.ImageField(null=True)
+
+    def __str__(self):
+        return "Район '{}'".format(self.name)
+
+    class Meta:
+        verbose_name = "район"
+        verbose_name_plural = "районы"
+
+
 class Tour(models.Model):
     GROUP_CHOICES = (
         (True, "Групповая"),
@@ -80,6 +97,7 @@ class Tour(models.Model):
     time = models.CharField("Продолжительность экскурсии", max_length=32)
     image = models.ImageField("Основная фотография")
     offer = models.ForeignKey(Offer, on_delete=models.PROTECT, blank=True)
+    towns = models.ManyToManyField(Town, verbose_name="Районы")
     categories = models.ManyToManyField(Category, verbose_name="Категории")
     positions = models.ManyToManyField(Position, verbose_name="Точки на карте")
     notes = models.CharField("Примечания", max_length=64, default="Пусто")

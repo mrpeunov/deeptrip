@@ -1,8 +1,17 @@
 <div class="tours">
-    {% for preview in tours %}
-    <div class="tours_item">
-        {% include 'tours/elements/tour_preview.html' %}
+    <div class="tours_items">
+        {% for preview in tours %}
+        <div class="tours_item">
+            {% include 'tours/elements/tour_preview.html' %}
+        </div>
+        {% endfor %}
+        <div class="tours_item">
+            {% include 'tours/elements/map_preview.html' %}
+        </div>
     </div>
-    {% endfor %}
+    <div class="tours_more">
+        <button>Показать ещё</button>
+    </div>
 </div>
+
 

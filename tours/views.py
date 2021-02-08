@@ -17,6 +17,22 @@ class CityPage(FooterAndMenuTemplateView):
     def add_in_context(self, context):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['tours'] = Tour.objects.all()
+        context['towns'] = query_to_columns(Town.objects.all())
+
+
+def query_to_columns(query):
+    columns = list()
+    column = list()
+    i = 0
+    for item in query:
+        column.append(item)
+        if i % 2 == 1:
+            columns.append(column)
+            column = list()
+        i += 1
+    if len(column) > 0:
+        columns.append(column)
+    return columns
 
 
 class ToursFilterPage(FooterAndMenuTemplateView):

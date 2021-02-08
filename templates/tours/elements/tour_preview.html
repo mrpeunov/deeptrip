@@ -13,7 +13,7 @@
         <div class="preview_content_description"> {{ preview.description|truncatechars:80 }}</div>
         <div class="preview_content_footer">
             <div class="preview_content_footer_price">
-                <span>{{ preview.price }} руб. </span> за квадрцикл
+                <span>{{ preview.price }} руб. </span> за квадр.
             </div>
             <div class="preview_content_footer_time">
                 <img src="{% static 'img/preview/time.png' %}" alt="">
@@ -24,5 +24,8 @@
                 <span>{{ preview.rating }} </span>({{ preview.count_comment }})
             </div>
         </div>
+    </div>
+    <div class="preview_like">
+        <img src="{% static 'img/preview/like.png' %}" alt="">
     </div>
 </div>
