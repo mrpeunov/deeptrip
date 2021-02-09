@@ -153,6 +153,7 @@ img {
   text-decoration: none;
   margin: 10px 50px;
   text-align: center;
+  font-weight: 500;
 }
 .menu_item img {
   width: 25px;
@@ -327,10 +328,18 @@ header {
   width: 100%;
   display: flex;
   justify-content: center;
-  bottom: 0;
+  bottom: 10px;
 }
 .preview .owl-dot {
   outline: none;
+}
+.preview .owl-dot span {
+  background: #eeedde !important;
+  width: 7px !important;
+  height: 7px !important;
+}
+.preview .owl-dot.active span {
+  background: #ffffff !important;
 }
 .preview .owl-nav {
   position: absolute;
@@ -385,7 +394,7 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 50px 0;
+  margin-top: 50px;
 }
 .towns_item {
   display: flex;

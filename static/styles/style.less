@@ -5,6 +5,7 @@
   map_preview: #8e94a6;
   dark3: #333333;
   dark9: #999999;
+  dot: #eeedde;
 }
 
 html, body{
@@ -42,6 +43,7 @@ img{
     text-decoration: none;
     margin: 10px 50px;
     text-align: center;
+    font-weight: 500;
 
     img{
       width: 25px;
@@ -258,11 +260,21 @@ header{
     width: 100%;
     display: flex;
     justify-content: center;
-    bottom: 0;
+    bottom: 10px;
   }
 
   .owl-dot{
     outline: none;
+
+    span{
+      background: #colors[dot] !important;
+      width: 7px !important;
+      height: 7px !important;
+    }
+
+    &.active span{
+      background: #colors[white] !important;
+    }
   }
 
   .owl-nav{
@@ -325,7 +337,7 @@ header{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 50px 0;
+  margin-top: 50px;
 
   &_item{
     display: flex;
