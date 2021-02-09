@@ -421,4 +421,42 @@ header {
 .towns_item_disable {
   color: #999999;
 }
+.filters_categories {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.filters_category {
+  width: 30%;
+  display: block;
+  letter-spacing: -1ex;
+  margin: 5px 0;
+}
+.filters_category_name {
+  margin-right: -10%;
+  width: 89%;
+  vertical-align: top;
+  overflow: hidden;
+  display: inline-block;
+  letter-spacing: normal;
+}
+.filters_category_name:after {
+  content: '';
+  display: inline-block;
+  width: 99%;
+  margin: 0 -99% 0 3px;
+  vertical-align: baseline;
+  border-image: url("../img/city/dots.png") repeat;
+}
+.filters_category input {
+  display: inline-block;
+  letter-spacing: normal;
+  padding-left: 3px;
+  margin-left: 10%;
+  width: 10%;
+  vertical-align: bottom;
+}
+.filters_footer {
+  display: flex;
+}
 /*# sourceMappingURL=style.css.map */

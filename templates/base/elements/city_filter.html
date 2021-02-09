@@ -1,1 +1,18 @@
-фильтры
+<form class="filters">
+    <h2>Популярные фильтры</h2>
+    <div class="filters_categories">
+        {% for category in categories %}
+            <div class="filters_category">
+                <div class="filters_category_name">{{ category.title }}</div>
+                <input type="checkbox">
+            </div>
+        {% endfor %}
+    </div>
+    <div class="filter_footer">
+        <div class="filter_footer_all">Все экскурсии</div>
+        <div class="filter_footer_search">
+            <span>Найдено 20 экскурсий</span>
+            <button>Показать</button>
+        </div>
+    </div>
+</form>

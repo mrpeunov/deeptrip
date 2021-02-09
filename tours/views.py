@@ -18,6 +18,7 @@ class CityPage(FooterAndMenuTemplateView):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['tours'] = Tour.objects.all()
         context['towns'] = query_to_columns(Town.objects.all())
+        context['categories'] = Category.objects.all()
 
 
 def query_to_columns(query):

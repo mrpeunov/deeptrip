@@ -243,7 +243,6 @@ header{
           color: #colors[dark3];
         }
 
-
         img{
           width: 15px;
         }
@@ -368,6 +367,54 @@ header{
     &_disable{
       color: #colors[dark9];
     }
+  }
+}
+
+.filters{
+  &_categories{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+
+  &_category{
+    width: 30%;
+    display: block;
+	letter-spacing: -1ex;
+	margin: 5px 0;
+
+    &_name{
+      margin-right: -10%;
+      width: 89%;
+      vertical-align: top;
+      overflow: hidden;
+      display: inline-block;
+      letter-spacing: normal;
+
+      &:after{
+        content: '';
+        display: inline-block;
+        width: 99%;
+        margin: 0 -99% 0 3px;
+        vertical-align: baseline;
+        border-image: url("../img/city/dots.png") repeat;
+      }
+    }
+
+    input{
+      display: inline-block;
+      letter-spacing: normal;
+      padding-left: 3px;
+      margin-left: 10%;
+      width: 10%;
+      vertical-align: bottom;
+    }
+
+  }
+
+  &_footer{
+    display: flex;
   }
 }
 
