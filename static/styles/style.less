@@ -323,12 +323,9 @@ header{
 
 .towns{
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin: 50px 0;
-
-  &_column{
-    width: 20vw;
-  }
 
   &_item{
     display: flex;
@@ -354,6 +351,10 @@ header{
 
     &_count{
       font-size: 0.9rem;
+    }
+
+    &_disable{
+      color: #colors[dark9];
     }
   }
 }

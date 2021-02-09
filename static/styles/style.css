@@ -383,11 +383,9 @@ header {
 }
 .towns {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin: 50px 0;
-}
-.towns_column {
-  width: 20vw;
 }
 .towns_item {
   display: flex;
@@ -410,5 +408,8 @@ header {
 }
 .towns_item_count {
   font-size: 0.9rem;
+}
+.towns_item_disable {
+  color: #999999;
 }
 /*# sourceMappingURL=style.css.map */
