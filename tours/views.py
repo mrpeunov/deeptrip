@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+
+from articles.models import Article
 from tours.models import *
 from base.models import City
 from base.services import FooterAndMenuTemplateView
@@ -19,6 +21,7 @@ class CityPage(FooterAndMenuTemplateView):
         context['tours'] = Tour.objects.all()
         context['towns'] = query_to_columns(Town.objects.all())
         context['categories'] = Category.objects.all()
+        context['articles'] = Article.objects.all()
 
 
 def query_to_columns(query):

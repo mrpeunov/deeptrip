@@ -181,6 +181,11 @@ header {
   justify-content: space-between;
   padding-top: 30px;
 }
+.header_info_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .header_info_logo_first {
   font-weight: 900;
   font-style: normal;
@@ -242,10 +247,10 @@ header {
   outline: none;
   border: none;
   padding: 15px 40px;
-  font-weight: 500;
   font-size: 1rem;
   border-radius: 15px;
   margin-top: 40px;
+  font-weight: bold;
 }
 .tours_items {
   display: flex;
@@ -270,7 +275,7 @@ header {
   font-size: 0.9rem;
   font-weight: bold;
   box-shadow: 0 0 2px 2px rgba(1, 1, 1, 0.2);
-  padding: 15px 30px;
+  padding: 12px 30px;
 }
 .preview {
   position: relative;
@@ -291,7 +296,7 @@ header {
 .preview_content_title {
   font-weight: 500;
   font-size: 1.07rem;
-  margin: 10px 0;
+  margin: 10px 0 8px 0;
 }
 .preview_content_description {
   font-weight: 300;
@@ -345,9 +350,10 @@ header {
   outline: none;
 }
 .preview .owl-dot span {
-  background: #eeedde !important;
-  width: 7px !important;
-  height: 7px !important;
+  background: rgba(238, 237, 222, 0.8) !important;
+  width: 6px !important;
+  height: 6px !important;
+  margin: 5px 2px !important;
 }
 .preview .owl-dot.active span {
   background: #ffffff !important;
@@ -405,11 +411,11 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .towns_item {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 .towns_item_img {
   width: 70px;
@@ -437,6 +443,7 @@ header {
 }
 .filters h2 {
   font-weight: 500;
+  font-size: 1.25rem;
 }
 .filters_categories {
   display: flex;
@@ -528,8 +535,8 @@ header {
   align-items: center;
 }
 .filters_footer_all span {
-  border-bottom: 2px solid #333333;
-  font-weight: 500;
+  border-bottom: 1px solid #333333;
+  font-weight: bold;
   cursor: pointer;
   font-size: 0.9rem;
 }
@@ -552,5 +559,19 @@ header {
   font-weight: bold;
   margin-left: 10px;
   font-size: 0.9rem;
+  cursor: pointer;
+}
+.articles {
+  display: flex;
+  justify-content: space-between;
+}
+.articles_item {
+  width: 30%;
+}
+.articles_item_content_footer {
+  display: flex;
+}
+.footer {
+  background: #f9f9f9;
 }
 /*# sourceMappingURL=style.css.map */

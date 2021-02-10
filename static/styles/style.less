@@ -6,6 +6,7 @@
   dark3: #333333;
   dark9: #999999;
   dot: #eeedde;
+  footer-bg: #f9f9f9;
 }
 
 html, body{
@@ -78,6 +79,10 @@ header{
     padding-top: 30px;
 
     &_logo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
       &_first{
         font-weight: 900;
         font-style: normal;
@@ -150,10 +155,10 @@ header{
     outline: none;
     border: none;
     padding: 15px 40px;
-    font-weight: 500;
     font-size: 1rem;
     border-radius: 15px;
     margin-top: 40px;
+    font-weight: bold;
   }
 }
 
@@ -183,7 +188,7 @@ header{
       font-size: 0.9rem;
       font-weight: bold;
       box-shadow: 0 0 2px 2px rgba(1, 1, 1, 0.2);
-      padding: 15px 30px;
+      padding: 12px 30px;
     }
   }
 }
@@ -211,7 +216,7 @@ header{
     &_title{
       font-weight: 500;
       font-size: 1.07rem;
-      margin: 10px 0;
+      margin: 10px 0 8px 0;
     }
 
     &_description{
@@ -278,9 +283,10 @@ header{
     outline: none;
 
     span{
-      background: #colors[dot] !important;
-      width: 7px !important;
-      height: 7px !important;
+      background:rgba(238, 237, 222, 0.8) !important;
+      width: 6px !important;
+      height: 6px !important;
+      margin: 5px 2px !important;
     }
 
     &.active span{
@@ -348,11 +354,11 @@ header{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 50px;
+  margin-top: 40px;
 
   &_item{
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 
     &_img{
       width: 70px;
@@ -387,6 +393,7 @@ header{
 
   h2{
     font-weight: 500;
+    font-size: 1.25rem;
   }
 
   &_categories{
@@ -488,8 +495,8 @@ header{
       align-items: center;
 
       span{
-        border-bottom: 2px solid #colors[dark3];
-        font-weight: 500;
+        border-bottom: 1px solid #colors[dark3];
+        font-weight: bold;
         cursor: pointer;
         font-size: 0.9rem;
       }
@@ -516,9 +523,27 @@ header{
         font-weight: bold;
         margin-left: 10px;
         font-size: 0.9rem;
+        cursor: pointer;
       }
     }
   }
 }
 
+.articles{
+  display: flex;
+  justify-content: space-between;
 
+  &_item{
+    width: 30%;
+
+    &_content{
+      &_footer{
+        display: flex;
+      }
+    }
+  }
+}
+
+.footer{
+  background: #colors[footer-bg];
+}

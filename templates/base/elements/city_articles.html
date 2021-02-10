@@ -1,1 +1,17 @@
-статьи
+<div class="articles">
+    {% for article in articles %}
+        <a href="" class="articles_item">
+            <div class="articles_item_image">
+                <img src="{{ article.image.url }}" alt="">
+            </div>
+            <div class="articles_item_content">
+                <div class="articles_item_content_name">{{ article.title }}</div>
+                <div class="articles_item_content_footer">
+                    <div class="articles_item_content_footer_date">{{ article.date }}</div>
+                    <div class="articles_item_content_footer_view">{{ article.views }}</div>
+                    <div class="articles_item_content_footer_comment"> {{ artile.comments }}</div>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
