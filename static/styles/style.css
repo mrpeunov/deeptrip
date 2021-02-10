@@ -134,6 +134,7 @@ div,
 span,
 button {
   font-family: 'HelveticaNeueCyr', sans-serif;
+  color: #333333;
 }
 img {
   width: 100%;
@@ -184,6 +185,7 @@ header {
   font-weight: 900;
   font-style: normal;
   font-size: 1.3rem;
+  color: #ffffff;
 }
 .header_info_logo_second {
   font-weight: 500;
@@ -191,13 +193,16 @@ header {
   font-size: 0.65rem;
   letter-spacing: 2.5px;
   text-transform: uppercase;
+  color: #ffffff;
 }
 .header_info_links {
   font-weight: normal;
   font-style: normal;
+  color: #ffffff;
 }
 .header_info_links_active {
   position: relative;
+  color: #ffffff;
 }
 .header_info_links_active:before {
   position: absolute;
@@ -214,17 +219,23 @@ header {
 .header_info_links a {
   margin: 0 10px;
   padding-bottom: 10px;
+  color: #ffffff;
+}
+.header_info_place {
+  color: #ffffff;
 }
 .header_title {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 10px;
   margin-top: 50px;
+  color: #ffffff;
 }
 .header_subtitle {
   font-size: 1.25rem;
   font-weight: 500;
   margin: 0;
+  color: #ffffff;
 }
 .header_button {
   background: #ffffff;
@@ -421,6 +432,12 @@ header {
 .towns_item_disable {
   color: #999999;
 }
+.filters {
+  margin: 30px 0;
+}
+.filters h2 {
+  font-weight: 500;
+}
 .filters_categories {
   display: flex;
   justify-content: space-between;
@@ -430,9 +447,12 @@ header {
   width: 30%;
   display: block;
   letter-spacing: -1ex;
-  margin: 5px 0;
+  margin: 15px 0;
+  cursor: pointer;
 }
 .filters_category_name {
+  font-weight: normal;
+  margin-top: 5px;
   margin-right: -10%;
   width: 89%;
   vertical-align: top;
@@ -446,17 +466,91 @@ header {
   width: 99%;
   margin: 0 -99% 0 3px;
   vertical-align: baseline;
-  border-image: url("../img/city/dots.png") repeat;
+  border-bottom: 2px solid #000;
+  border-image: url("../img/city/dots.png") 0 0 9 0 repeat;
 }
-.filters_category input {
+.filters_category input[type='checkbox'] {
   display: inline-block;
   letter-spacing: normal;
   padding-left: 3px;
-  margin-left: 10%;
-  width: 10%;
+  margin-left: 11%;
   vertical-align: bottom;
+  background: #ffffff;
+  width: 0px;
+  height: 20px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+.filters_category input[type='checkbox']:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(51, 51, 51, 0.5);
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+.filters_category input[type='checkbox']:checked:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  background-color: #333333;
+}
+.filters_category input[type='checkbox']:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 4px;
+  left: 7px;
 }
 .filters_footer {
   display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.filters_footer_all {
+  display: flex;
+  align-items: center;
+}
+.filters_footer_all span {
+  border-bottom: 2px solid #333333;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.filters_footer_search {
+  display: flex;
+  align-items: center;
+}
+.filters_footer_search span {
+  font-weight: normal;
+  color: #999999;
+  font-size: 0.9rem;
+}
+.filters_footer_search button {
+  background: #333333;
+  color: #ffffff;
+  padding: 10px 30px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 0.9rem;
 }
 /*# sourceMappingURL=style.css.map */

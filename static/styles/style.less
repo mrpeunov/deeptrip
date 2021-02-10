@@ -22,6 +22,7 @@ a{
 
 html, body, a, h1, h2, h3, h4, h5, h6, div, span, button{
   font-family: 'HelveticaNeueCyr', sans-serif;
+  color: #colors[dark3];
 }
 
 img{
@@ -81,6 +82,7 @@ header{
         font-weight: 900;
         font-style: normal;
         font-size: 1.3rem;
+        color: #colors[white];
       }
 
       &_second{
@@ -89,15 +91,18 @@ header{
         font-size: 0.65rem;
         letter-spacing: 2.5px;
         text-transform: uppercase;
+        color: #colors[white];
       }
     }
 
     &_links{
       font-weight: normal;
       font-style: normal;
+      color: #colors[white];
 
       &_active{
         position: relative;
+        color: #colors[white];
 
         &:before{
           position: absolute;
@@ -116,7 +121,12 @@ header{
       a{
         margin: 0 10px;
         padding-bottom: 10px;
+        color: #colors[white];
       }
+    }
+
+    &_place{
+      color: #colors[white];
     }
   }
 
@@ -125,12 +135,14 @@ header{
     font-weight: bold;
     margin-bottom: 10px;
     margin-top: 50px;
+    color: #colors[white];
   }
 
   &_subtitle{
     font-size: 1.25rem;
     font-weight: 500;
     margin: 0;
+    color: #colors[white];
   }
 
   &_button{
@@ -371,20 +383,28 @@ header{
 }
 
 .filters{
+  margin: 30px 0;
+
+  h2{
+    font-weight: 500;
+  }
+
   &_categories{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
 
-
   &_category{
     width: 30%;
     display: block;
 	letter-spacing: -1ex;
-	margin: 5px 0;
+	margin: 15px 0;
+    cursor: pointer;
 
     &_name{
+      font-weight: normal;
+      margin-top: 5px;
       margin-right: -10%;
       width: 89%;
       vertical-align: top;
@@ -398,23 +418,106 @@ header{
         width: 99%;
         margin: 0 -99% 0 3px;
         vertical-align: baseline;
-        border-image: url("../img/city/dots.png") repeat;
+        border-bottom: 2px solid #000;
+        border-image: url("../img/city/dots.png") 0 0 9 0 repeat;
       }
     }
 
-    input{
+    input[type='checkbox']{
       display: inline-block;
       letter-spacing: normal;
       padding-left: 3px;
-      margin-left: 10%;
-      width: 10%;
+      margin-left: 11%;
       vertical-align: bottom;
-    }
+      background: #colors[white];
+      width: 0px;
+      height: 20px;
+      border: none;
 
+      position: relative;
+	  cursor: pointer;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 0;
+        left: 0;
+        border: 1px solid rgba(51, 51, 51, 0.5);
+        border-radius: 5px;
+        background-color: #colors[white];
+      }
+
+      &:checked:before {
+         content: "";
+         display: block;
+         position: absolute;
+         width: 20px;
+         height: 20px;
+         top: 0;
+         left: 0;
+         background-color: #colors[dark3];
+      }
+
+      &:checked:after {
+         content: "";
+         display: block;
+         width: 5px;
+         height: 10px;
+         border: solid white;
+         border-width: 0 2px 2px 0;
+         -webkit-transform: rotate(45deg);
+         -ms-transform: rotate(45deg);
+         transform: rotate(45deg);
+         position: absolute;
+         top: 4px;
+         left: 7px;
+      }
+    }
   }
 
   &_footer{
     display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    &_all{
+      display: flex;
+      align-items: center;
+
+      span{
+        border-bottom: 2px solid #colors[dark3];
+        font-weight: 500;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+
+    }
+
+    &_search{
+      display: flex;
+      align-items: center;
+
+      span{
+        font-weight: normal;
+        color: #colors[dark9];
+        font-size: 0.9rem;
+      }
+
+      button{
+        background: #colors[dark3];
+        color: #colors[white];
+        padding: 10px 30px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-left: 10px;
+        font-size: 0.9rem;
+      }
+    }
   }
 }
 

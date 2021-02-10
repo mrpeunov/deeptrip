@@ -2,15 +2,15 @@
     <h2>Популярные фильтры</h2>
     <div class="filters_categories">
         {% for category in categories %}
-            <div class="filters_category">
+            <label class="filters_category">
                 <div class="filters_category_name">{{ category.title }}</div>
                 <input type="checkbox">
-            </div>
+            </label>
         {% endfor %}
     </div>
-    <div class="filter_footer">
-        <div class="filter_footer_all">Все экскурсии</div>
-        <div class="filter_footer_search">
+    <div class="filters_footer">
+        <a class="filters_footer_all"> <span>Все фильтры</span></a>
+        <div class="filters_footer_search">
             <span>Найдено 20 экскурсий</span>
             <button>Показать</button>
         </div>
