@@ -1,37 +1,37 @@
 {% load static %}
+
 <div class="footer">
     <div class="container">
+        <div class="footer_wrap">
+            <div class="footer_info">
+                <div class="footer_info_logo">
+                    <div class="footer_info_logo_first">Travel Trace</div>
+                    <div class="footer_info_logo_second">отдых в россии</div>
+                </div>
+                <div class="footer_networks">
+                    {% for network in networks %}
+                    <a href="{{ network.link }}" class="footer_networks_item">
+                        <img src="{{ network.icon.url }}" alt="">
+                    </a>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+            
+            <div class="footer_right">
+                <img src="{% static 'img/footer/made_in_russia.png' %}" alt="">
+            </div>
+
+        </div>
+
+
         <div class="footer_links">
             <a href="" class="footer_links_link">Разместить свою экскурсию</a>
             <a href="" class="footer_links_link">Контакты</a>
             <a href="" class="footer_links_link">Пользовательское соглашение</a>
             <a href="" class="footer_links_link">+7(931) 009-80-48</a>
         </div>
-        <div class="footer_info">
-            <div class="footer_info_logo">
-                <div class="footer_info_logo_first">Travel Trace</div>
-                <div class="footer_info_logo_second">отдых по-русски</div>
-            </div>
-            <div class="footer_social">
-                <a href="" class="footer_social_link">
-                    <img src="{% static 'img/vk.png'  %}" alt="">
-                </a>
-            </div>
-            <div class="footer_social">
-                <a href="" class="footer_social_link">
-                    <img src="{% static 'img/tg.png'  %}" alt="">
-                </a>
-            </div>
-            <div class="footer_social">
-                <a href="" class="footer_social_link">
-                    <img src="{% static 'img/ig.png'  %}" alt="">
-                </a>
-            </div>
-            <div class="footer_social">
-                <a href="" class="footer_social_link">
-                     <img src="{% static 'img/vk.png'  %}" alt="">
-                </a>
-            </div>
-        </div>
+
     </div>
 </div>

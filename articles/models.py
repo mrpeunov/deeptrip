@@ -9,7 +9,7 @@ class Article(models.Model):
     date = models.DateField("Дата", auto_now=True)
     views = models.IntegerField("Количество просмотров", default=0)
     comments = models.IntegerField("Количество комментов", default=0)
-    image = models.ImageField("ИЗображение")
+    image = models.ImageField("Изображение")
 
     def __str__(self):
         return "Статья {}".format(self.title)

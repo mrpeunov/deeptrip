@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="articles">
     {% for article in articles %}
         <a href="" class="articles_item">
@@ -5,11 +7,19 @@
                 <img src="{{ article.image.url }}" alt="">
             </div>
             <div class="articles_item_content">
-                <div class="articles_item_content_name">{{ article.title }}</div>
+                <h3 class="articles_item_content_name">{{ article.title }}</h3>
                 <div class="articles_item_content_footer">
-                    <div class="articles_item_content_footer_date">{{ article.date }}</div>
-                    <div class="articles_item_content_footer_view">{{ article.views }}</div>
-                    <div class="articles_item_content_footer_comment"> {{ artile.comments }}</div>
+                    <div class="articles_item_content_footer_date">
+                        {{ article.date|date:"F Y г." }}
+                    </div>
+                    <div class="articles_item_content_footer_view">
+                        <img src="{% static 'img/articles/view.png' %}" alt="">
+                        {{ article.views }}
+                    </div>
+                    <div class="articles_item_content_footer_comment">
+                        <img src="{% static 'img/articles/comment.png' %}" alt="">
+                        {{ article.comments }}
+                    </div>
                 </div>
             </div>
         </a>

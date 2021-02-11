@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 
-from base.models import Config
+from base.models import Config, SocialNetwork
 
 
 def _get_menu():
@@ -12,7 +12,7 @@ def _get_config():
 
 
 def _get_social_networks():
-    return {"пример": "15 см"}
+    return {"networks": SocialNetwork.objects.all()}
 
 
 class FooterAndMenuTemplateView(TemplateView):
