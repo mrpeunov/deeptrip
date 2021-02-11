@@ -251,9 +251,9 @@ header{
       &_rating{
         color: #colors[dark9];
         font-weight: normal;
-        font-size: 0.9rem;
 
         span{
+          font-size: 0.9rem;
           color: #colors[dark3];
         }
 
@@ -601,11 +601,11 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 30px 0;
+  }
 
-    &_right{
-      img{
-        width: 30px;
-      }
+  &_right{
+    img{
+      width: 100px;
     }
   }
 
@@ -638,10 +638,24 @@ header{
       align-items: center;
       margin: 0 10px;
 
-
       img{
         width: 25px;
       }
+    }
+  }
+
+  &_links{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 30px 0;
+
+    &_link{
+      font-size: 0.9rem;
+      font-weight: normal;
+    }
+
+    #phone{
+      font-weight: 500;
     }
   }
 }
