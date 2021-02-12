@@ -2,7 +2,7 @@
     <h2>Популярные фильтры</h2>
     <div class="filters_categories">
         {% for category in categories %}
-            <label class="filters_category">
+            <label class="filters_category {% if forloop.counter > 6 %} filters_category_none {% endif %}">
                 <div class="filters_category_name">{{ category.title }}</div>
                 <input type="checkbox">
             </label>
