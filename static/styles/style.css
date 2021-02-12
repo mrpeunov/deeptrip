@@ -152,7 +152,7 @@ img {
 }
 .menu_item {
   text-decoration: none;
-  margin: 10px 50px;
+  margin: 10px 80px;
   text-align: center;
   font-weight: 500;
 }
@@ -171,6 +171,18 @@ header {
   padding-left: 80px;
   padding-right: 80px;
   margin: 0 auto;
+}
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 .header {
   height: 65vh;
@@ -241,9 +253,9 @@ header {
   background: #ffffff;
   outline: none;
   border: none;
-  padding: 15px 40px;
+  padding: 12px 30px;
   font-size: 1rem;
-  border-radius: 15px;
+  border-radius: 20px;
   margin-top: 40px;
   font-weight: bold;
 }
@@ -254,12 +266,23 @@ header {
 }
 .tours_item {
   width: 30%;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+@media (max-width: 1200px) {
+  .tours_item {
+    width: 45%;
+  }
+}
+@media (max-width: 768px) {
+  .tours_item {
+    width: 100%;
+  }
 }
 .tours_more {
   text-align: center;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .tours_more button {
   border: none;
@@ -269,7 +292,7 @@ header {
   color: #333333;
   font-size: 0.9rem;
   font-weight: bold;
-  box-shadow: 0 0 2px 2px rgba(1, 1, 1, 0.2);
+  box-shadow: 0 0 2px 2px rgba(1, 1, 1, 0.1);
   padding: 12px 30px;
 }
 .preview {
@@ -303,6 +326,7 @@ header {
 .preview_content_description {
   font-weight: 300;
   margin-bottom: 10px;
+  color: #666666;
 }
 .preview_content_footer {
   display: flex;
@@ -425,8 +449,8 @@ header {
   font-size: 0.9rem;
   font-weight: bold;
   border: 0;
-  padding: 15px 30px;
-  border-radius: 15px;
+  padding: 12px 30px;
+  border-radius: 20px;
   cursor: pointer;
 }
 .towns {
@@ -452,10 +476,11 @@ header {
 }
 .towns_item_title {
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 }
 .towns_item_count {
   font-size: 0.9rem;
+  color: #666666;
 }
 .towns_item_disable {
   color: #999999;
@@ -522,6 +547,7 @@ header {
   border: 1px solid rgba(51, 51, 51, 0.5);
   border-radius: 5px;
   background-color: #ffffff;
+  transition: 0.2s;
 }
 .filters_category input[type='checkbox']:checked:before {
   content: "";
@@ -577,7 +603,7 @@ header {
   padding: 10px 30px;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: bold;
   margin-left: 10px;
   font-size: 0.9rem;
