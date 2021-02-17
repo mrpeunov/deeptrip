@@ -18,6 +18,7 @@
           integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
           crossorigin="anonymous">
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
     </head>
 
@@ -40,6 +41,8 @@
             {% include 'base/elements/footer.html' %}
         {% endblock %}
         {% block all_page_scripts %}
+            <script src="{% static 'scripts/like.js' %}"></script>
+
             <script src="{% static 'scripts/menu.js' %}"></script>
             <script src="{% static 'owl.carousel.min.js' %}"></script>
             <script src="{% static 'scripts/preview.js' %}"></script>

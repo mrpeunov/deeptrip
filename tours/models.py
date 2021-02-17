@@ -113,6 +113,11 @@ class Tour(models.Model):
         verbose_name_plural = "экскурсии"
 
 
+class Like(models.Model):
+    tour = models.ForeignKey(Tour, on_delete=models.PROTECT)
+    session_id = models.CharField(max_length=256)
+
+
 class Comment(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.PROTECT)
     name = models.CharField("Имя пользователя", max_length=32)
@@ -143,8 +148,10 @@ class ImageItem(models.Model):
 
 
 class RecommendedTour(models.Model):
-    main = models.ForeignKey(Tour, verbose_name="Основная экскурсия", related_name="tour_main", on_delete=models.PROTECT)
-    add = models.ForeignKey(Tour, verbose_name="Рекомендованная экскурсия", related_name="tour_add", on_delete=models.PROTECT)
+    main = models.ForeignKey(Tour, verbose_name="Основная экскурсия", related_name="tour_main",
+                             on_delete=models.PROTECT)
+    add = models.ForeignKey(Tour, verbose_name="Рекомендованная экскурсия", related_name="tour_add",
+                            on_delete=models.PROTECT)
 
     def __str__(self):
         return "Рекомендованная экскурсия {} {}".format(self.main, self.add)

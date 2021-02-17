@@ -97,7 +97,6 @@ class MapsPage(FooterAndMenuTemplateView):
     def add_in_context(self, context):
         pass
 
-
 # api
 
 class ToursApiView(ModelViewSet):

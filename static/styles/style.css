@@ -319,10 +319,14 @@ header {
   top: 15px;
   z-index: 20;
   width: 7%;
+  padding-bottom: 100%;
   cursor: pointer;
+  background-image: url("../img/preview/like.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
-.preview_like img {
-  width: 100%;
+.preview .liked {
+  background-image: url("../img/preview/like-active.png");
 }
 .preview .owl-stage-outer {
   border-radius: 15px !important;
