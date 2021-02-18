@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=32, verbose_name='Имя пользователя')),
                 ('content', models.TextField(verbose_name='Текст комментария')),
                 ('date', models.DateField(auto_now=True, verbose_name='Дата')),
-                ('article', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='articles.article')),
+                ('article', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='magazine.article')),
             ],
         ),
     ]

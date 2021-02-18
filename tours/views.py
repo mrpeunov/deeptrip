@@ -25,14 +25,14 @@ class CityPage(FooterAndMenuTemplateView):
     """
     Страница города
     """
-    template_name = 'base/city.html'
+    template_name = 'city/city.html'
 
     def add_in_context(self, context):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['tours'] = Tour.objects.all()
         context['cities'] = query_to_columns(City.objects.all())
         context['categories'] = Category.objects.all()
-        context['articles'] = Article.objects.all()
+        context['magazine'] = Article.objects.all()
 
 
 def query_to_columns(query):
@@ -50,11 +50,11 @@ def query_to_columns(query):
     return columns
 
 
-class ToursFilterPage(FooterAndMenuTemplateView):
+class FilterPage(FooterAndMenuTemplateView):
     """
     Страница на которой показывается фильтр экскурсий
     """
-    # template_name = 'tours/../templates/Base/elements/city_filter.html'
+    template_name = 'city/elements/city_filter.html'
 
     def add_in_context(self, context):
         context['city'] = City.objects.get(slug=context['city_slug'])
@@ -82,7 +82,7 @@ class MapPage(FooterAndMenuTemplateView):
     """
     Страница карт
     """
-    template_name = "tours/maps.html"
+    template_name = "map/maps.html"
 
     def add_in_context(self, context):
         pass

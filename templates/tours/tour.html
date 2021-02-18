@@ -1,4 +1,4 @@
-{% extends 'base/../base.html' %}
+{% extends 'base/../base/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -17,7 +17,6 @@
                 <div class="tour_title">
                     <h1 class="tour_title_text">{{ tour.title }}</h1>
                     <div class="tour_title_stars">
-                        {% include 'tours/elements/tour_stars.html' %}
                         <div class="tour_title_stars_text">4 отзыва</div>
                     </div>
                 </div>
@@ -101,7 +100,6 @@
                             <div class="tour_comment_date">02.06.2020</div>
                         </div>
                         <div class="tour_comment_stars">
-                            {% include 'tours/elements/tour_stars.html' %}
                         </div>
                     </div>
                     <div class="tour_comment_text">
@@ -118,7 +116,6 @@
                             <div class="tour_comment_date">02.06.2020</div>
                         </div>
                         <div class="tour_comment_stars">
-                            {% include 'tours/elements/tour_stars.html' %}
                         </div>
                     </div>
                     <div class="tour_comment_text">
@@ -200,27 +197,27 @@
 
     <div class="tour_recommended">
         <div class="tour_recommended_item">
-            {% include 'tours/elements/tour_preview.html' %}
+            {% include 'tours/../map/elements/../city/elements/tour_preview.html' %}
         </div>
 
         <div class="tour_recommended_item">
-            {% include 'tours/elements/tour_preview.html' %}
+            {% include 'tours/../map/elements/../city/elements/tour_preview.html' %}
         </div>
 
         <div class="tour_recommended_item">
-            {% include 'tours/elements/tour_preview.html' %}
+            {% include 'tours/../map/elements/../city/elements/tour_preview.html' %}
         </div>
 
         <div class="tour_recommended_item">
-            {% include 'tours/elements/tour_preview.html' %}
+            {% include 'tours/../map/elements/../city/elements/tour_preview.html' %}
         </div>
 
         <div class="tour_recommended_item">
-            {% include 'tours/elements/tour_preview.html' %}
+            {% include 'tours/../map/elements/../city/elements/tour_preview.html' %}
         </div>
 
         <div class="tour_recommended_item">
-            {% include 'tours/elements/tour_preview.html' %}
+            {% include 'tours/../map/elements/../city/elements/tour_preview.html' %}
         </div>
     </div>
 
