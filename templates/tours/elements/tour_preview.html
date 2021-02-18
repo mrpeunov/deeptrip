@@ -8,7 +8,7 @@
         <img src="{{ preview.image.url }}" alt="">
         <img src="{{ preview.image.url }}" alt="">
     </div>
-    <div class="preview_content">
+    <a href="{{ preview.get_absolute_url }}" class="preview_content">
         <div class="preview_content_title">{{ preview.title }}</div>
         <div class="preview_content_description"> {{ preview.description|truncatechars:80 }}</div>
         <div class="preview_content_footer">
@@ -24,7 +24,6 @@
                 <span>{{ preview.rating }} </span>({{ preview.count_comment }})
             </div>
         </div>
-    </div>
-    <div class="preview_like" data-tour_id="{{ preview.id }}">
-    </div>
+    </a>
+    <div class="preview_like" data-tour_id="{{ preview.id }}"></div>
 </div>

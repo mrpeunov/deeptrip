@@ -265,6 +265,8 @@ header {
   color: #ffffff;
 }
 .header_button {
+  display: block;
+  width: fit-content;
   background: #ffffff;
   outline: none;
   border: none;
@@ -341,6 +343,9 @@ header {
   .preview_gallery:hover .owl-nav {
     display: none;
   }
+}
+.preview_content {
+  display: block;
 }
 .preview_content_title {
   font-weight: 500;
@@ -468,7 +473,7 @@ header {
   width: 1px;
   color: #ffffff;
 }
-.search button {
+.search a {
   position: absolute;
   bottom: 40px;
   left: 20px;

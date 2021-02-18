@@ -3,23 +3,34 @@ from django.shortcuts import render, redirect
 
 from articles.models import Article
 from tours.models import *
-from base.models import City
 from base.services import FooterAndMenuTemplateView
 from rest_framework.viewsets import ModelViewSet
-
 from tours.serializers import TourSerializer
+
+
+def index(request):
+    """
+    Главная страница
+    Изначально главная страница - это страница города Сочи
+    Если его нет в бд, то возвращается извещение о разработке сайта
+    """
+    try:
+        City.objects.get(slug="sochi")
+        return redirect('/sochi/')
+    except City.DoesNotExist:
+        return HttpResponse("Сайт в разработке")
 
 
 class CityPage(FooterAndMenuTemplateView):
     """
-    Страница города !! нужна ли здест эта вьюха
+    Страница города
     """
     template_name = 'base/city.html'
 
     def add_in_context(self, context):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['tours'] = Tour.objects.all()
-        context['towns'] = query_to_columns(Town.objects.all())
+        context['cities'] = query_to_columns(City.objects.all())
         context['categories'] = Category.objects.all()
         context['articles'] = Article.objects.all()
 
@@ -67,28 +78,7 @@ class TourPage(FooterAndMenuTemplateView):
         context['recommended_tours'] = RecommendedTour.objects.filter(main=tour)
 
 
-class CategoriesPage(FooterAndMenuTemplateView):
-    """
-    Страница всех категорий
-    """
-    template_name = "tours/categories.html"
-
-    def add_in_context(self, context):
-        context['city'] = City.objects.get(slug=context['city_slug'])
-        context['categories'] = Category.objects.all()
-
-
-class CategoryPage(FooterAndMenuTemplateView):
-    """
-    Страница категории
-    """
-    template_name = "tours/categories.html"
-
-    def add_in_context(self, context):
-        context['category'] = Category.objects.get(slug=context['category_slug'], city__slug=context['city_slug'])
-
-
-class MapsPage(FooterAndMenuTemplateView):
+class MapPage(FooterAndMenuTemplateView):
     """
     Страница карт
     """
@@ -98,6 +88,7 @@ class MapsPage(FooterAndMenuTemplateView):
         pass
 
 # api
+
 
 class ToursApiView(ModelViewSet):
     queryset = Tour.objects.all()

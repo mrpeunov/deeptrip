@@ -1,10 +1,8 @@
-{% load next %}
-
 <div class="towns owl-carousel owl-theme" id="towns_slider">
-    {%  for column in towns %}
+    {%  for column in cities %}
             <div class="towns_column">
-                {% for town in column %}
-                    {% include 'tours/elements/town_preview.html' %}
+                {% for city_item in column %}
+                    {% include 'tours/elements/city_preview.html' %}
                 {% endfor %}
             </div>
     {% endfor %}

@@ -1,0 +1,18 @@
+<a href="{{ city_item.get_absolute_url }}" class="towns_item">
+    <div class="towns_item_img"
+         {% if city_item.image %}
+            style="background: url('{{ city_item.image.url }}')"
+         {% else %}
+            style="background: #caffa5"
+         {% endif %}>
+    </div>
+    <div class="towns_item_content">
+    {% if city_item.tour_set.count > 0 %}
+        <div class="towns_item_title">{{ city_item.name }}</div>
+        <div class="towns_item_count">{{ city_item.tour_set.count }} экскурсий</div>
+    {% else %}
+        <div class="towns_item_title towns_item_disable">{{ city_item.name }}</div>
+        <div class="towns_item_count towns_item_disable">скоро</div>
+    {% endif %}
+    </div>
+</a>

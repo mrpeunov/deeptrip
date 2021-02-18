@@ -25,6 +25,10 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = ("important", )
 
 
+@admin.register(Cluster)
+class ClusterAdmin(admin.ModelAdmin):
+    list_display = ("name", )
+
 @admin.register(Position)
 class PositionsAdmin(admin.ModelAdmin):
     list_display = ('name', 'lat', 'lon')
@@ -35,9 +39,12 @@ class OfferAdmin(admin.ModelAdmin):
     list_display = ('text', 'color')
 
 
-@admin.register(Town)
-class TownAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'tours_count', 'orders_count')
+    prepopulated_fields = {"slug": ("name", )}
+    actions_on_top = False
+    actions_on_bottom = True
 
 
 @admin.register(Tour)

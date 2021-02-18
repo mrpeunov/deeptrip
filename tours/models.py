@@ -3,11 +3,40 @@ from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import TextField
 from django.urls import reverse
-from base.models import City
+
+
+class Cluster(models.Model):
+    name = models.CharField("Название кластера", max_length=64)
+
+    def __str__(self):
+        return self.name
+
+
+class City(models.Model):
+    cluster = models.ForeignKey(Cluster, on_delete=models.PROTECT, null=True)
+    name = models.CharField("Название города", max_length=32)
+    h1 = models.CharField("Заголовок h1", max_length=32)
+    h2 = models.CharField("Заголовок h2", max_length=32)
+    seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
+    seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
+    slug = models.SlugField("Slug (название в URL)", max_length=16, unique=True)
+    tours_count = models.IntegerField("Количество экскурсий в городе", default=0)
+    orders_count = models.IntegerField("Количество заказов в городе", default=0)
+    image = models.ImageField("Изображение")
+
+    def get_absolute_url(self):
+        return reverse('city_page', args=[str(self.slug)])
+
+    def __str__(self):
+        return "Город '{}'".format(self.name)
+
+    class Meta:
+        verbose_name = "город"
+        verbose_name_plural = "города"
 
 
 class Category(models.Model):
-    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1)
+    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, null=True)
     title = models.CharField("Название категории", max_length=32)
     description = RichTextField("Описание категории")
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
@@ -19,7 +48,7 @@ class Category(models.Model):
         return "Категория '{}'".format(self.title)
 
     def get_absolute_url(self):
-        return reverse('tour_page', args=[str(self.city.slug), str(self.slug)])
+        return reverse('tour_page', args=[str(self.slug), str(self.slug)])
 
     class Meta:
         verbose_name = "категорию"
@@ -56,29 +85,13 @@ class Offer(models.Model):
         verbose_name_plural = "специальные предложение"
 
 
-class Town(models.Model):
-    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1)
-    name = models.CharField("Название", max_length=64)
-    description = TextField("Описание")
-    seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
-    h1 = models.CharField("Заговок h1", max_length=64)
-    h2 = models.CharField("Заговок h2", max_length=64)
-    image = models.ImageField(null=True)
-
-    def __str__(self):
-        return "Район '{}'".format(self.name)
-
-    class Meta:
-        verbose_name = "район"
-        verbose_name_plural = "районы"
-
-
 class Tour(models.Model):
     GROUP_CHOICES = (
         (True, "Групповая"),
         (False, "Одиночная")
     )
-    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1)
+    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1, related_name="main_city")
+    cities = models.ManyToManyField(City, verbose_name="Дополнительные", related_name="add_cities")
 
     title = models.CharField("Название экскурсии", max_length=64)
     slug = models.SlugField("Slug (название в URL)", max_length=64, unique=True)
@@ -88,16 +101,17 @@ class Tour(models.Model):
 
     description = TextField("Описание экскурсии")
     include = RichTextField("Включено")
+    price = models.PositiveIntegerField("Цена")
+    image = models.ImageField("Основная фотография")
+    group = models.BooleanField("Тип", choices=GROUP_CHOICES)
+    time = models.CharField("Продолжительность экскурсии", max_length=32)
 
     seat_request = models.BooleanField("Показывать блок 'Запросить места'", default=True)
     count_comment = models.SmallIntegerField('Количество отзывов', default=0)
     rating = models.FloatField("Рейтинг", validators=[MinValueValidator(0), MaxValueValidator(5)], default=5)
-    price = models.PositiveIntegerField("Цена (для главной)")
-    group = models.BooleanField("Тип", choices=GROUP_CHOICES)
-    time = models.CharField("Продолжительность экскурсии", max_length=32)
-    image = models.ImageField("Основная фотография")
-    offer = models.ForeignKey(Offer, on_delete=models.PROTECT, blank=True)
-    towns = models.ManyToManyField(Town, verbose_name="Районы")
+
+    offer = models.ForeignKey(Offer, on_delete=models.PROTECT, blank=True, null=True)
+
     categories = models.ManyToManyField(Category, verbose_name="Категории")
     positions = models.ManyToManyField(Position, verbose_name="Точки на карте")
     notes = models.CharField("Примечания", max_length=64, default="Пусто")
