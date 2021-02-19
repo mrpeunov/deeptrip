@@ -2,6 +2,7 @@
 
 #colors(){
   white: #ffffff;
+  cian: #47cacc;
   map_preview: #8e94a6;
   dark3: #333333;
   dark6: #666666;
@@ -44,14 +45,60 @@ img{
   display: flex;
   justify-content: center;
   width: 100%;
-  z-index: 10;
-  height: 60px;
+  height: 50px;
+  z-index: 100;
+  border-top: 1px solid #eeeeee;
+  box-shadow: 0px 9px 29px 0px rgba(1, 1, 1, 0.05);
 
   &_item{
     text-decoration: none;
     margin: 10px 80px;
     text-align: center;
     font-weight: 500;
+
+    &_map{
+      background-image: url("../img/city/map.png");
+    }
+
+    &_like{
+      background-image: url("../img/city/like.png");
+    }
+
+    &_filter{
+      background-image: url("../img/city/filter.png");
+    }
+
+    &_icon{
+      margin: 0 auto;
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+    }
+
+    .circle{
+      position: relative;
+
+      &:after{
+        content: '';
+        position: absolute;
+        left: 102%;
+        top: 0;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #colors[cian];
+      }
+    }
+
+    img{
+      width: 25px;
+    }
+
+    &_name{
+      font-size: 0.7rem;
+      color: #colors[dark6];
+    }
 
     @media @max768{
       margin: 10px 40px;
@@ -61,12 +108,22 @@ img{
       margin: 10px 20px;
     }
 
-    img{
-      width: 25px;
-    }
+    &:hover{
+      .menu_item_map{
+        background-image: url("../img/city/map-active.png");
+      }
 
-    &_name{
-      font-size: 0.7rem;
+      .menu_item_like{
+        background-image: url("../img/city/like-active.png");
+      }
+
+      .menu_item_filter{
+        background-image: url("../img/city/filter-active.png");
+      }
+
+      .menu_item_name{
+        color: #colors[dark3];
+      }
     }
   }
 }
@@ -717,7 +774,7 @@ header{
 
 .footer{
   background: #colors[footer-bg];
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 
   &_container{
     @media @max768{
