@@ -22,6 +22,7 @@ class City(models.Model):
     slug = models.SlugField("Slug (название в URL)", max_length=16, unique=True)
     tours_count = models.IntegerField("Количество экскурсий в городе", default=0)
     orders_count = models.IntegerField("Количество заказов в городе", default=0)
+    importance = models.PositiveIntegerField("Важность города в кластере", default=0)
     image = models.ImageField("Изображение")
 
     def get_absolute_url(self):

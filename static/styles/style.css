@@ -553,9 +553,31 @@ header {
 }
 .towns {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 40px;
+}
+.towns_wrap {
+  max-width: 1500px;
+  padding-left: 80px;
+  margin: 0 auto;
+}
+@media (max-width: 1200px) {
+  .towns_wrap {
+    padding-left: 40px;
+  }
+}
+@media (max-width: 576px) {
+  .towns_wrap {
+    padding-left: 20px;
+  }
+}
+.towns_column {
+  width: 25%;
+}
+@media (max-width: 1100px) {
+  .towns_column {
+    width: auto;
+  }
 }
 .towns_item {
   display: flex;

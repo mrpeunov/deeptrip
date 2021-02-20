@@ -8,13 +8,22 @@
 
 {% block content %}
 
-    {% include 'city/elements/city_cities.html' %}
+    <div class="towns_wrap">
+        {% include 'city/elements/city_cities.html' %}
+    </div>
 
-    {% include 'city/elements/city_tours.html' %}
 
-    {% include 'city/elements/city_filter.html' %}
 
-    {% include 'city/elements/city_articles.html' %}
+    <div class="container">
+
+        {% include 'city/elements/city_tours.html' %}
+
+        {% include 'city/elements/city_filter.html' %}
+
+        {% include 'city/elements/city_articles.html' %}
+
+    </div>
+
 
 {% endblock %}
 

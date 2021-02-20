@@ -6,6 +6,7 @@ from tours.models import *
 from base.services import FooterAndMenuTemplateView
 from rest_framework.viewsets import ModelViewSet
 from tours.serializers import TourSerializer
+from tours.views_services.city import get_cities_for_city
 
 
 class CityPage(FooterAndMenuTemplateView):
@@ -17,24 +18,9 @@ class CityPage(FooterAndMenuTemplateView):
     def add_in_context(self, context):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['tours'] = Tour.objects.all()
-        context['cities'] = query_to_columns(City.objects.all())
+        context['cities'] = get_cities_for_city(context['city_slug'])  # query_to_columns(City.objects.all())
         context['categories'] = Category.objects.all()
         context['magazine'] = Article.objects.all()
-
-
-def query_to_columns(query):
-    columns = list()
-    column = list()
-    i = 0
-    for item in query:
-        column.append(item)
-        if i % 2 == 1:
-            columns.append(column)
-            column = list()
-        i += 1
-    if len(column) > 0:
-        columns.append(column)
-    return columns
 
 
 class FilterPage(FooterAndMenuTemplateView):
