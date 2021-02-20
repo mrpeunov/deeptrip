@@ -8,19 +8,6 @@ from rest_framework.viewsets import ModelViewSet
 from tours.serializers import TourSerializer
 
 
-def index(request):
-    """
-    Главная страница
-    Изначально главная страница - это страница города Сочи
-    Если его нет в бд, то возвращается извещение о разработке сайта
-    """
-    try:
-        City.objects.get(slug="sochi")
-        return redirect('/sochi/')
-    except City.DoesNotExist:
-        return HttpResponse("Сайт в разработке")
-
-
 class CityPage(FooterAndMenuTemplateView):
     """
     Страница города
