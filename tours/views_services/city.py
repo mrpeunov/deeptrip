@@ -1,5 +1,4 @@
 from typing import List
-
 from tours.models import City
 from django.db.models import Q, QuerySet
 
@@ -31,14 +30,26 @@ def get_cities_for_city(city_slug: str) -> List[List[City]]:
 
     city = City.objects.get(slug=city_slug)
 
-    # запрашиваем 8 городов из кластера полученного города, кроме самого этого города и сортируем по важности
-    cities_query = list(City.objects.filter(Q(cluster=city.cluster) &
-                                            ~Q(slug=city_slug)).order_by('-importance')[:wait_count_objects])
-
+    # запрашиваем 8 городов с количество экускурсий >0 из кластера полученного города,
+    # кроме самого этого города и сортируем по важности
+    cities_query = list(
+        City.objects.filter(
+            Q(cluster=city.cluster) &
+            ~Q(slug=city_slug) &
+            ~Q(tours_count=0)).order_by('-importance')[:wait_count_objects])
     really_count_objects = len(cities_query)
 
+    # если менее 8 городов, то дополняем список экскурсиями из кластера полученного города
+    # с 0 экскурсий и сортируем по важности
     if really_count_objects != wait_count_objects:
-        # если полученно менее 8 городов, то дополняем до 8 из городов других кластеров
+        cities_query += list(City.objects.filter(
+            Q(cluster=city.cluster) &
+            ~Q(slug=city_slug) &
+            Q(tours_count=0)).order_by('-importance')[:wait_count_objects - really_count_objects])
+        really_count_objects = len(cities_query)
+
+    # если менее 8 городов, то дополняем до 8 из городов других кластеров
+    if really_count_objects != wait_count_objects:
         cities_query += list(City.objects.filter(~Q(cluster=city.cluster)).order_by('-importance')
                              [:wait_count_objects - really_count_objects])
         print(cities_query)

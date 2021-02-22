@@ -1,7 +1,9 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import TextField
+from django.db.models import TextField, Q, QuerySet
+from django.db.models.signals import post_save, m2m_changed
+from django.dispatch import receiver
 from django.urls import reverse
 
 
@@ -34,6 +36,18 @@ class City(models.Model):
 
     def __str__(self):
         return "Город '{}'".format(self.name)
+
+    def update_tours_count(self):
+        """обновление количества экскурсий"""
+        main_count = Tour.objects.filter(city=self).count()
+
+        more_count = 0
+        for item in Tour.objects.all():
+            if self in item.cities.all():
+                more_count += 1
+
+        self.tours_count = main_count + more_count
+        self.save()
 
     class Meta:
         verbose_name = "город"
@@ -124,12 +138,15 @@ class Tour(models.Model):
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)
 
-    def get_absolute_url(self):
-        return reverse('tour_page', args=[str(self.city.slug), str(self.slug)])
-
     class Meta:
         verbose_name = "экскурсию"
         verbose_name_plural = "экскурсии"
+
+    def get_absolute_url(self):
+        return reverse('tour_page', args=[str(self.city.slug), str(self.slug)])
+
+    def save(self, *args, **kwargs):
+        self.city.update_tours_count()
 
 
 class Like(models.Model):
