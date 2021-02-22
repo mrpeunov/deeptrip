@@ -561,6 +561,16 @@ header {
   padding-left: 80px;
   margin: 0 auto;
 }
+@media (min-width: 1116px) {
+  .towns_wrap {
+    padding-right: 40px;
+  }
+}
+@media (min-width: 1200px) {
+  .towns_wrap {
+    padding-right: 80px;
+  }
+}
 @media (max-width: 1200px) {
   .towns_wrap {
     padding-left: 40px;
@@ -574,7 +584,7 @@ header {
 .towns_column {
   width: 25%;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1116px) {
   .towns_column {
     width: auto;
   }

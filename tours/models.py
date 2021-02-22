@@ -11,6 +11,10 @@ class Cluster(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Кластер"
+        verbose_name_plural = "Кластеры"
+
 
 class City(models.Model):
     cluster = models.ForeignKey(Cluster, on_delete=models.PROTECT, null=True)
@@ -22,7 +26,7 @@ class City(models.Model):
     slug = models.SlugField("Slug (название в URL)", max_length=16, unique=True)
     tours_count = models.IntegerField("Количество экскурсий в городе", default=0)
     orders_count = models.IntegerField("Количество заказов в городе", default=0)
-    importance = models.PositiveIntegerField("Важность города в кластере", default=0)
+    importance = models.PositiveIntegerField("Важность города", default=0)
     image = models.ImageField("Изображение")
 
     def get_absolute_url(self):

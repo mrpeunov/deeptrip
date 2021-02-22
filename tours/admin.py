@@ -29,6 +29,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class ClusterAdmin(admin.ModelAdmin):
     list_display = ("name", )
 
+
 @admin.register(Position)
 class PositionsAdmin(admin.ModelAdmin):
     list_display = ('name', 'lat', 'lon')
@@ -41,7 +42,9 @@ class OfferAdmin(admin.ModelAdmin):
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'tours_count', 'orders_count')
+    list_display = ('name', 'cluster', 'slug', 'importance', 'tours_count', 'orders_count')
+    readonly_fields = ('tours_count', 'orders_count')
+    list_editable = ('importance',)
     prepopulated_fields = {"slug": ("name", )}
     actions_on_top = False
     actions_on_bottom = True

@@ -1,11 +1,11 @@
 from typing import List
 
 from tours.models import City
-from django.db.models import Q
+from django.db.models import Q, QuerySet
 
 
-def _query_to_columns(query):
-    доделать
+def _query_to_columns(query: List[City]) -> List[List[City]]:
+    """преобразуем в список, состоящий из списков по 2 элемента для отображения в слайдере"""
     columns = list()
     column = list()
     i = 0
@@ -21,19 +21,26 @@ def _query_to_columns(query):
 
 
 def get_cities_for_city(city_slug: str) -> List[List[City]]:
-    """получаем в"""
+    """
+    Возвращает список городов в определенном виде
+    :param city_slug:
+    :return: список, состоящий из списков по 2 элемента
+    """
+    # ожидаем получить 8 городов
     wait_count_objects = 8
 
     city = City.objects.get(slug=city_slug)
 
-    # запрашиваем 8 городов из кластера
-    cities_query = City.objects.filter(cluster=city.cluster).order_by('name')[:wait_count_objects]
+    # запрашиваем 8 городов из кластера полученного города, кроме самого этого города и сортируем по важности
+    cities_query = list(City.objects.filter(Q(cluster=city.cluster) &
+                                            ~Q(slug=city_slug)).order_by('-importance')[:wait_count_objects])
+
     really_count_objects = len(cities_query)
-    if len(cities_query) != wait_count_objects:
-        # если полученно менее 8 городов, то дополняем до 8 по возможности
-        cities_query |= City.objects.filter(~Q(cluster=city.cluster))[:wait_count_objects - really_count_objects]
+
+    if really_count_objects != wait_count_objects:
+        # если полученно менее 8 городов, то дополняем до 8 из городов других кластеров
+        cities_query += list(City.objects.filter(~Q(cluster=city.cluster)).order_by('-importance')
+                             [:wait_count_objects - really_count_objects])
+        print(cities_query)
+
     return _query_to_columns(cities_query)
-
-
-
-
