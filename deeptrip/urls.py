@@ -1,3 +1,4 @@
+import smart_selects
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -16,6 +17,7 @@ urlpatterns += router.urls
 
 urlpatterns += [
     path('admin/', admin.site.urls),
+    path('chaining/', include('smart_selects.urls')),
     path('', include('base.urls')),
     path('magazine/', include('articles.urls')),
     path('<slug:city_slug>/', include('tours.urls')),

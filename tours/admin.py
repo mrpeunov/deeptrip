@@ -18,6 +18,11 @@ class CommentInline(admin.TabularInline):
     extra = 1
 
 
+class TourCitiesInline(admin.TabularInline):
+    model = Tour.cities.through
+    extra = 8
+
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'important', 'slug')
@@ -61,6 +66,18 @@ class TourAdmin(admin.ModelAdmin):
     actions_on_top = False
     actions_on_bottom = True
     inlines = [ImageItemInline, RecommendedTourInline, CommentInline]
+
+    """
+    def get_object(self, request, object_id, from_field=None):
+        obj = super().get_object(request, object_id, from_field=from_field)
+        request.report_obj = obj
+        return obj
+
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name == "cities" and hasattr(request, 'report_obj'):
+            kwargs["queryset"] = City.objects.filter(cluster=request.report_obj.city.cluster)
+        return super(TourAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
+    """
 
 
 @admin.register(Comment)

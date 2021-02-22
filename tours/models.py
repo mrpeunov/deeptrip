@@ -5,6 +5,7 @@ from django.db.models import TextField, Q, QuerySet
 from django.db.models.signals import post_save, m2m_changed
 from django.dispatch import receiver
 from django.urls import reverse
+from smart_selects.db_fields import ChainedManyToManyField, ChainedForeignKey
 
 
 class Cluster(models.Model):
@@ -43,7 +44,7 @@ class City(models.Model):
 
         more_count = 0
         for item in Tour.objects.all():
-            if self in item.cities.all():
+            if self != item.city & self in item.cities.all():
                 more_count += 1
 
         self.tours_count = main_count + more_count
@@ -109,8 +110,20 @@ class Tour(models.Model):
         (True, "Групповая"),
         (False, "Одиночная")
     )
-    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, default=1, related_name="main_city")
-    cities = models.ManyToManyField(City, verbose_name="Дополнительные", related_name="add_cities")
+
+    cluster = models.ForeignKey(Cluster, on_delete=models.PROTECT, blank=True)
+
+    city = ChainedForeignKey(City,
+                             chained_field="cluster",
+                             chained_model_field="cluster",
+                             on_delete=models.PROTECT, blank=True, related_name="main_city")
+
+    cities = ChainedManyToManyField(City,
+                                    horizontal=True,
+                                    verbose_name="Дополнительные",
+                                    related_name="add_cities",
+                                    chained_field="cluster",
+                                    chained_model_field="cluster")
 
     title = models.CharField("Название экскурсии", max_length=64)
     slug = models.SlugField("Slug (название в URL)", max_length=64, unique=True)
@@ -147,6 +160,7 @@ class Tour(models.Model):
 
     def save(self, *args, **kwargs):
         self.city.update_tours_count()
+        super().save(*args, **kwargs)
 
 
 class Like(models.Model):
