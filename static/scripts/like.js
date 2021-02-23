@@ -30,6 +30,9 @@ $(function() {
 
         //изменим отображение
         $elem.toggleClass("liked");
+
+        //ставим точку в меню
+        if(list.length !== 0) $('#favorites').addClass('circle');
     }
 
     $tour_like.click(function(){
@@ -66,9 +69,11 @@ $(function() {
                     }
                 });
             });
+
+            //ставим точку в меню
+            if(list.length !== 0) $('#favorites').addClass('circle');
         }
     }
 
     init();
 });
-

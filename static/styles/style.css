@@ -243,7 +243,7 @@ header {
   padding-right: 80px;
   margin: 0 auto;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .container {
     padding-left: 40px;
     padding-right: 40px;
@@ -420,7 +420,20 @@ header {
   position: relative;
 }
 .preview_gallery:hover .owl-nav {
-  display: block;
+  opacity: 100%;
+  transition: 0.2s;
+}
+.preview_gallery:hover .owl-nav button {
+  opacity: 87%;
+  transition: 0.2s;
+}
+.preview_gallery:hover .owl-nav:hover {
+  opacity: 100%;
+}
+.preview_gallery:hover .owl-nav .owl-prev:hover,
+.preview_gallery:hover .owl-nav .owl-next:hover {
+  transform: scale(1.1);
+  opacity: 100%;
 }
 @media (max-width: 768px) {
   .preview_gallery:hover .owl-nav {
@@ -434,11 +447,29 @@ header {
   font-weight: 500;
   font-size: 1.07rem;
   margin: 10px 0 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  box-orient: vertical;
 }
 .preview_content_description {
   font-weight: 300;
   margin-bottom: 10px;
   color: #666666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  box-orient: vertical;
 }
 .preview_content_footer {
   display: flex;
@@ -446,16 +477,29 @@ header {
   align-items: flex-end;
 }
 .preview_content_footer_price {
-  color: #999999;
-  font-weight: normal;
-  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.preview_content_footer_price span {
+.preview_content_footer_price_digits {
   font-weight: bold;
   color: #333333;
   font-size: 1.25rem;
 }
+.preview_content_footer_price_unit {
+  color: #999999;
+  font-weight: normal;
+  font-size: 0.9rem;
+  overflow: hidden;
+}
 .preview_content_footer_time {
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-overflow: ellipsis;
+}
+.preview_content_footer_time_unit {
   color: #999999;
   font-weight: normal;
   font-size: 0.9rem;
@@ -466,6 +510,7 @@ header {
 .preview_content_footer_rating {
   color: #999999;
   font-weight: normal;
+  white-space: nowrap;
 }
 .preview_content_footer_rating span {
   font-size: 0.9rem;
@@ -498,13 +543,14 @@ header {
 }
 .preview .owl-nav {
   position: unset;
-  display: none;
+  opacity: 0;
   width: 100%;
   height: 100%;
   top: 0;
   justify-content: space-between;
   align-items: center;
   margin-top: 0;
+  transition: 0.3s;
 }
 .preview .owl-nav button {
   width: 30px !important;
@@ -577,7 +623,7 @@ header {
 }
 .towns_wrap {
   max-width: 1500px;
-  padding-left: 80px;
+  padding-left: 40px;
   margin: 0 auto;
 }
 @media (min-width: 1116px) {
@@ -585,7 +631,7 @@ header {
     padding-right: 40px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1300px) {
   .towns_wrap {
     padding-right: 80px;
   }

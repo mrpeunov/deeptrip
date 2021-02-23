@@ -10,14 +10,15 @@
     </div>
     <a href="{{ preview.get_absolute_url }}" class="preview_content">
         <div class="preview_content_title">{{ preview.title }}</div>
-        <div class="preview_content_description"> {{ preview.description|truncatechars:80 }}</div>
+        <div class="preview_content_description"> {{ preview.description}}</div>
         <div class="preview_content_footer">
             <div class="preview_content_footer_price">
-                <span>{{ preview.price }} руб. </span> за квадр.
+                <span class="preview_content_footer_price_digits" >{{ preview.price }} ₽ </span>
+                <span class="preview_content_footer_price_unit">за квадроцикл</span>
             </div>
             <div class="preview_content_footer_time">
                 <img src="{% static 'img/preview/time.png' %}" alt="">
-                {{ preview.time }}
+                <span class="preview_content_footer_time_unit">{{ preview.time }}</span>
             </div>
             <div class="preview_content_footer_rating">
                 <img src="{% static 'img/preview/star.png' %}" alt="">
