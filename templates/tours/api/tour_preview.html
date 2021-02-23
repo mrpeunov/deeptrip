@@ -26,4 +26,7 @@
         </div>
     </a>
     <div class="preview_like" data-tour_id="{{ preview.id }}"></div>
+    {% if preview.offer %}
+    <div class="preview_offer">{{ preview.offer|upper }}</div>
+    {% endif %}
 </div>

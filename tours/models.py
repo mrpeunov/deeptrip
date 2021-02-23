@@ -44,7 +44,7 @@ class City(models.Model):
 
         more_count = 0
         for item in Tour.objects.all():
-            if self != item.city & self in item.cities.all():
+            if (self != item.city) & (self in item.cities.all()):
                 more_count += 1
 
         self.tours_count = main_count + more_count
@@ -88,45 +88,33 @@ class Position(models.Model):
         verbose_name_plural = "точки на карте"
 
 
-class Offer(models.Model):
-    COLOR_CHOICES = (
-        ("#4dc05e", "Зелёный"),
-        ("#ec4159", "Красный")
-    )
-
-    text = models.CharField("Текст предложения", max_length=32)
-    color = models.CharField("Цвет", max_length=7, choices=COLOR_CHOICES)
-
-    def __str__(self):
-        return "Специальное предложение '{}'".format(self.text)
-
-    class Meta:
-        verbose_name = "специальное предложение"
-        verbose_name_plural = "специальные предложение"
-
-
 class Tour(models.Model):
     GROUP_CHOICES = (
         (True, "Групповая"),
         (False, "Одиночная")
     )
 
-    cluster = models.ForeignKey(Cluster, on_delete=models.PROTECT, blank=True)
+    title = models.CharField("Название экскурсии", max_length=64)
+    slug = models.SlugField("Slug (название в URL)", max_length=64, unique=True)
+
+    cluster = models.ForeignKey(Cluster,
+                                verbose_name="Кластер",
+                                on_delete=models.PROTECT)
 
     city = ChainedForeignKey(City,
+                             verbose_name="Основной город",
                              chained_field="cluster",
                              chained_model_field="cluster",
-                             on_delete=models.PROTECT, blank=True, related_name="main_city")
+                             on_delete=models.PROTECT,
+                             related_name="main_city")
 
     cities = ChainedManyToManyField(City,
+                                    blank=True,
                                     horizontal=True,
-                                    verbose_name="Дополнительные",
+                                    verbose_name="Дополнительные города",
                                     related_name="add_cities",
                                     chained_field="cluster",
                                     chained_model_field="cluster")
-
-    title = models.CharField("Название экскурсии", max_length=64)
-    slug = models.SlugField("Slug (название в URL)", max_length=64, unique=True)
 
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
@@ -142,11 +130,11 @@ class Tour(models.Model):
     count_comment = models.SmallIntegerField('Количество отзывов', default=0)
     rating = models.FloatField("Рейтинг", validators=[MinValueValidator(0), MaxValueValidator(5)], default=5)
 
-    offer = models.ForeignKey(Offer, on_delete=models.PROTECT, blank=True, null=True)
+    offer = models.CharField("Специальное предложение", max_length=20, blank=True)
 
-    categories = models.ManyToManyField(Category, verbose_name="Категории")
-    positions = models.ManyToManyField(Position, verbose_name="Точки на карте")
-    notes = models.CharField("Примечания", max_length=64, default="Пусто")
+    categories = models.ManyToManyField(Category, blank=True, verbose_name="Категории")
+    positions = models.ManyToManyField(Position, blank=True, verbose_name="Точки на карте")
+    notes = models.CharField("Примечания", blank=True, max_length=64)
 
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)

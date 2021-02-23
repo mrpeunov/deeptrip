@@ -379,6 +379,18 @@ header {
 .preview {
   position: relative;
 }
+.preview_offer {
+  background: #fcfcfc;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 100;
+  font-size: 0.69rem;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 5px;
+  color: #333333;
+}
 .preview_like {
   position: absolute;
   right: 15px;
@@ -390,9 +402,16 @@ header {
   background-image: url("../img/preview/like.png");
   background-repeat: no-repeat;
   background-size: contain;
+  transition: 0.2s;
+}
+.preview_like:hover {
+  -webkit-transform: scale(0.85);
+  -ms-transform: scale(0.85);
+  transform: scale(0.85);
 }
 .preview .liked {
   background-image: url("../img/preview/like-active.png");
+  transition: 0.2s;
 }
 .preview .owl-stage-outer {
   border-radius: 15px !important;

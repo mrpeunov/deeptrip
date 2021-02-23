@@ -9,6 +9,7 @@
   dark9: #999999;
   dot: #eeedde;
   footer-bg: #f9f9f9;
+  offer: #fcfcfc;
 }
 
 @max576: ~"(max-width: 576px)";
@@ -317,6 +318,19 @@ header{
 .preview{
   position: relative;
 
+  &_offer{
+    background: #colors[offer];
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 100;
+    font-size: 0.69rem;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 5px;
+    color: #colors[dark3];
+  }
+
   &_like{
     position: absolute;
     right: 15px;
@@ -328,10 +342,18 @@ header{
     background-image: url("../img/preview/like.png");
     background-repeat: no-repeat;
     background-size: contain;
+    transition: 0.2s;
+
+    &:hover{
+      -webkit-transform: scale(0.85);
+      -ms-transform: scale(0.85);
+      transform: scale(0.85);
+    }
   }
 
   .liked{
     background-image: url("../img/preview/like-active.png");
+    transition: 0.2s;
   }
 
   .owl-stage-outer{
