@@ -1,0 +1,11 @@
+{% for preview in tours %}
+<div class="tours_item">
+    {% include 'tours/api/tour_preview.html' %}
+</div>
+{% endfor %}
+
+{% if page == 3 %}
+    <div class="tours_item">
+        {% include 'map/api/map_preview.html' %}
+    </div>
+{% endif %}

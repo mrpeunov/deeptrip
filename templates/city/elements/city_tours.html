@@ -1,16 +1,18 @@
 <div class="tours">
-    <div class="tours_items">
+    <div class="tours_items" id="tours" data-city="{{ city_slug }}" data-page="{{ tour_page_number }}">
         {% for preview in tours %}
-        <div class="tours_item">
-            {% include 'tours/api/tour_preview.html' %}
-        </div>
+            <div class="tours_item">
+                {% include 'tours/api/tour_preview.html' %}
+            </div>
+            {% if forloop.counter == 12 %}
+                <div class="tours_item">
+                    {% include 'map/api/map_preview.html' %}
+                </div>
+            {% endif %}
         {% endfor %}
-        <div class="tours_item">
-            {% include 'map/api/map_preview.html' %}
-        </div>
     </div>
     <div class="tours_more">
-        <button>Показать ещё</button>
+        <button class="standard_button" id="tours_more">Показать ещё</button>
     </div>
 </div>
 

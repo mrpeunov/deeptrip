@@ -1,12 +1,32 @@
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views import View
+from django.views.generic.list import MultipleObjectMixin
 
 from articles.models import Article
 from tours.models import *
 from base.services import FooterAndMenuTemplateView
 from rest_framework.viewsets import ModelViewSet
 from tours.serializers import TourSerializer
-from tours.views_services.city import get_cities_for_city
+from tours.services.get_cities import get_cities_for_city
+from tours.services.get_tours import get_tours
+
+
+def get_more_tours(request):
+    """"""
+    if not request.is_ajax():
+        pass
+    if request.method != 'GET':
+        pass
+
+    page = int(request.GET.get("page"))
+    city = City.objects.get(slug=request.GET.get("city_slug"))
+    touts_list = get_tours(page, city)
+
+    return render(request, 'city/elements/ajax_tours.html',
+                  {'tours': touts_list, 'page': page})
 
 
 class CityPage(FooterAndMenuTemplateView):
@@ -16,9 +36,10 @@ class CityPage(FooterAndMenuTemplateView):
     template_name = 'city/city.html'
 
     def add_in_context(self, context):
+        context['tour_page_number'] = 0
         context['city'] = City.objects.get(slug=context['city_slug'])
-        context['tours'] = Tour.objects.all()
-        context['cities'] = get_cities_for_city(context['city_slug'])  # query_to_columns(City.objects.all())
+        context['tours'] = get_tours(context['tour_page_number'], context['city'])
+        context['cities'] = get_cities_for_city(context['city_slug'])
         context['categories'] = Category.objects.all()
         context['magazine'] = Article.objects.all()
 

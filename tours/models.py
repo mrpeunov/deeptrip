@@ -150,6 +150,37 @@ class Tour(models.Model):
         self.city.update_tours_count()
         super().save(*args, **kwargs)
 
+    def get_rating_for_city(self, city: City) -> int:
+        """
+        :param city: город для которого вычисляется рейтинг
+        :return: рейтинг города от 0(25) до 100
+        """
+        city_rating = 0
+
+        # 20% влияния рейтинга
+        city_rating += int(self.rating / 5 * 20)
+
+        # 20% влияния количества комментариев
+        if self.count_comment > 9:
+            city_rating += int((self.count_comment+1) / 10 * 20)
+        else:
+            city_rating += 20
+
+        # 10% влияния специального предложения
+        if self.offer:
+            city_rating += 10
+
+        # 50% влияния местоположения
+        if self.city == city:
+            city_rating += 50
+        elif city in self.cities.all():
+            city_rating += 25
+        else:
+            city_rating = 0
+            print("Ошибка, рейтинг для этого города обнулён, так как данная экскурсия в нем отсутствует")
+
+        return city_rating
+
 
 class Like(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.PROTECT)

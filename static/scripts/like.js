@@ -5,7 +5,7 @@ $(function() {
         //клик по блоку с сердечком $elem
 
         //получаем список уже стоящих лайков
-        let likes = JSON.parse(Cookies.get('likes'));
+        let likes = JSON.parse(getCookie('likes'));
         let list = likes.list;
 
         //id экскурсии, которой поставили лайк
@@ -26,13 +26,15 @@ $(function() {
 
         //обновляем cookies
         likes.list = list
-        Cookies.set('likes', JSON.stringify(likes));
+        setCookie('likes', JSON.stringify(likes));
 
         //изменим отображение
         $elem.toggleClass("liked");
 
         //ставим точку в меню
+        console.log(list.length);
         if(list.length !== 0) $('#favorites').addClass('circle');
+        else $('#favorites').removeClass('circle');
     }
 
     $tour_like.click(function(){
@@ -43,14 +45,14 @@ $(function() {
         //инииализируем лайки
 
         //получаем уже стоящие лайки
-        let likes = Cookies.get('likes');
+        let likes = getCookie('likes');
 
         if(likes === undefined){
             //если записи в cookie не обнаружено
 
             //создаём запись
             likes = {list: []};
-            Cookies.set('likes', JSON.stringify(likes));
+            setCookie('likes', JSON.stringify(likes));
         } else {
             //если уже есть запись в cookie
 

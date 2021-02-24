@@ -22,6 +22,14 @@ html, body{
   padding: 0;
 }
 
+html{
+  font-size: 16px;
+
+  @media (max-width: 360px){
+    font-size: 14px;
+  }
+}
+
 a{
   text-decoration: none;
   margin: 0;
@@ -50,6 +58,7 @@ img{
     border-radius: 20px;
     font-weight: bold;
     transition: 0.3s;
+    cursor: pointer;
 
     &:hover{
       -webkit-transform: scale(0.93);
@@ -275,6 +284,21 @@ header{
   }
 }
 
+.zero:after {
+  display: none;
+  content: "";
+  flex: auto;
+  justify-content: flex-start;
+  max-width: 30%;
+}
+
+.not_zero:after {
+  content: "";
+  flex: auto;
+  justify-content: flex-start;
+  max-width: 30%;
+}
+
 .tours{
   &_items{
     display: flex;
@@ -300,18 +324,6 @@ header{
     text-align: center;
     width: 100%;
     margin-top: 20px;
-
-    button{
-      border: none;
-      outline: none;
-      border-radius: 20px;
-      background: #colors[white];
-      color: #colors[dark3];
-      font-size: 0.9rem;
-      font-weight: bold;
-      box-shadow: 0 0 2px 2px rgba(1, 1, 1, 0.1);
-      padding: 12px 30px;
-    }
   }
 }
 
@@ -603,15 +615,11 @@ header{
 
   &_wrap{
     max-width: 1500px;
-    padding-left: 40px;
+    padding-left: 80px;
     margin: 0 auto;
 
     @media (min-width: 1116px){
       padding-right: 40px;
-    }
-
-    @media (min-width: 1300px){
-      padding-right: 80px;
     }
 
     @media @max1200{
@@ -620,6 +628,10 @@ header{
 
     @media @max576{
       padding-left: 20px;
+    }
+
+    @media (max-width: 1300px){
+      padding-left: 40px;
     }
   }
 

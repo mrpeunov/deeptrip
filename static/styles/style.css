@@ -115,6 +115,14 @@ body {
   margin: 0;
   padding: 0;
 }
+html {
+  font-size: 16px;
+}
+@media (max-width: 360px) {
+  html {
+    font-size: 14px;
+  }
+}
 a {
   text-decoration: none;
   margin: 0;
@@ -150,6 +158,7 @@ img {
   border-radius: 20px;
   font-weight: bold;
   transition: 0.3s;
+  cursor: pointer;
 }
 .standard_button:hover {
   -webkit-transform: scale(0.93);
@@ -340,6 +349,19 @@ header {
   display: block;
   margin-top: 40px;
 }
+.zero:after {
+  display: none;
+  content: "";
+  flex: auto;
+  justify-content: flex-start;
+  max-width: 30%;
+}
+.not_zero:after {
+  content: "";
+  flex: auto;
+  justify-content: flex-start;
+  max-width: 30%;
+}
 .tours_items {
   display: flex;
   flex-wrap: wrap;
@@ -364,17 +386,6 @@ header {
   text-align: center;
   width: 100%;
   margin-top: 20px;
-}
-.tours_more button {
-  border: none;
-  outline: none;
-  border-radius: 20px;
-  background: #ffffff;
-  color: #333333;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 0 0 2px 2px rgba(1, 1, 1, 0.1);
-  padding: 12px 30px;
 }
 .preview {
   position: relative;
@@ -623,17 +634,12 @@ header {
 }
 .towns_wrap {
   max-width: 1500px;
-  padding-left: 40px;
+  padding-left: 80px;
   margin: 0 auto;
 }
 @media (min-width: 1116px) {
   .towns_wrap {
     padding-right: 40px;
-  }
-}
-@media (min-width: 1300px) {
-  .towns_wrap {
-    padding-right: 80px;
   }
 }
 @media (max-width: 1200px) {
@@ -644,6 +650,11 @@ header {
 @media (max-width: 576px) {
   .towns_wrap {
     padding-left: 20px;
+  }
+}
+@media (max-width: 1300px) {
+  .towns_wrap {
+    padding-left: 40px;
   }
 }
 .towns_column {

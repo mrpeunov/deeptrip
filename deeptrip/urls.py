@@ -19,8 +19,8 @@ urlpatterns += [
     path('admin/', admin.site.urls),
     path('chaining/', include('smart_selects.urls')),
     path('', include('base.urls')),
+    path('', include('tours.urls_api')),
     path('magazine/', include('articles.urls')),
     path('<slug:city_slug>/', include('tours.urls')),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

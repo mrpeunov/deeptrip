@@ -52,6 +52,5 @@ def get_cities_for_city(city_slug: str) -> List[List[City]]:
     if really_count_objects != wait_count_objects:
         cities_query += list(City.objects.filter(~Q(cluster=city.cluster)).order_by('-importance')
                              [:wait_count_objects - really_count_objects])
-        print(cities_query)
 
     return _query_to_columns(cities_query)
