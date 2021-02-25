@@ -1,14 +1,14 @@
 {% load static %}
 
-<div class="preview">
-    <div class="preview_gallery owl-carousel owl-theme">
+<a href="{{ preview.get_absolute_url }}"  class="preview">
+    <div  class="preview_gallery owl-carousel owl-theme">
         <img src="{{ preview.image.url }}" alt="">
         <img src="{{ preview.image.url }}" alt="">
         <img src="{{ preview.image.url }}" alt="">
         <img src="{{ preview.image.url }}" alt="">
         <img src="{{ preview.image.url }}" alt="">
     </div>
-    <a href="{{ preview.get_absolute_url }}" class="preview_content">
+    <div  class="preview_content">
         <div class="preview_content_title">{{ preview.title }}</div>
         <div class="preview_content_description"> {{ preview.description}}</div>
         <div class="preview_content_footer">
@@ -25,9 +25,9 @@
                 <span>{{ preview.rating }} </span>({{ preview.count_comment }})
             </div>
         </div>
-    </a>
+    </div>
     <div class="preview_like" data-tour_id="{{ preview.id }}"></div>
     {% if preview.offer %}
     <div class="preview_offer">{{ preview.offer|upper }}</div>
     {% endif %}
-</div>
+</a>

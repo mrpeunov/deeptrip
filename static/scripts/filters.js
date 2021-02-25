@@ -1,6 +1,7 @@
 $(document).ready(function(){
     let $filter_count = $('#filter_count');
     let $filter_item = $('.filter_item');
+    let $filters_show = $('#filters_show');
 
     function update_count(){
         //получаем список отмеченных
@@ -13,7 +14,8 @@ $(document).ready(function(){
         if(checked_array.length === 0){
             //если список пустой устанавлием максимальное значение
 
-            $filter_count.html($filter_count.data('max'));
+            $filter_count.html('Выберите фильтр');
+            $filters_show.addClass('not_active');
         } else {
             //если не пустой
             let city_slug = $('#tours').data('city');
@@ -28,10 +30,15 @@ $(document).ready(function(){
                 },
                 success: function(data) {
                     //обновляем количество
-                    $filter_count.html(data);
+                    $filter_count.html('Найдено ' + data + ' экскурсий');
+
+                    if(parseInt(data, 10) !== 0){
+                        $filters_show.removeClass('not_active');
+                    }
+
                 },
                 error: function(data) {
-                    console.log("Error" + data);
+                    console.log("Error " + data);
                 }
             });
         }

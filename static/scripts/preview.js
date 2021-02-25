@@ -2,6 +2,7 @@ $(document).ready(function(){
     //настройки owl gallery
     let preview_gallery_settings = {
         items: 1,
+        mouseDrag: false,
         slideSpeed: 200,
         nav: true,
         lazyLoad:true,
@@ -9,6 +10,15 @@ $(document).ready(function(){
         margin:0,
         dots: true,
     }
+
+
+
+    $('.owl-next').click(function() {
+        console.log('HMM');
+        return false;
+    });
+
+
 
     //обновление css отображения экскурсий
     //из-за кривой реализации justify-content space-between

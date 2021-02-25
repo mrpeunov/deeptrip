@@ -164,9 +164,9 @@ img {
   cursor: pointer;
 }
 .standard_button:hover {
-  -webkit-transform: scale(0.93);
-  -ms-transform: scale(0.93);
-  transform: scale(0.93);
+  -webkit-transform: scale(0.975);
+  -ms-transform: scale(0.975);
+  transform: scale(0.975);
 }
 .menu {
   position: fixed;
@@ -179,7 +179,7 @@ img {
   height: 50px;
   z-index: 100;
   border-top: 1px solid #eeeeee;
-  box-shadow: 0 9px 29px 0 rgba(1, 1, 1, 0.05);
+  box-shadow: 0 9px 29px 0 rgba(1, 1, 1, 0.1);
 }
 .menu_item {
   text-decoration: none;
@@ -366,7 +366,7 @@ header {
   justify-content: space-between;
 }
 .tours_item {
-  width: 30%;
+  width: 31%;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -446,9 +446,9 @@ header {
   transition: 0.2s;
 }
 .preview_like:hover {
-  -webkit-transform: scale(0.85);
-  -ms-transform: scale(0.85);
-  transform: scale(0.85);
+  -webkit-transform: scale(0.93);
+  -ms-transform: scale(0.93);
+  transform: scale(0.93);
 }
 .preview .liked {
   background-image: url("../img/preview/like-active.png");
@@ -462,7 +462,7 @@ header {
 }
 .preview_gallery:hover .owl-nav {
   opacity: 100%;
-  transition: 0.2s;
+  transition: 0.4s;
 }
 .preview_gallery:hover .owl-nav button {
   opacity: 87%;
@@ -473,7 +473,7 @@ header {
 }
 .preview_gallery:hover .owl-nav .owl-prev:hover,
 .preview_gallery:hover .owl-nav .owl-next:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   opacity: 100%;
 }
 @media (max-width: 768px) {
@@ -737,8 +737,12 @@ header {
   width: 30%;
   display: block;
   letter-spacing: -1ex;
-  margin: 15px 0;
+  margin: 12px 0;
   cursor: pointer;
+  transition: 0.2s;
+}
+.filters_category:hover input[type='checkbox']:before {
+  border: 1px solid #333333;
 }
 @media (max-width: 1200px) {
   .filters_category {
@@ -873,6 +877,14 @@ header {
   color: #999999;
   font-size: 0.9rem;
 }
+.filters_footer_search .not_active {
+  background: #999999;
+}
+.filters_footer_search .not_active:hover {
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
 .filters_footer_search button {
   background: #333333;
   color: #ffffff;
@@ -884,6 +896,12 @@ header {
   margin-left: 10px;
   font-size: 0.9rem;
   cursor: pointer;
+  transition: 0.3s;
+}
+.filters_footer_search button:hover {
+  -webkit-transform: scale(0.975);
+  -ms-transform: scale(0.975);
+  transform: scale(0.975);
 }
 .articles {
   display: flex;
@@ -892,7 +910,7 @@ header {
   margin: 30px 0 20px 0;
 }
 .articles_item {
-  width: 30%;
+  width: 31%;
   margin-bottom: 30px;
 }
 @media (max-width: 1200px) {
@@ -1030,6 +1048,9 @@ header {
   font-size: 0.9rem;
   font-weight: normal;
   margin-bottom: 15px;
+}
+.footer_links_link:hover span {
+  border-bottom: solid;
 }
 @media (max-width: 768px) {
   .footer_links_link {

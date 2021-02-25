@@ -66,9 +66,9 @@ img{
     cursor: pointer;
 
     &:hover{
-      -webkit-transform: scale(0.93);
-      -ms-transform: scale(0.93);
-      transform: scale(0.93);
+      -webkit-transform: scale(0.975);
+      -ms-transform: scale(0.975);
+      transform: scale(0.975);
     }
   }
 }
@@ -84,7 +84,7 @@ img{
   height: 50px;
   z-index: 100;
   border-top: 1px solid #eeeeee;
-  box-shadow: 0 9px 29px 0 rgba(1, 1, 1, 0.05);
+  box-shadow: 0 9px 29px 0 rgba(1, 1, 1, 0.1);
 
   &_item{
     text-decoration: none;
@@ -304,7 +304,7 @@ header{
   }
 
   &_item{
-    width: 30%;
+    width: 31%;
     margin-top: 20px;
     margin-bottom: 20px;
 
@@ -363,8 +363,6 @@ header{
     }
   }
 
-
-
   &_offer{
     background: #colors[offer];
     position: absolute;
@@ -392,9 +390,9 @@ header{
     transition: 0.2s;
 
     &:hover{
-      -webkit-transform: scale(0.85);
-      -ms-transform: scale(0.85);
-      transform: scale(0.85);
+      -webkit-transform: scale(0.93);
+      -ms-transform: scale(0.93);
+      transform: scale(0.93);
     }
   }
 
@@ -413,7 +411,7 @@ header{
     &:hover{
       .owl-nav {
         opacity: 100%;
-        transition: 0.2s;
+        transition: 0.4s;
 
         button{
           opacity: 87%;
@@ -425,7 +423,7 @@ header{
         }
 
         .owl-prev:hover, .owl-next:hover{
-          transform: scale(1.1);
+          transform: scale(1.05);
           opacity: 100%;
         }
 
@@ -732,8 +730,17 @@ header{
     width: 30%;
     display: block;
 	letter-spacing: -1ex;
-	margin: 15px 0;
+	margin: 12px 0;
     cursor: pointer;
+    transition: 0.2s;
+
+    &:hover{
+      input[type='checkbox']{
+        &:before{
+          border: 1px solid #333333;
+        }
+      }
+    }
 
     @media @max1200{
       width: 47%;
@@ -790,6 +797,8 @@ header{
 
       position: relative;
 	  cursor: pointer;
+
+
 
       &:before {
         content: "";
@@ -873,6 +882,16 @@ header{
         font-size: 0.9rem;
       }
 
+      .not_active{
+        background: #colors[dark9];
+
+        &:hover{
+          -webkit-transform: none;
+          -ms-transform: none;
+          transform: none;
+        }
+      }
+
       button{
         background: #colors[dark3];
         color: #colors[white];
@@ -884,6 +903,13 @@ header{
         margin-left: 10px;
         font-size: 0.9rem;
         cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+          -webkit-transform: scale(0.975);
+          -ms-transform: scale(0.975);
+          transform: scale(0.975);
+        }
       }
     }
   }
@@ -896,7 +922,7 @@ header{
   margin: 30px 0 20px 0;
 
   &_item{
-    width: 30%;
+    width: 31%;
     margin-bottom: 30px;
 
     @media @max1200{
@@ -1061,6 +1087,12 @@ header{
       font-size: 0.9rem;
       font-weight: normal;
       margin-bottom: 15px;
+
+      &:hover{
+        span{
+          border-bottom: solid;
+        }
+      }
 
       @media @max768{
         width: 100%;

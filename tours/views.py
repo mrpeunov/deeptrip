@@ -7,7 +7,7 @@ from base.services import FooterAndMenuTemplateView
 
 
 from tours.services.get_cities import get_cities_for_city
-from tours.services.filters import get_count_tours
+from tours.services.filters import get_count_tours, get_filters_queryset
 from tours.services.get_h2 import get_h2
 from tours.services.get_tours import get_tours, get_maximum
 
@@ -26,7 +26,7 @@ class CityPage(FooterAndMenuTemplateView):
         context['more'] = result_dict['more']
         context['maximum'] = get_maximum(context['city'])
         context['cities'] = get_cities_for_city(context['city_slug'])
-        context['categories'] = Category.objects.all()
+        context['categories'] = get_filters_queryset(context['city'])
         context['magazine'] = Article.objects.all()
         context['h2'] = get_h2()
 
