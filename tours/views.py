@@ -1,6 +1,6 @@
 import json
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic.list import MultipleObjectMixin
@@ -23,10 +23,14 @@ def get_more_tours(request):
 
     page = int(request.GET.get("page"))
     city = City.objects.get(slug=request.GET.get("city_slug"))
-    touts_list = get_tours(page, city)
+    result_dict = get_tours(page, city)
 
-    return render(request, 'city/elements/ajax_tours.html',
-                  {'tours': touts_list, 'page': page})
+    response = render(request, 'city/elements/ajax_tours.html',
+                      {'tours': result_dict['list'], 'page': page})
+
+    response.set_cookie('more', result_dict['more'])
+
+    return response
 
 
 class CityPage(FooterAndMenuTemplateView):
@@ -38,7 +42,9 @@ class CityPage(FooterAndMenuTemplateView):
     def add_in_context(self, context):
         context['tour_page_number'] = 0
         context['city'] = City.objects.get(slug=context['city_slug'])
-        context['tours'] = get_tours(context['tour_page_number'], context['city'])
+        result_dict = get_tours(context['tour_page_number'], context['city'])
+        context['tours'] = result_dict['list']
+        context['more'] = result_dict['more']
         context['cities'] = get_cities_for_city(context['city_slug'])
         context['categories'] = Category.objects.all()
         context['magazine'] = Article.objects.all()

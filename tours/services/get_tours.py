@@ -1,9 +1,9 @@
-from typing import List
+from typing import List, Dict, Union
 from django.db.models import QuerySet, Q
 from tours.models import Tour, City
 
 
-def get_tours(page: int, city: City) -> List[Tour]:
+def get_tours(page: int, city: City) -> Dict[str, Union[list, bool]]:
     """
     :param city: город для которого необходимо составить список экскурсий
     :param page: запрашиваемая страница
@@ -20,14 +20,23 @@ def get_tours(page: int, city: City) -> List[Tour]:
     # вернём обрезанный в соответсвии с номером страницы
     start = get_start_number(page)
     count = get_count(page)
-    finish = start + count
 
-    return all_city_tours[start:finish]
+    finish = start + count
+    more = True
+
+    # если не хватает экскурсий
+    list_length = len(all_city_tours)
+    if finish >= list_length:
+        finish = list_length
+        more = False
+
+    return {'list': all_city_tours[start:finish],
+            'more': more}
 
 
 def get_start_number(page: int) -> int:
     """
-    на 0 и на 3 странице появояется лишний блок
+    на 0 и на 3 странице появляется лишний блок
     :param page: номер страницы
     :return: номер начального лимита экскурсий
     """
