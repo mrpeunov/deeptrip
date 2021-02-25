@@ -653,7 +653,7 @@ header{
     padding-left: 80px;
     margin: 0 auto;
 
-    @media (max-width: 1300px){
+    @media (min-width: 1300px){
       padding-right: 80px;
     }
 
@@ -726,7 +726,6 @@ header{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-
   }
 
   &_category{
@@ -736,13 +735,21 @@ header{
 	margin: 15px 0;
     cursor: pointer;
 
+    @media @max1200{
+      width: 47%;
+    }
+
     @media @max768{
       width: 100%;
       margin: 10px 0;
     }
 
     &_none{
-      display: none;
+      display: block;
+
+      @media @max1200{
+        display: none;
+      }
     }
 
     &_name{
@@ -831,9 +838,18 @@ header{
     justify-content: space-between;
     margin-top: 20px;
 
+    @media @max576{
+      display: block;
+      margin-top: 10px;
+    }
+
     &_all{
       display: flex;
       align-items: center;
+
+      @media @max576{
+        margin-bottom: 20px;
+      }
 
       span{
         border-bottom: 1px solid #333333;
@@ -841,12 +857,15 @@ header{
         cursor: pointer;
         font-size: 0.9rem;
       }
-
     }
 
     &_search{
       display: flex;
       align-items: center;
+
+      @media @max576{
+        justify-content: space-between;
+      }
 
       span{
         font-weight: normal;
@@ -874,10 +893,15 @@ header{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 30px 0 50px 0;
+  margin: 30px 0 20px 0;
 
   &_item{
     width: 30%;
+    margin-bottom: 30px;
+
+    @media @max1200{
+      width: 47%;
+    }
 
     @media @max768{
       width: 100%;

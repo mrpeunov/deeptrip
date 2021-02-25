@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import *
+from tours.views import *
 
 urlpatterns = [
     path('', CityPage.as_view(), name="city_page"),

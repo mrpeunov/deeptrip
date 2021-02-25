@@ -1,37 +1,15 @@
-import json
-
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render, redirect
-from django.views import View
-from django.views.generic.list import MultipleObjectMixin
+from django.http import HttpResponse
+from django.shortcuts import render
 
 from articles.models import Article
 from tours.models import *
 from base.services import FooterAndMenuTemplateView
-from rest_framework.viewsets import ModelViewSet
-from tours.serializers import TourSerializer
+
+
 from tours.services.get_cities import get_cities_for_city
+from tours.services.filters import get_count_tours
 from tours.services.get_h2 import get_h2
-from tours.services.get_tours import get_tours
-
-
-def get_more_tours(request):
-    """"""
-    if not request.is_ajax():
-        pass
-    if request.method != 'GET':
-        pass
-
-    page = int(request.GET.get("page"))
-    city = City.objects.get(slug=request.GET.get("city_slug"))
-    result_dict = get_tours(page, city)
-
-    response = render(request, 'city/elements/ajax_tours.html',
-                      {'tours': result_dict['list'], 'page': page})
-
-    response.set_cookie('more', result_dict['more'])
-
-    return response
+from tours.services.get_tours import get_tours, get_maximum
 
 
 class CityPage(FooterAndMenuTemplateView):
@@ -46,6 +24,7 @@ class CityPage(FooterAndMenuTemplateView):
         result_dict = get_tours(context['tour_page_number'], context['city'])
         context['tours'] = result_dict['list']
         context['more'] = result_dict['more']
+        context['maximum'] = get_maximum(context['city'])
         context['cities'] = get_cities_for_city(context['city_slug'])
         context['categories'] = Category.objects.all()
         context['magazine'] = Article.objects.all()
@@ -92,7 +71,50 @@ class MapPage(FooterAndMenuTemplateView):
 # api
 
 
-class ToursApiView(ModelViewSet):
-    queryset = Tour.objects.all()
-    serializer_class = TourSerializer
+def get_more_tours(request):
+    """
+    обработка AJAX
+    :param request: запрос
+    :return: словарь из html-кода и bool отвечаюещго на вопрос есть ли ещё экскурсии
+    """
+    if not request.is_ajax():
+        return HttpResponse(status=401)
 
+    if request.method != 'GET':
+        return HttpResponse(status=401)
+
+    # номер страницы, которую нужно вернуть
+    page = int(request.GET.get("page"))
+
+    # город
+    city = City.objects.get(slug=request.GET.get("city_slug"))
+    result_dict = get_tours(page, city)
+
+    # рендерим html
+    response = render(request, 'city/elements/ajax_tours.html',
+                      {'tours': result_dict['list'], 'page': page})
+
+    # добавим куки который будет отвечать
+    # за отображение кнопки показать ещё (bool, if true - показываем)
+    response.set_cookie('more', result_dict['more'])
+
+    return response
+
+
+def get_count_tours_for_filter_list(request):
+    if not request.is_ajax():
+        return HttpResponse(status=401)
+
+    if request.method != 'GET':
+        return HttpResponse(status=401)
+
+    # получаем список категорий
+    list_category = request.GET.getlist('checked_array[]')
+
+    # получаем city slug
+    city_slug = request.GET.get('city_slug')
+
+    # запрашиваем количество
+    count = get_count_tours(list_category, city_slug)
+
+    return HttpResponse(count)

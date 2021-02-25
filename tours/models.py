@@ -2,8 +2,6 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import TextField, Q, QuerySet
-from django.db.models.signals import post_save, m2m_changed
-from django.dispatch import receiver
 from django.urls import reverse
 from smart_selects.db_fields import ChainedManyToManyField, ChainedForeignKey
 
@@ -48,18 +46,31 @@ class City(models.Model):
         self.tours_count = main_count + more_count
         self.save()
 
+    def get_tours_count_str(self) -> str:
+        count = self.tours_count
+
+        if (count % 10 == 1) and count != 11:
+            return "{} экскурсия".format(count)
+
+        if 2 <= count % 10 <= 4 and count not in (12, 13, 14):
+            return "{} экскурсии".format(count)
+
+        if 5 <= count % 10 or\
+                count % 10 in (0, 1) or\
+                count in (12, 13, 14):
+            return "{} экскурсий".format(count)
+
     class Meta:
         verbose_name = "город"
         verbose_name_plural = "города"
 
 
 class Category(models.Model):
-    city = models.ForeignKey(City, on_delete=models.PROTECT, blank=True, null=True)
     title = models.CharField("Название категории", max_length=32)
     description = RichTextField("Описание категории")
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
-    important = models.BooleanField("Показывать в числе первых")
+    important = models.BooleanField("Показывать в числе первых")  # нужно ли?
     slug = models.SlugField("Slug (название в URL)", max_length=16, unique=True)
 
     def __str__(self):

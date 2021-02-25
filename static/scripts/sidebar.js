@@ -1,6 +1,4 @@
-//$(document).ready(function(){
-//    $("#sidebar_calculate").sticky({topSpacing:25});
-//});
+// старье
 
 function update_width(sidebar){
     let up = $('.tour_sidebar_information');

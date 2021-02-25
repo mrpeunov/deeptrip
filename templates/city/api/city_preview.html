@@ -9,7 +9,7 @@
     <div class="towns_item_content">
     {% if city_item.tours_count > 0 %}
         <div class="towns_item_title">{{ city_item.name }}</div>
-        <div class="towns_item_count">{{ city_item.tours_count }} экскурсий</div>
+        <div class="towns_item_count">{{ city_item.get_tours_count_str }} </div>
     {% else %}
         <div class="towns_item_title towns_item_disable">{{ city_item.name }}</div>
         <div class="towns_item_count towns_item_disable">скоро</div>
