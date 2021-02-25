@@ -22,8 +22,6 @@ class Cluster(models.Model):
 class City(models.Model):
     cluster = models.ForeignKey(Cluster, on_delete=models.PROTECT, null=True)
     name = models.CharField("Название города", max_length=32)
-    h1 = models.CharField("Заголовок h1", max_length=32)
-    h2 = models.CharField("Заголовок h2", max_length=32)
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
     slug = models.SlugField("Slug (название в URL)", max_length=16, unique=True)

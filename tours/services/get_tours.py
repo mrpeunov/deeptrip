@@ -40,7 +40,6 @@ def get_start_number(page: int) -> int:
     :param page: номер страницы
     :return: номер начального лимита экскурсий
     """
-
     start = 0
 
     if 0 < page < 4:

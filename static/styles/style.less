@@ -10,6 +10,7 @@
   dot: #eeedde;
   footer-bg: #f9f9f9;
   offer: #fcfcfc;
+  header-active: #f6f6f6;
 }
 
 @max576: ~"(max-width: 576px)";
@@ -52,7 +53,7 @@ img{
 
 .standard{
   &_button{
-    box-shadow: 0px 2px 8px 0px rgba(1, 1, 1, 0.2);
+    box-shadow: 0 2px 8px 0 rgba(1, 1, 1, 0.2);
     width: fit-content;
     background: #colors[white];
     outline: none;
@@ -83,13 +84,14 @@ img{
   height: 50px;
   z-index: 100;
   border-top: 1px solid #eeeeee;
-  box-shadow: 0px 9px 29px 0px rgba(1, 1, 1, 0.05);
+  box-shadow: 0 9px 29px 0 rgba(1, 1, 1, 0.05);
 
   &_item{
     text-decoration: none;
     margin: 10px 80px;
     text-align: center;
     font-weight: 500;
+    transition: 0.2s;
 
     &_map{
       background-image: url("../img/city/map.png");
@@ -166,6 +168,7 @@ img{
 header{
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .container{
@@ -192,9 +195,11 @@ header{
   &_info{
     display: flex;
     justify-content: space-between;
-    padding-top: 30px;
+    align-items: center;
+    padding-top: 20px;
 
     &_logo{
+      padding-top: 10px;
 
       &_first{
         font-weight: 900;
@@ -218,14 +223,15 @@ header{
       font-style: normal;
       color: #colors[white];
 
+
       a{
-        margin: 0 10px;
-        padding-bottom: 10px;
+        padding: 10px;
         color: #colors[white];
+        transition: 0.25s;
 
         &:hover{
-          transition: 0.3s;
-          opacity: 0.75;
+          background: rgba(246, 246, 246, 0.17);
+          border-radius: 15px;
         }
       }
 
@@ -235,7 +241,7 @@ header{
         color: #colors[white];
 
         &:hover{
-          opacity: 1!important;
+          background: rgba(246, 246, 246, 0)!important;
         }
 
         &:before{
@@ -255,10 +261,12 @@ header{
 
     &_place{
       color: #colors[white];
+      padding: 10px;
+      transition: 0.25s;
 
       &:hover{
-        transition: 0.3s;
-        opacity: 0.75;
+        background: rgba(246, 246, 246, 0.17);
+        border-radius: 15px;
       }
 
       @media @max768{
@@ -287,9 +295,6 @@ header{
     margin-top: 40px;
   }
 }
-
-
-
 
 .tours{
   &_items{
@@ -340,6 +345,25 @@ header{
 
 .preview{
   position: relative;
+
+  .owl-item{
+    position: relative;
+
+    &:after {
+      display: block;
+      content: "";
+      padding-bottom: 56.25%;
+    }
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      object-fit: cover;
+    }
+  }
+
+
 
   &_offer{
     background: #colors[offer];
@@ -629,8 +653,12 @@ header{
     padding-left: 80px;
     margin: 0 auto;
 
-    @media (min-width: 1116px){
-      padding-right: 40px;
+    @media (max-width: 1300px){
+      padding-right: 80px;
+    }
+
+    @media (max-width: 1300px){
+      padding-left: 40px;
     }
 
     @media @max1200{
@@ -641,9 +669,7 @@ header{
       padding-left: 20px;
     }
 
-    @media (max-width: 1300px){
-      padding-left: 40px;
-    }
+
   }
 
   &_column{
@@ -751,7 +777,7 @@ header{
       margin-left: 11%;
       vertical-align: bottom;
       background: #colors[white];
-      width: 0px;
+      width: 0;
       height: 20px;
       border: none;
 
@@ -810,7 +836,7 @@ header{
       align-items: center;
 
       span{
-        border-bottom: 1px solid #colors[dark3];
+        border-bottom: 1px solid #333333;
         font-weight: bold;
         cursor: pointer;
         font-size: 0.9rem;

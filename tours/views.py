@@ -11,6 +11,7 @@ from base.services import FooterAndMenuTemplateView
 from rest_framework.viewsets import ModelViewSet
 from tours.serializers import TourSerializer
 from tours.services.get_cities import get_cities_for_city
+from tours.services.get_h2 import get_h2
 from tours.services.get_tours import get_tours
 
 
@@ -48,6 +49,7 @@ class CityPage(FooterAndMenuTemplateView):
         context['cities'] = get_cities_for_city(context['city_slug'])
         context['categories'] = Category.objects.all()
         context['magazine'] = Article.objects.all()
+        context['h2'] = get_h2()
 
 
 class FilterPage(FooterAndMenuTemplateView):
