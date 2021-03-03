@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     //настройки owl gallery
     let preview_gallery_settings = {
         items: 1,
@@ -10,15 +11,6 @@ $(document).ready(function(){
         margin:0,
         dots: true,
     }
-
-
-
-    $('.owl-next').click(function() {
-        console.log('HMM');
-        return false;
-    });
-
-
 
     //обновление css отображения экскурсий
     //из-за кривой реализации justify-content space-between
@@ -84,5 +76,8 @@ $(document).ready(function(){
             }
         });
     });
+
+    //отменяем переход по ссылке
+    $('.owl-nav button').attr("onclick", "return false;")
 });
 

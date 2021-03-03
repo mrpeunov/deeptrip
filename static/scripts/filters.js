@@ -50,8 +50,16 @@ $(document).ready(function(){
         update_count();
     });
 
-    //обработаем клик по показать
-    $filter_item.click(function(){
+    $filter_item.click(function (){
         update_count();
+    })
+
+    //обработаем клик по показать
+    $filters_show.click(function(e){
+
+        //по неактивной кнопке не переходит
+        if($filters_show.hasClass('not_active')){
+            e.preventDefault()
+        }
     });
 })

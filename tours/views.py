@@ -4,7 +4,7 @@ from django.shortcuts import render
 from articles.models import Article
 from tours.models import *
 from base.services import FooterAndMenuTemplateView
-
+from tours.services.get_articles import get_articles
 
 from tours.services.get_cities import get_cities_for_city
 from tours.services.filters import get_count_tours, get_filters_queryset
@@ -25,9 +25,9 @@ class CityPage(FooterAndMenuTemplateView):
         context['tours'] = result_dict['list']
         context['more'] = result_dict['more']
         context['maximum'] = get_maximum(context['city'])
-        context['cities'] = get_cities_for_city(context['city_slug'])
+        context['cities'] = get_cities_for_city(context['city'])
         context['categories'] = get_filters_queryset(context['city'])
-        context['magazine'] = Article.objects.all()
+        context['magazine'] = get_articles(context['city'])
         context['h2'] = get_h2()
 
 

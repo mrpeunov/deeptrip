@@ -19,7 +19,7 @@ def _query_to_columns(query: List[City]) -> List[List[City]]:
     return columns
 
 
-def get_cities_for_city(city_slug: str) -> List[List[City]]:
+def get_cities_for_city(city: City) -> List[List[City]]:
     """
     Возвращает список городов в определенном виде
     :param city_slug:
@@ -28,7 +28,7 @@ def get_cities_for_city(city_slug: str) -> List[List[City]]:
     # ожидаем получить 8 городов
     wait_count_objects = 8
 
-    city = City.objects.get(slug=city_slug)
+    city_slug = city.slug
 
     # запрашиваем 8 городов с количество экускурсий >0 из кластера полученного города,
     # кроме самого этого города и сортируем по важности
