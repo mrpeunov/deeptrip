@@ -71,6 +71,17 @@ img{
       transform: scale(0.975);
     }
   }
+
+  &_gray_text{
+    color: #999999;
+    font-weight: normal;
+    font-size: 0.95rem;
+  }
+
+  &_text_small{
+    font-size: 0.95rem;
+    color: #333333;
+  }
 }
 
 .menu{
@@ -613,7 +624,6 @@ header{
       }
     }
   }
-
 }
 
 .search{
@@ -1022,6 +1032,7 @@ header{
   background: #colors[footer-bg];
   margin-bottom: 50px;
 
+
   &_container{
     @media @max768{
       display: flex;
@@ -1127,6 +1138,225 @@ header{
       @media @max768{
         width: 100%;
         text-align: center;
+      }
+    }
+  }
+}
+
+.tour{
+  &_header{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin: 10px 0;
+
+    &_behind{
+      position: relative;
+      padding: 10px;
+      margin-left: -10px;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:hover{
+        background: #colors[footer-bg];
+      }
+
+
+      img{
+        width: 10px;
+      }
+    }
+
+    &_utils{
+      display: flex;
+
+      &_util{
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        margin-right: -15px;
+        margin-left: 35px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        @media @max768{
+          margin-left: 25px;
+          padding: 10px;
+        }
+
+        &:hover{
+          background: #colors[footer-bg];
+          border-radius: 20px;
+          -webkit-transform: scale(0.975);
+          -ms-transform: scale(0.975);
+          transform: scale(0.975);
+
+          @media @max768{
+            border-radius: 50%;
+          }
+        }
+
+        &_img {
+          width: 20px;
+          margin-right: 10px;
+          display: flex;
+          align-items: center;
+
+          @media @max768{
+            margin: 0;
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+
+        &_text{
+          @media @max768{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &_upper{
+    display: flex;
+    flex-direction: column;
+
+    @media @max768{
+      flex-direction: column-reverse;
+    }
+  }
+
+  &_title{
+    h1{
+      margin-top: 40px;
+      font-size: 2.1rem;
+      margin-bottom: 10px;
+
+      @media @max768{
+        margin-top: 20px;
+      }
+    }
+
+    &_info {
+      display: flex;
+      align-items: center;
+
+      &_item {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+
+        &_img{
+          display: flex;
+          align-items: center;
+          width: 18px;
+          margin-right: 5px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &_wrap{
+      margin: 0;
+    }
+  }
+
+  &_gallery{
+
+    @media @max768{
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-areas:  "image-1 image-2 image-3"
+                          "image-1 image-4 image-5";
+      grid-template-columns: 50% calc(25% - 10px) calc(25% - 10px);
+      row-gap: 10px;
+      column-gap: 10px;
+      margin: 20px 0;
+
+
+      .image-1 {
+        grid-area: image-1;
+
+        img {
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+        }
+
+      }
+
+      .image-2 {
+        grid-area: image-2;
+      }
+
+      .image-3 {
+        grid-area: image-3;
+
+        img {
+          border-top-right-radius: 10px;
+        }
+      }
+
+      .image-4 {
+        grid-area: image-4;
+      }
+
+      .image-5 {
+        grid-area: image-5;
+
+        img {
+          border-bottom-right-radius: 10px;
+        }
+      }
+
+      &_item {
+        position: relative;
+
+        &:after {
+          display: block;
+          content: "";
+          padding-bottom: 56.25%;
+        }
+
+        img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &_wrap{
+      padding-left: 80px;
+      padding-right: 80px;
+
+      @media (max-width: 1300px){
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      @media @max768{
+        padding-left: 0;
+        padding-right: 0;
       }
     }
   }

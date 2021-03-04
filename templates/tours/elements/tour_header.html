@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="tour_header container ">
+    <a href="{{ tour.city.get_absolute_url }}" class="tour_header_behind">
+        <img src="{% static 'img/tour/arrow.png'  %}" alt="">
+    </a>
+    <div class="tour_header_utils">
+        <div class="tour_header_utils_util" id="copy">
+            <div class="tour_header_utils_util_img">
+                <img src="{% static 'img/tour/copy.png'  %}" alt="">
+            </div>
+            <div class="tour_header_utils_util_text">
+                Скопировать ссылку
+            </div>
+        </div>
+        <div class="tour_header_utils_util" id="like">
+            <div class="tour_header_utils_util_img">
+                <img src="{% static 'img/tour/liked.png'  %}" alt="">
+            </div>
+            <div class="tour_header_utils_util_text">
+                В избранное
+            </div>
+        </div>
+    </div>
+</div>

@@ -168,6 +168,15 @@ img {
   -ms-transform: scale(0.975);
   transform: scale(0.975);
 }
+.standard_gray_text {
+  color: #999999;
+  font-weight: normal;
+  font-size: 0.95rem;
+}
+.standard_text_small {
+  font-size: 0.95rem;
+  color: #333333;
+}
 .menu {
   position: fixed;
   bottom: 0;
@@ -1082,6 +1091,194 @@ header {
   .footer_links_link {
     width: 100%;
     text-align: center;
+  }
+}
+.tour_header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin: 10px 0;
+}
+.tour_header_behind {
+  position: relative;
+  padding: 10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.tour_header_behind:hover {
+  background: #f9f9f9;
+}
+.tour_header_behind img {
+  width: 10px;
+}
+.tour_header_utils {
+  display: flex;
+}
+.tour_header_utils_util {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  margin-right: -15px;
+  margin-left: 35px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+@media (max-width: 768px) {
+  .tour_header_utils_util {
+    margin-left: 25px;
+    padding: 10px;
+  }
+}
+.tour_header_utils_util:hover {
+  background: #f9f9f9;
+  border-radius: 20px;
+  -webkit-transform: scale(0.975);
+  -ms-transform: scale(0.975);
+  transform: scale(0.975);
+}
+@media (max-width: 768px) {
+  .tour_header_utils_util:hover {
+    border-radius: 50%;
+  }
+}
+.tour_header_utils_util_img {
+  width: 20px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .tour_header_utils_util_img {
+    margin: 0;
+  }
+}
+.tour_header_utils_util_img img {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .tour_header_utils_util_text {
+    display: none;
+  }
+}
+.tour_upper {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 768px) {
+  .tour_upper {
+    flex-direction: column-reverse;
+  }
+}
+.tour_title h1 {
+  margin-top: 40px;
+  font-size: 2.1rem;
+  margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+  .tour_title h1 {
+    margin-top: 20px;
+  }
+}
+.tour_title_info {
+  display: flex;
+  align-items: center;
+}
+.tour_title_info_item {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+.tour_title_info_item_img {
+  display: flex;
+  align-items: center;
+  width: 18px;
+  margin-right: 5px;
+}
+.tour_title_info_item_img img {
+  width: 100%;
+}
+.tour_title_wrap {
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .tour_gallery {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 768px) {
+  .tour_gallery {
+    display: grid;
+    grid-template-areas: "image-1 image-2 image-3" "image-1 image-4 image-5";
+    grid-template-columns: 50% calc(25% - 10px) calc(25% - 10px);
+    row-gap: 10px;
+    column-gap: 10px;
+    margin: 20px 0;
+  }
+  .tour_gallery .image-1 {
+    grid-area: image-1;
+  }
+  .tour_gallery .image-1 img {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .tour_gallery .image-2 {
+    grid-area: image-2;
+  }
+  .tour_gallery .image-3 {
+    grid-area: image-3;
+  }
+  .tour_gallery .image-3 img {
+    border-top-right-radius: 10px;
+  }
+  .tour_gallery .image-4 {
+    grid-area: image-4;
+  }
+  .tour_gallery .image-5 {
+    grid-area: image-5;
+  }
+  .tour_gallery .image-5 img {
+    border-bottom-right-radius: 10px;
+  }
+  .tour_gallery_item {
+    position: relative;
+  }
+  .tour_gallery_item:after {
+    display: block;
+    content: "";
+    padding-bottom: 56.25%;
+  }
+  .tour_gallery_item img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.tour_gallery_wrap {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+@media (max-width: 1300px) {
+  .tour_gallery_wrap {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .tour_gallery_wrap {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */

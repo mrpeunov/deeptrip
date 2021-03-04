@@ -1,0 +1,33 @@
+{% load static %}
+<div class="container tour_title_wrap">
+    <div class="tour_title">
+        <h1>{{ tour.title }}</h1>
+        <div class="tour_title_info">
+            <div class="tour_title_info_item">
+                <div class="tour_title_info_item_img">
+                    <img src="{% static 'img/preview/star.png' %}" alt="">
+                </div>
+                <div class="tour_title_info_item_text">
+                    <span class="standard_text_small">
+                        {{ tour.rating }}
+                    </span>
+                    <span class="standard_gray_text">
+                        ({{tour.count_comment }})
+                    </span>
+                </div>
+            </div>
+            {% if tour.rating > 4.0 and tour.count_comment > 3 %}
+            <div class="tour_title_info_item">
+                <div class="tour_title_info_item_img">
+                    <img src="{% static 'img/tour/ok.png' %}" alt="">
+                </div>
+                <div class="tour_title_info_item_text">
+                    <span class="standard_gray_text">
+                        Проверенный гид
+                    </span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

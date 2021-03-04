@@ -55,7 +55,6 @@ class TourPage(FooterAndMenuTemplateView):
         context['tour'] = tour
         context['comments'] = Comment.objects.filter(tour=tour)
         context['image_items'] = ImageItem.objects.filter(tour=tour)
-        print(context['image_items'])
         context['recommended_tours'] = RecommendedTour.objects.filter(main=tour)
 
 
