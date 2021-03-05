@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
 
 class ImageItemInline(admin.TabularInline):
@@ -51,7 +52,7 @@ class CityAdmin(admin.ModelAdmin):
 
 
 @admin.register(Tour)
-class TourAdmin(admin.ModelAdmin):
+class TourAdmin(admin.ModelAdmin, DynamicArrayMixin):
     list_display = ('title', 'notes', 'rating', 'count_comment')
     list_editable = ('notes',)
     readonly_fields = ('count_comment', 'rating')

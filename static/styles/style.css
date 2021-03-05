@@ -177,6 +177,11 @@ img {
   font-size: 0.95rem;
   color: #333333;
 }
+.standard_text_strong {
+  font-size: 1rem;
+  color: #333333;
+  font-weight: 500;
+}
 .menu {
   position: fixed;
   bottom: 0;
@@ -1283,6 +1288,37 @@ header {
   }
 }
 .tour_gallery_wrap .owl-stage-outer {
-  border-radius: 0px !important;
+  border-radius: 0 !important;
+}
+.tour_content {
+  display: flex;
+  justify-content: space-between;
+}
+.tour_information {
+  width: 68%;
+}
+.tour_information_advantages {
+  margin: 20px 0;
+}
+.tour_information_advantages_item {
+  display: flex;
+  margin-bottom: 20px;
+}
+.tour_information_advantages_item_img {
+  max-width: 27px;
+  margin-right: 20px;
+  margin-top: 2px;
+}
+.tour_information_advantages_item img {
+  width: 100%;
+}
+.tour_information_advantages_item_text {
+  display: flex;
+  height: 40px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.tour_description .tour_sidebar {
+  width: 30%;
 }
 /*# sourceMappingURL=style.css.map */

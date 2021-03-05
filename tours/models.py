@@ -1,3 +1,4 @@
+from django_better_admin_arrayfield.models.fields import ArrayField
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -128,8 +129,21 @@ class Tour(models.Model):
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
 
-    description = TextField("Описание экскурсии")
-    include = RichTextField("Включено")
+    description = RichTextField("Описание экскурсии")
+
+    include_list = ArrayField(
+        models.CharField(max_length=30, blank=True),
+        verbose_name="Включено",
+        size=6,
+        blank=True,
+        default="{Трансфер в радиусе 5 км, Услуги гида}")
+
+    add_price_list = ArrayField(
+        models.CharField(max_length=30, blank=True),
+        verbose_name="За дополнительную плату",
+        size=6,
+        blank=True,
+        default="{}")
     price = models.PositiveIntegerField("Цена")
     image = models.ImageField("Основная фотография")
     group = models.BooleanField("Тип", choices=GROUP_CHOICES)

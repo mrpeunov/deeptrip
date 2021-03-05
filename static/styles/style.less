@@ -82,6 +82,12 @@ img{
     font-size: 0.95rem;
     color: #333333;
   }
+
+  &_text_strong{
+    font-size: 1rem;
+    color: #333333;
+    font-weight: 500;
+  }
 }
 
 .menu{
@@ -1033,7 +1039,6 @@ header{
   background: #colors[footer-bg];
   margin-bottom: 50px;
 
-
   &_container{
     @media @max768{
       display: flex;
@@ -1361,8 +1366,51 @@ header{
       }
 
       & .owl-stage-outer {
-          border-radius: 0px !important;
+          border-radius: 0 !important;
       }
     }
+  }
+
+  &_content{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_information{
+    width: 68%;
+
+    &_advantages{
+      margin: 20px 0;
+
+      &_item{
+        display: flex;
+        margin-bottom: 20px;
+
+        &_img{
+          max-width: 27px;
+          margin-right: 20px;
+          margin-top: 2px;
+        }
+
+        img{
+          width: 100%;
+        }
+
+        &_text{
+          display: flex;
+          height: 40px;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+      }
+    }
+
+
+  }
+
+  &_description
+
+  .tour_sidebar{
+    width: 30%;
   }
 }
