@@ -1,5 +1,5 @@
 // старье
-
+/*
 function update_width(sidebar){
     let up = $('.tour_sidebar_information');
     let pl = parseInt(up.css("padding-left"), 10);
@@ -46,4 +46,4 @@ $(function(){
 		    calculate.removeClass('tour_sidebar_calculate_bottom');
         }
 	});
-});
+});*/

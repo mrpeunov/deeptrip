@@ -446,6 +446,7 @@ header {
   padding: 5px;
   border-radius: 5px;
   color: #333333;
+  white-space: nowrap;
 }
 .preview_like {
   position: absolute;
@@ -1280,5 +1281,8 @@ header {
     padding-left: 0;
     padding-right: 0;
   }
+}
+.tour_gallery_wrap .owl-stage-outer {
+  border-radius: 0px !important;
 }
 /*# sourceMappingURL=style.css.map */

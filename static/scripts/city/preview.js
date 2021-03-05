@@ -27,7 +27,7 @@ $(document).ready(function(){
 
     //запуск owl gallery
     function preview_galley_create(){
-       $('.preview_gallery').owlCarousel(preview_gallery_settings);
+       $('.preview_gallery_item').owlCarousel(preview_gallery_settings);
     }
 
     //запуск при загрузке
