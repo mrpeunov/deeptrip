@@ -1,7 +1,5 @@
-// старье
-/*
 function update_width(sidebar){
-    let up = $('.tour_sidebar_information');
+    let up = $(".tour_sidebar");
     let pl = parseInt(up.css("padding-left"), 10);
     let pr = parseInt(up.css("padding-right"), 10);
 
@@ -11,6 +9,8 @@ function update_width(sidebar){
 $(function(){
     //фиксируемый блок
 	let calculate = $("#sidebar_calculate");
+
+	console.log("допилить этот скрипт");
 
 	let pt = parseInt(calculate.css("padding-top"), 10);
 	let pb = parseInt(calculate.css("padding-bottom"), 10);
@@ -34,9 +34,11 @@ $(function(){
 	$window.scroll(function(){
 	    //фиксирование на старте
 		if (start < $window.scrollTop()) {
-			calculate.addClass('tour_sidebar_calculate_fixed');
+			calculate.addClass('fixed');
+			let right = $('.tour_content').css('padding-right');
+			calculate.css('right', right)
 		} else {
-			calculate.removeClass('tour_sidebar_calculate_fixed');
+			calculate.removeClass('fixed');
 		}
 
 		//сброс фиксирования на финише
@@ -46,4 +48,4 @@ $(function(){
 		    calculate.removeClass('tour_sidebar_calculate_bottom');
         }
 	});
-});*/
+});

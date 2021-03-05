@@ -1408,9 +1408,18 @@ header{
 
   }
 
-  &_description
-
-  .tour_sidebar{
+  &_sidebar{
     width: 30%;
+    position: relative;
+
+    .fixed{
+      top: 0;
+      right: 0;
+      position: fixed;
+    }
+  }
+
+  &_calculate{
+    width: 100%;
   }
 }

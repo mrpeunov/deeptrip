@@ -1318,7 +1318,16 @@ header {
   flex-direction: column;
   justify-content: space-between;
 }
-.tour_description .tour_sidebar {
+.tour_sidebar {
   width: 30%;
+  position: relative;
+}
+.tour_sidebar .fixed {
+  top: 0;
+  right: 0;
+  position: fixed;
+}
+.tour_calculate {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
