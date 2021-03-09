@@ -1318,6 +1318,15 @@ header {
   flex-direction: column;
   justify-content: space-between;
 }
+.tour_information_video_iframe {
+  width: 100%;
+  padding-bottom: 55.65%;
+  position: relative;
+}
+.tour_information_video_iframe iframe {
+  position: absolute;
+  top: 0;
+}
 .tour_sidebar {
   width: 30%;
   position: relative;

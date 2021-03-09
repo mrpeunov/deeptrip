@@ -1,1 +1,11 @@
-РЕКОММЕНДАЦИИ
+<div class="tours container">
+    <div class="tours_items">
+        {% for item in recommended_tours %}
+            {% with item.add as preview %}
+            <div class="tours_item">
+                {% include 'tours/api/tour_preview.html' %}
+            </div>
+            {% endwith %}
+        {% endfor %}
+    </div>
+</div>
