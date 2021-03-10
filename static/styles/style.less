@@ -595,8 +595,8 @@ header{
     transition: 0.3s;
 
     button{
-      width: 30px !important;
-      height: 30px !important;
+      width: 30px;
+      height: 30px;
       border-radius: 50%!important;
       outline: none;
     }
@@ -606,7 +606,7 @@ header{
     }
 
     .owl-prev{
-      position: absolute !important;
+      position: absolute;
       top: calc(50% - 15px);
       left: 10px;
       background-image: url("../img/preview/prev.png") !important;
@@ -619,7 +619,7 @@ header{
     }
 
     .owl-next{
-      position: absolute !important;
+      position: absolute;
       top: calc(50% - 20px);
       right: 10px;
       background-image: url("../img/preview/next.png") !important;
@@ -1282,6 +1282,12 @@ header{
 
   &_gallery{
 
+    &_button {
+      display: none;
+    }
+
+
+
     @media @max768{
       width: 100%;
       box-sizing: border-box;
@@ -1295,6 +1301,14 @@ header{
       row-gap: 10px;
       column-gap: 10px;
       margin: 20px 0;
+
+      &_button {
+        display: block;
+        position: absolute;
+        bottom: 40px;
+        right: calc(50% + 20px);
+        z-index: 100;
+      }
 
 
       .image-1 {
@@ -1348,12 +1362,21 @@ header{
           height: 100%;
           object-fit: cover;
         }
+
+        &_none{
+          display: none;
+        }
       }
     }
 
     &_wrap{
       padding-left: 80px;
       padding-right: 80px;
+      position: relative;
+
+      .gallery_open_info, .gallery_button_close{
+        display: none;
+      }
 
       @media (max-width: 1300px){
         padding-left: 40px;
@@ -1368,6 +1391,87 @@ header{
       & .owl-stage-outer {
           border-radius: 0 !important;
       }
+    }
+
+    &_open{
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 1000;
+      background: #colors[white];
+      display: flex;
+      justify-content: center;
+
+      .gallery_open_info{
+        position: absolute;
+        display: block;
+      }
+
+      .gallery_button_close{
+        display: block;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: 40px;
+        top: 40px;
+        background: url("../img/tour/close.png") no-repeat;
+        background-size: contain;
+        cursor: pointer;
+      }
+
+      .tour_gallery{
+        width: 70%;
+        margin: 0;
+        position: absolute;
+        left: 15%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        &_button{
+          display: none;
+        }
+
+        &_item_none{
+          display: block;
+        }
+      }
+
+      .owl-nav{
+        opacity: 1;
+
+        .disabled{
+          opacity: .5 !important;
+
+          &:hover{
+            transform: none !important;
+          }
+        }
+
+        button{
+          position: fixed !important;
+          height: 40px !important;
+          width: 40px !important;
+          top: 50%;
+          margin-top: -15px;
+          box-shadow: 0 2px 7px 0 rgba(1, 1, 1, 0.2);
+          background: none !important;
+          cursor: pointer;
+        }
+      }
+
+      .owl-prev{
+        left: 50px !important;
+      }
+
+      .owl-next{
+        right: 50px !important;
+      }
+
     }
   }
 

@@ -1,4 +1,4 @@
-<div class="preview tour_gallery_wrap">
+<div class="preview tour_gallery_wrap" id="tour-gallery-wrap">
     <div class="tour_gallery preview_gallery owl-carousel owl-theme" id="tour-gallery">
         <div class="image-1 tour_gallery_item">
             <img  src="{{ tour.image.url }}" alt="">
@@ -15,6 +15,17 @@
         <div class="image-5 tour_gallery_item">
             <img  src="{{ tour.image.url }}" alt="">
         </div>
+        <div class="tour_gallery_item tour_gallery_item_none">
+            <img  src="{{ tour.image.url }}" alt="">
+        </div>
+    </div>
+    <button class="tour_gallery_button standard_button" id="all_photo">
+        Все фотографии
+    </button>
+    <div class="gallery_button_close" id="gallery_button_close">
+
+    </div>
+    <div class="gallery_open_info" id="gallery_open_info">
 
     </div>
 </div>

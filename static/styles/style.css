@@ -618,8 +618,8 @@ header {
   transition: 0.3s;
 }
 .preview .owl-nav button {
-  width: 30px !important;
-  height: 30px !important;
+  width: 30px;
+  height: 30px;
   border-radius: 50%!important;
   outline: none;
 }
@@ -627,7 +627,7 @@ header {
   outline: none;
 }
 .preview .owl-nav .owl-prev {
-  position: absolute !important;
+  position: absolute;
   top: calc(50% - 15px);
   left: 10px;
   background-image: url("../img/preview/prev.png") !important;
@@ -638,7 +638,7 @@ header {
   font-size: 0;
 }
 .preview .owl-nav .owl-next {
-  position: absolute !important;
+  position: absolute;
   top: calc(50% - 20px);
   right: 10px;
   background-image: url("../img/preview/next.png") !important;
@@ -1214,6 +1214,9 @@ header {
 .tour_title_wrap {
   margin: 0;
 }
+.tour_gallery_button {
+  display: none;
+}
 @media (max-width: 768px) {
   .tour_gallery {
     width: 100%;
@@ -1228,6 +1231,13 @@ header {
     row-gap: 10px;
     column-gap: 10px;
     margin: 20px 0;
+  }
+  .tour_gallery_button {
+    display: block;
+    position: absolute;
+    bottom: 40px;
+    right: calc(50% + 20px);
+    z-index: 100;
   }
   .tour_gallery .image-1 {
     grid-area: image-1;
@@ -1270,10 +1280,18 @@ header {
     height: 100%;
     object-fit: cover;
   }
+  .tour_gallery_item_none {
+    display: none;
+  }
 }
 .tour_gallery_wrap {
   padding-left: 80px;
   padding-right: 80px;
+  position: relative;
+}
+.tour_gallery_wrap .gallery_open_info,
+.tour_gallery_wrap .gallery_button_close {
+  display: none;
 }
 @media (max-width: 1300px) {
   .tour_gallery_wrap {
@@ -1289,6 +1307,74 @@ header {
 }
 .tour_gallery_wrap .owl-stage-outer {
   border-radius: 0 !important;
+}
+.tour_gallery_open {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+.tour_gallery_open .gallery_open_info {
+  position: absolute;
+  display: block;
+}
+.tour_gallery_open .gallery_button_close {
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 40px;
+  top: 40px;
+  background: url("../img/tour/close.png") no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+.tour_gallery_open .tour_gallery {
+  width: 70%;
+  margin: 0;
+  position: absolute;
+  left: 15%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.tour_gallery_open .tour_gallery_button {
+  display: none;
+}
+.tour_gallery_open .tour_gallery_item_none {
+  display: block;
+}
+.tour_gallery_open .owl-nav {
+  opacity: 1;
+}
+.tour_gallery_open .owl-nav .disabled {
+  opacity: 0.5 !important;
+}
+.tour_gallery_open .owl-nav .disabled:hover {
+  transform: none !important;
+}
+.tour_gallery_open .owl-nav button {
+  position: fixed !important;
+  height: 40px !important;
+  width: 40px !important;
+  top: 50%;
+  margin-top: -15px;
+  box-shadow: 0 2px 7px 0 rgba(1, 1, 1, 0.2);
+  background: none !important;
+  cursor: pointer;
+}
+.tour_gallery_open .owl-prev {
+  left: 50px !important;
+}
+.tour_gallery_open .owl-next {
+  right: 50px !important;
 }
 .tour_content {
   display: flex;

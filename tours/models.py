@@ -135,15 +135,13 @@ class Tour(models.Model):
         models.CharField(max_length=30, blank=True),
         verbose_name="Включено",
         size=6,
-        blank=True,
-        default="{Трансфер в радиусе 5 км, Услуги гида}")
+        blank=True)
 
     add_price_list = ArrayField(
         models.CharField(max_length=30, blank=True),
         verbose_name="За дополнительную плату",
         size=6,
-        blank=True,
-        default="{}")
+        blank=True)
     price = models.PositiveIntegerField("Цена")
     image = models.ImageField("Основная фотография")
     group = models.BooleanField("Тип", choices=GROUP_CHOICES)
