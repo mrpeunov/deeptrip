@@ -5,6 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import TextField, Q, QuerySet
 from django.urls import reverse
 from smart_selects.db_fields import ChainedManyToManyField, ChainedForeignKey
+from jsonfield import JSONField
 
 
 class Cluster(models.Model):
@@ -129,7 +130,8 @@ class Tour(models.Model):
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
 
-    description = RichTextField("Описание экскурсии")
+    description_mini = models.TextField("Описание экскурсии (мини)")
+    description = models.TextField("Описание экскурсии (полное)")
 
     include_list = ArrayField(
         models.CharField(max_length=30, blank=True),
@@ -142,6 +144,52 @@ class Tour(models.Model):
         verbose_name="За дополнительную плату",
         size=6,
         blank=True)
+
+    advantage1_title = models.CharField("Трансфер (заголовок)",
+                                        max_length=32,
+                                        blank=True,
+                                        default="Трансфер предусмотрен")
+    advantage1_description = models.CharField("Трансфер (описание)",
+                                              max_length=64,
+                                              blank=True,
+                                              default="Бестлатно привезем и отвезем обратно")
+
+    advantage2_title = models.CharField("Группа/индвидуальная (заголовок)",
+                                        max_length=32,
+                                        blank=True,
+                                        default="Индивидуальная")
+    advantage2_description = models.CharField("Группа/индвидуальная (описание)",
+                                              max_length=64,
+                                              blank=True,
+                                              default="Экскурсия без посторонних людей")
+
+    advantage3_title = models.CharField("Время (заголовок)",
+                                        max_length=32,
+                                        blank=True,
+                                        default="2 часа")
+    advantage3_description = models.CharField("Время (описание)",
+                                              max_length=64,
+                                              blank=True,
+                                              default="Включая 15-минутный инструктаж")
+
+    advantage4_title = models.CharField("Дети (заголовок)",
+                                        max_length=32,
+                                        blank=True,
+                                        default="Можно с детьми")
+    advantage4_description = models.CharField("Дети (описание)",
+                                              max_length=64,
+                                              blank=True,
+                                              default="Дети старше 14 лет допускаются к управлению")
+
+    advantage5_title = models.CharField("Предоплата (заголовок)",
+                                        max_length=32,
+                                        blank=True,
+                                        default="Без предоплаты")
+    advantage5_description = models.CharField("Предоплата (описание)",
+                                              max_length=64,
+                                              blank=True,
+                                              default="Бронируйте экскурсию без предоплаты")
+
     price = models.PositiveIntegerField("Цена")
     image = models.ImageField("Основная фотография")
     group = models.BooleanField("Тип", choices=GROUP_CHOICES)

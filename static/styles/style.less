@@ -78,16 +78,33 @@ img{
     font-size: 0.95rem;
   }
 
-  &_text_small{
-    font-size: 0.95rem;
-    color: #333333;
-  }
-
-  &_text_strong{
-    font-size: 1rem;
-    color: #333333;
+  &_h2{
+    font-size: 1.15rem;
     font-weight: 500;
   }
+
+  &_text{
+    &_simple{
+      font-weight: normal;
+    }
+
+    &_strong{
+      font-size: 1rem;
+      color: #333333;
+      font-weight: 500;
+    }
+
+    &_small{
+      font-size: 0.95rem;
+      color: #333333;
+    }
+
+    &_bold{
+      font-weight: bold;
+    }
+  }
+
+
 }
 
 .menu{
@@ -1174,7 +1191,6 @@ header{
         background: #colors[footer-bg];
       }
 
-
       img{
         width: 10px;
       }
@@ -1482,6 +1498,37 @@ header{
 
   &_information{
     width: 68%;
+
+    &_description{
+      padding-top: 30px;
+      border-top: 2px solid #eeeeee;
+
+      .hidden_text{
+        display: none;
+      }
+
+      &_text{
+        p{
+          line-height: 1.5;
+          margin-bottom: 15px;
+          margin-top: 15px;
+
+          &:last-child{
+            margin-bottom: 0;
+          }
+        }
+
+        a{
+          color: #3ba3c3;
+          transition: 0.2s;
+          text-decoration: underline;
+
+          &:hover{
+            color: #17728e;
+          }
+        }
+      }
+    }
 
     &_advantages{
       margin: 20px 0;

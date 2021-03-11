@@ -1,93 +1,130 @@
+{% load replace_p %}
 {% load static %}
 
 <div class="tour_information">
 
     <div class="tour_information_advantages">
+        {% if tour.advantage1_title %}
         <div class="tour_information_advantages_item">
             <div class="tour_information_advantages_item_img">
                 <img src="{% static 'img/tour/transfer.png' %}" alt="">
             </div>
             <div class="tour_information_advantages_item_text">
                 <div class="standard_text_strong">
-                    Трансфер предусмотрен
+                    {{ tour.advantage1_title }}
                 </div>
                 <div class="standard_gray_text">
-                    Бесплатно привезём и отвезём обратно
+                    {{ tour.advantage1_description }}
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% if tour.advantage2_title %}
         <div class="tour_information_advantages_item">
             <div class="tour_information_advantages_item_img">
                 <img src="{% static 'img/tour/group.png' %}" alt="">
             </div>
             <div class="tour_information_advantages_item_text">
                 <div class="standard_text_strong">
-                    Индвидуальная
+                    {{ tour.advantage2_title }}
                 </div>
                 <div class="standard_gray_text">
-                    Как твоя девушка
+                    {{ tour.advantage2_description }}
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% if tour.advantage3_title %}
         <div class="tour_information_advantages_item">
             <div class="tour_information_advantages_item_img">
                 <img src="{% static 'img/tour/time.png' %}" alt="">
             </div>
             <div class="tour_information_advantages_item_text">
                 <div class="standard_text_strong">
-                    2 часа
+                    {{ tour.advantage3_title }}
                 </div>
                 <div class="standard_gray_text">
-                    Включая время в очереди
+                    {{ tour.advantage3_description }}
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% if tour.advantage4_title %}
         <div class="tour_information_advantages_item">
             <div class="tour_information_advantages_item_img">
                 <img src="{% static 'img/tour/children.png' %}" alt="">
             </div>
             <div class="tour_information_advantages_item_text">
                 <div class="standard_text_strong">
-                    Можно с детьми
+                    {{ tour.advantage4_title }}
                 </div>
                 <div class="standard_gray_text">
-                    Если выёбываться не будут
+                    {{ tour.advantage4_description }}
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% if tour.advantage5_title %}
+        <div class="tour_information_advantages_item">
+            <div class="tour_information_advantages_item_img">
+                <img src="{% static 'img/tour/card.png' %}" alt="">
+            </div>
+            <div class="tour_information_advantages_item_text">
+                <div class="standard_text_strong">
+                    {{ tour.advantage5_title }}
+                </div>
+                <div class="standard_gray_text">
+                    {{ tour.advantage5_description }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 
     <div class="tour_information_description">
         <h2 class="standard_h2">
             Описание экскурсии
         </h2>
-        <div class="tour_information_description_text">
-            <p>{{ tour.description }}</p>
-            <p id="all_text" style="display:none">{{ tour.description }}</p>
-            <a id="show_text_button" href="javascript:show_text();">Показать полностью</a>
+
+
+
+        <div class="tour_information_description_text standard_text_simple">
+            {% with parts=tour.description|replace_two_parts:3 %}
+                <span>
+                 {{ parts.first|safe }}
+                </span>
+                <span id="all_text" class="hidden_text">
+                 {{ parts.second|safe }}
+                </span>
+            {% endwith %}
+            <a id="show_text_button" class="standard_text_bold" href="javascript:show_text();">Показать полностью</a>
         </div>
 
-        <div class="tour_information_description_include">
-            <h3 class="standard_h3">
-                Описание экскурсии
-            </h3>
-            <ul>
-                {% for item in tour.include_list %}
-                    <li>{{ item }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+        {% if tour.add_price_list %}
+            <div class="tour_information_description_include">
+                <h3 class="standard_h3">
+                    Включено
+                </h3>
+                <ul>
+                    {% for item in tour.include_list %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
 
-        <div class="tour_information_description_add">
-            <h3 class="standard_h3">
-                За дополнительную плату
-            </h3>
-            <ul>
-                {% for item in tour.add_price_list %}
-                    <li>{{ item }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+        {% if tour.add_price_list %}
+            <div class="tour_information_description_add">
+                <h3 class="standard_h3">
+                    За дополнительную плату
+                </h3>
+                <ul>
+                    {% for item in tour.add_price_list %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
 
     </div>
 

@@ -173,14 +173,24 @@ img {
   font-weight: normal;
   font-size: 0.95rem;
 }
-.standard_text_small {
-  font-size: 0.95rem;
-  color: #333333;
+.standard_h2 {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+.standard_text_simple {
+  font-weight: normal;
 }
 .standard_text_strong {
   font-size: 1rem;
   color: #333333;
   font-weight: 500;
+}
+.standard_text_small {
+  font-size: 0.95rem;
+  color: #333333;
+}
+.standard_text_bold {
+  font-weight: bold;
 }
 .menu {
   position: fixed;
@@ -1382,6 +1392,29 @@ header {
 }
 .tour_information {
   width: 68%;
+}
+.tour_information_description {
+  padding-top: 30px;
+  border-top: 2px solid #eeeeee;
+}
+.tour_information_description .hidden_text {
+  display: none;
+}
+.tour_information_description_text p {
+  line-height: 1.5;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.tour_information_description_text p:last-child {
+  margin-bottom: 0;
+}
+.tour_information_description_text a {
+  color: #3ba3c3;
+  transition: 0.2s;
+  text-decoration: underline;
+}
+.tour_information_description_text a:hover {
+  color: #17728e;
 }
 .tour_information_advantages {
   margin: 20px 0;

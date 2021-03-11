@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'orders',  # приложение для заказов и всего, что с ними связано
     'tours',  # для экскурсий
     'smart_selects',  # для красивого заполнения many-to-many
-    'django_better_admin_arrayfield', # Admin Field
+    'django_better_admin_arrayfield',  # Admin Field
+    'django_json_widget',
 ]
 
 MIDDLEWARE = [

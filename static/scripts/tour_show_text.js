@@ -1,12 +1,13 @@
 function show_text(){
     let $text = $("#all_text")
     let $button = $("#show_text_button");
+
     if($text.css("display") === "none"){
-        $text.css("display", "block");
-        $button.html("Скрыть текст");
+        $button.html("Скрыть");
     }
     else{
-        $text.css("display", "none");
-        $button.html("Показать текст");
+        $button.html("Показать полностью");
     }
+
+    $text.slideToggle(300);
 }
