@@ -168,11 +168,6 @@ img {
   -ms-transform: scale(0.975);
   transform: scale(0.975);
 }
-.standard_gray_text {
-  color: #999999;
-  font-weight: normal;
-  font-size: 0.95rem;
-}
 .standard_h2 {
   font-size: 1.15rem;
   font-weight: 500;
@@ -185,12 +180,21 @@ img {
   color: #333333;
   font-weight: 500;
 }
+.standard_text_gray {
+  color: #999999;
+  font-weight: normal;
+  font-size: 0.95rem;
+}
 .standard_text_small {
   font-size: 0.95rem;
   color: #333333;
 }
 .standard_text_bold {
   font-weight: bold;
+}
+.standard_line_top {
+  padding-top: 30px;
+  border-top: 2px solid #eeeeee;
 }
 .menu {
   position: fixed;
@@ -1240,7 +1244,7 @@ header {
     grid-template-columns: 50% calc(25% - 10px) calc(25% - 10px);
     row-gap: 10px;
     column-gap: 10px;
-    margin: 20px 0;
+    margin-top: 20px;
   }
   .tour_gallery_button {
     display: block;
@@ -1392,10 +1396,7 @@ header {
 }
 .tour_information {
   width: 68%;
-}
-.tour_information_description {
-  padding-top: 30px;
-  border-top: 2px solid #eeeeee;
+  padding-top: 20px;
 }
 .tour_information_description .hidden_text {
   display: none;
@@ -1437,6 +1438,9 @@ header {
   flex-direction: column;
   justify-content: space-between;
 }
+.tour_information_video {
+  margin-bottom: 30px;
+}
 .tour_information_video_iframe {
   width: 100%;
   padding-bottom: 55.65%;
@@ -1446,16 +1450,83 @@ header {
   position: absolute;
   top: 0;
 }
+.tour_information_review_items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.tour_information_review_item {
+  width: 48%;
+  margin-bottom: 20px;
+}
+.tour_information_review_item_header {
+  display: flex;
+  margin-bottom: 15px;
+}
+.tour_information_review_item_header_left {
+  width: 50px;
+  height: 50px;
+}
+.tour_information_review_item_header_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 0 5px 10px;
+}
+.tour_information_review_footer {
+  display: flex;
+  justify-content: space-between;
+}
+.tour_information_review_footer a {
+  text-decoration: underline;
+}
 .tour_sidebar {
   width: 30%;
   position: relative;
+  margin-top: 20px;
 }
 .tour_sidebar .fixed {
-  top: 0;
+  top: 20px;
   right: 0;
   position: fixed;
 }
 .tour_calculate {
+  border-radius: 20px;
+  box-shadow: 0px 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
+  padding: 20px;
+}
+.tour_calculate_strong {
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+.tour_calculate_buttons button {
+  outline: none;
+  border: none;
+  transition: 0.3s;
+  cursor: pointer;
   width: 100%;
+}
+.tour_calculate_buttons button:hover {
+  -webkit-transform: scale(0.975);
+  -ms-transform: scale(0.975);
+  transform: scale(0.975);
+}
+.tour_calculate_buttons_booking {
+  background-image: -moz-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  background-image: -webkit-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  background-image: -ms-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  border-radius: 15px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.tour_calculate_buttons_question {
+  font-size: 0.95rem;
+  font-weight: bold;
+  background: none;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

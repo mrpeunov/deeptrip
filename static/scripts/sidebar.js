@@ -22,9 +22,9 @@ $(function(){
 
 	let $window = $(window);
 
-	update_width(calculate);
+	//update_width(calculate);
     $window.resize(function (){
-        update_width(calculate);
+        //update_width(calculate);
     })
 
 

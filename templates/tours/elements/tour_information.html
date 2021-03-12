@@ -81,12 +81,10 @@
         {% endif %}
     </div>
 
-    <div class="tour_information_description">
+    <div class="tour_information_description standard_line_top">
         <h2 class="standard_h2">
             Описание экскурсии
         </h2>
-
-
 
         <div class="tour_information_description_text standard_text_simple">
             {% with parts=tour.description|replace_two_parts:3 %}
@@ -128,7 +126,7 @@
 
     </div>
 
-    <div class="tour_information_video">
+    <div class="tour_information_video standard_line_top">
         <h2 class="standard_h2">
             Видео
         </h2>
@@ -142,21 +140,31 @@
         </div>
     </div>
 
-    <div class="tour_information_review">
+    <div class="tour_information_review standard_line_top">
         <div class="tour_information_review_header">
             <h2 class="standard_h2">Отзывы</h2>
         </div>
 
         <div class="tour_information_review_items">
-            <div class="tour_information_review_items_item">
-                <div class="tour_information_review_items_item_header"></div>
-                <div class="tour_information_review_items_text"></div>
+            {% for comment in comments %}
+            <div class="tour_information_review_item">
+                <div class="tour_information_review_item_header">
+                    <div class="tour_information_review_item_header_left">
+                        <img src="{% static 'img/tour/comment.png' %}" alt="">
+                    </div>
+                    <div class="tour_information_review_item_header_right">
+                        <div class="standard_text_strong">{{ comment.name }}</div>
+                        <div class="standard_text_gray">{{ comment.date }}</div>
+                    </div>
+                </div>
+                <div class="tour_information_review_item_text">{{ comment.content }}</div>
             </div>
+            {% endfor %}
         </div>
         
         <div class="tour_information_review_footer">
-            <a href="/">Ещё отзывы</a>
-            <a href="/">Оставить отзыв</a>
+            <a class="standard_text_bold" href="/">Ещё отзывы</a>
+            <a class="standard_text_bold" href="/">Оставить отзыв</a>
         </div>
     </div>
 
