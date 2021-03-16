@@ -2,7 +2,12 @@
 
 <div class="tour_header container ">
     <a href="{{ tour.city.get_absolute_url }}" class="tour_header_behind">
-        <img src="{% static 'img/tour/arrow.png'  %}" alt="">
+        <div class="tour_header_behind_img">
+            <img src="{% static 'img/tour/arrow.png'  %}" alt="">
+        </div>
+        <div class="tour_header_behind_text">
+            Карта
+        </div>
     </a>
     <div class="tour_header_utils">
         <div class="tour_header_utils_util" id="copy">

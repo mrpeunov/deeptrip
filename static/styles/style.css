@@ -1125,8 +1125,6 @@ header {
   padding: 10px;
   margin-left: -10px;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1135,9 +1133,16 @@ header {
 }
 .tour_header_behind:hover {
   background: #f9f9f9;
+  border-radius: 20px;
+  -webkit-transform: scale(0.975);
+  -ms-transform: scale(0.975);
+  transform: scale(0.975);
 }
-.tour_header_behind img {
+.tour_header_behind_img {
+  margin-right: 10px;
   width: 10px;
+  display: flex;
+  align-items: center;
 }
 .tour_header_utils {
   display: flex;
@@ -1338,6 +1343,7 @@ header {
 .tour_gallery_open .gallery_open_info {
   position: absolute;
   display: block;
+  font-weight: 500;
 }
 .tour_gallery_open .gallery_button_close {
   display: block;
@@ -1346,9 +1352,15 @@ header {
   height: 25px;
   right: 40px;
   top: 40px;
-  background: url("../img/tour/close.png") no-repeat;
   background-size: contain;
   cursor: pointer;
+  transition: 0.3s;
+}
+.tour_gallery_open .gallery_button_close:hover {
+  border-radius: 20px;
+  -webkit-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
 }
 .tour_gallery_open .tour_gallery {
   width: 70%;
@@ -1397,6 +1409,11 @@ header {
 .tour_information {
   width: 68%;
   padding-top: 20px;
+}
+@media (max-width: 768px) {
+  .tour_information {
+    width: 100%;
+  }
 }
 .tour_information_description .hidden_text {
   display: none;
@@ -1482,19 +1499,30 @@ header {
   text-decoration: underline;
 }
 .tour_sidebar {
-  width: 30%;
+  width: 28%;
   position: relative;
   margin-top: 20px;
+}
+@media (max-width: 768px) {
+  .tour_sidebar {
+    width: 0;
+  }
 }
 .tour_sidebar .fixed {
   top: 20px;
   right: 0;
   position: fixed;
 }
+.tour_sidebar .fixed_bottom {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+}
 .tour_calculate {
   border-radius: 20px;
-  box-shadow: 0px 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
+  box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
   padding: 20px;
+  height: 300px;
 }
 .tour_calculate_strong {
   font-weight: 500;
@@ -1528,5 +1556,30 @@ header {
   font-weight: bold;
   background: none;
   text-align: center;
+}
+@media (max-width: 768px) {
+  .tour_calculate {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background: white;
+    border-radius: 0;
+    padding: 10px 0 0 0;
+  }
+  .tour_calculate_main {
+    display: none;
+  }
+  .tour_calculate_buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .tour_calculate_buttons button {
+    max-width: 50%;
+    margin: 0 10px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

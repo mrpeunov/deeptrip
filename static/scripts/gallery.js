@@ -68,8 +68,10 @@ $(document).ready(function(){
 
     //клик по отдельному элементу
     $tour_gallery_item.click(function (){
-        let number = $tour_gallery_item.index(this) + 1;
-        desktop_open_gallery(number)
+        if($(window).width() >= 768){
+            let number = $tour_gallery_item.index(this) + 1;
+            desktop_open_gallery(number)
+        }
     })
 
     $('#gallery_button_close').click(function (){

@@ -1184,8 +1184,6 @@ header{
       padding: 10px;
       margin-left: -10px;
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1194,10 +1192,17 @@ header{
 
       &:hover{
         background: #colors[footer-bg];
+        border-radius: 20px;
+        -webkit-transform: scale(0.975);
+        -ms-transform: scale(0.975);
+        transform: scale(0.975);
       }
 
-      img{
+      &_img{
+        margin-right: 10px;
         width: 10px;
+        display: flex;
+        align-items: center;
       }
     }
 
@@ -1427,6 +1432,7 @@ header{
       .gallery_open_info{
         position: absolute;
         display: block;
+        font-weight: 500;
       }
 
       .gallery_button_close{
@@ -1436,9 +1442,16 @@ header{
         height: 25px;
         right: 40px;
         top: 40px;
-        background: url("../img/tour/close.png") no-repeat;
         background-size: contain;
         cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+          border-radius: 20px;
+          -webkit-transform: scale(0.9);
+          -ms-transform: scale(0.9);
+          transform: scale(0.9);
+        }
       }
 
       .tour_gallery{
@@ -1501,6 +1514,10 @@ header{
   &_information{
     width: 68%;
     padding-top: 20px;
+
+    @media @max768{
+      width: 100%;
+    }
 
     &_description{
 
@@ -1614,21 +1631,32 @@ header{
   }
 
   &_sidebar{
-    width: 30%;
+    width: 28%;
     position: relative;
     margin-top: 20px;
+
+    @media @max768{
+      width: 0;
+    }
 
     .fixed{
       top: 20px;
       right: 0;
       position: fixed;
     }
+
+    .fixed_bottom{
+      position: absolute;
+      top: auto;
+      bottom: 0;
+    }
   }
 
   &_calculate{
     border-radius: 20px;
-    box-shadow: 0px 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
+    box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
     padding: 20px;
+    height: 300px;
 
     &_strong{
       font-weight: 500;
@@ -1669,6 +1697,33 @@ header{
         background: none;
         text-align: center;
 
+      }
+    }
+
+    @media @max768{
+      position: fixed;
+      height: 50px;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      background: white;
+      border-radius: 0;
+      padding: 10px 0 0 0;
+
+      &_main{
+        display: none;
+      }
+
+      &_buttons{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+        button{
+          max-width: 50%;
+          margin: 0 10px;
+        }
       }
     }
   }

@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="preview tour_gallery_wrap" id="tour-gallery-wrap">
     <div class="tour_gallery preview_gallery owl-carousel owl-theme" id="tour-gallery">
         <div class="image-1 tour_gallery_item">
@@ -23,7 +25,7 @@
         Все фотографии
     </button>
     <div class="gallery_button_close" id="gallery_button_close">
-
+        <img src="{% static 'img/tour/close.png' %}" alt="">
     </div>
     <div class="gallery_open_info" id="gallery_open_info">
 
