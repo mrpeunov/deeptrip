@@ -1747,15 +1747,43 @@ header{
     height: 100vh;
     z-index: 1000;
 
+    &_close{
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover{
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        transform: scale(0.9);
+      }
+    }
+
     form{
       background: white;
-      height: 70%;
-      width: 50%;
+      height: 60%;
+      width: 40%;
       border-radius: 20px;
-      padding: 30px;
+      padding: 10px 40px 40px 40px;
+      position: relative;
+
+      @media @max992{
+        width: 60%;
+      }
+
+      @media @max768{
+        width: 70%;
+        height: 80%;
+      }
     }
 
     &_comment{
+      position: relative;
+
       textarea{
         width: 100%;
         height: 200px;
@@ -1767,19 +1795,34 @@ header{
         padding: 20px;
         font-weight: 400;
         font-size: 1rem;
+        border: #cccccc solid 1px;
+        margin-top: 20px;
 
         &::placeholder{
           color: #999999;
         }
       }
 
+      &_button{
+        position: absolute;
+        bottom: 30px;
+        border-radius: 15px;
+        box-sizing: border-box;
+        padding: 15px 0;
+        width: calc(100% - 80px);
+      }
+
       &_data{
+        margin-bottom: 10px;
+
         input{
-          width: 40%;
+          box-sizing: border-box;
+          width: 100%;
           border-radius: 15px;
           font-size: 1rem;
           padding: 10px;
           outline: none;
+          border: #cccccc solid 1px;
 
 
           &::placeholder{
@@ -1792,11 +1835,21 @@ header{
         display: flex;
         margin: 20px 0;
 
+        @media @max768{
+          display: block;
+          margin: 20px 0;
+        }
+
         &_title{
           display: flex;
           justify-content: center;
           align-items: center;
           margin-right: 20px;
+
+          @media @max768{
+            margin-bottom: 20px;
+            justify-content: left;
+          }
         }
 
         &_items{
@@ -1813,6 +1866,13 @@ header{
             padding: 10px;
             border-radius: 50%;
             cursor: pointer;
+            transition: 0.3s;
+
+            &:hover{
+              -webkit-transform: scale(0.9);
+              -ms-transform: scale(0.9);
+              transform: scale(0.9);
+            }
           }
 
           .active{

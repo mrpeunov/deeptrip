@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="tour_popup" id="comment_popup">
     <form class="tour_popup_comment" id="comment_popup_form" onclick="return false;" action="">
         <h2 class="standard_h2">Оставить отзыв</h2>
@@ -25,5 +27,9 @@
         <button class="tour_popup_comment_button standard_button standard_button_dark">
             Отправить
         </button>
+
+        <div class="tour_popup_close gallery_button_close" id="tour_popup_close">
+            <img src="{% static 'img/tour/close.png' %}" alt="">
+        </div>
     </form>
 </div>
