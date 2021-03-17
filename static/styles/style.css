@@ -140,7 +140,9 @@ h5,
 h6,
 div,
 span,
-button {
+button,
+textarea,
+input {
   font-family: 'HelveticaNeueCyr', sans-serif;
   color: #333333;
 }
@@ -162,6 +164,10 @@ img {
   font-weight: bold;
   transition: 0.3s;
   cursor: pointer;
+}
+.standard_button_dark {
+  background: #333333;
+  color: white;
 }
 .standard_button:hover {
   -webkit-transform: scale(0.975);
@@ -1495,8 +1501,9 @@ header {
   display: flex;
   justify-content: space-between;
 }
-.tour_information_review_footer a {
+.tour_information_review_footer div {
   text-decoration: underline;
+  cursor: pointer;
 }
 .tour_sidebar {
   width: 28%;
@@ -1581,5 +1588,78 @@ header {
     max-width: 50%;
     margin: 0 10px;
   }
+}
+.tour_popup {
+  display: none;
+  background: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+.tour_popup form {
+  background: white;
+  height: 70%;
+  width: 50%;
+  border-radius: 20px;
+  padding: 30px;
+}
+.tour_popup_comment textarea {
+  width: 100%;
+  height: 200px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  resize: none;
+  border-radius: 15px;
+  outline: none;
+  padding: 20px;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.tour_popup_comment textarea::placeholder {
+  color: #999999;
+}
+.tour_popup_comment_data input {
+  width: 40%;
+  border-radius: 15px;
+  font-size: 1rem;
+  padding: 10px;
+  outline: none;
+}
+.tour_popup_comment_data input::placeholder {
+  color: #999999;
+}
+.tour_popup_comment_rating {
+  display: flex;
+  margin: 20px 0;
+}
+.tour_popup_comment_rating_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+.tour_popup_comment_rating_items {
+  display: flex;
+}
+.tour_popup_comment_rating_items_item {
+  background: #f5f5f5;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.tour_popup_comment_rating_items .active {
+  background: #333333;
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */

@@ -12,6 +12,8 @@
 
         {% include 'tours/elements/tour_recommendation.html' %}
 
+        {% include 'tours/elements/tour_comment.html' %}
+
     </div>
 
 
@@ -20,7 +22,8 @@
 {% block menu %} {% endblock %}
 
 {% block one_page_scripts %}
-    <script src="{% static 'scripts/gallery.js' %}"></script>
-    <script src="{% static 'scripts/sidebar.js' %}"></script>
-    <script src="{% static 'scripts/tour_show_text.js' %}"></script>
+    <script src="{% static 'scripts/tour/gallery.js' %}"></script>
+    <script src="{% static 'scripts/tour/sidebar.js' %}"></script>
+    <script src="{% static 'scripts/tour/tour_show_text.js' %}"></script>
+    <script src="{% static 'scripts/tour/popups.js' %}"></script>
 {% endblock %}
