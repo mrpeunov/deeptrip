@@ -1,10 +1,10 @@
 {% load static %}
 
 <div class="tour_popup" id="comment_popup">
-    <form class="tour_popup_comment" id="comment_popup_form" onclick="return false;" action="">
+    <form class="tour_popup_comment" id="comment_popup_form" onclick="return false;">
         <h2 class="standard_h2">Оставить отзыв</h2>
 
-        <textarea name="" id="" placeholder="Опишите ваши впечатления"></textarea>
+        <textarea id="comment_content" name="" id="" placeholder="Опишите ваши впечатления"></textarea>
 
         <div class="tour_popup_comment_rating">
             <div class="tour_popup_comment_rating_title standard_text_gray">
@@ -18,13 +18,15 @@
                 <div class="tour_popup_comment_rating_items_item">4</div>
                 <div class="tour_popup_comment_rating_items_item active">5</div>
             </div>
+
+            <input type="hidden">
         </div>
 
         <div class="tour_popup_comment_data">
-            <input type="text" class="tour_popup_comment_data_name" placeholder="Имя">
+            <input type="text" id="comment_name" class="tour_popup_comment_data_name" placeholder="Имя">
         </div>
 
-        <button class="tour_popup_comment_button standard_button standard_button_dark">
+        <button id="popup_comment_button" class="tour_popup_comment_button standard_button standard_button_dark">
             Отправить
         </button>
 

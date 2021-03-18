@@ -1643,9 +1643,9 @@ header {
   line-height: 1.5;
   box-sizing: border-box;
   resize: none;
-  border-radius: 15px;
+  border-radius: 20px;
   outline: none;
-  padding: 20px;
+  padding: 15px 20px;
   font-weight: 400;
   font-size: 1rem;
   border: #cccccc solid 1px;
@@ -1657,7 +1657,7 @@ header {
 .tour_popup_comment_button {
   position: absolute;
   bottom: 30px;
-  border-radius: 15px;
+  border-radius: 20px;
   box-sizing: border-box;
   padding: 15px 0;
   width: calc(100% - 80px);
@@ -1668,9 +1668,9 @@ header {
 .tour_popup_comment_data input {
   box-sizing: border-box;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 20px;
   font-size: 1rem;
-  padding: 10px;
+  padding: 12px 20px;
   outline: none;
   border: #cccccc solid 1px;
 }
@@ -1695,7 +1695,7 @@ header {
 }
 @media (max-width: 768px) {
   .tour_popup_comment_rating_title {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     justify-content: left;
   }
 }

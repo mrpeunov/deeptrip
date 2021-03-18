@@ -32,3 +32,34 @@ $('.tour_popup_comment_rating_items_item').on('click', function (){
     $(this).addClass('active');
 })
 
+$('#popup_comment_button').on('click', function (){
+    //собираем данные
+    let content = $("#comment_content").val()
+    let name = $("#comment_name").val()
+
+    //дефолтная оценка - 5
+    let rating = 5
+
+    $(".tour_popup_comment_rating_items_item").each(function (index) {
+        if ($(this).hasClass("active")) rating = index;
+    })
+
+
+    //отправляем на сервер
+    $.ajax({
+        url:  document.location.href + '/comment/',
+        method: 'GET',
+        data: {
+            'content': content,
+            'name': name,
+            'rating': rating,
+        },
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(data) {
+            console.log("Ошибка при добавлении отзыва");
+        }
+    });
+})
+

@@ -117,3 +117,26 @@ def get_count_tours_for_filter_list(request):
     count = get_count_tours(list_category, city_slug)
 
     return HttpResponse(count)
+
+
+def send_new_comment(request, city_slug, tour_slug):
+    if not request.is_ajax():
+        return HttpResponse(status=401)
+
+    if request.method != 'GET':
+        return HttpResponse(status=401)
+
+    # создаём новый коммент
+    comment = Comment()
+
+    # заполняем данные
+    comment.show = False
+    comment.grade = int(request.GET.get('rating'))
+    comment.content = str(request.GET.get('content'))
+    comment.name = str(request.GET.get('name'))
+    comment.tour = Tour.objects.get(slug=tour_slug)
+
+    # сохраняем
+    comment.save()
+
+    return HttpResponse("OK")

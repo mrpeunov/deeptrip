@@ -21,7 +21,6 @@ function update_width(sidebar){
     let up = $(".tour_sidebar");
     let pl = parseInt(sidebar.css("padding-left"), 10);
     let pr = parseInt(sidebar.css("padding-right"), 10);
-	console.log(up.width())
     sidebar.css('width', up.outerWidth() - pl - pr);
 }
 
