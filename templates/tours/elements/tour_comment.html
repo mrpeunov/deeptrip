@@ -1,8 +1,8 @@
 {% load static %}
 
 <div class="tour_popup" id="comment_popup">
-    <div class="tour_popup_wrap">
-        <form class="tour_popup_comment" id="comment_popup_form" onclick="return false;">
+    <div class="tour_popup_wrap" onclick="return false;">
+        <form class="tour_popup_comment" id="comment_popup_form">
         {% csrf_token %}
         <h2 class="standard_h2">Оставить отзыв</h2>
 

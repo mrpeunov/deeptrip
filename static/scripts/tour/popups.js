@@ -6,43 +6,41 @@ let $comment_content = $('#comment_content');
 let $comment_popup_form = $('#comment_popup_form');
 let $comment_popup_ok = $("#comment_popup_ok")
 
-$comment_name.on('input', function () {
-    update_button();
-})
+//обновление кнопки при вводе комментария
+$comment_name.on('input', function () { update_button(); })
+$comment_content.on('input', function () { update_button(); })
 
-$comment_content.on('input', function () {
-    update_button();
-})
-
+//открытие окна при клике по кнопке
 $('#send_comment').on('click', function () {
     open_popup_comment();
 })
 
+//закрытие окна при клике рандомной областит
 $comment_popup.on('click', function () {
     close_popup_comment();
 })
 
-$comment_popup_form.on('click', function (event){
-    event.stopPropagation();
-})
+//не вырубать окно при клике не по нему (мб переделать)
+console.log("Переделать на нормальную обботку одного ")
+$('.tour_popup_wrap').on('click', function (event){ event.stopPropagation() })
 
-$comment_popup_ok.on('click', function (event) {
-    event.stopPropagation();
-})
-
+//клик по крестику
 $('#tour_popup_close').on('click', function (){
     close_popup_comment();
 })
 
+//клик по кнопке закрыть
 $('.tour_popup_comment_completed_close').on('click', function (){
     close_popup_comment();
 })
 
+//открытие попапа
 function open_popup_comment(){
     $comment_popup.css("display", "flex");
     $('body').css("overflow", "hidden");
 }
 
+//функция закрытия попапа
 function close_popup_comment(){
     $comment_popup.css("display", "none");
     $('body').removeAttr("style");
@@ -50,6 +48,7 @@ function close_popup_comment(){
     $comment_popup_form.removeClass("none");
 }
 
+//обновление кнопки в зависмости от пустоты инпутов
 function update_button(){
     if ($comment_content.val() && $comment_name.val()){
         $popup_comment_button.removeClass('not_active');
@@ -58,11 +57,13 @@ function update_button(){
     }
 }
 
+//обработка выбора оценки
 $('.tour_popup_comment_rating_items_item').on('click', function (){
     $('.tour_popup_comment_rating_items_item').removeClass('active');
     $(this).addClass('active');
 })
 
+//отправка коммента
 $popup_comment_button.on('click', function (){
     //если данные пустые
     if($popup_comment_button.hasClass('not_active')) return 0;
