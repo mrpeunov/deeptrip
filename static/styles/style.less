@@ -1756,9 +1756,12 @@ header{
     height: 100vh;
     z-index: 1000;
 
+    .none{
+      display: none;
+    }
+
     .not_active{
       background: #cccccc;
-
 
       &:hover{
         transform: none;
@@ -1781,13 +1784,16 @@ header{
       }
     }
 
-    form{
+    &_wrap{
       background: white;
       height: 60%;
       width: 40%;
       border-radius: 20px;
       padding: 10px 40px 40px 40px;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       @media @max992{
         width: 60%;
@@ -1799,8 +1805,44 @@ header{
       }
     }
 
+    form{
+      height: 100%;
+      width: 100%;
+    }
+
     &_comment{
-      position: relative;
+      &_completed{
+
+        &_content{
+          height: 100%;
+
+          &_wrap{
+            text-align: center;
+
+            .standard_text_gray{
+              max-width: 200px;
+            }
+
+            .standard_h2{
+              margin-top: 20px;
+              margin-bottom: 10px;
+            }
+          }
+
+
+          img{
+            width: 50px;
+          }
+        }
+
+        button{
+          position: absolute;
+          bottom: 30px;
+          width: calc(100% - 80px);
+          left: 40px;
+          padding: 15px;
+        }
+      }
 
       textarea{
         width: 100%;

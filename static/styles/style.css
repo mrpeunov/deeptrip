@@ -1609,6 +1609,9 @@ header {
   height: 100vh;
   z-index: 1000;
 }
+.tour_popup .none {
+  display: none;
+}
 .tour_popup .not_active {
   background: #cccccc;
 }
@@ -1629,27 +1632,54 @@ header {
   -ms-transform: scale(0.9);
   transform: scale(0.9);
 }
-.tour_popup form {
+.tour_popup_wrap {
   background: white;
   height: 60%;
   width: 40%;
   border-radius: 20px;
   padding: 10px 40px 40px 40px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (max-width: 992px) {
-  .tour_popup form {
+  .tour_popup_wrap {
     width: 60%;
   }
 }
 @media (max-width: 768px) {
-  .tour_popup form {
+  .tour_popup_wrap {
     width: 70%;
     height: 80%;
   }
 }
-.tour_popup_comment {
-  position: relative;
+.tour_popup form {
+  height: 100%;
+  width: 100%;
+}
+.tour_popup_comment_completed_content {
+  height: 100%;
+}
+.tour_popup_comment_completed_content_wrap {
+  text-align: center;
+}
+.tour_popup_comment_completed_content_wrap .standard_text_gray {
+  max-width: 200px;
+}
+.tour_popup_comment_completed_content_wrap .standard_h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.tour_popup_comment_completed_content img {
+  width: 50px;
+}
+.tour_popup_comment_completed button {
+  position: absolute;
+  bottom: 30px;
+  width: calc(100% - 80px);
+  left: 40px;
+  padding: 15px;
 }
 .tour_popup_comment textarea {
   width: 100%;

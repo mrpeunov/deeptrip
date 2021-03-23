@@ -3,6 +3,8 @@ let $comment_popup = $('#comment_popup');
 let $popup_comment_button = $('#popup_comment_button');
 let $comment_name = $("#comment_name");
 let $comment_content = $('#comment_content');
+let $comment_popup_form = $('#comment_popup_form');
+let $comment_popup_ok = $("#comment_popup_ok")
 
 $comment_name.on('input', function () {
     update_button();
@@ -20,11 +22,19 @@ $comment_popup.on('click', function () {
     close_popup_comment();
 })
 
-$('#comment_popup_form').on('click', function (event){
+$comment_popup_form.on('click', function (event){
+    event.stopPropagation();
+})
+
+$comment_popup_ok.on('click', function (event) {
     event.stopPropagation();
 })
 
 $('#tour_popup_close').on('click', function (){
+    close_popup_comment();
+})
+
+$('.tour_popup_comment_completed_close').on('click', function (){
     close_popup_comment();
 })
 
@@ -36,6 +46,8 @@ function open_popup_comment(){
 function close_popup_comment(){
     $comment_popup.css("display", "none");
     $('body').removeAttr("style");
+    $comment_popup_ok.addClass("none");
+    $comment_popup_form.removeClass("none");
 }
 
 function update_button(){
@@ -78,6 +90,10 @@ $popup_comment_button.on('click', function (){
         },
         success: function(data) {
             console.log(data);
+            $comment_popup_ok.removeClass("none");
+            $comment_popup_form.addClass("none");
+            $comment_content.val("")
+            $comment_name.val("");
         },
         error: function(data) {
             console.log("Ошибка при добавлении отзыва");

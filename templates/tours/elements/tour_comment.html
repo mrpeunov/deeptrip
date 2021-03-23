@@ -1,7 +1,8 @@
 {% load static %}
 
 <div class="tour_popup" id="comment_popup">
-    <form class="tour_popup_comment" id="comment_popup_form" onclick="return false;">
+    <div class="tour_popup_wrap">
+        <form class="tour_popup_comment" id="comment_popup_form" onclick="return false;">
         {% csrf_token %}
         <h2 class="standard_h2">Оставить отзыв</h2>
 
@@ -31,8 +32,30 @@
             Отправить
         </button>
 
-        <div class="tour_popup_close gallery_button_close" id="tour_popup_close">
+
+    </form>
+
+        <div class="tour_popup_comment_completed none" id="comment_popup_ok">
+            <div class="tour_popup_comment_completed_content">
+                <div class="tour_popup_comment_completed_content_wrap">
+                    <img src="{% static 'img/tour/ok_comment.png' %}" alt="">
+                    <div class="standard_h2">Спасибо!</div>
+                    <div class="standard_text_gray">Отзыв будет опубликован в течении суток</div>
+                </div>
+            </div>
+
+            <button class="standard_button standard_button_dark tour_popup_comment_completed_close"
+                    id="tour_popup_close_button" onclick="return false;">
+                Закрыть
+            </button>
+        </div>
+
+        <div class="tour_popup_close gallery_button_close" id="tour_popup_close" >
             <img src="{% static 'img/tour/close.png' %}" alt="">
         </div>
-    </form>
+    </div>
+
+
+
+
 </div>
