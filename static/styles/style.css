@@ -1421,6 +1421,14 @@ header {
     width: 100%;
   }
 }
+.tour_information_description ul {
+  list-style: none;
+}
+.tour_information_description ul li:before {
+  content: "-";
+  position: relative;
+  left: -5px;
+}
 .tour_information_description .hidden_text {
   display: none;
 }
