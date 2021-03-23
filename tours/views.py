@@ -53,7 +53,7 @@ class TourPage(FooterAndMenuTemplateView):
             city__slug=context['city_slug'],
             slug=context['tour_slug'])
         context['tour'] = tour
-        context['comments'] = Comment.objects.filter(tour=tour)
+        context['comments'] = Comment.objects.filter(tour=tour, show=True)
         context['image_items'] = ImageItem.objects.filter(tour=tour)
         context['recommended_tours'] = RecommendedTour.objects.filter(main=tour)
 
@@ -123,7 +123,7 @@ def send_new_comment(request, city_slug, tour_slug):
     if not request.is_ajax():
         return HttpResponse(status=401)
 
-    if request.method != 'GET':
+    if request.method != 'POST':
         return HttpResponse(status=401)
 
     # создаём новый коммент
@@ -131,9 +131,9 @@ def send_new_comment(request, city_slug, tour_slug):
 
     # заполняем данные
     comment.show = False
-    comment.grade = int(request.GET.get('rating'))
-    comment.content = str(request.GET.get('content'))
-    comment.name = str(request.GET.get('name'))
+    comment.grade = int(request.POST.get('rating'))
+    comment.content = str(request.POST.get('content'))
+    comment.name = str(request.POST.get('name'))
     comment.tour = Tour.objects.get(slug=tour_slug)
 
     # сохраняем

@@ -69,11 +69,12 @@ $popup_comment_button.on('click', function (){
     //отправляем на сервер
     $.ajax({
         url:  document.location.href + '/comment/',
-        method: 'GET',
+        method: 'POST',
         data: {
             'content': content,
             'name': name,
             'rating': rating,
+            'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
         },
         success: function(data) {
             console.log(data);

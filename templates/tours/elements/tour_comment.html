@@ -2,6 +2,7 @@
 
 <div class="tour_popup" id="comment_popup">
     <form class="tour_popup_comment" id="comment_popup_form" onclick="return false;">
+        {% csrf_token %}
         <h2 class="standard_h2">Оставить отзыв</h2>
 
         <textarea id="comment_content" name="" id="" placeholder="Опишите ваши впечатления"></textarea>
