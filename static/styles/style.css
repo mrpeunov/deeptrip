@@ -1609,6 +1609,12 @@ header {
   height: 100vh;
   z-index: 1000;
 }
+.tour_popup .not_active {
+  background: #cccccc;
+}
+.tour_popup .not_active:hover {
+  transform: none;
+}
 .tour_popup_close {
   position: absolute;
   width: 25px;
@@ -1669,6 +1675,7 @@ header {
   box-sizing: border-box;
   padding: 15px 0;
   width: calc(100% - 80px);
+  box-shadow: none;
 }
 .tour_popup_comment_data {
   margin-bottom: 10px;

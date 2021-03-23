@@ -1526,7 +1526,6 @@ header{
     }
 
     &_description{
-
       ul {
         list-style: none;
       }
@@ -1757,6 +1756,15 @@ header{
     height: 100vh;
     z-index: 1000;
 
+    .not_active{
+      background: #cccccc;
+
+
+      &:hover{
+        transform: none;
+      }
+    }
+
     &_close{
       position: absolute;
       width: 25px;
@@ -1820,6 +1828,7 @@ header{
         box-sizing: border-box;
         padding: 15px 0;
         width: calc(100% - 80px);
+        box-shadow: none;
       }
 
       &_data{
