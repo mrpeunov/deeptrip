@@ -19,8 +19,8 @@ $see_more_comments.on('click', function (){
         success: function(data) {
             //если больше нет экскурсий, то убираем кнопку
             if(getCookie("more_comments") === "False"){
-                $see_more_comments.addClass("none");
-                $('#send_comment').css("width", "100%");
+                $see_more_comments.css("display", "none");
+                $('#send_comment').css("margin", "0 0 0 auto");
             }
 
             //добавляем данные на страницу
@@ -28,7 +28,7 @@ $see_more_comments.on('click', function (){
             $review_items.append(data);
 
             $('.tour_information_review_item').each(function () {
-                $(this).slideDown(300);
+                $(this).slideDown(500);
             })
 
             //устанавливаем новый атрибут текущей страницы

@@ -169,6 +169,23 @@ img {
   background: #333333;
   color: white;
 }
+.standard_button_gray {
+  padding: 10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.standard_button_gray:hover {
+  background: #f9f9f9;
+  border-radius: 20px;
+  -webkit-transform: scale(0.975);
+  -ms-transform: scale(0.975);
+  transform: scale(0.975);
+}
 .standard_button:hover {
   -webkit-transform: scale(0.975);
   -ms-transform: scale(0.975);
@@ -1128,21 +1145,6 @@ header {
 }
 .tour_header_behind {
   position: relative;
-  padding: 10px;
-  margin-left: -10px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.tour_header_behind:hover {
-  background: #f9f9f9;
-  border-radius: 20px;
-  -webkit-transform: scale(0.975);
-  -ms-transform: scale(0.975);
-  transform: scale(0.975);
 }
 .tour_header_behind_img {
   margin-right: 10px;
