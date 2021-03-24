@@ -8,6 +8,7 @@ from tours.services.get_articles import get_articles
 
 from tours.services.get_cities import get_cities_for_city
 from tours.services.filters import get_count_tours, get_filters_queryset
+from tours.services.get_comments_for_tour import get_comments_for_tour
 from tours.services.get_h2 import get_h2
 from tours.services.get_tours import get_tours, get_maximum
 
@@ -53,7 +54,10 @@ class TourPage(FooterAndMenuTemplateView):
             city__slug=context['city_slug'],
             slug=context['tour_slug'])
         context['tour'] = tour
-        context['comments'] = Comment.objects.filter(tour=tour, show=True)
+
+        comments = get_comments_for_tour(0, context['tour'])
+        context['comments'] = comments['list']
+        context['comments_more'] = comments['more']
         context['image_items'] = ImageItem.objects.filter(tour=tour)
         context['recommended_tours'] = RecommendedTour.objects.filter(main=tour)
 
@@ -101,6 +105,11 @@ def get_more_tours(request):
 
 
 def get_count_tours_for_filter_list(request):
+    """
+    обработка AJAX
+    :param request: запрос
+    :return: количество экскурсий
+    """
     if not request.is_ajax():
         return HttpResponse(status=401)
 
@@ -140,3 +149,33 @@ def send_new_comment(request, city_slug, tour_slug):
     comment.save()
 
     return HttpResponse("OK")
+
+
+def get_more_comments(request):
+    """
+    обработка AJAX
+    :param request: запрос
+    :return: словарь из html-кода и bool отвечаюещго на вопрос есть ли ещё комменты
+    """
+    if not request.is_ajax():
+        return HttpResponse(status=401)
+
+    if request.method != 'GET':
+        return HttpResponse(status=401)
+
+    # номер страницы, которую нужно вернуть
+    page = int(request.GET.get("page"))
+
+    # город
+    tour = Tour.objects.get(slug=request.GET.get("tour_slug"))
+    result_dict = get_comments_for_tour(page, tour)
+
+    # рендерим html
+    response = render(request, 'tours/ajax/ajax_comments.html',
+                      {'comments': result_dict['list'], 'page': page})
+
+    # добавим куки который будет отвечать
+    # за отображение кнопки показать ещё (bool, if true - показываем)
+    response.set_cookie('more_comments', result_dict['more'])
+
+    return response

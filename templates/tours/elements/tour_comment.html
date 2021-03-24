@@ -1,59 +1,14 @@
 {% load static %}
 
-<div class="tour_popup" id="comment_popup">
-    <div class="tour_popup_wrap" onclick="return false;">
-        <form class="tour_popup_comment" id="comment_popup_form">
-            {% csrf_token %}
-            <h2 class="standard_h2">Оставить отзыв</h2>
-
-            <textarea id="comment_content" name="" id="" placeholder="Опишите ваши впечатления"></textarea>
-
-            <div class="tour_popup_comment_rating">
-                <div class="tour_popup_comment_rating_title standard_text_gray">
-                    Оцените экскурсию:
-                </div>
-
-                <div class="tour_popup_comment_rating_items">
-                    <div class="tour_popup_comment_rating_items_item">1</div>
-                    <div class="tour_popup_comment_rating_items_item">2</div>
-                    <div class="tour_popup_comment_rating_items_item">3</div>
-                    <div class="tour_popup_comment_rating_items_item">4</div>
-                    <div class="tour_popup_comment_rating_items_item active">5</div>
-                </div>
-
-                <input type="hidden">
-            </div>
-
-            <div class="tour_popup_comment_data">
-                <input type="text" id="comment_name" class="tour_popup_comment_data_name" placeholder="Имя">
-            </div>
-
-            <button id="popup_comment_button" class="tour_popup_comment_button standard_button standard_button_dark not_active">
-                Отправить
-            </button>
-        </form>
-
-        <div class="tour_popup_comment_completed none" id="comment_popup_ok">
-            <div class="tour_popup_comment_completed_content">
-                <div class="tour_popup_comment_completed_content_wrap">
-                    <img src="{% static 'img/tour/ok_comment.png' %}" alt="">
-                    <div class="standard_h2">Спасибо!</div>
-                    <div class="standard_text_gray">Отзыв будет опубликован в течении суток</div>
-                </div>
-            </div>
-
-            <button class="standard_button standard_button_dark tour_popup_comment_completed_close"
-                    id="tour_popup_close_button" onclick="return false;">
-                Закрыть
-            </button>
+<div class="tour_information_review_item">
+    <div class="tour_information_review_item_header">
+        <div class="tour_information_review_item_header_left">
+            <img src="{% static 'img/tour/comment.png' %}" alt="">
         </div>
-
-        <div class="tour_popup_close gallery_button_close" id="tour_popup_close" >
-            <img src="{% static 'img/tour/close.png' %}" alt="">
+        <div class="tour_information_review_item_header_right">
+            <div class="standard_text_strong">{{ comment.name }}</div>
+            <div class="standard_text_gray">{{ comment.date }}</div>
         </div>
     </div>
-
-
-
-
+    <div class="tour_information_review_item_text">{{ comment.content }}</div>
 </div>
