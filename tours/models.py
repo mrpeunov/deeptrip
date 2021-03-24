@@ -2,10 +2,9 @@ from django_better_admin_arrayfield.models.fields import ArrayField
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import TextField, Q, QuerySet
+from django.db.models import  Avg
 from django.urls import reverse
 from smart_selects.db_fields import ChainedManyToManyField, ChainedForeignKey
-from jsonfield import JSONField
 
 
 class Cluster(models.Model):
@@ -270,6 +269,24 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "отзыв"
         verbose_name_plural = "отзывы"
+
+    def save(self, *args, **kwargs):
+        print("сюда заходем")
+        super().save(*args, **kwargs)
+        self.update_count_and_rating_tour()
+
+    def update_count_and_rating_tour(self):
+        tour = self.tour  # получаем текущую экскурсию
+
+        # получаем данные о рейтинге и количестве
+        comments = Comment.objects.filter(tour=tour, show=True)
+        count_comments = comments.count()
+        tour_rating = comments.aggregate(Avg('grade'))
+
+        # обновляем данные в объекте экскурсии
+        tour.count_comment = count_comments
+        tour.rating = round(tour_rating['grade__avg'], 2)
+        tour.save()
 
 
 class ImageItem(models.Model):

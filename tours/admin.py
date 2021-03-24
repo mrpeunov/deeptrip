@@ -66,4 +66,4 @@ class TourAdmin(admin.ModelAdmin, DynamicArrayMixin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('tour', 'name', 'content', 'date', 'grade')
+    list_display = ('tour', 'name', 'content', 'date', 'grade', 'show')
