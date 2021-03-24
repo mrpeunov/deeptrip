@@ -203,6 +203,8 @@ class Tour(models.Model):
     categories = models.ManyToManyField(Category, blank=True, verbose_name="Категории")
     positions = models.ManyToManyField(Position, blank=True, verbose_name="Точки на карте")
     notes = models.CharField("Примечания", blank=True, max_length=64)
+    gid = models.BooleanField("Проверенный гид", default=False)
+    auto_gid = models.BooleanField("Автоматизировать провернный гид", default=True)
 
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)
@@ -216,6 +218,10 @@ class Tour(models.Model):
 
     def save(self, *args, **kwargs):
         self.city.update_tours_count()
+        if self.auto_gid is True:
+            if self.count_comment > 3 and self.rating > 4:
+                self.gid = True
+
         super().save(*args, **kwargs)
 
     def get_rating_for_city(self, city: City) -> int:
