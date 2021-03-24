@@ -3,37 +3,35 @@
 <div class="tour_popup" id="comment_popup">
     <div class="tour_popup_wrap" onclick="return false;">
         <form class="tour_popup_comment" id="comment_popup_form">
-        {% csrf_token %}
-        <h2 class="standard_h2">Оставить отзыв</h2>
+            {% csrf_token %}
+            <h2 class="standard_h2">Оставить отзыв</h2>
 
-        <textarea id="comment_content" name="" id="" placeholder="Опишите ваши впечатления"></textarea>
+            <textarea id="comment_content" name="" id="" placeholder="Опишите ваши впечатления"></textarea>
 
-        <div class="tour_popup_comment_rating">
-            <div class="tour_popup_comment_rating_title standard_text_gray">
-                Оцените экскурсию:
+            <div class="tour_popup_comment_rating">
+                <div class="tour_popup_comment_rating_title standard_text_gray">
+                    Оцените экскурсию:
+                </div>
+
+                <div class="tour_popup_comment_rating_items">
+                    <div class="tour_popup_comment_rating_items_item">1</div>
+                    <div class="tour_popup_comment_rating_items_item">2</div>
+                    <div class="tour_popup_comment_rating_items_item">3</div>
+                    <div class="tour_popup_comment_rating_items_item">4</div>
+                    <div class="tour_popup_comment_rating_items_item active">5</div>
+                </div>
+
+                <input type="hidden">
             </div>
 
-            <div class="tour_popup_comment_rating_items">
-                <div class="tour_popup_comment_rating_items_item">1</div>
-                <div class="tour_popup_comment_rating_items_item">2</div>
-                <div class="tour_popup_comment_rating_items_item">3</div>
-                <div class="tour_popup_comment_rating_items_item">4</div>
-                <div class="tour_popup_comment_rating_items_item active">5</div>
+            <div class="tour_popup_comment_data">
+                <input type="text" id="comment_name" class="tour_popup_comment_data_name" placeholder="Имя">
             </div>
 
-            <input type="hidden">
-        </div>
-
-        <div class="tour_popup_comment_data">
-            <input type="text" id="comment_name" class="tour_popup_comment_data_name" placeholder="Имя">
-        </div>
-
-        <button id="popup_comment_button" class="tour_popup_comment_button standard_button standard_button_dark not_active">
-            Отправить
-        </button>
-
-
-    </form>
+            <button id="popup_comment_button" class="tour_popup_comment_button standard_button standard_button_dark not_active">
+                Отправить
+            </button>
+        </form>
 
         <div class="tour_popup_comment_completed none" id="comment_popup_ok">
             <div class="tour_popup_comment_completed_content">

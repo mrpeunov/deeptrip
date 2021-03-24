@@ -135,7 +135,9 @@
                     src="https://www.youtube.com/embed/nCpjBDCauhA"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                    allowfullscreen>
+
+            </iframe>
 
         </div>
     </div>
@@ -143,6 +145,20 @@
     <div class="tour_information_review standard_line_top">
         <div class="tour_information_review_header">
             <h2 class="standard_h2">Отзывы</h2>
+
+            <div class="tour_title_info_item">
+                <div class="tour_title_info_item_img">
+                    <img src="{% static 'img/preview/star.png' %}" alt="">
+                </div>
+                <div class="tour_title_info_item_text">
+                    <span class="standard_text_small">
+                        {{ tour.rating }}
+                    </span>
+                    <span class="standard_text_gray">
+                        ({{tour.count_comment }})
+                    </span>
+                </div>
+            </div>
         </div>
 
         <div class="tour_information_review_items">

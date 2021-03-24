@@ -1481,6 +1481,12 @@ header {
   position: absolute;
   top: 0;
 }
+.tour_information_review_header {
+  display: flex;
+}
+.tour_information_review_header h2 {
+  margin-right: 20px;
+}
 .tour_information_review_items {
   display: flex;
   justify-content: space-between;
