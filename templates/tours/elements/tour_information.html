@@ -146,10 +146,11 @@
         <div class="tour_information_review_header">
             <h2 class="standard_h2">Отзывы</h2>
 
-            <div class="tour_title_info_item">
+            {% if comments %} <div class="tour_title_info_item">
                 <div class="tour_title_info_item_img">
                     <img src="{% static 'img/preview/star.png' %}" alt="">
                 </div>
+
                 <div class="tour_title_info_item_text">
                     <span class="standard_text_small">
                         {{ tour.rating }}
@@ -158,23 +159,32 @@
                         ({{tour.count_comment }})
                     </span>
                 </div>
-            </div>
+            </div> {% endif %}
         </div>
+
+        {% if comments %}
 
         <div class="tour_information_review_items">
             {% for comment in comments %}
                 {% include 'tours/elements/tour_comment.html' %}
             {% endfor %}
         </div>
+        {% else %}
+            <div class="tour_information_review_empty">
+                У это экскурсии пока-что нет отзывов :(
+            </div>
+        {% endif %}
         
         <div class="tour_information_review_footer" >
             {% if comments_more is True %}
-                <div class="standard_text_bold standard_button_gray"
+                <div class=" standard_text_bold standard_button_gray"
                      id="see_more_comments"
                      data-page="0"
                      data-tour="{{ tour.slug }}"> Ещё отзывы </div>
             {% endif %}
-            <div class="standard_text_bold standard_button_gray" id="send_comment">Оставить отзыв</div>
+            <div class=" {% if comments %} standard_text_bold standard_button_gray
+                {% else %} tour_information_review_footer_empty  standard_button standard_button_dark {% endif %}"
+                 id="send_comment">Оставить отзыв</div>
         </div>
     </div>
 
