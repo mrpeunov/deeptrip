@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="tour_information_review_item">
+<div class="tour_information_review_item" {% if none == True %} style="display:none" {% endif %}>
     <div class="tour_information_review_item_header">
         <div class="tour_information_review_item_header_left">
             <img src="{% static 'img/tour/comment.png' %}" alt="">

@@ -167,9 +167,12 @@
             {% endfor %}
         </div>
         
-        <div class="tour_information_review_footer" data-count="0">
+        <div class="tour_information_review_footer" >
             {% if comments_more is True %}
-                <div class="standard_text_bold">Ещё отзывы</div>
+                <div class="standard_text_bold"
+                     id="see_more_comments"
+                     data-page="0"
+                     data-tour="{{ tour.slug }}"> Ещё отзывы </div>
             {% endif %}
             <div class="standard_text_bold" id="send_comment">Оставить отзыв</div>
         </div>

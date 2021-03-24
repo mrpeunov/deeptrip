@@ -1,3 +1,6 @@
-{% for comment in comments %}
-    {% include 'tours/elements/tour_comment.html' %}
-{% endfor %}
+{% with none=True %}
+    {% for comment in comments %}
+        {% include 'tours/elements/tour_comment.html' %}
+    {% endfor %}
+{% endwith %}
+

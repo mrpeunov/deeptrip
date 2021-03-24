@@ -1523,6 +1523,7 @@ header {
 .tour_information_review_footer div {
   text-decoration: underline;
   cursor: pointer;
+  text-align: right;
 }
 .tour_sidebar {
   width: 28%;
