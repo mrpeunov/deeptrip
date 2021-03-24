@@ -1495,7 +1495,12 @@ header {
 }
 .tour_information_review_item {
   width: 48%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+@media (max-width: 768px) {
+  .tour_information_review_item {
+    width: 100%;
+  }
 }
 .tour_information_review_item_header {
   display: flex;
