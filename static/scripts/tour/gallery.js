@@ -110,7 +110,6 @@ $(document).ready(function(){
                 mobile_gallery_destroy();
                 mobile = false;
             }
-
         }
     })
 

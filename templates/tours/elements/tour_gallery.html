@@ -2,24 +2,18 @@
 
 <div class="preview tour_gallery_wrap" id="tour-gallery-wrap">
     <div class="tour_gallery preview_gallery owl-carousel owl-theme" id="tour-gallery">
-        <div class="image-1 tour_gallery_item">
-            <img  src="{{ tour.image.url }}" alt="">
-        </div>
-        <div class="image-2 tour_gallery_item">
-            <img  src="{{ tour.image.url }}" alt="">
-        </div>
-        <div class="image-3 tour_gallery_item">
-            <img  src="{{ tour.image.url }}" alt="">
-        </div>
-        <div class="image-4 tour_gallery_item">
-            <img  src="{{ tour.image.url }}" alt="">
-        </div>
-        <div class="image-5 tour_gallery_item">
-            <img  src="{{ tour.image.url }}" alt="">
-        </div>
-        <div class="tour_gallery_item tour_gallery_item_none">
-            <img  src="{{ tour.image.url }}" alt="">
-        </div>
+
+        {% for item in image_items %}
+            <div class=" tour_gallery_item
+                {% if forloop.counter <= 5 %}
+                    image-{{ forloop.counter }}
+                {% else %}
+                    tour_gallery_item_none
+                {% endif %} ">
+                    <img  src="{{ item.image.url }}" alt="{{ item.description }}">
+            </div>
+
+        {% endfor %}
     </div>
     <button class="tour_gallery_button standard_button" id="all_photo">
         Все фотографии
