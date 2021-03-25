@@ -179,3 +179,26 @@ def get_more_comments(request):
     response.set_cookie('more_comments', result_dict['more'])
 
     return response
+
+
+def send_new_question(request, city_slug, tour_slug):
+    if not request.is_ajax():
+        return HttpResponse(status=401)
+
+    if request.method != 'POST':
+        return HttpResponse(status=401)
+
+    # создаём новый вопрос
+    question = Question()
+
+    # заполняем данные
+    question.name = str(request.POST.get('name'))
+    question.text = str(request.POST.get('text'))
+    question.email = str(request.POST.get('email'))
+    question.phone = str(request.POST.get('phone'))
+    question.tour = Tour.objects.get(slug=tour_slug)
+
+    # сохраняем
+    question.save()
+
+    return HttpResponse("OK")

@@ -1,4 +1,3 @@
-
 let $comment_popup = $('#comment_popup');
 let $popup_comment_button = $('#popup_comment_button');
 let $comment_name = $("#comment_name");
@@ -18,35 +17,15 @@ $('#send_comment').on('click', function () {
 
 //закрытие окна при клике рандомной областит
 $comment_popup.on('click', function () {
-    close_popup_comment();
+    close_popups();
 })
 
 $('.tour_popup_wrap').on('click', function (event){ event.stopPropagation() })
-
-//клик по крестику
-$('#tour_popup_close').on('click', function (){
-    close_popup_comment();
-    close_popup_question();
-})
-
-//клик по кнопке закрыть
-$('.tour_popup_comment_completed_close').on('click', function (){
-    close_popup_comment();
-    close_popup_question();
-})
 
 //открытие попапа
 function open_popup_comment(){
     $comment_popup.css("display", "flex");
     $('body').css("overflow", "hidden");
-}
-
-//функция закрытия попапа
-function close_popup_comment(){
-    $comment_popup.css("display", "none");
-    $('body').removeAttr("style");
-    $comment_popup_ok.addClass("none");
-    $comment_popup_form.removeClass("none");
 }
 
 //обновление кнопки в зависмости от пустоты инпутов
@@ -79,6 +58,7 @@ $popup_comment_button.on('click', function (){
     $(".tour_popup_comment_rating_items_item").each(function (index) {
         if ($(this).hasClass("active")) rating = index;
     })
+    rating += 1;
 
     //отправляем на сервер
     $.ajax({
@@ -91,7 +71,6 @@ $popup_comment_button.on('click', function (){
             'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
         },
         success: function(data) {
-            console.log(data);
             $comment_popup_ok.removeClass("none");
             $comment_popup_form.addClass("none");
             $comment_content.val("")
@@ -103,6 +82,7 @@ $popup_comment_button.on('click', function (){
     });
 })
 
+//клик по кнопке задать вопрос
 $("#question").on("click", function () {
     open_popup_question();
 })
@@ -112,11 +92,6 @@ function open_popup_question() {
     $comment_popup_form.addClass("none");
     $question_popup_form.removeClass("none");
     $('body').css("overflow", "hidden");
-}
-
-function close_popup_question(){
-    $comment_popup_form.removeClass("none");
-    $question_popup_form.addClass("none");
 }
 
 let $question_connection_item = $(".tour_popup_question_connection_item");
@@ -143,19 +118,12 @@ let $question_phone = $("#question_phone");
 let $question_email = $("#question_email");
 let $question_button = $("#question_button");
 let $question_content = $("#question_content");
+let $question_ok = $(".tour_popup_question_completed");
 
 $question_name.on('input', function () { update_button_question(); })
 $question_phone.on('input', function () { update_button_question(); })
 $question_email.on('input', function () { update_button_question(); })
 $question_content.on('input', function () { update_button_question(); })
-
-// Проверяем фокус
-inp.addEventListener('focus', _ => {
-  // Если там ничего нет или есть, но левое
-  if(!/^\+\d*$/.test(inp.value))
-    // То вставляем знак плюса как значение
-    inp.value = '+';
-});
 
 inp.addEventListener('keypress', e => {
   // Отменяем ввод не цифр
@@ -187,3 +155,64 @@ function update_button_question(){
         $question_button.addClass('not_active');
     }
 }
+
+//отправка вопроса
+$question_button.on('click', function (){
+    //если данные пустые
+    if($question_button.hasClass('not_active')) return 0;
+
+    //собираем данные
+    let text = $question_content.val();
+    let name = $question_name.val();
+    let email = $question_email.val();
+    let phone = $question_phone.val();
+
+    //отправляем на сервер
+    $.ajax({
+        url:  document.location.href + '/question/',
+        method: 'POST',
+        data: {
+            'text': text,
+            'name': name,
+            'email': email,
+            'phone': phone,
+            'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+        },
+        success: function(data) {
+            $question_ok.removeClass("none");
+            $question_popup_form.addClass("none");
+            $question_content.val("");
+            $question_name.val("");
+            $question_email.val("");
+            $question_phone.val("");
+        },
+        error: function(data) {
+            console.log("Ошибка при добавлении отзыва");
+        }
+    });
+})
+
+function close_popups(){
+    close_popup_comment();
+    $question_ok.addClass("none");
+    $question_popup_form.addClass("none");
+}
+
+//клик по крестику
+$('#tour_popup_close').on('click', function (){
+    close_popups();
+})
+
+//клик по кнопке закрыть
+$('.tour_popup_comment_completed_close').on('click', function (){
+    close_popups();
+})
+
+//функция закрытия попапа
+function close_popup_comment(){
+    $comment_popup.css("display", "none");
+    $('body').removeAttr("style");
+    $comment_popup_ok.addClass("none");
+    $comment_popup_form.removeClass("none");
+}
+

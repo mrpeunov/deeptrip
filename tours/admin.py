@@ -67,3 +67,9 @@ class TourAdmin(admin.ModelAdmin, DynamicArrayMixin):
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('tour', 'name', 'content', 'date', 'grade', 'show')
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'text', 'tour', 'date', 'email', 'phone', 'answer', 'note')
+    readonly_fields = ['date']

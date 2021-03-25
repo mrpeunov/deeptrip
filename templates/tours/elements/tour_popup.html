@@ -73,12 +73,26 @@
                 <input type="text" id="question_email" class="tour_popup_comment_data_item none" placeholder="Email">
             </div>
 
-            <button id="question_button" class="tour_popup_comment_button standard_button standard_button_dark not_active">
+            <button id="question_button"
+                    class="tour_popup_comment_button standard_button standard_button_dark not_active">
                 Отправить
             </button>
         </form>
 
-        <div class="tour_popup_question_completed"></div>
+        <div class="tour_popup_question_completed none" id="question">
+            <div class="tour_popup_comment_completed_content">
+                <div class="tour_popup_comment_completed_content_wrap">
+                    <img src="{% static 'img/tour/ok_comment.png' %}" alt="">
+                    <div class="standard_h2">Спасибо!</div>
+                    <div class="standard_text_gray">Отзыв будет опубликован в течении суток</div>
+                </div>
+            </div>
+
+            <button class="standard_button standard_button_dark tour_popup_comment_completed_close"
+                    id="tour_popup_close_button" onclick="return false;">
+                Закрыть
+            </button>
+        </div>
 
         <div class="tour_popup_close gallery_button_close" id="tour_popup_close" >
             <img src="{% static 'img/tour/close.png' %}" alt="">

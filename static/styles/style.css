@@ -1800,6 +1800,16 @@ header {
   background: #333333;
   color: white;
 }
+.tour_popup_question textarea {
+  height: 160px;
+}
+.tour_popup_question_completed button {
+  position: absolute;
+  width: calc(100% - 60px);
+  bottom: 30px;
+  left: 30px;
+  padding: 15px 0;
+}
 .tour_popup_question_connection {
   display: flex;
   align-items: center;

@@ -291,7 +291,10 @@ class Comment(models.Model):
 
         # обновляем данные в объекте экскурсии
         tour.count_comment = count_comments
-        tour.rating = round(tour_rating['grade__avg'], 2)
+        if tour_rating['grade__avg'] is None:
+            tour_rating = 5
+        else:
+            tour.rating = round(tour_rating['grade__avg'], 2)
         tour.save()
 
 
@@ -320,3 +323,22 @@ class RecommendedTour(models.Model):
     class Meta:
         verbose_name = "Рекомендованная экскурсия"
         verbose_name_plural = "Рекомендованные экскурсии"
+
+
+class Question(models.Model):
+    name = models.CharField("Имя", max_length=64)
+    text = models.TextField("Текст вопроса")
+    tour = models.ForeignKey(Tour, on_delete=models.PROTECT, null=True)
+    email = models.EmailField("E-mail", blank=True)
+    phone = models.TextField("Телефон", blank=True, max_length=15)
+    answer = models.BooleanField("Обработано", default=False)
+    date = models.DateTimeField("Дата", auto_now_add=True)
+    note = models.TextField("Примечание", blank=True)
+
+    def __str__(self):
+        return "Вопрос от {}".format(self.name)
+
+    class Meta:
+        verbose_name = "Вопрос"
+        verbose_name_plural = "Вопросы"
+
