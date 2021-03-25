@@ -1347,6 +1347,7 @@ header {
   background: #ffffff;
   display: flex;
   justify-content: center;
+  transition: 0.5s;
 }
 .tour_gallery_open .gallery_open_info {
   position: absolute;

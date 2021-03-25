@@ -123,6 +123,7 @@ $(document).ready(function(){
     function desktop_open_gallery_destroy(){
         $tour_gallery.trigger('destroy.owl.carousel');
         $tour_gallery_wrap.removeClass('tour_gallery_open');
+
         $("body").css("overflow","auto");
         $tour_gallery.removeAttr('style');
     }
