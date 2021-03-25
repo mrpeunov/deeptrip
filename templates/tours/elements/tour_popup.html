@@ -48,11 +48,42 @@
             </button>
         </div>
 
+        <form class="tour_popup_question none" id="question_popup_form">
+            {% csrf_token %}
+
+            <h2 class="standard_h2">Оставить отзыв</h2>
+
+            <textarea id="question_content" placeholder="Оставьте ваш вопрос здесь, мы ответим в течении 15 минут"></textarea>
+
+            <div class="tour_popup_question_connection">
+                <div class="standard_text_gray">Связаться по:</div>
+                <div class="tour_popup_question_connection_item active">Телефон</div>
+                <div class="tour_popup_question_connection_item">Email</div>
+            </div>
+
+            <div class="tour_popup_comment_data">
+                <input type="text" id="question_name" class="tour_popup_comment_data_item" placeholder="Имя">
+                <input type="text"
+                       id="question_phone"
+                       class="tour_popup_comment_data_item"
+                       placeholder="Телефон"
+                       name="phone"
+                       maxlength="13"
+                       required>
+                <input type="text" id="question_email" class="tour_popup_comment_data_item none" placeholder="Email">
+            </div>
+
+            <button id="question_button" class="tour_popup_comment_button standard_button standard_button_dark not_active">
+                Отправить
+            </button>
+        </form>
+
+        <div class="tour_popup_question_completed"></div>
+
         <div class="tour_popup_close gallery_button_close" id="tour_popup_close" >
             <img src="{% static 'img/tour/close.png' %}" alt="">
         </div>
     </div>
-
 
 
 

@@ -1789,6 +1789,25 @@ header{
     height: 100vh;
     z-index: 1000;
 
+    textarea{
+        width: 100%;
+        height: 200px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        resize: none;
+        border-radius: 20px;
+        outline: none;
+        padding: 15px 20px;
+        font-weight: 400;
+        font-size: 1rem;
+        border: #cccccc solid 1px;
+        margin-top: 20px;
+
+        &::placeholder{
+          color: #999999;
+        }
+      }
+
     .none{
       display: none;
     }
@@ -1877,25 +1896,6 @@ header{
         }
       }
 
-      textarea{
-        width: 100%;
-        height: 200px;
-        line-height: 1.5;
-        box-sizing: border-box;
-        resize: none;
-        border-radius: 20px;
-        outline: none;
-        padding: 15px 20px;
-        font-weight: 400;
-        font-size: 1rem;
-        border: #cccccc solid 1px;
-        margin-top: 20px;
-
-        &::placeholder{
-          color: #999999;
-        }
-      }
-
       &_button{
         position: absolute;
         bottom: 30px;
@@ -1908,6 +1908,9 @@ header{
 
       &_data{
         margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
 
         input{
           box-sizing: border-box;
@@ -1922,6 +1925,10 @@ header{
           &::placeholder{
             color: #999999;
           }
+        }
+
+        &_item{
+          width: 48% !important;
         }
       }
 
@@ -1973,6 +1980,29 @@ header{
             background: #colors[dark3];
             color: white;
           }
+        }
+      }
+    }
+
+    &_question{
+      &_connection{
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+
+        &_item{
+          margin: 0 10px;
+          border-radius: 15px;
+          padding: 5px 10px;
+          background: #colors[footer-bg];
+          color: #colors[dark3];
+          cursor: pointer;
+          font-size: 0.95rem;
+        }
+
+        .active{
+          background: #colors[dark3];
+          color: white;
         }
       }
     }

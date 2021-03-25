@@ -4,6 +4,7 @@ let $popup_comment_button = $('#popup_comment_button');
 let $comment_name = $("#comment_name");
 let $comment_content = $('#comment_content');
 let $comment_popup_form = $('#comment_popup_form');
+let $question_popup_form = $('#question_popup_form');
 let $comment_popup_ok = $("#comment_popup_ok")
 
 //обновление кнопки при вводе комментария
@@ -20,18 +21,18 @@ $comment_popup.on('click', function () {
     close_popup_comment();
 })
 
-//не вырубать окно при клике не по нему (мб переделать)
-console.log("Переделать на нормальную обботку одного ")
 $('.tour_popup_wrap').on('click', function (event){ event.stopPropagation() })
 
 //клик по крестику
 $('#tour_popup_close').on('click', function (){
     close_popup_comment();
+    close_popup_question();
 })
 
 //клик по кнопке закрыть
 $('.tour_popup_comment_completed_close').on('click', function (){
     close_popup_comment();
+    close_popup_question();
 })
 
 //открытие попапа
@@ -102,3 +103,87 @@ $popup_comment_button.on('click', function (){
     });
 })
 
+$("#question").on("click", function () {
+    open_popup_question();
+})
+
+function open_popup_question() {
+    $comment_popup.css("display", "flex");
+    $comment_popup_form.addClass("none");
+    $question_popup_form.removeClass("none");
+    $('body').css("overflow", "hidden");
+}
+
+function close_popup_question(){
+    $comment_popup_form.removeClass("none");
+    $question_popup_form.addClass("none");
+}
+
+let $question_connection_item = $(".tour_popup_question_connection_item");
+
+$question_connection_item.on("click", function () {
+    $question_connection_item.removeClass("active");
+    $(this).addClass("active");
+
+    if($(this).html() === "Телефон"){
+        $("#question_email").addClass("none");
+        $("#question_phone").removeClass("none");
+    }
+    else{
+        $("#question_email").removeClass("none");
+        $("#question_phone").addClass("none");
+    }
+
+    update_button_question();
+})
+
+let inp = document.querySelector('#question_phone');
+let $question_name = $("#question_name");
+let $question_phone = $("#question_phone");
+let $question_email = $("#question_email");
+let $question_button = $("#question_button");
+let $question_content = $("#question_content");
+
+$question_name.on('input', function () { update_button_question(); })
+$question_phone.on('input', function () { update_button_question(); })
+$question_email.on('input', function () { update_button_question(); })
+$question_content.on('input', function () { update_button_question(); })
+
+// Проверяем фокус
+inp.addEventListener('focus', _ => {
+  // Если там ничего нет или есть, но левое
+  if(!/^\+\d*$/.test(inp.value))
+    // То вставляем знак плюса как значение
+    inp.value = '+';
+});
+
+inp.addEventListener('keypress', e => {
+  // Отменяем ввод не цифр
+  if(/[^0-9+()-]/.test(e.key))
+    e.preventDefault();
+});
+
+function update_button_question(){
+    let phone = true;
+
+    $question_connection_item.each(function () {
+        if($(this).hasClass("active")){
+            phone = $(this).html() === "Телефон";
+        }
+    })
+
+    let active = false;
+
+    if(phone){
+        active = $question_name.val() && $question_content.val()
+            && $question_phone.val()
+    } else {
+        active = $question_name.val() && $question_content.val()
+            && $question_email.val()
+    }
+    if (active){
+        $question_button.removeClass('not_active');
+    } else {
+        $question_button.addClass('not_active');
+    }
+}

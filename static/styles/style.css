@@ -1634,6 +1634,23 @@ header {
   height: 100vh;
   z-index: 1000;
 }
+.tour_popup textarea {
+  width: 100%;
+  height: 200px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  resize: none;
+  border-radius: 20px;
+  outline: none;
+  padding: 15px 20px;
+  font-weight: 400;
+  font-size: 1rem;
+  border: #cccccc solid 1px;
+  margin-top: 20px;
+}
+.tour_popup textarea::placeholder {
+  color: #999999;
+}
 .tour_popup .none {
   display: none;
 }
@@ -1706,23 +1723,6 @@ header {
   left: 40px;
   padding: 15px;
 }
-.tour_popup_comment textarea {
-  width: 100%;
-  height: 200px;
-  line-height: 1.5;
-  box-sizing: border-box;
-  resize: none;
-  border-radius: 20px;
-  outline: none;
-  padding: 15px 20px;
-  font-weight: 400;
-  font-size: 1rem;
-  border: #cccccc solid 1px;
-  margin-top: 20px;
-}
-.tour_popup_comment textarea::placeholder {
-  color: #999999;
-}
 .tour_popup_comment_button {
   position: absolute;
   bottom: 30px;
@@ -1734,6 +1734,9 @@ header {
 }
 .tour_popup_comment_data {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .tour_popup_comment_data input {
   box-sizing: border-box;
@@ -1746,6 +1749,9 @@ header {
 }
 .tour_popup_comment_data input::placeholder {
   color: #999999;
+}
+.tour_popup_comment_data_item {
+  width: 48% !important;
 }
 .tour_popup_comment_rating {
   display: flex;
@@ -1791,6 +1797,24 @@ header {
   transform: scale(0.9);
 }
 .tour_popup_comment_rating_items .active {
+  background: #333333;
+  color: white;
+}
+.tour_popup_question_connection {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.tour_popup_question_connection_item {
+  margin: 0 10px;
+  border-radius: 15px;
+  padding: 5px 10px;
+  background: #f9f9f9;
+  color: #333333;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.tour_popup_question_connection .active {
   background: #333333;
   color: white;
 }
