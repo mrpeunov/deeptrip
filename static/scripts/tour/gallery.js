@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     //настроки для mobile
     let settings = {
         loop: false,
@@ -7,6 +8,8 @@ $(document).ready(function(){
         margin: 0,
         items: 1,
         mouseDrag: false,
+        onChanged: callback_mobile,
+        onInitialized: callback_mobile_initialized,
     }
 
     //настройки для desktop open
@@ -17,7 +20,7 @@ $(document).ready(function(){
         margin: 0,
         items: 1,
         mouseDrag: false,
-        onChanged: callback,
+        onChanged: callback_desktop,
     }
 
     //переиспользуемые элементы
@@ -27,11 +30,61 @@ $(document).ready(function(){
     let $tour_gallery_wrap = $('#tour-gallery-wrap');
     let $all_photo = $('#all_photo');
 
-    //callback on change slide
-    function callback(event){
+    //callback on change slide для десктопа
+    function callback_desktop(event){
         let number = event.item.index + 1;
         let count = event.item.count;
         update_information(number, count);
+    }
+
+    //при инициализации удаляет лишние точки
+    function callback_mobile_initialized(event){
+        let $dot = $('.tour_gallery .owl-dot');
+
+        $dot.each(function (index) {
+            if (index > 4){
+                $(this).css("display", "none");
+            }
+        })
+    }
+
+    //удаляет добавляет точки при листании
+    function callback_mobile(event){
+        let current = event.item.index;
+        let min = 0
+        let max = event.item.count - 1;
+
+        if(max > 4){
+            //что-либо меняем если больше 5 элементов
+            let $dot = $('.tour_gallery .owl-dot');
+
+            if(current < 2){
+                $dot.each(function (index) {
+                    if (index > 4){
+                        $(this).fadeOut();
+                    } else {
+                        $(this).fadeIn();
+                    }
+                })
+            }
+            else if(max - 2 < current){
+                $dot.each(function (index) {
+                    if (index < max - 4){
+                        $(this).fadeOut();
+                    } else {
+                        $(this).fadeIn();
+                    }
+                })
+            } else {
+                $dot.each(function (index) {
+                    if (index < current - 2 || current + 2 < index){
+                        $(this).fadeOut();
+                    } else {
+                        $(this).fadeIn();
+                    }
+                })
+            }
+        }
     }
 
     let mobile = true;
@@ -83,6 +136,7 @@ $(document).ready(function(){
         $tour_gallery.owlCarousel(settings);
     }
 
+    //уничтожение галереи
     function mobile_gallery_destroy(){
         $tour_gallery.trigger('destroy.owl.carousel');
     }

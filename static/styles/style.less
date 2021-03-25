@@ -1316,6 +1316,12 @@ header{
   }
 
   &_gallery{
+    .owl-pagination {
+      .owl-page:nth-child(n+3) {
+        display: none !important;
+      }
+    }
+
     &_button {
       display: none;
     }

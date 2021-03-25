@@ -1241,6 +1241,9 @@ header {
 .tour_title_wrap {
   margin: 0;
 }
+.tour_gallery .owl-pagination .owl-page:nth-child(n+3) {
+  display: none !important;
+}
 .tour_gallery_button {
   display: none;
 }
