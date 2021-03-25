@@ -205,6 +205,7 @@ class Tour(models.Model):
     notes = models.CharField("Примечания", blank=True, max_length=64)
     gid = models.BooleanField("Проверенный гид", default=False)
     auto_gid = models.BooleanField("Автоматизировать провернный гид", default=True)
+    video = models.URLField("Ссылка на видео", blank=True)
 
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)

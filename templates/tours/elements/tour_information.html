@@ -125,22 +125,22 @@
         {% endif %}
 
     </div>
-
+    {% if tour.video %}
     <div class="tour_information_video standard_line_top">
         <h2 class="standard_h2">
             Видео
         </h2>
         <div class="tour_information_video_iframe">
             <iframe width="100%" height="100%"
-                    src="https://www.youtube.com/embed/nCpjBDCauhA"
+                    src="{{ tour.video }}"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
 
             </iframe>
-
         </div>
     </div>
+    {% endif %}
 
     <div class="tour_information_review standard_line_top">
         <div class="tour_information_review_header">
