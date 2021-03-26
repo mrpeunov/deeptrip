@@ -1165,6 +1165,15 @@ header {
   cursor: pointer;
   transition: 0.3s;
 }
+.tour_header_utils_util .like-active {
+  display: none;
+}
+.tour_header_utils_util .liked img.like {
+  display: none!important;
+}
+.tour_header_utils_util .liked img.like-active {
+  display: block!important;
+}
 @media (max-width: 768px) {
   .tour_header_utils_util {
     margin-left: 25px;

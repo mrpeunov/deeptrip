@@ -1228,6 +1228,22 @@ header{
         cursor: pointer;
         transition: 0.3s;
 
+
+        .like-active{
+          display: none;
+        }
+
+        .liked{
+          img.like{
+            display: none!important;
+          }
+
+          img.like-active{
+            display: block!important;
+          }
+
+        }
+
         @media @max768{
           margin-left: 25px;
           padding: 10px;

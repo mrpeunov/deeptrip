@@ -18,9 +18,10 @@
                 Скопировать ссылку
             </div>
         </div>
-        <div class="tour_header_utils_util" id="like">
-            <div class="tour_header_utils_util_img">
-                <img src="{% static 'img/tour/liked.png'  %}" alt="">
+        <div class="tour_header_utils_util" id="like" >
+            <div class="tour_header_utils_util_img" id="like_img" data-tour_id="{{ tour.id }}">
+                <img class="like" src="{% static 'img/tour/liked.png'  %}" alt="">
+                <img class="like-active" src="{% static 'img/tour/liked-active.png'  %}" alt="">
             </div>
             <div class="tour_header_utils_util_text">
                 В избранное

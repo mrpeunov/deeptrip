@@ -1,5 +1,7 @@
 $(function() {
     let $tour_like = $('.preview_like');
+    let $like_on_tour_page = $('#like');
+    let $like_img_on_tour_page = $("#like_img");
 
     function like_clicked($elem){
         //клик по блоку с сердечком $elem
@@ -9,7 +11,8 @@ $(function() {
         let list = likes.list;
 
         //id экскурсии, которой поставили лайк
-        let tour_id = Number($elem.data("tour_id"))
+        let tour_id = Number($elem.data("tour_id"));
+        console.log(tour_id);
 
         //проверяем, был ли блок лайкнут до этого
         if($elem.hasClass("liked")){
@@ -39,6 +42,10 @@ $(function() {
 
     $tour_like.click(function(){
         like_clicked($(this));
+    })
+
+    $like_on_tour_page.click(function (){
+        like_clicked($like_img_on_tour_page);
     })
 
     function init(){
@@ -71,6 +78,14 @@ $(function() {
                     }
                 });
             });
+
+            list.forEach(function (value){
+                if($like_img_on_tour_page.data("tour_id") === value){
+                    $like_img_on_tour_page.addClass("liked")
+                }
+            })
+
+
 
             //ставим точку в меню
             if(list.length !== 0) $('#favorites').addClass('circle');
