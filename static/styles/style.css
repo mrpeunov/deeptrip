@@ -1137,6 +1137,9 @@ header {
     text-align: center;
   }
 }
+footer .not-empty {
+  margin-bottom: 0;
+}
 .tour_header {
   display: flex;
   justify-content: space-between;

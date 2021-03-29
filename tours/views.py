@@ -30,6 +30,7 @@ class CityPage(FooterAndMenuTemplateView):
         context['categories'] = get_filters_queryset(context['city'])
         context['magazine'] = get_articles(context['city'])
         context['h2'] = get_h2()
+        context['not_empty'] = False
 
 
 class FilterPage(FooterAndMenuTemplateView):
@@ -60,6 +61,7 @@ class TourPage(FooterAndMenuTemplateView):
         context['comments_more'] = comments['more']
         context['image_items'] = ImageItem.objects.filter(tour=tour)
         context['recommended_tours'] = RecommendedTour.objects.filter(main=tour)
+        context['not_empty'] = True
 
 
 class MapPage(FooterAndMenuTemplateView):
