@@ -210,3 +210,43 @@ def send_new_question(request, city_slug, tour_slug):
     question.save()
 
     return HttpResponse("OK")
+
+
+def get_more_recommended(request):
+    """
+    обработка AJAX
+    :param request: запрос
+    :return: словарь из html-кода и bool отвечаюещго на вопрос есть ли ещё комменты
+    """
+    if not request.is_ajax():
+        return HttpResponse(status=401)
+
+    if request.method != 'GET':
+        return HttpResponse(status=401)
+
+    # номер страницы, которую нужно вернуть
+    page = int(request.GET.get("page"))
+
+    # город
+    tour = Tour.objects.get(slug=request.GET.get("tour_slug"))
+    count = int(request.GET.get("count"))
+
+    result_dict = get_recommended_for_tours(tour, page)
+
+    """
+    # если desktop
+    if count == 3:
+        add = get_recommended_for_tours(tour, page + 1)
+        result_dict["tours"] |= add["tours"]
+        result_dict["more"] = add["more"]
+    """
+
+    # рендерим html
+    response = render(request, 'tours/ajax/ajax_tours.html',
+                      {'recommended_tours': result_dict['tours'], 'page': page})
+
+    # добавим куки который будет отвечать
+    # за отображение кнопки показать ещё (bool, if true - показываем)
+    response.set_cookie('more_tours', result_dict['more'])
+
+    return response

@@ -1,5 +1,5 @@
 <div class="tours container">
-    <div class="tours_items">
+    <div class="tours_items" id="recommended_items">
         {% for item in recommended_tours %}
             {% with item as preview %}
             <div class="tours_item">
@@ -8,4 +8,10 @@
             {% endwith %}
         {% endfor %}
     </div>
+    <button class="none" id="update_none_button"></button>
+    {% if recommended_tours_more %}
+    <div class="tour_more">
+        <button class="standard_button" id="see_more_tours" data-page="0" data-tour="{{ tour.slug }}">Показать ещё</button>
+    </div>
+    {% endif %}
 </div>

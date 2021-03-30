@@ -1,0 +1,9 @@
+{% with none=True %}
+        {% for item in recommended_tours %}
+            <div class="tours_item none">
+                {% with item as preview %}
+                    {% include 'tours/api/tour_preview.html' %}
+                {% endwith %}
+            </div>
+        {% endfor %}
+{% endwith %}

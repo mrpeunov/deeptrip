@@ -79,5 +79,10 @@ $(document).ready(function(){
 
     //отменяем переход по ссылке
     $('.owl-nav button').attr("onclick", "return false;")
+
+    $('#update_none_button').on('click', function () {
+        preview_galley_create();
+        css_setting();
+    })
 });
 

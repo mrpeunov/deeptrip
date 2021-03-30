@@ -24,10 +24,12 @@ def get_recommended_for_tours(tour: Tour, page: int):
             Q(categories__in=tour.categories.all()) &
             ~Q(id=tour.id)).order_by("id")
 
+        print(tours)
+
         if tours.count() < finish:
             # того же города
             tours |= Tour.objects.filter(
-                Q(cities__in=tour.city) &
+                Q(cities__in=[tour.city]) &
                 ~Q(categories__in=tour.categories.all()) &
                 ~Q(id=tour.id)).order_by("id")
 
@@ -38,9 +40,12 @@ def get_recommended_for_tours(tour: Tour, page: int):
                     ~Q(categories__in=tour.categories.all()) &
                     ~Q(id=tour.id)).order_by("id")
 
-    if tours.count() <= finish:
-        finish = tours.count()
-        more = False
+                if tours.count() <= finish:
+                    finish = tours.count()
+                    more = False
+
+    print(start, finish)
+    print(tours[start: finish])
 
     return {"tours": tours[start: finish],
             "more": more}

@@ -1841,4 +1841,9 @@ footer .not-empty {
   background: #333333;
   color: white;
 }
+.tour_more {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
 /*# sourceMappingURL=style.css.map */
