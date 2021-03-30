@@ -312,20 +312,6 @@ class ImageItem(models.Model):
         verbose_name_plural = "дополнительные фотографии"
 
 
-class RecommendedTour(models.Model):
-    main = models.ForeignKey(Tour, verbose_name="Основная экскурсия", related_name="tour_main",
-                             on_delete=models.PROTECT)
-    add = models.ForeignKey(Tour, verbose_name="Рекомендованная экскурсия", related_name="tour_add",
-                            on_delete=models.PROTECT)
-
-    def __str__(self):
-        return "Рекомендованная экскурсия {} {}".format(self.main, self.add)
-
-    class Meta:
-        verbose_name = "Рекомендованная экскурсия"
-        verbose_name_plural = "Рекомендованные экскурсии"
-
-
 class Question(models.Model):
     name = models.CharField("Имя", max_length=64)
     text = models.TextField("Текст вопроса")

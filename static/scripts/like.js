@@ -85,8 +85,6 @@ $(function() {
                 }
             })
 
-
-
             //ставим точку в меню
             if(list.length !== 0) $('#favorites').addClass('circle');
         }

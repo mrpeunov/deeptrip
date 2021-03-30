@@ -8,12 +8,6 @@ class ImageItemInline(admin.TabularInline):
     extra = 1
 
 
-class RecommendedTourInline(admin.TabularInline):
-    model = RecommendedTour
-    fk_name = "main"
-    extra = 1
-
-
 class CommentInline(admin.TabularInline):
     model = Comment
     extra = 1
@@ -61,7 +55,7 @@ class TourAdmin(admin.ModelAdmin, DynamicArrayMixin):
     search_fields = ('title', 'notes')
     actions_on_top = False
     actions_on_bottom = True
-    inlines = [ImageItemInline, RecommendedTourInline, CommentInline]
+    inlines = [ImageItemInline, CommentInline]
 
 
 @admin.register(Comment)

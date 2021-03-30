@@ -10,6 +10,7 @@ from tours.services.get_cities import get_cities_for_city
 from tours.services.filters import get_count_tours, get_filters_queryset
 from tours.services.get_comments_for_tour import get_comments_for_tour
 from tours.services.get_h2 import get_h2
+from tours.services.get_recommended_for_tours import get_recommended_for_tours
 from tours.services.get_tours import get_tours, get_maximum
 
 
@@ -56,11 +57,16 @@ class TourPage(FooterAndMenuTemplateView):
             slug=context['tour_slug'])
         context['tour'] = tour
 
-        comments = get_comments_for_tour(0, context['tour'])
+        comments = get_comments_for_tour(0, tour)
         context['comments'] = comments['list']
         context['comments_more'] = comments['more']
+
         context['image_items'] = ImageItem.objects.filter(tour=tour)
-        context['recommended_tours'] = RecommendedTour.objects.filter(main=tour)
+
+        recommended_tours = get_recommended_for_tours(tour, 0)
+        context['recommended_tours'] = recommended_tours["tours"]
+        context['recommended_tours_more'] = recommended_tours["more"]
+
         context['not_empty'] = True
 
 
