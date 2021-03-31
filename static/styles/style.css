@@ -1435,7 +1435,7 @@ footer .not-empty {
   width: 68%;
   padding-top: 20px;
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .tour_information {
     width: 100%;
   }
@@ -1556,7 +1556,7 @@ footer .not-empty {
   position: relative;
   margin-top: 20px;
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .tour_sidebar {
     width: 0;
   }
@@ -1610,7 +1610,7 @@ footer .not-empty {
   background: none;
   text-align: center;
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .tour_calculate {
     position: fixed;
     height: 50px;
