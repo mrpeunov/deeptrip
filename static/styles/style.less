@@ -96,7 +96,6 @@ img{
     }
   }
 
-
   &_h2{
     font-size: 1.15rem;
     font-weight: 500;
@@ -134,7 +133,91 @@ img{
     border-top: 2px solid #eeeeee;
   }
 
+  &_dropdown{
+    cursor: pointer;
+    position: relative;
+    height: 40px;
 
+    &_wrap{
+      position: absolute;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #cccccc;
+      background: #f8f8f8;
+      box-sizing: border-box;
+    }
+
+    &_choice{
+      width: 100%;
+      position: relative;
+      text-align: center;
+      border-radius: 10px;
+      box-sizing: border-box;
+      user-select: none;
+      padding: 10px;
+      background: white;
+
+      &::after{
+        content: "";
+        width: 15px;
+        height: 8px;
+        position: absolute;
+        background-image: url("../img/tour/check_down.png");
+        right: 10px;
+        top: 14px;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+    }
+
+    .underline{
+      border-bottom: 1px solid #cccccc;
+
+      &::after{
+        background-image: url("../img/tour/check_up.png");
+      }
+    }
+
+
+    &_list{
+      width: 98%;
+      background: #f8f8f8;
+      box-sizing: border-box;
+      border-radius: 10px;
+      max-height: 140px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        margin-right: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #f8f8f8;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #bbbbbb;
+        border-radius: 20px;
+      }
+
+      &_item{
+        margin: 10px 10px 0 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        box-sizing: border-box;
+        border-bottom: 2px solid #e6e6e6;
+        transition: 0.2s;
+
+        &:hover{
+          font-weight: 500;
+        }
+      }
+
+      &_item:last-child{
+        border: none;
+      }
+    }
+  }
 }
 
 .menu{

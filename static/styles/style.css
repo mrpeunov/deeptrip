@@ -219,6 +219,79 @@ img {
   padding-top: 30px;
   border-top: 2px solid #eeeeee;
 }
+.standard_dropdown {
+  cursor: pointer;
+  position: relative;
+  height: 40px;
+}
+.standard_dropdown_wrap {
+  position: absolute;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  background: #f8f8f8;
+  box-sizing: border-box;
+}
+.standard_dropdown_choice {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  box-sizing: border-box;
+  user-select: none;
+  padding: 10px;
+  background: white;
+}
+.standard_dropdown_choice::after {
+  content: "";
+  width: 15px;
+  height: 8px;
+  position: absolute;
+  background-image: url("../img/tour/check_down.png");
+  right: 10px;
+  top: 14px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.standard_dropdown .underline {
+  border-bottom: 1px solid #cccccc;
+}
+.standard_dropdown .underline::after {
+  background-image: url("../img/tour/check_up.png");
+}
+.standard_dropdown_list {
+  width: 98%;
+  background: #f8f8f8;
+  box-sizing: border-box;
+  border-radius: 10px;
+  max-height: 140px;
+  overflow: auto;
+}
+.standard_dropdown_list::-webkit-scrollbar {
+  width: 5px;
+  margin-right: 5px;
+}
+.standard_dropdown_list::-webkit-scrollbar-track {
+  background: #f8f8f8;
+}
+.standard_dropdown_list::-webkit-scrollbar-thumb {
+  background-color: #bbbbbb;
+  border-radius: 20px;
+}
+.standard_dropdown_list_item {
+  margin: 10px 10px 0 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  border-bottom: 2px solid #e6e6e6;
+  transition: 0.2s;
+}
+.standard_dropdown_list_item:hover {
+  font-weight: 500;
+}
+.standard_dropdown_list_item:last-child {
+  border: none;
+}
 .menu {
   position: fixed;
   bottom: 0;
