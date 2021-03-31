@@ -83,6 +83,7 @@ $(document).ready(function(){
     $('#update_none_button').on('click', function () {
         preview_galley_create();
         css_setting();
+        $('.owl-nav button').attr("onclick", "return false;")
     })
 });
 

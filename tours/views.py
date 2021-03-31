@@ -227,19 +227,17 @@ def get_more_recommended(request):
     # номер страницы, которую нужно вернуть
     page = int(request.GET.get("page"))
 
-    # город
+    # экскурсия
     tour = Tour.objects.get(slug=request.GET.get("tour_slug"))
     count = int(request.GET.get("count"))
 
     result_dict = get_recommended_for_tours(tour, page)
 
-    """
     # если desktop
     if count == 3:
         add = get_recommended_for_tours(tour, page + 1)
-        result_dict["tours"] |= add["tours"]
+        result_dict["tours"].union(result_dict["tours"])
         result_dict["more"] = add["more"]
-    """
 
     # рендерим html
     response = render(request, 'tours/ajax/ajax_tours.html',

@@ -7,13 +7,15 @@ $see_more_tours.on('click', function (){
     let next_page = parseInt($see_more_tours.attr('data-page'), 10) + 1;
     let tour_slug = $see_more_tours.data('tour');
 
+    let count = 6;
+    if($(window).width() < 768) count = 3;
 
     $.ajax({
         url: '/api/v1/get_more_recommended/',
         method: 'GET',
         data: {
             'page': next_page,
-            'count': 3,
+            'count': count,
             'tour_slug': tour_slug
         },
         success: function(data) {
