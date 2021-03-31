@@ -1,18 +1,15 @@
 from django.contrib import admin
-import nested_admin.nested as nested
 
 from .models import *
 from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
 
 class ImageItemInline(admin.TabularInline):
-    sortable_options = 'variable'
     model = ImageItem
     extra = 1
 
 
 class CommentInline(admin.TabularInline):
-    sortable_options = 'name'
     model = Comment
     extra = 1
 
@@ -22,17 +19,14 @@ class TourCitiesInline(admin.TabularInline):
     extra = 8
 
 
-class RateInline(nested.NestedTabularInline):
+class RateInline(admin.TabularInline):
     model = Rate
-    sortable_field_name = 'variable'
     extra = 1
 
 
-class VariableInline(nested.NestedTabularInline):
+class VariableInline(admin.TabularInline):
     model = Variable
     extra = 1
-    sortable_field_name = 'tour'
-    inlines = [RateInline]
 
 
 @admin.register(Category)
@@ -63,7 +57,7 @@ class CityAdmin(admin.ModelAdmin):
 
 
 @admin.register(Tour)
-class TourAdmin(nested.NestedModelAdmin, DynamicArrayMixin):
+class TourAdmin(admin.ModelAdmin, DynamicArrayMixin):
     list_display = ('title', 'notes', 'rating', 'count_comment')
     list_editable = ('notes',)
     readonly_fields = ('count_comment', 'rating')
@@ -87,10 +81,10 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 @admin.register(Variable)
-class VariableAdmin(nested.NestedModelAdmin):
+class VariableAdmin(admin.ModelAdmin):
     inlines = [RateInline]
 
 
 @admin.register(Rate)
-class RateAdmin(nested.NestedModelAdmin):
+class RateAdmin(admin.ModelAdmin):
     list_display = ('price', )

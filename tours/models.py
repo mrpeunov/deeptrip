@@ -332,7 +332,7 @@ class Question(models.Model):
 
 class Variable(models.Model):
     TYPE_LIST = [('r', 'Тариф'),
-                 ('a', 'Взрослые'),
+                 ('g', 'Группа'),
                  ('c', 'Дети')]
 
     name = models.CharField("Название переменной", max_length=32, blank=True)

@@ -2,32 +2,27 @@
     <h2 class="tour_calculate_strong">Расчёт стоимости:</h2>
     <div class="tour_calculate_main_choices">
         <div class="tour_calculate_main_item">
-            <div class="standard_dropdown" id="test_dropdown">
-                <input type="hidden">
-                <div class="standard_dropdown_wrap">
-                    <div class="standard_dropdown_choice standard_text_strong" id="dropdown_1">
-                        Двухчасовая
-                    </div>
-                    <div class="standard_dropdown_list none" id="dropdown_1_list">
-                        <div class="standard_dropdown_list_item" data-choice_id="dropdown_1">
-                            Двухчасовая
+        {% for key, value in prices.items  %}
+            {% if value %}
+                <div class="standard_dropdown" id="test_dropdown">
+                    <input type="hidden">
+                    <div class="standard_dropdown_wrap">
+                        <div class="standard_dropdown_choice standard_text_strong" id="dropdown_{{ key }}">
+                            {{value.0.name}}
                         </div>
-                        <div class="standard_dropdown_list_item" data-choice_id="dropdown_1">
-                            Трехчасовая
-                        </div>
-                        <div class="standard_dropdown_list_item" data-choice_id="dropdown_1">
-                            На всю ночь
-                        </div>
-                        <div class="standard_dropdown_list_item" data-choice_id="dropdown_1">
-                            Только минет
-                        </div>
-                        <div class="standard_dropdown_list_item" data-choice_id="dropdown_1">
-                            Анал
+                        <div class="standard_dropdown_list none" id="dropdown_{{ key }}_list">
+                            {% for item in value %}
+                                <div class="standard_dropdown_list_item"
+                                     data-choice_id="dropdown_{{ key }}"
+                                     data-price="{{ item.price }}">
+                                    {{ item.name }}
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
-            </div>
-
+            {% endif %}
+        {% endfor %}
         </div>
     </div>
     <div class="tour_calculate_main_price">
