@@ -2,7 +2,7 @@ from django_better_admin_arrayfield.models.fields import ArrayField
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import  Avg
+from django.db.models import Avg
 from django.urls import reverse
 from smart_selects.db_fields import ChainedManyToManyField, ChainedForeignKey
 
@@ -56,8 +56,8 @@ class City(models.Model):
         if 2 <= count % 10 <= 4 and count not in (12, 13, 14):
             return "{} экскурсии".format(count)
 
-        if 5 <= count % 10 or\
-                count % 10 in (0, 1) or\
+        if 5 <= count % 10 or \
+                count % 10 in (0, 1) or \
                 count in (12, 13, 14):
             return "{} экскурсий".format(count)
 
@@ -191,7 +191,7 @@ class Tour(models.Model):
 
     price = models.PositiveIntegerField("Цена")
     image = models.ImageField("Основная фотография")
-    group = models.BooleanField("Тип", choices=GROUP_CHOICES)
+    groups = models.BooleanField("Тип", choices=GROUP_CHOICES)
     time = models.CharField("Продолжительность экскурсии", max_length=32)
 
     seat_request = models.BooleanField("Показывать блок 'Запросить места'", default=True)
@@ -237,7 +237,7 @@ class Tour(models.Model):
 
         # 20% влияния количества комментариев
         if self.count_comment > 9:
-            city_rating += int((self.count_comment+1) / 10 * 20)
+            city_rating += int((self.count_comment + 1) / 10 * 20)
         else:
             city_rating += 20
 
@@ -329,3 +329,32 @@ class Question(models.Model):
         verbose_name = "Вопрос"
         verbose_name_plural = "Вопросы"
 
+
+class Variable(models.Model):
+    TYPE_LIST = [('r', 'Тариф'),
+                 ('a', 'Взрослые'),
+                 ('c', 'Дети')]
+
+    name = models.CharField("Название переменной", max_length=32, blank=True)
+    tour = models.ForeignKey(Tour, on_delete=models.PROTECT, blank=True)
+    type = models.CharField("Тип", max_length=1, choices=TYPE_LIST, blank=True)
+
+    def __str__(self):
+        return "Переменная для экскурсии {} - {}".format(self.tour, self.name)
+
+    class Meta:
+        verbose_name = "Переменная"
+        verbose_name_plural = "Переменные для тарифов"
+
+
+class Rate(models.Model):
+    name = models.CharField("Название", max_length=32, blank=True)
+    price = models.FloatField("Цена/Множитель", blank=True)
+    variable = models.ForeignKey(Variable, on_delete=models.PROTECT, blank=True)
+
+    def __str__(self):
+        return "Вариант для переменной {}".format(self.variable)
+
+    class Meta:
+        verbose_name = "Вариант переменной"
+        verbose_name_plural = "Варианты переменной"

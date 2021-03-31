@@ -39,6 +39,7 @@ CACHES = {
 # Application definition
 
 INSTALLED_APPS = [
+    'nested_admin',  # inline отображение
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'smart_selects',  # для красивого заполнения many-to-many
     'django_better_admin_arrayfield',  # Admin Field
     'django_json_widget',
+
 ]
 
 MIDDLEWARE = [

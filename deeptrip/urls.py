@@ -9,7 +9,9 @@ urlpatterns = [
     path('chaining/', include('smart_selects.urls')),
     path('', include('base.urls')),
     path('', include('tours.urls.api')),
+    path('_nested_admin/', include('nested_admin.urls')),
     path('magazine/', include('articles.urls')),
     path('<slug:city_slug>/', include('tours.urls.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
