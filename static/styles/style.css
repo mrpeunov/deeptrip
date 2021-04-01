@@ -1351,6 +1351,12 @@ footer .not-empty {
 .tour_gallery .owl-pagination .owl-page:nth-child(n+3) {
   display: none !important;
 }
+.tour_gallery_item {
+  cursor: pointer;
+}
+.tour_gallery .owl-item .tour_gallery_item {
+  cursor: auto;
+}
 .tour_gallery_button {
   display: none;
 }
