@@ -146,7 +146,12 @@ img{
       border: 1px solid #cccccc;
       background: #f8f8f8;
       box-sizing: border-box;
+
+      &_active{
+        z-index: 100;
+      }
     }
+
 
     &_choice{
       width: 100%;
@@ -1814,11 +1819,16 @@ footer{
     border-radius: 20px;
     box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
     padding: 20px;
-    height: 300px;
 
     &_strong{
       font-weight: 500;
       font-size: 1.15rem;
+    }
+
+    &_main{
+      &_price{
+        margin: 20px 0 10px 0;
+      }
     }
 
     &_buttons{

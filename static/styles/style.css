@@ -233,6 +233,9 @@ img {
   background: #f8f8f8;
   box-sizing: border-box;
 }
+.standard_dropdown_wrap_active {
+  z-index: 100;
+}
 .standard_dropdown_choice {
   width: 100%;
   position: relative;
@@ -1651,11 +1654,13 @@ footer .not-empty {
   border-radius: 20px;
   box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
   padding: 20px;
-  height: 300px;
 }
 .tour_calculate_strong {
   font-weight: 500;
   font-size: 1.15rem;
+}
+.tour_calculate_main_price {
+  margin: 20px 0 10px 0;
 }
 .tour_calculate_buttons button {
   outline: none;

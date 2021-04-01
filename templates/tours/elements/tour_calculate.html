@@ -7,7 +7,9 @@
                 <div class="standard_dropdown" id="test_dropdown">
                     <input type="hidden">
                     <div class="standard_dropdown_wrap">
-                        <div class="standard_dropdown_choice standard_text_strong" id="dropdown_{{ key }}">
+                        <div class="standard_dropdown_choice standard_text_strong"
+                             id="dropdown_{{ key }}"
+                             data-type="{{ key }}" data-price="{{value.0.price}}">
                             {{value.0.name}}
                         </div>
                         <div class="standard_dropdown_list none" id="dropdown_{{ key }}_list">
@@ -26,7 +28,7 @@
         </div>
     </div>
     <div class="tour_calculate_main_price">
-        <span class="tour_calculate_strong">1500 ₽</span> <span class="standard_text_gray">на месте</span>
+        <span class="tour_calculate_strong"><span id="calculate_price">1500</span> ₽</span> <span class="standard_text_gray">на месте</span>
     </div>
 </div>
 <div class="tour_calculate_buttons">
