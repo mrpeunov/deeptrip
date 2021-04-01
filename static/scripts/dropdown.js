@@ -15,15 +15,6 @@ $(".standard_dropdown_choice").on('click', function () {
         })
         open_dropdown($choice, $list)
     }
-
-    //если по закрытому, то его открыть другие закрыть
-    /*
-    $(".standard_dropdown_choice").each(function (elem) {
-        if(elem.attr("id") !== id){
-            elem.toggleClass("underline")
-            elem.parent().toggleClass("standard_dropdown_wrap_active");
-        }
-    })*/
 })
 
 function open_dropdown($choice, $list) {
@@ -42,11 +33,17 @@ function close_dropdown($choice, $list) {
 $(".standard_dropdown_list_item").on('click', function () {
     let choice_id = $(this).data("choice_id");
     let $choice = $("#" + choice_id);
+    let $mobile_choice = $("#m_" + choice_id);
 
     let text = $(this).html();
 
     $choice.html(text);
-    $choice.trigger("click");
+    $mobile_choice.html(text);
+
+    close_dropdown($choice, $choice.next())
+    close_dropdown($mobile_choice, $mobile_choice.next())
+
+    $mobile_choice.attr("data-price", $(this).data("price"));
     $choice.attr("data-price", $(this).data("price"));
 
     update_calculate_price();
@@ -102,6 +99,8 @@ function update_calculate_price() {
         result_price = children_price;
     }
 
-    $('#calculate_price').html(result_price);
+    console.log("nnnn");
+
+    $('.calculate_price').html(result_price);
 
 }

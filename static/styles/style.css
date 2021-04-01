@@ -239,7 +239,6 @@ img {
 .standard_dropdown_choice {
   width: 100%;
   position: relative;
-  text-align: center;
   border-radius: 10px;
   box-sizing: border-box;
   user-select: none;
@@ -1510,6 +1509,72 @@ footer .not-empty {
   display: flex;
   justify-content: space-between;
 }
+.tour_calculate {
+  border-radius: 20px;
+  box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
+  padding: 20px;
+}
+.tour_calculate_strong {
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+.tour_calculate_main_price {
+  margin: 20px 0 10px 0;
+}
+.tour_calculate_buttons button {
+  outline: none;
+  border: none;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 100%;
+}
+.tour_calculate_buttons button:hover {
+  -webkit-transform: scale(0.975);
+  -ms-transform: scale(0.975);
+  transform: scale(0.975);
+}
+.tour_calculate_buttons_booking {
+  background-image: -moz-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  background-image: -webkit-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  background-image: -ms-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  border-radius: 15px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.tour_calculate_buttons_question {
+  font-size: 0.95rem;
+  font-weight: bold;
+  background: none;
+  text-align: center;
+}
+@media (max-width: 992px) {
+  .tour_calculate {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background: white;
+    border-radius: 0;
+    padding: 10px 0 0 0;
+  }
+  .tour_calculate_main {
+    display: none;
+  }
+  .tour_calculate_buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .tour_calculate_buttons button {
+    max-width: 50%;
+    margin: 0 10px;
+  }
+}
 .tour_information {
   width: 68%;
   padding-top: 20px;
@@ -1578,6 +1643,21 @@ footer .not-empty {
 .tour_information_video_iframe iframe {
   position: absolute;
   top: 0;
+}
+.tour_information_calculate {
+  display: none;
+}
+@media (max-width: 768px) {
+  .tour_information_calculate {
+    display: block;
+  }
+}
+.tour_information_calculate .tour_calculate_buttons button {
+  max-width: 100%;
+  margin: 0;
+}
+.tour_information_calculate .tour_calculate_main {
+  display: block;
 }
 .tour_information_review_empty {
   margin-bottom: 30px;
@@ -1649,72 +1729,6 @@ footer .not-empty {
   position: absolute;
   top: auto;
   bottom: 0;
-}
-.tour_calculate {
-  border-radius: 20px;
-  box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
-  padding: 20px;
-}
-.tour_calculate_strong {
-  font-weight: 500;
-  font-size: 1.15rem;
-}
-.tour_calculate_main_price {
-  margin: 20px 0 10px 0;
-}
-.tour_calculate_buttons button {
-  outline: none;
-  border: none;
-  transition: 0.3s;
-  cursor: pointer;
-  width: 100%;
-}
-.tour_calculate_buttons button:hover {
-  -webkit-transform: scale(0.975);
-  -ms-transform: scale(0.975);
-  transform: scale(0.975);
-}
-.tour_calculate_buttons_booking {
-  background-image: -moz-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
-  background-image: -webkit-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
-  background-image: -ms-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
-  border-radius: 15px;
-  height: 40px;
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-.tour_calculate_buttons_question {
-  font-size: 0.95rem;
-  font-weight: bold;
-  background: none;
-  text-align: center;
-}
-@media (max-width: 992px) {
-  .tour_calculate {
-    position: fixed;
-    height: 50px;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    background: white;
-    border-radius: 0;
-    padding: 10px 0 0 0;
-  }
-  .tour_calculate_main {
-    display: none;
-  }
-  .tour_calculate_buttons {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
-  .tour_calculate_buttons button {
-    max-width: 50%;
-    margin: 0 10px;
-  }
 }
 .tour_popup {
   display: none;

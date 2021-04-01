@@ -156,7 +156,6 @@ img{
     &_choice{
       width: 100%;
       position: relative;
-      text-align: center;
       border-radius: 10px;
       box-sizing: border-box;
       user-select: none;
@@ -1641,6 +1640,87 @@ footer{
     justify-content: space-between;
   }
 
+  &_calculate{
+    border-radius: 20px;
+    box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
+    padding: 20px;
+
+    &_strong{
+      font-weight: 500;
+      font-size: 1.15rem;
+    }
+
+    &_main{
+      &_price{
+        margin: 20px 0 10px 0;
+      }
+    }
+
+    &_buttons{
+      button{
+        outline: none;
+        border: none;
+        transition: 0.3s;
+        cursor: pointer;
+        width: 100%;
+
+        &:hover{
+          -webkit-transform: scale(0.975);
+          -ms-transform: scale(0.975);
+          transform: scale(0.975);
+        }
+      }
+
+      &_booking{
+        background-image: -moz-linear-gradient( 84deg, rgb(59,163,195) 0%, rgb(71,202,204) 100%);
+        background-image: -webkit-linear-gradient( 84deg, rgb(59,163,195) 0%, rgb(71,202,204) 100%);
+        background-image: -ms-linear-gradient( 84deg, rgb(59,163,195) 0%, rgb(71,202,204) 100%);
+
+        border-radius: 15px;
+        height: 40px;
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      &_question{
+        font-size: 0.95rem;
+        font-weight: bold;
+        background: none;
+        text-align: center;
+
+      }
+    }
+
+    @media @max992{
+      position: fixed;
+      height: 50px;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      background: white;
+      border-radius: 0;
+      padding: 10px 0 0 0;
+
+      &_main{
+        display: none;
+      }
+
+      &_buttons{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+        button{
+          max-width: 50%;
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+
   &_information{
     width: 68%;
     padding-top: 20px;
@@ -1725,6 +1805,23 @@ footer{
           position: absolute;
           top: 0;
         }
+      }
+    }
+
+    &_calculate{
+      display: none;
+
+      @media @max768{
+        display: block;
+      }
+
+      .tour_calculate_buttons button{
+        max-width: 100%;
+        margin: 0;
+      }
+
+      .tour_calculate_main{
+        display: block;
       }
     }
 
@@ -1815,86 +1912,7 @@ footer{
     }
   }
 
-  &_calculate{
-    border-radius: 20px;
-    box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
-    padding: 20px;
 
-    &_strong{
-      font-weight: 500;
-      font-size: 1.15rem;
-    }
-
-    &_main{
-      &_price{
-        margin: 20px 0 10px 0;
-      }
-    }
-
-    &_buttons{
-      button{
-        outline: none;
-        border: none;
-        transition: 0.3s;
-        cursor: pointer;
-        width: 100%;
-
-        &:hover{
-          -webkit-transform: scale(0.975);
-          -ms-transform: scale(0.975);
-          transform: scale(0.975);
-        }
-      }
-
-      &_booking{
-        background-image: -moz-linear-gradient( 84deg, rgb(59,163,195) 0%, rgb(71,202,204) 100%);
-        background-image: -webkit-linear-gradient( 84deg, rgb(59,163,195) 0%, rgb(71,202,204) 100%);
-        background-image: -ms-linear-gradient( 84deg, rgb(59,163,195) 0%, rgb(71,202,204) 100%);
-
-        border-radius: 15px;
-        height: 40px;
-        color: white;
-        font-weight: bold;
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
-
-      &_question{
-        font-size: 0.95rem;
-        font-weight: bold;
-        background: none;
-        text-align: center;
-
-      }
-    }
-
-    @media @max992{
-      position: fixed;
-      height: 50px;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      z-index: 100;
-      background: white;
-      border-radius: 0;
-      padding: 10px 0 0 0;
-
-      &_main{
-        display: none;
-      }
-
-      &_buttons{
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-
-        button{
-          max-width: 50%;
-          margin: 0 10px;
-        }
-      }
-    }
-  }
 
   &_popup{
     display: none;
