@@ -1,7 +1,14 @@
+from typing import Dict
+
 from tours.models import Tour, Rate, Variable
 
 
-def get_prices_for_tour(tour: Tour):
+def get_prices_for_tour(tour: Tour) -> Dict:
+    """
+    Возвращается цены используемые в калькуляторе
+    :param tour: экскурсия
+    :return: словарь необходимый для алгоритма
+    """
     variables = Variable.objects.filter(tour=tour)
 
     children = Rate.objects.none()
@@ -32,7 +39,5 @@ def get_prices_for_tour(tour: Tour):
         "rate": rate,
         "group": group
     }
-
-    print(result)
 
     return result

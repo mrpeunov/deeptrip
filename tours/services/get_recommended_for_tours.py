@@ -1,9 +1,17 @@
+from typing import Dict
+
 from django.db.models import Q
 
 from tours.models import Tour
 
 
-def get_recommended_for_tours(tour: Tour, page: int):
+def get_recommended_for_tours(tour: Tour, page: int) -> Dict:
+    """
+    Функция получения рекоменндованых экскурсий для определнной экскурсии
+    :param tour: тур для которого возвращается значение
+    :param page: номер 3-следующих экскурсий
+    :return: словаь в экскурсиями и информацию о том, есть ли ещё экскурсии
+    """
     more = True  # всё или нет
 
     start = page * 3
