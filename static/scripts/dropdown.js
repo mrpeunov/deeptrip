@@ -3,14 +3,41 @@ update_calculate_price();
 
 $(".standard_dropdown_choice").on('click', function () {
     let id = $(this).attr("id");
-
     let $choice = $("#" + id);
     let $list = $("#" +  id  + "_list");
 
-    $list.toggleClass("none");
-    $choice.toggleClass("underline");
-    $choice.parent().toggleClass("standard_dropdown_wrap_active");
+    //если по открытому кликают закрыть
+    if($choice.hasClass("underline")){
+        close_dropdown($choice, $list)
+    } else{
+        $(".standard_dropdown_choice").each(function () {
+            close_dropdown($(this), $(this).next());
+        })
+        open_dropdown($choice, $list)
+    }
+
+    //если по закрытому, то его открыть другие закрыть
+    /*
+    $(".standard_dropdown_choice").each(function (elem) {
+        if(elem.attr("id") !== id){
+            elem.toggleClass("underline")
+            elem.parent().toggleClass("standard_dropdown_wrap_active");
+        }
+    })*/
 })
+
+function open_dropdown($choice, $list) {
+    $list.removeClass("none");
+    $choice.addClass("underline");
+    $choice.parent().addClass("standard_dropdown_wrap_active");
+}
+
+function close_dropdown($choice, $list) {
+    $list.addClass("none");
+    $choice.removeClass("underline");
+    $choice.parent().removeClass("standard_dropdown_wrap_active");
+}
+
 
 $(".standard_dropdown_list_item").on('click', function () {
     let choice_id = $(this).data("choice_id");
@@ -39,17 +66,17 @@ function update_calculate_price() {
     $('.standard_dropdown_choice').each(function () {
         if($(this).data("type") === "rate"){
             rate = true;
-            rate_price = parseFloat($(this).attr("data-price"));
+            rate_price = parseFloat($(this).attr("data-price").replace(',', '.'));
         }
 
         if($(this).data("type") === "children"){
             children = true;
-            children_price = parseFloat($(this).attr("data-price"));
+            children_price = parseFloat($(this).attr("data-price").replace(',', '.'));
         }
 
         if($(this).data("type") === "group") {
             group = true;
-            group_price = parseFloat($(this).attr("data-price"));
+            group_price = parseFloat($(this).attr("data-price").replace(',', '.'));
         }
     })
 

@@ -1297,7 +1297,7 @@ footer .not-empty {
   display: flex;
   flex-direction: column;
 }
-@media (max-width: 768px) {
+@media (max-width: 784px) {
   .tour_upper {
     flex-direction: column-reverse;
   }
@@ -1345,7 +1345,7 @@ footer .not-empty {
     box-sizing: border-box;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 785px) {
   .tour_gallery {
     display: grid;
     grid-template-areas: "image-1 image-2 image-3" "image-1 image-4 image-5";
