@@ -577,10 +577,15 @@ header {
   height: 25px;
   padding-bottom: 7%;
   cursor: pointer;
-  background-image: url("../img/preview/like.png");
   background-repeat: no-repeat;
   background-size: contain;
   transition: 0.2s;
+}
+.preview_like .empty {
+  display: block;
+}
+.preview_like .active {
+  display: none;
 }
 .preview_like:hover {
   -webkit-transform: scale(0.93);
@@ -588,8 +593,13 @@ header {
   transform: scale(0.93);
 }
 .preview .liked {
-  background-image: url("../img/preview/like-active.png");
   transition: 0.2s;
+}
+.preview .liked .empty {
+  display: none;
+}
+.preview .liked .active {
+  display: block;
 }
 .preview .owl-stage-outer {
   border-radius: 15px !important;
@@ -1218,6 +1228,9 @@ header {
 footer .not-empty {
   margin-bottom: 0;
 }
+.tour {
+  margin-bottom: 40px;
+}
 .tour_header {
   display: flex;
   justify-content: space-between;
@@ -1286,6 +1299,9 @@ footer .not-empty {
 }
 .tour_header_utils_util_img img {
   width: 100%;
+}
+.tour_header_utils_util_text {
+  user-select: none;
 }
 @media (max-width: 768px) {
   .tour_header_utils_util_text {
@@ -1587,6 +1603,9 @@ footer .not-empty {
 .tour_information_description ul {
   list-style: none;
 }
+.tour_information_description ul li {
+  margin-bottom: 5px;
+}
 .tour_information_description ul li:before {
   content: "-";
   position: relative;
@@ -1596,9 +1615,9 @@ footer .not-empty {
   display: none;
 }
 .tour_information_description_text p {
-  line-height: 1.5;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  line-height: 1.4;
+  margin-bottom: 17px;
+  margin-top: 17px;
 }
 .tour_information_description_text p:last-child {
   margin-bottom: 0;
@@ -1647,7 +1666,7 @@ footer .not-empty {
 .tour_information_calculate {
   display: none;
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .tour_information_calculate {
     display: block;
   }

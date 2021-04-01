@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     //настройки owl gallery
     let preview_gallery_settings = {
         items: 1,

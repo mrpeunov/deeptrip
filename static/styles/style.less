@@ -548,10 +548,17 @@ header{
     height: 25px;
     padding-bottom: 7%;
     cursor: pointer;
-    background-image: url("../img/preview/like.png");
     background-repeat: no-repeat;
     background-size: contain;
     transition: 0.2s;
+
+    .empty{
+      display: block;
+    }
+
+    .active{
+      display: none;
+    }
 
     &:hover{
       -webkit-transform: scale(0.93);
@@ -561,8 +568,15 @@ header{
   }
 
   .liked{
-    background-image: url("../img/preview/like-active.png");
     transition: 0.2s;
+
+    .empty{
+      display: none;
+    }
+
+    .active{
+      display: block;
+    }
   }
 
   .owl-stage-outer{
@@ -1294,6 +1308,8 @@ footer{
 }
 
 .tour{
+  margin-bottom: 40px;
+
   &_header{
     display: flex;
     justify-content: space-between;
@@ -1373,6 +1389,8 @@ footer{
         }
 
         &_text{
+          user-select: none;
+
           @media @max768{
             display: none;
           }
@@ -1734,6 +1752,10 @@ footer{
         list-style: none;
       }
 
+      ul li{
+        margin-bottom: 5px;
+      }
+
       ul li:before {
         content:  "-";
         position: relative;
@@ -1746,9 +1768,9 @@ footer{
 
       &_text{
         p{
-          line-height: 1.5;
-          margin-bottom: 15px;
-          margin-top: 15px;
+          line-height: 1.4;
+          margin-bottom: 17px;
+          margin-top: 17px;
 
           &:last-child{
             margin-bottom: 0;
@@ -1811,7 +1833,7 @@ footer{
     &_calculate{
       display: none;
 
-      @media @max768{
+      @media @max992{
         display: block;
       }
 
@@ -1911,8 +1933,6 @@ footer{
       bottom: 0;
     }
   }
-
-
 
   &_popup{
     display: none;

@@ -1,41 +1,42 @@
+$(document).ready(function() {
+    let $see_more_comments = $("#see_more_comments")
 
-let $see_more_comments = $("#see_more_comments")
+    //обработка клика по "показать ещё"
+    $see_more_comments.on('click', function () {
 
-//обработка клика по "показать ещё"
-$see_more_comments.on('click', function (){
+        //получаем данные для ajax запроса
+        let current_page = parseInt($see_more_comments.attr('data-page'), 10);
+        let next_page = current_page + 1;
+        let tour_slug = $see_more_comments.data('tour');
 
-    //получаем данные для ajax запроса
-    let current_page = parseInt($see_more_comments.attr('data-page'), 10);
-    let next_page = current_page + 1;
-    let tour_slug = $see_more_comments.data('tour');
+        $.ajax({
+            url: '/api/v1/get_more_comments/',
+            method: 'GET',
+            data: {
+                'page': next_page,
+                'tour_slug': tour_slug
+            },
+            success: function (data) {
+                //если больше нет экскурсий, то убираем кнопку
+                if (getCookie("more_comments") === "False") {
+                    $see_more_comments.css("display", "none");
+                    $('#send_comment').css("margin", "0 0 0 auto");
+                }
 
-    $.ajax({
-        url: '/api/v1/get_more_comments/',
-        method: 'GET',
-        data: {
-            'page': next_page,
-            'tour_slug': tour_slug
-        },
-        success: function(data) {
-            //если больше нет экскурсий, то убираем кнопку
-            if(getCookie("more_comments") === "False"){
-                $see_more_comments.css("display", "none");
-                $('#send_comment').css("margin", "0 0 0 auto");
+                //добавляем данные на страницу
+                let $review_items = $('.tour_information_review_items');
+                $review_items.append(data);
+
+                $('.tour_information_review_item').each(function () {
+                    $(this).slideDown(500);
+                })
+
+                //устанавливаем новый атрибут текущей страницы
+                $see_more_comments.attr('data-page', next_page)
+            },
+            error: function (data) {
+                console.log("Error");
             }
-
-            //добавляем данные на страницу
-            let $review_items = $('.tour_information_review_items');
-            $review_items.append(data);
-
-            $('.tour_information_review_item').each(function () {
-                $(this).slideDown(500);
-            })
-
-            //устанавливаем новый атрибут текущей страницы
-            $see_more_comments.attr('data-page', next_page)
-        },
-        error: function(data) {
-            console.log("Error");
-        }
+        });
     });
-});
+})

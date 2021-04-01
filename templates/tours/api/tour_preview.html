@@ -27,7 +27,10 @@
                 </div>
             </div>
         </div>
-        <div class="preview_like" data-tour_id="{{ preview.id }}" onclick="return false;"></div>
+        <div class="preview_like" data-tour_id="{{ preview.id }}" onclick="return false;">
+            <img class="empty" src="{% static 'img/preview/like.png' %}" alt="">
+            <img class="active" src="{% static 'img/preview/like-active.png' %}" alt="">
+        </div>
         {% if preview.offer %}
         <div class="preview_offer">{{ preview.offer|upper }}</div>
         {% endif %}

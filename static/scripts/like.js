@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
     let $tour_like = $('.preview_like');
     let $like_on_tour_page = $('#like');
     let $like_img_on_tour_page = $("#like_img");
