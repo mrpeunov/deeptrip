@@ -80,7 +80,7 @@ class BookingPage(FooterAndMenuTemplateView):
     template_name = "booking/booking.html"
 
     def add_in_context(self, context):
-        pass
+        context['number_list'] = range(1, 31)
 
 
 class MapPage(FooterAndMenuTemplateView):

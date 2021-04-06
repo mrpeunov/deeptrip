@@ -103,8 +103,6 @@ update_calculate_price();
             result_price = children_price;
         }
 
-        console.log("nnnn");
-
         $('.calculate_price').html(result_price);
 
     }

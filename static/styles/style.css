@@ -1987,4 +1987,137 @@ footer .not-empty {
 .booking_title .second {
   font-size: 1.3rem;
 }
+.booking_calendar {
+  /* месяцы и годы */
+  /* дни недели */
+  /* дни */
+}
+.booking_calendar * {
+  box-sizing: border-box;
+}
+.booking_calendar body {
+  font-family: sans-serif;
+}
+.booking_calendar #month-calendar {
+  width: 100%;
+  max-width: 350px;
+}
+.booking_calendar .month {
+  margin: 0 0 5px 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  list-style: none;
+}
+.booking_calendar .month div {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+.booking_calendar .month-name {
+  margin-right: 5px;
+}
+.booking_calendar .month li {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: 0.3s;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.booking_calendar .month li img {
+  width: 10px;
+  height: 18px;
+}
+.booking_calendar .month li:hover {
+  background: #f9f9f9;
+  border-radius: 50%;
+}
+.booking_calendar .month li.prev,
+.booking_calendar .month li.next {
+  cursor: pointer;
+}
+.booking_calendar .month li.prev {
+  float: left;
+  margin-left: 5px;
+}
+.booking_calendar .month li.next {
+  float: right;
+  margin-right: 5px;
+}
+.booking_calendar .month li.year-name {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.booking_calendar .weekdays {
+  margin: 0;
+  padding: 10px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: left;
+}
+.booking_calendar .weekdays li {
+  display: inline-block;
+  flex: 0 0 calc(100% / 7);
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #333333;
+}
+.booking_calendar .days {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-content: flex-start;
+}
+.booking_calendar .days li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 calc(100% / 7);
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.booking_calendar .days li.date-choice {
+  background: #3ba3c3;
+  color: white;
+}
+.booking_calendar .day {
+  cursor: pointer;
+  font-weight: 500;
+  user-select: none;
+  transition: 0.2s;
+}
+.booking_calendar .day:hover {
+  background: #3ba3c3;
+  color: white;
+}
+.booking_calendar .date-close {
+  color: #b4b4ba;
+  text-decoration: line-through;
+  cursor: auto;
+}
+.booking_calendar .date-close:hover {
+  background: white !important;
+  color: #b4b4ba !important;
+}
 /*# sourceMappingURL=style.css.map */

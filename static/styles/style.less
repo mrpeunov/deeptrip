@@ -2223,4 +2223,161 @@ footer{
       font-size: 1.3rem;
     }
   }
+
+  &_calendar{
+    *{
+      box-sizing: border-box;
+    }
+
+    body{
+      font-family: sans-serif;
+    }
+
+    /* месяцы и годы */
+    #month-calendar{
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .month{
+      margin: 0 0 5px 0;
+      padding: 0;
+      text-align: center;
+      width: 100%;
+      list-style: none;
+
+      div{
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+      }
+    }
+
+    .month-name{
+      margin-right: 5px;
+    }
+
+    .month li{
+      padding: 0;
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: 0.3s;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+
+
+      img{
+        width: 10px;
+        height: 18px;
+      }
+
+      &:hover{
+        background: #f9f9f9;
+        border-radius: 50%;
+      }
+    }
+
+    .month li.prev,
+    .month li.next{
+      cursor: pointer;
+    }
+
+    .month li.prev{
+      float: left;
+      margin-left: 5px;
+    }
+
+    .month li.next{
+      float: right;
+      margin-right: 5px;
+    }
+
+    .month li.year-name{
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    /* дни недели */
+    .weekdays{
+      margin: 0;
+      padding: 10px 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: left;
+    }
+
+    .weekdays li{
+      display: inline-block;
+      flex: 0 0 calc(100% / 7);
+      text-align: center;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #333333;
+    }
+
+    /* дни */
+    .days{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: left;
+      align-content: flex-start;
+    }
+
+    .days li{
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 calc(100% / 7);
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+
+    }
+
+    .days li.date-choice{
+      background: #3ba3c3;
+      color: white;
+    }
+
+    .day{
+      cursor: pointer;
+      font-weight: 500;
+      user-select: none;
+      transition: 0.2s;
+
+      &:hover{
+        background: #3ba3c3;
+        color: white;
+      }
+    }
+
+    .date-close{
+      color: #b4b4ba;
+      text-decoration: line-through;
+      cursor: auto;
+
+      &:hover{
+        background: white !important;
+        color: #b4b4ba !important;
+      }
+    }
+  }
 }

@@ -1,1 +1,36 @@
-Календарь
+{% load static %}
+
+<div class="booking_calendar">
+    <h2 class="standard_h2">Дата экскурсии</h2>
+    <div id="month-calendar">
+        <!-- Блок с заголовками (наименования месяца и года) и навигацией (на месяц вперед и назад) -->
+        <ul class="month">
+            <li class="prev">
+                <img src="{% static 'img/booking/left.png' %}" alt="">
+            </li>
+            <li class="next">
+                <img src="{% static 'img/booking/right.png' %}" alt="">
+            </li>
+            <div>
+                <span class="month-name"></span>
+                <span class="year-name"></span>
+            </div>
+
+        </ul>
+         <!-- Блок с наименования дней недели, начинается с понедельника (Пн) -->
+        <ul class="weekdays">
+            <li>пн</li>
+            <li>вт</li>
+            <li>ср</li>
+            <li>чт</li>
+            <li>пт</li>
+            <li>сб</li>
+            <li>вс</li>
+        </ul>
+        
+        <!-- табличная часть, дни месяца -->
+        <ul class="days">
+
+        </ul>
+    </div>
+</div>
