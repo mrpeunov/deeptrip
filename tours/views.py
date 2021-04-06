@@ -73,6 +73,16 @@ class TourPage(FooterAndMenuTemplateView):
         context['not_empty'] = True
 
 
+class BookingPage(FooterAndMenuTemplateView):
+    """
+    Страница бронирования экскурсии
+    """
+    template_name = "booking/booking.html"
+
+    def add_in_context(self, context):
+        pass
+
+
 class MapPage(FooterAndMenuTemplateView):
     """
     Страница карт
