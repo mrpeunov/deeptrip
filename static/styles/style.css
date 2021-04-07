@@ -321,6 +321,25 @@ img {
   outline: none;
   border: #cccccc solid 1px;
 }
+.standard_sidebar {
+  position: relative;
+}
+.standard_sidebar_block {
+  border-radius: 20px;
+  box-shadow: 0 3px 27.55px 1.45px rgba(1, 1, 1, 0.13);
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+.standard_sidebar .fixed {
+  position: fixed;
+  top: 20px;
+  margin-top: 0;
+}
+.standard_sidebar .fixed_bottom {
+  position: absolute;
+  bottom: 0;
+}
 .menu {
   position: fixed;
   bottom: 0;
@@ -1992,12 +2011,13 @@ footer .not-empty {
 }
 .booking_main {
   display: flex;
+  justify-content: space-between;
 }
 .booking_content {
   width: 70%;
 }
 .booking_sidebar {
-  width: 30%;
+  width: 25%;
 }
 .booking_title {
   font-weight: 500;
@@ -2169,5 +2189,15 @@ footer .not-empty {
   margin: 10px 0 20px 0;
   width: 350px;
   height: 50px;
+}
+.booking_sidebar_block {
+  width: 100%;
+  padding-top: 10px;
+}
+.booking_sidebar_block table {
+  width: 100%;
+}
+.booking_sidebar_block table td {
+  width: 50%;
 }
 /*# sourceMappingURL=style.css.map */

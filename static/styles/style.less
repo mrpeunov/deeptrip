@@ -252,6 +252,29 @@ img{
     outline: none;
     border: #cccccc solid 1px;
   }
+
+  &_sidebar{
+    position: relative;
+
+    &_block{
+      border-radius: 20px;
+      box-shadow: 0 3px 27.55px 1.45px rgb(1 1 1 / 13%);
+      padding: 20px;
+      box-sizing: border-box;
+      margin-top: 20px;
+    }
+
+    .fixed{
+      position: fixed;
+      top: 20px;
+      margin-top: 0;
+    }
+
+    .fixed_bottom{
+      position: absolute;
+      bottom: 0;
+    }
+  }
 }
 
 .menu{
@@ -2226,6 +2249,7 @@ footer{
 .booking {
   &_main {
     display: flex;
+    justify-content: space-between;
   }
 
   &_content {
@@ -2233,7 +2257,7 @@ footer{
   }
 
   &_sidebar {
-    width: 30%;
+    width: 25%;
   }
 
   &_title {
@@ -2449,5 +2473,21 @@ footer{
       width: 350px;
       height: 50px;
     }
+  }
+
+  &_sidebar{
+     &_block{
+       width: 100%;
+       padding-top: 10px;
+
+       table{
+         width: 100%;
+
+         td{
+           width: 50%;
+         }
+       }
+
+     }
   }
 }
