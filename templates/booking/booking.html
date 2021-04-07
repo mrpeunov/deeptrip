@@ -16,7 +16,12 @@
 {% endblock %}
 
 {% block one_page_scripts %}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=a5bdd56e-19a2-499e-b45b-9e8f4c6ed80a&lang=ru_RU"
+            type="text/javascript">
+    </script>
     <script src="{% static 'scripts/booking/calendar.js' %}"></script>
+    <script src="{% static 'scripts/booking/maps.js' %}"></script>
+
 {% endblock %}
 
 {% block header %} {% endblock %}

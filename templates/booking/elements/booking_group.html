@@ -1,1 +1,28 @@
-Группа
+<div class="booking_group standard_underline">
+    <h2 class="standard_h2">Группа</h2>
+    <div class="booking_group_calculate">
+        {% for key, value in prices.items  %}
+            {% if value %}
+                <div class="standard_dropdown">
+                    <input type="hidden">
+                    <div class="standard_dropdown_wrap">
+                        <div class="standard_dropdown_choice standard_text_strong"
+                             id="dropdown_{{ key }}"
+                             data-type="{{ key }}" data-price="{{value.0.price}}">
+                            {{value.0.name}}
+                        </div>
+                        <div class="standard_dropdown_list none" id="dropdown_{{ key }}_list">
+                            {% for item in value %}
+                                <div class="standard_dropdown_list_item"
+                                     data-choice_id="dropdown_{{ key }}"
+                                     data-price="{{ item.price }}">
+                                    {{ item.name }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

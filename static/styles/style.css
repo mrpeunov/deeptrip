@@ -186,6 +186,17 @@ img {
   -ms-transform: scale(0.975);
   transform: scale(0.975);
 }
+.standard_button_blue {
+  background-image: -moz-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  background-image: -webkit-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  background-image: -ms-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+  border-radius: 15px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
 .standard_button:hover {
   -webkit-transform: scale(0.975);
   -ms-transform: scale(0.975);
@@ -218,6 +229,10 @@ img {
 .standard_line_top {
   padding-top: 30px;
   border-top: 2px solid #eeeeee;
+}
+.standard_underline {
+  border-bottom: solid 1px #eeeeee;
+  padding-bottom: 30px;
 }
 .standard_dropdown {
   cursor: pointer;
@@ -296,6 +311,15 @@ img {
 }
 .standard_dropdown_list_item:last-child {
   border: none;
+}
+.standard_input {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+  font-size: 1rem;
+  padding: 12px 20px;
+  outline: none;
+  border: #cccccc solid 1px;
 }
 .menu {
   position: fixed;
@@ -1977,8 +2001,6 @@ footer .not-empty {
 }
 .booking_title {
   font-weight: 500;
-  border-bottom: solid 1px #eeeeee;
-  padding-bottom: 30px;
 }
 .booking_title .first {
   font-size: 1.7rem;
@@ -2119,5 +2141,33 @@ footer .not-empty {
 .booking_calendar .date-close:hover {
   background: white !important;
   color: #b4b4ba !important;
+}
+.booking_start_dropdown {
+  max-width: 350px;
+}
+.booking_group_calculate {
+  max-width: 350px;
+}
+.booking_information_content {
+  width: 350px;
+}
+.booking_information input:not(:last-child) {
+  margin-bottom: 10px;
+}
+.booking_transfer {
+  padding-bottom: 50px;
+}
+.booking_transfer_map {
+  width: 100%;
+  height: 400px;
+  background: #f9f9f9;
+}
+.booking_done {
+  padding-bottom: 60px;
+}
+.booking_done button {
+  margin: 10px 0 20px 0;
+  width: 350px;
+  height: 50px;
 }
 /*# sourceMappingURL=style.css.map */

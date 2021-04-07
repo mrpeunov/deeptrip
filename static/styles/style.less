@@ -89,6 +89,18 @@ img{
       }
     }
 
+    &_blue{
+      background-image: -moz-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+      background-image: -webkit-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+      background-image: -ms-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
+      border-radius: 15px;
+      height: 40px;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
     &:hover{
       -webkit-transform: scale(0.975);
       -ms-transform: scale(0.975);
@@ -131,6 +143,11 @@ img{
   &_line_top{
     padding-top: 30px;
     border-top: 2px solid #eeeeee;
+  }
+
+  &_underline{
+    border-bottom: solid 1px #eeeeee;
+    padding-bottom: 30px;
   }
 
   &_dropdown{
@@ -224,6 +241,16 @@ img{
         border: none;
       }
     }
+  }
+
+  &_input{
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 1rem;
+    padding: 12px 20px;
+    outline: none;
+    border: #cccccc solid 1px;
   }
 }
 
@@ -2196,57 +2223,56 @@ footer{
   }
 }
 
-.booking{
-  &_main{
+.booking {
+  &_main {
     display: flex;
   }
 
-  &_content{
+  &_content {
     width: 70%;
   }
 
-  &_sidebar{
+  &_sidebar {
     width: 30%;
   }
 
-  &_title{
+  &_title {
     font-weight: 500;
-    border-bottom: solid 1px #eeeeee;
-    padding-bottom: 30px;
 
-    .first{
+    .first {
       font-size: 1.7rem;
       margin-bottom: 10px;
     }
 
-    .second{
+    .second {
       font-size: 1.3rem;
     }
   }
 
-  &_calendar{
-    *{
+  &_calendar {
+    * {
       box-sizing: border-box;
     }
 
-    body{
+    body {
       font-family: sans-serif;
     }
 
     /* месяцы и годы */
-    #month-calendar{
+
+    #month-calendar {
       width: 100%;
       max-width: 350px;
     }
 
-    .month{
+    .month {
       margin: 0 0 5px 0;
       padding: 0;
       text-align: center;
       width: 100%;
       list-style: none;
 
-      div{
+      div {
         height: 40px;
         display: flex;
         justify-content: center;
@@ -2255,11 +2281,11 @@ footer{
       }
     }
 
-    .month-name{
+    .month-name {
       margin-right: 5px;
     }
 
-    .month li{
+    .month li {
       padding: 0;
       margin: 0;
       font-size: 1.5rem;
@@ -2275,39 +2301,40 @@ footer{
       user-select: none;
 
 
-      img{
+      img {
         width: 10px;
         height: 18px;
       }
 
-      &:hover{
+      &:hover {
         background: #f9f9f9;
         border-radius: 50%;
       }
     }
 
     .month li.prev,
-    .month li.next{
+    .month li.next {
       cursor: pointer;
     }
 
-    .month li.prev{
+    .month li.prev {
       float: left;
       margin-left: 5px;
     }
 
-    .month li.next{
+    .month li.next {
       float: right;
       margin-right: 5px;
     }
 
-    .month li.year-name{
+    .month li.year-name {
       font-size: 1.2rem;
       font-weight: 400;
     }
 
     /* дни недели */
-    .weekdays{
+
+    .weekdays {
       margin: 0;
       padding: 10px 0;
       width: 100%;
@@ -2317,7 +2344,7 @@ footer{
       justify-content: left;
     }
 
-    .weekdays li{
+    .weekdays li {
       display: inline-block;
       flex: 0 0 calc(100% / 7);
       text-align: center;
@@ -2327,7 +2354,8 @@ footer{
     }
 
     /* дни */
-    .days{
+
+    .days {
       margin: 0;
       padding: 0;
       width: 100%;
@@ -2337,7 +2365,7 @@ footer{
       align-content: flex-start;
     }
 
-    .days li{
+    .days li {
       list-style: none;
       display: flex;
       justify-content: center;
@@ -2352,32 +2380,74 @@ footer{
 
     }
 
-    .days li.date-choice{
+    .days li.date-choice {
       background: #3ba3c3;
       color: white;
     }
 
-    .day{
+    .day {
       cursor: pointer;
       font-weight: 500;
       user-select: none;
       transition: 0.2s;
 
-      &:hover{
+      &:hover {
         background: #3ba3c3;
         color: white;
       }
     }
 
-    .date-close{
+    .date-close {
       color: #b4b4ba;
       text-decoration: line-through;
       cursor: auto;
 
-      &:hover{
+      &:hover {
         background: white !important;
         color: #b4b4ba !important;
       }
+    }
+  }
+
+  &_start {
+    &_dropdown {
+      max-width: 350px;
+    }
+  }
+
+  &_group{
+    &_calculate{
+      max-width: 350px;
+    }
+  }
+
+  &_information{
+    &_content{
+      width: 350px;
+    }
+
+    input:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &_transfer{
+    padding-bottom: 50px;
+
+    &_map{
+      width: 100%;
+      height: 400px;
+      background: #colors[footer-bg];
+    }
+  }
+
+  &_done{
+    padding-bottom: 60px;
+
+    button{
+      margin: 10px 0 20px 0;
+      width: 350px;
+      height: 50px;
     }
   }
 }

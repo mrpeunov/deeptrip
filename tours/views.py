@@ -80,7 +80,12 @@ class BookingPage(FooterAndMenuTemplateView):
     template_name = "booking/booking.html"
 
     def add_in_context(self, context):
-        context['number_list'] = range(1, 31)
+        tour = Tour.objects.get(
+            city__slug=context['city_slug'],
+            slug=context['tour_slug'])
+        context['tour'] = tour
+
+        context['prices'] = get_prices_for_tour(tour)  # цены для калькулятора
 
 
 class MapPage(FooterAndMenuTemplateView):
