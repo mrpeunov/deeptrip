@@ -67,6 +67,7 @@ class TourAdmin(admin.ModelAdmin, DynamicArrayMixin):
     actions_on_top = False
     actions_on_bottom = True
     inlines = [VariableInline]
+    filter_horizontal = ('categories', 'positions')
 
 
 @admin.register(Comment)

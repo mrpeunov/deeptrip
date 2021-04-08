@@ -104,6 +104,12 @@ class Tour(models.Model):
         (False, "Одиночная")
     )
 
+    TRANSFER_CHOICES = (
+        ("y", "Есть"),
+        ("n", "Нет"),
+        ("yn", "Есть + Нет")
+    )
+
     title = models.CharField("Название экскурсии", max_length=64)
     slug = models.SlugField("Slug (название в URL)", max_length=64, unique=True)
 
@@ -213,6 +219,8 @@ class Tour(models.Model):
     auto_gid = models.BooleanField("Автоматизировать провернный гид", default=True)
     video = models.URLField("Ссылка на видео", blank=True)
 
+    transfer = models.CharField("Трансфер", max_length=2, choices=TRANSFER_CHOICES, default="yn")
+
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)
 
@@ -299,7 +307,7 @@ class Comment(models.Model):
         # обновляем данные в объекте экскурсии
         tour.count_comment = count_comments
         if tour_rating['grade__avg'] is None:
-            tour_rating = 5
+            tour.rating = 5
         else:
             tour.rating = round(tour_rating['grade__avg'], 2)
         tour.save()

@@ -8,20 +8,20 @@
         <td>Начало:</td>
         <td class="booking-time">{{ tour.start_list.0 }}</td>
     </tr>
+    {% for key, value in prices.items  %}
     <tr>
-        <td>Тариф:</td>
-        <td>Двухчасовая</td>
+        <td>{{ value.0.variable.name }}</td>
+        <td class="booking-{{ key }}">{{value.0.name}}</td>
     </tr>
-    <tr>
-        <td>Группа:</td>
-        <td>5 человек</td>
-    </tr>
+    {% endfor %}
     <tr>
         <td>Стоимость:</td>
         <td><span class="calculate_price">4300</span> ₽</td>
     </tr>
     <tr>
         <td>Предоплата:</td>
-        <td>430 руб</td>
+        <td><span class="calculate_prepay">0</span> ₽</td>
     </tr>
 </table>
+
+

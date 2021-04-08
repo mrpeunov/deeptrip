@@ -8,7 +8,9 @@
                     <div class="standard_dropdown_wrap">
                         <div class="standard_dropdown_choice standard_text_strong"
                              id="dropdown_{{ key }}"
-                             data-type="{{ key }}" data-price="{{value.0.price}}">
+                             data-type="{{ key }}"
+                             data-price="{{value.0.price}}"
+                             data-add_places="booking-{{ key }}">
                             {{value.0.name}}
                         </div>
                         <div class="standard_dropdown_list none" id="dropdown_{{ key }}_list">

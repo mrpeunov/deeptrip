@@ -35,20 +35,28 @@ $(document).ready(function() {
     //выбор элемента в выпадающим списке
     $(".standard_dropdown_list_item").on('click', function () {
         let choice_id = $(this).data("choice_id");
+
         let $choice = $("#" + choice_id);
         let $mobile_choice = $("#m_" + choice_id);
 
         let text = $(this).html();
-
         $choice.html(text);
         $mobile_choice.html(text);
-        if(choice_id==="dropdown_time") $(".booking-time").html(text);
+
+        if($choice.data("add_places")){
+            let array_add_places = $choice.data("add_places").split(" ");
+
+            array_add_places.forEach(function(item) {
+              $("." + item ).html(text);
+            });
+        }
 
         close_dropdown($choice, $choice.next())
         close_dropdown($mobile_choice, $mobile_choice.next())
 
-        $mobile_choice.attr("data-price", $(this).data("price"));
         $choice.attr("data-price", $(this).data("price"));
+        $mobile_choice.attr("data-price", $(this).data("price"));
+
 
         update_calculate_price();
     })
