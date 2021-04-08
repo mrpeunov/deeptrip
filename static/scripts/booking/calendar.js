@@ -8,7 +8,10 @@ let nowDate = new Date(),
     daysContainer = container.getElementsByClassName('days')[0],
     prev = container.getElementsByClassName('prev')[0],
     next = container.getElementsByClassName('next')[0],
-    monthName = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+    monthName = ['январь','февраль','март','апрель','май','июнь',
+        'июль','август','сентябрь','октябрь','ноябрь','декабрь'],
+    monthNameParent = ['января','февраля','марта','апреля','мая','июня',
+        'июля','августа','сентября','октября','ноября','декабря'];
 
 let choiceMonth = nowMonth;
 let choiceYear = nowYear;
@@ -46,6 +49,7 @@ function setMonthCalendar(year,month) {
     //выбираем уже выбранное
     if(month === choiceMonth && year === choiceYear){
         days[monthPrefix + choiceDay - 1].classList.add('date-choice');
+        update_date();
     }
 
     //зачеркиваем до текущего числа в этом месяце
@@ -111,5 +115,11 @@ function choiceOnClick($elem) {
         choiceDay = parseInt($elem.attr("data-day"));
         choiceMonth = parseInt($elem.attr("data-month"));
         choiceYear = parseInt($elem.attr("data-year"));
+        update_date();
     }
+}
+
+function update_date() {
+    $(".booking-date").html(choiceDay + " " +
+            monthNameParent[choiceMonth] + " " + choiceYear);
 }
