@@ -9,8 +9,8 @@ $(document).ready(function() {
 			set_default();
 		} else {
 			//декстоп
-			//set_desktop();
-			//update_width(calculate);
+			set_desktop();
+			update_width(calculate);
 		}
 	})
 
@@ -33,6 +33,8 @@ $(document).ready(function() {
 	let mb = parseInt(calculate.css("margin-bottom"), 10);
 
 	function set_desktop() {
+		console.log("Странно");
+
 		$window.scroll(function () {
 
 			if ($window.width() >= 992) {
@@ -58,43 +60,6 @@ $(document).ready(function() {
 			}
 		});
 	}
-
-	//обновление ширины блока при обновлении
-	function update_width_block($parent, $children) {
-		//let pl = parseInt($children.css("padding-left"), 10);
-		//let pr = parseInt($children.css("padding-right"), 10);
-		$children.css('width', $parent.outerWidth());
-	}
-
-
-	// пробная версия функции для всех сайдбаров
-	function set_sidebar($parent, $children, min_width) {
-		$window.scroll(function () {
-			if ($window.width() >= min_width) {
-				//фиксирование на старте
-				if($parent.offset().top  < $window.scrollTop()) {
-					$children.addClass("fixed")
-					update_width_block($parent, $children);
-					console.log("здесь");
-					//let right = $('.tour_content').css('padding-right');
-					//calculate.css('right', right)
-				} else {
-					$children.removeClass('fixed');
-				}
-
-				//сброс фиксирования на финише
-				let finish = $window.scrollTop() + $children.height()
-				if ($parent.position().top + $parent.height() <= finish) {
-					$children.addClass('fixed_bottom');
-					//calculate.css("right", 0)
-				} else {
-					$children.removeClass('fixed_bottom');
-				}
-			}
-		});
-	}
-
-	set_sidebar($(".booking_sidebar"), $(".booking_sidebar_block"), 700);
 })
 
 
