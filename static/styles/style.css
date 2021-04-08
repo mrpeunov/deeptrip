@@ -186,6 +186,35 @@ img {
   -ms-transform: scale(0.975);
   transform: scale(0.975);
 }
+.standard_button_behind {
+  padding: 10px;
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.standard_button_behind_img {
+  margin-right: 10px;
+  width: 10px;
+  display: flex;
+  align-items: center;
+}
+.standard_button_behind_img img {
+  width: 100%;
+}
+.standard_button_behind_text {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.standard_button_behind:hover {
+  background: #f9f9f9;
+  border-radius: 20px;
+  -webkit-transform: scale(0.975);
+  -ms-transform: scale(0.975);
+  transform: scale(0.975);
+}
 .standard_button_blue {
   background-image: -moz-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
   background-image: -webkit-linear-gradient(84deg, #3ba3c3 0%, #47cacc 100%);
@@ -2009,9 +2038,18 @@ footer .not-empty {
   justify-content: center;
   margin: 20px 0;
 }
+.booking_header {
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.booking_header .standard_button_behind {
+  width: 100px;
+}
 .booking_main {
   display: flex;
   justify-content: space-between;
+  border-top: 1px solid #eeeeee;
 }
 .booking_content {
   width: 70%;
