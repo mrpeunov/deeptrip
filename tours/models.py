@@ -144,6 +144,12 @@ class Tour(models.Model):
         size=6,
         blank=True)
 
+    start_list = ArrayField(
+        models.CharField(max_length=10, blank=True),
+        verbose_name="Начало",
+        size=4,
+        blank=True, null=True)
+
     advantage1_title = models.CharField("Трансфер (заголовок)",
                                         max_length=32,
                                         blank=True,

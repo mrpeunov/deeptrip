@@ -1,5 +1,5 @@
 $(document).ready(function() {
-update_calculate_price();
+    update_calculate_price();
 
     //клик по кнопке выбора
     $(".standard_dropdown_choice").on('click', function () {
@@ -42,6 +42,7 @@ update_calculate_price();
 
         $choice.html(text);
         $mobile_choice.html(text);
+        if(choice_id==="dropdown_time") $(".booking-time").html(text);
 
         close_dropdown($choice, $choice.next())
         close_dropdown($mobile_choice, $mobile_choice.next())
@@ -106,5 +107,4 @@ update_calculate_price();
         $('.calculate_price').html(result_price);
 
     }
-
 })

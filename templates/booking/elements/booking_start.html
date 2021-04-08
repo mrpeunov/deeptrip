@@ -5,19 +5,16 @@
         <div class="standard_dropdown">
             <input type="hidden">
             <div class="standard_dropdown_wrap">
-                <div class="standard_dropdown_choice standard_text_strong">
-                    Первый элемент
+                <div class="standard_dropdown_choice standard_text_strong" id="dropdown_time">
+                    {{ tour.start_list.0  }}
                 </div>
-                <div class="standard_dropdown_list none">
-                    <div class="standard_dropdown_list_item">
-                       Первый элемент
-                    </div>
-                    <div class="standard_dropdown_list_item">
-                       Второй элемент
-                    </div>
-                    <div class="standard_dropdown_list_item">
-                       Третий элемент
-                    </div>
+                <div class="standard_dropdown_list none" id="dropdown_time_list">
+                    {% for item in tour.start_list %}
+                        <div class="standard_dropdown_list_item" id="time_{{ forloop.counter0 }}"
+                             data-choice_id="dropdown_time">
+                           {{ item }}
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
