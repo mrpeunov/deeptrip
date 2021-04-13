@@ -156,50 +156,30 @@ class Tour(models.Model):
         size=4,
         blank=True, null=True)
 
-    advantage1_title = models.CharField("Трансфер (заголовок)",
-                                        max_length=32,
-                                        blank=True,
-                                        default="Трансфер предусмотрен")
-    advantage1_description = models.CharField("Трансфер (описание)",
-                                              max_length=64,
-                                              blank=True,
+    advantage1_title = models.CharField("Трансфер (заголовок)", max_length=32,
+                                        blank=True, default="Трансфер предусмотрен")
+    advantage1_description = models.CharField("Трансфер (описание)", max_length=64, blank=True,
                                               default="Бестлатно привезем и отвезем обратно")
 
-    advantage2_title = models.CharField("Группа/индвидуальная (заголовок)",
-                                        max_length=32,
-                                        blank=True,
-                                        default="Индивидуальная")
-    advantage2_description = models.CharField("Группа/индвидуальная (описание)",
-                                              max_length=64,
-                                              blank=True,
-                                              default="Экскурсия без посторонних людей")
+    advantage2_title = models.CharField("Группа/индвидуальная (заголовок)", max_length=32,
+                                        blank=True, default="Индивидуальная")
+    advantage2_description = models.CharField("Группа/индвидуальная (описание)", max_length=64,
+                                              blank=True, default="Экскурсия без посторонних людей")
 
-    advantage3_title = models.CharField("Время (заголовок)",
-                                        max_length=32,
-                                        blank=True,
-                                        default="2 часа")
-    advantage3_description = models.CharField("Время (описание)",
-                                              max_length=64,
-                                              blank=True,
-                                              default="Включая 15-минутный инструктаж")
+    advantage3_title = models.CharField("Время (заголовок)", max_length=32,
+                                        blank=True, default="2 часа")
+    advantage3_description = models.CharField("Время (описание)", max_length=64,
+                                              blank=True, default="Включая 15-минутный инструктаж")
 
-    advantage4_title = models.CharField("Дети (заголовок)",
-                                        max_length=32,
-                                        blank=True,
-                                        default="Можно с детьми")
-    advantage4_description = models.CharField("Дети (описание)",
-                                              max_length=64,
-                                              blank=True,
-                                              default="Дети старше 14 лет допускаются к управлению")
+    advantage4_title = models.CharField("Дети (заголовок)", max_length=32,
+                                        blank=True, default="Можно с детьми")
+    advantage4_description = models.CharField("Дети (описание)",  max_length=64,
+                                              blank=True, default="Дети старше 14 лет допускаются к управлению")
 
-    advantage5_title = models.CharField("Предоплата (заголовок)",
-                                        max_length=32,
-                                        blank=True,
-                                        default="Без предоплаты")
-    advantage5_description = models.CharField("Предоплата (описание)",
-                                              max_length=64,
-                                              blank=True,
-                                              default="Бронируйте экскурсию без предоплаты")
+    advantage5_title = models.CharField("Предоплата (заголовок)", max_length=32,
+                                        blank=True,  default="Без предоплаты")
+    advantage5_description = models.CharField("Предоплата (описание)", max_length=64,
+                                              blank=True, default="Бронируйте экскурсию без предоплаты")
 
     price = models.PositiveIntegerField("Цена")
     image = models.ImageField("Основная фотография")
@@ -213,13 +193,16 @@ class Tour(models.Model):
     offer = models.CharField("Специальное предложение", max_length=20, blank=True)
 
     categories = models.ManyToManyField(Category, blank=True, verbose_name="Категории")
-    positions = models.ManyToManyField(Position, blank=True, verbose_name="Точки на карте")
+
     notes = models.CharField("Примечания", blank=True, max_length=64)
+
     gid = models.BooleanField("Проверенный гид", default=False)
     auto_gid = models.BooleanField("Автоматизировать провернный гид", default=True)
     video = models.URLField("Ссылка на видео", blank=True)
 
     transfer = models.CharField("Трансфер", max_length=2, choices=TRANSFER_CHOICES, default="yn")
+    positions = models.ManyToManyField(Position, blank=True, related_name="positions", verbose_name="Местоположение экскурсии")
+    transfer_points = models.ManyToManyField(Position, blank=True, related_name="transfer_points", verbose_name="Точки трансфера")
 
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)

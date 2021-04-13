@@ -1,16 +1,22 @@
 <div class="booking_transfer">
     <h2 class="standard_h2">Трансфер</h2>
-    {% if tour.transfer == "yn"  %} {% endif %}
+    {% if tour.transfer == "yn"  %}
         <div class="booking_transfer_choice">
-            <label for="transfer_yes">
-                <input type="checkbox" name="transfer_yes" value="Тансфер есть">
-                Нужен
-            </label>
-            <label for="transfer_not">
-                <input type="checkbox" name="transfer_not" value="Тансфер есть">
-                Не нужен
-            </label>
+            <div>
+                <label for="transfer_yes">
+                    <input type="radio" name="transfer" value="Тансфер есть">
+                    Нужен
+                </label>
+            </div>
+            <div>
+                <label for="transfer_not">
+                    <input type="radio" name="transfer" value="Тансфер есть">
+                    Не нужен
+                </label>
+            </div>
         </div>
+    {% else %}
+    {% endif %}
 
     <div class="booking_transfer_map_container">
         <div class="booking_transfer_map" id="booking_map" data-transfer="{{ tour.transfer }}"
@@ -18,6 +24,11 @@
         </div>
         <div class="points">
             {% for item in tour.positions.all %}
+                <div class="point none" data-x="{{ item.lat }}" data-y="{{ item.lon }}" data-title="{{ item.name }}"></div>
+            {% endfor  %}
+        </div>
+        <div class="transfer_points">
+            {% for item in tour.transfer_points.all %}
                 <div class="point none" data-x="{{ item.lat }}" data-y="{{ item.lon }}" data-title="{{ item.name }}"></div>
             {% endfor  %}
         </div>
