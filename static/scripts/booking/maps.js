@@ -45,17 +45,44 @@ function create_map_y() {
     })
 }
 
+let points = [];
+
 function view_point($elem) {
     let x = parseFloat($elem.data("x").replace(',', '.'));
     let y = parseFloat($elem.data("y").replace(',', '.'));
     let text = $(this).data("title");
 
-    myMap.geoObjects.add(new ymaps.Placemark([x, y], {
+    let point = new ymaps.Placemark([x, y], {
         balloonContent: text,
-        iconCaption: text
+        iconCaption: text,
+
     }, {
-        preset: 'islands#greenDotIconWithCaption'
-    }))
+        iconLayout: 'default#imageWithContent',
+            // Своё изображение иконки метки.
+        iconImageHref: '/static/img/booking/standard.png',
+        // Размеры метки.
+        iconImageSize: [24, 24],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        iconImageOffset: [-24, -24],
+        // Смещение слоя с содержимым относительно слоя с картинкой.
+        iconContentOffset: [15, 15],
+        // Макет содержимого.
+    })
+
+    myMap.geoObjects.add(point);
+
+    points.push(point)
+
+    point.events.add('click', function (e) {
+        // Ссылку на объект, вызвавший событие,
+        // можно получить из поля 'target'.
+        points.forEach(function(item) {
+          item.options.set('iconImageHref', '/static/img/booking/standard.png');
+        })
+
+        e.get('target').options.set('iconImageHref', '/static/img/booking/active.png');
+    })
 }
 
 function clear_map() {
