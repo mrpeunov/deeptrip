@@ -2215,10 +2215,51 @@ footer .not-empty {
 .booking_transfer {
   padding-bottom: 50px;
 }
+.booking_transfer .form_radio {
+  margin: 15px 0;
+}
+.booking_transfer .form_radio input[type=radio] {
+  display: none;
+}
+.booking_transfer .form_radio input[type=radio]:checked + label:before {
+  border: #333333 solid 5px;
+}
+.booking_transfer .form_radio label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 0;
+  line-height: 18px;
+  user-select: none;
+  /* Checked */
+}
+.booking_transfer .form_radio label:before {
+  content: "";
+  box-sizing: border-box;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #dadada;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  background: white 0 0 no-repeat;
+}
 .booking_transfer_map {
   width: 100%;
   height: 400px;
   background: #f9f9f9;
+}
+.booking_transfer_text {
+  margin: 10px 0;
+}
+.booking_transfer_text div {
+  margin: 10px 0;
+}
+.booking_transferchoice {
+  margin-top: 10px;
 }
 .booking_done {
   padding-bottom: 60px;

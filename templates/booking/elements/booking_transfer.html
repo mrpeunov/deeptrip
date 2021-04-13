@@ -1,26 +1,35 @@
 <div class="booking_transfer">
     <h2 class="standard_h2">Трансфер</h2>
+
     {% if tour.transfer == "yn"  %}
         <div class="booking_transfer_choice">
-            <div>
-                <label for="transfer_yes">
-                    <input type="radio" name="transfer" value="Тансфер есть">
-                    Нужен
-                </label>
+            <div class="form_radio">
+                <input id="radio-1" type="radio" name="transfer" value="yes" checked>
+                <label for="radio-1">Нужен</label>
             </div>
-            <div>
-                <label for="transfer_not">
-                    <input type="radio" name="transfer" value="Тансфер есть">
-                    Не нужен
-                </label>
+            <div class="form_radio">
+                <input id="radio-2" type="radio" name="transfer" value="no">
+                <label for="radio-2">Не нужен</label>
             </div>
         </div>
-    {% else %}
+    {% endif %}
+
+    {% if tour.transfer == "y" or tour.transfer == "yn"  %}
+        <div class="booking_transfer_text" id="transfer_text_yes">
+            <div class="standard_text">{{ tour.transfer_yes_first }}</div>
+            <div class="standard_text_gray">{{ tour.transfer_yes_second }}</div>
+        </div>
+    {% endif %}
+
+    {% if tour.transfer == "n" or tour.transfer == "yn"  %}
+        <div class="booking_transfer_text {% if tour.transfer == "yn" %}none{% endif %}" id="transfer_text_no">
+            <div class="standard_text">{{ tour.transfer_no_first }}</div>
+            <div class="standard_text_gray">{{ tour.transfer_no_second }}</div>
+        </div>
     {% endif %}
 
     <div class="booking_transfer_map_container">
-        <div class="booking_transfer_map" id="booking_map" data-transfer="{{ tour.transfer }}"
-             data-points="">
+        <div class="booking_transfer_map" id="booking_map" data-transfer="{{ tour.transfer }}">
         </div>
         <div class="points">
             {% for item in tour.positions.all %}
@@ -29,10 +38,8 @@
         </div>
         <div class="transfer_points">
             {% for item in tour.transfer_points.all %}
-                <div class="point none" data-x="{{ item.lat }}" data-y="{{ item.lon }}" data-title="{{ item.name }}"></div>
+                <div class="t_point none" data-x="{{ item.lat }}" data-y="{{ item.lon }}" data-title="{{ item.name }}"></div>
             {% endfor  %}
         </div>
     </div>
-
-
 </div>

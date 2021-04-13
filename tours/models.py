@@ -201,8 +201,15 @@ class Tour(models.Model):
     video = models.URLField("Ссылка на видео", blank=True)
 
     transfer = models.CharField("Трансфер", max_length=2, choices=TRANSFER_CHOICES, default="yn")
-    positions = models.ManyToManyField(Position, blank=True, related_name="positions", verbose_name="Местоположение экскурсии")
-    transfer_points = models.ManyToManyField(Position, blank=True, related_name="transfer_points", verbose_name="Точки трансфера")
+    positions = models.ManyToManyField(Position, blank=True, related_name="positions",
+                                       verbose_name="Местоположение экскурсии")
+    transfer_no_first = models.CharField("1 строка (Трансфера нет или  не нужен)", max_length=64)
+    transfer_no_second = models.CharField("2 строка (Трансфера нет или он не нужен)", max_length=64)
+
+    transfer_points = models.ManyToManyField(Position, blank=True, related_name="transfer_points",
+                                             verbose_name="Точки трансфера")
+    transfer_yes_first = models.CharField("1 строка (Трансфер есть)", max_length=64)
+    transfer_yes_second = models.CharField("2 строка (Трансфер есть)", max_length=64)
 
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)
