@@ -113,7 +113,6 @@ $(document).ready(function() {
         update_button_question();
     })
 
-    let inp = document.querySelector('#question_phone');
     let $question_name = $("#question_name");
     let $question_phone = $("#question_phone");
     let $question_email = $("#question_email");
@@ -125,12 +124,6 @@ $(document).ready(function() {
     $question_phone.on('input', function () { update_button_question(); })
     $question_email.on('input', function () { update_button_question(); })
     $question_content.on('input', function () { update_button_question(); })
-
-    inp.addEventListener('keypress', e => {
-      // Отменяем ввод не цифр
-      if(/[^0-9+()-]/.test(e.key))
-        e.preventDefault();
-    });
 
     function update_button_question(){
         let phone = true;
