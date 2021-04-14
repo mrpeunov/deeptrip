@@ -181,7 +181,6 @@ class Tour(models.Model):
     transfer_yes_second = models.CharField("2 строка (Трансфер есть)", max_length=64)
 
     period = models.ForeignKey(Period, verbose_name="Период года", on_delete=models.PROTECT)
-
     notes = models.CharField("Примечания", blank=True, max_length=64)
 
     def __str__(self):

@@ -16,12 +16,21 @@
     {% endfor %}
     <tr>
         <td>Стоимость:</td>
-        <td><span class="calculate_price">4300</span> ₽</td>
+        <td><span class="calculate_price" data-prepay="{{ tour.prepay_percent }}">4300</span> ₽</td>
     </tr>
     <tr>
         <td>Предоплата:</td>
-        <td><span class="calculate_prepay">0</span> ₽</td>
+        <td><span class="prepay_count">0</span> ₽</td>
     </tr>
 </table>
+{% if tour.prepay %}
+    <div class="standard_text_gray">
+        Бесплатная отмена брони за сутки до начала экскурсии.
+    </div>
+    {% else %}
+    <div class="standard_text_gray">
+        Предоплата не нужна - мы Вам доверяем
+    </div>
+{% endif %}
 
 

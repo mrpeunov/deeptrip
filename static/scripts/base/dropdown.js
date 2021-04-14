@@ -112,7 +112,15 @@ $(document).ready(function() {
             result_price = children_price;
         }
 
-        $('.calculate_price').html(result_price);
+        let $calculate_price = $('.calculate_price');
+
+        $calculate_price.html(result_price);
+
+        let prepay = parseInt($calculate_price.data("prepay"))
+
+        if(prepay !== 0){
+            $('.prepay_count').html(result_price * prepay/100);
+        }
 
     }
 })

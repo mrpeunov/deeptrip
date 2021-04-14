@@ -2057,6 +2057,9 @@ footer .not-empty {
 .booking_sidebar {
   width: 25%;
 }
+.booking_sidebar_block .standard_text_gray {
+  margin: 10px 2px;
+}
 .booking_title {
   font-weight: 500;
 }

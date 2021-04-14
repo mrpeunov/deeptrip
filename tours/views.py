@@ -86,7 +86,6 @@ class BookingPage(FooterAndMenuTemplateView):
             city__slug=context['city_slug'],
             slug=context['tour_slug'])
         context['tour'] = tour
-
         context['prices'] = get_prices_for_tour(tour)  # цены для калькулятора
 
 

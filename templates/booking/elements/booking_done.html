@@ -1,6 +1,12 @@
 <div class="booking_done">
-    <div class="standard_text_strong">Предоплата - 0 руб.</div>
-    <button class="standard_button standard_button_blue">Забронировать</button>
+    <div class="standard_text_strong">Предоплата - <span class="prepay_count">0</span> руб.</div>
+    <button class="standard_button standard_button_blue" data-prepay="{{ tour.prepay }}">
+        {% if tour.prepay %}
+            Оплатить онлайн
+        {% else %}
+            Забронировать
+        {% endif %}
+    </button>
     <div class="standard_text_gray">
         После завершения брони мы позвоним вам для ее подтверждения и уточнения места встречи
     </div>
