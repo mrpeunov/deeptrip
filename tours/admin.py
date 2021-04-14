@@ -89,3 +89,8 @@ class VariableAdmin(admin.ModelAdmin):
 @admin.register(Rate)
 class RateAdmin(admin.ModelAdmin):
     list_display = ('price', )
+
+
+@admin.register(Period)
+class PeriodAdmin(admin.ModelAdmin):
+    pass

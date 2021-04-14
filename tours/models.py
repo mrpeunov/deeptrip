@@ -98,6 +98,29 @@ class Position(models.Model):
         verbose_name_plural = "точки на карте"
 
 
+class Period(models.Model):
+    title = models.CharField("Название периода", max_length=32)
+    january = models.BooleanField("Январь")
+    february = models.BooleanField("Февраль")
+    march = models.BooleanField("Март")
+    april = models.BooleanField("Апрель")
+    may = models.BooleanField("Май")
+    june = models.BooleanField("Июнь")
+    july = models.BooleanField("Июль")
+    august = models.BooleanField("Август")
+    september = models.BooleanField("Сентябрь")
+    october = models.BooleanField("Октябрь")
+    november = models.BooleanField("Ноябрь")
+    december = models.BooleanField("Декабрь")
+
+    def __str__(self):
+        return "{}".format(self.title)
+
+    class Meta:
+        verbose_name = "период работы"
+        verbose_name_plural = "периоды работы"
+
+
 class Tour(models.Model):
     GROUP_CHOICES = (
         (True, "Групповая"),
@@ -210,6 +233,8 @@ class Tour(models.Model):
                                              verbose_name="Точки трансфера")
     transfer_yes_first = models.CharField("1 строка (Трансфер есть)", max_length=64)
     transfer_yes_second = models.CharField("2 строка (Трансфер есть)", max_length=64)
+
+    period = models.ForeignKey(Period, verbose_name="Период года", on_delete=models.PROTECT)
 
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)
