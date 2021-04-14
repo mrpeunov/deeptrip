@@ -1,6 +1,11 @@
 $(document).ready(function() {
     let $window = $(window);
 
+    $window.on('load resize', function () {
+        set_sidebar();
+        update_width_block($(".booking_sidebar"), $(".booking_sidebar_block"));
+    })
+
     //обновление ширины блока при обновлении
     function update_width_block($parent, $children) {
         $children.css('width', $parent.outerWidth());
