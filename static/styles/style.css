@@ -2333,6 +2333,9 @@ footer .not-empty {
   width: 100%;
   padding-top: 10px;
 }
+.booking_sidebar_block .standard_text_gray {
+  margin-top: 20px;
+}
 .booking_sidebar_mobile .booking_table_prepay {
   display: none;
 }
@@ -2340,6 +2343,7 @@ footer .not-empty {
   width: 100%;
 }
 .booking_table td {
+  padding-top: 10px;
   width: 50%;
 }
 .booking_table td:first-child {

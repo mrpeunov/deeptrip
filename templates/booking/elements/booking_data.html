@@ -10,7 +10,7 @@
     </tr>
     {% for key, value in prices.items  %}
     <tr>
-        <td>{{ value.0.variable.name }}</td>
+        <td>{{ value.0.variable.name }}:</td>
         <td class="booking-{{ key }}">{{value.0.name}}</td>
     </tr>
     {% endfor %}
