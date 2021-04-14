@@ -1,6 +1,10 @@
 <div class="booking_done">
+    <div class="booking_sidebar_mobile">
+        {% include 'booking/elements/booking_data.html' %}
+    </div>
+
     <div class="standard_text_strong">Предоплата - <span class="prepay_count">0</span> руб.</div>
-    <button class="standard_button standard_button_blue" data-prepay="{{ tour.prepay }}">
+    <button id="booking_button" class="standard_button standard_button_blue" data-prepay="{{ tour.prepay }}">
         {% if tour.prepay %}
             Оплатить онлайн
         {% else %}

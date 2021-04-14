@@ -146,6 +146,9 @@ input {
   font-family: 'HelveticaNeueCyr', sans-serif;
   color: #333333;
 }
+td {
+  padding: 0;
+}
 img {
   width: 100%;
 }
@@ -2054,11 +2057,55 @@ footer .not-empty {
 .booking_content {
   width: 70%;
 }
+@media (max-width: 1200px) {
+  .booking_content {
+    width: 65%;
+  }
+}
+@media (max-width: 992px) {
+  .booking_content {
+    width: 55%;
+  }
+}
+@media (max-width: 768px) {
+  .booking_content {
+    width: 100%;
+  }
+}
 .booking_sidebar {
   width: 25%;
 }
+@media (max-width: 1200px) {
+  .booking_sidebar {
+    width: 30%;
+  }
+}
+@media (max-width: 992px) {
+  .booking_sidebar {
+    width: 40%;
+  }
+}
+@media (max-width: 768px) {
+  .booking_sidebar {
+    display: none;
+  }
+}
+.booking_sidebar_mobile {
+  display: none;
+}
+.booking_sidebar_mobile .standard_text_gray {
+  display: none;
+}
+@media (max-width: 768px) {
+  .booking_sidebar_mobile {
+    display: block;
+  }
+}
 .booking_sidebar_block .standard_text_gray {
   margin: 10px 2px;
+}
+.booking_sidebar_block table {
+  padding: 0!important;
 }
 .booking_title {
   font-weight: 500;
@@ -2218,6 +2265,11 @@ footer .not-empty {
 .booking_transfer {
   padding-bottom: 50px;
 }
+@media (max-width: 768px) {
+  .booking_transfer {
+    border-bottom: solid 1px #eeeeee;
+  }
+}
 .booking_transfer .form_radio {
   margin: 15px 0;
 }
@@ -2272,14 +2324,34 @@ footer .not-empty {
   width: 350px;
   height: 50px;
 }
+@media (max-width: 768px) {
+  .booking_done .standard_text_strong {
+    margin-top: 20px;
+  }
+}
 .booking_sidebar_block {
   width: 100%;
   padding-top: 10px;
 }
-.booking_sidebar_block table {
+.booking_sidebar_mobile .booking_table_prepay {
+  display: none;
+}
+.booking_table {
   width: 100%;
 }
-.booking_sidebar_block table td {
+.booking_table td {
   width: 50%;
+}
+.booking_table td:first-child {
+  color: #999999;
+  width: 50%;
+}
+.booking_table td:last-child {
+  color: #333333;
+}
+.booking_table_prepay td:first-child,
+.booking_table_prepay td:last-child {
+  color: #333333 !important;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */
