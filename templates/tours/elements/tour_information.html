@@ -4,81 +4,36 @@
 <div class="tour_information">
 
     <div class="tour_information_advantages">
-        {% if tour.advantage1_title %}
+
+    {% for advantage in advantages %}
         <div class="tour_information_advantages_item">
             <div class="tour_information_advantages_item_img">
-                <img src="{% static 'img/tour/transfer.png' %}" alt="">
+                {% if advantage.type == "transfer" %}
+                    <img src="{% static 'img/tour/transfer.png' %}" alt="">
+                {% endif %}
+                {% if advantage.type == "group" %}
+                    <img src="{% static 'img/tour/group.png' %}" alt="">
+                {% endif %}
+                {% if advantage.type == "time" %}
+                    <img src="{% static 'img/tour/time.png' %}" alt="">
+                {% endif %}
+                {% if advantage.type == "children" %}
+                    <img src="{% static 'img/tour/children.png' %}" alt="">
+                {% endif %}
+                {% if advantage.type == "prepay" %}
+                    <img src="{% static 'img/tour/card.png' %}" alt="">
+                {% endif %}
             </div>
             <div class="tour_information_advantages_item_text">
                 <div class="standard_text_strong">
-                    {{ tour.advantage1_title }}
+                    {{ advantage.title }}
                 </div>
                 <div class="standard_text_gray">
-                    {{ tour.advantage1_description }}
+                    {{ advantage.description }}
                 </div>
             </div>
         </div>
-        {% endif %}
-        {% if tour.advantage2_title %}
-        <div class="tour_information_advantages_item">
-            <div class="tour_information_advantages_item_img">
-                <img src="{% static 'img/tour/group.png' %}" alt="">
-            </div>
-            <div class="tour_information_advantages_item_text">
-                <div class="standard_text_strong">
-                    {{ tour.advantage2_title }}
-                </div>
-                <div class="standard_text_gray">
-                    {{ tour.advantage2_description }}
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        {% if tour.advantage3_title %}
-        <div class="tour_information_advantages_item">
-            <div class="tour_information_advantages_item_img">
-                <img src="{% static 'img/tour/time.png' %}" alt="">
-            </div>
-            <div class="tour_information_advantages_item_text">
-                <div class="standard_text_strong">
-                    {{ tour.advantage3_title }}
-                </div>
-                <div class="standard_text_gray">
-                    {{ tour.advantage3_description }}
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        {% if tour.advantage4_title %}
-        <div class="tour_information_advantages_item">
-            <div class="tour_information_advantages_item_img">
-                <img src="{% static 'img/tour/children.png' %}" alt="">
-            </div>
-            <div class="tour_information_advantages_item_text">
-                <div class="standard_text_strong">
-                    {{ tour.advantage4_title }}
-                </div>
-                <div class="standard_text_gray">
-                    {{ tour.advantage4_description }}
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        {% if tour.advantage5_title %}
-        <div class="tour_information_advantages_item">
-            <div class="tour_information_advantages_item_img">
-                <img src="{% static 'img/tour/card.png' %}" alt="">
-            </div>
-            <div class="tour_information_advantages_item_text">
-                <div class="standard_text_strong">
-                    {{ tour.advantage5_title }}
-                </div>
-                <div class="standard_text_gray">
-                    {{ tour.advantage5_description }}
-                </div>
-            </div>
-        </div>
-        {% endif %}
+    {% endfor %}
     </div>
 
     <div class="tour_information_description standard_line_top">

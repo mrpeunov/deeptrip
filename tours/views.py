@@ -68,6 +68,8 @@ class TourPage(FooterAndMenuTemplateView):
         context['recommended_tours'] = recommended_tours["tours"]
         context['recommended_tours_more'] = recommended_tours["more"]
 
+        context['advantages'] = Advantage.objects.filter(tour=tour)
+
         context['prices'] = get_prices_for_tour(tour)  # цены для калькулятора
 
         context['not_empty'] = True

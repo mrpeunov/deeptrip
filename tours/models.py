@@ -174,35 +174,10 @@ class Tour(models.Model):
         blank=True)
 
     start_list = ArrayField(
-        models.CharField(max_length=10, blank=True),
+        models.TimeField(),
         verbose_name="Начало",
         size=4,
         blank=True, null=True)
-
-    advantage1_title = models.CharField("Трансфер (заголовок)", max_length=32,
-                                        blank=True, default="Трансфер предусмотрен")
-    advantage1_description = models.CharField("Трансфер (описание)", max_length=64, blank=True,
-                                              default="Бестлатно привезем и отвезем обратно")
-
-    advantage2_title = models.CharField("Группа/индвидуальная (заголовок)", max_length=32,
-                                        blank=True, default="Индивидуальная")
-    advantage2_description = models.CharField("Группа/индвидуальная (описание)", max_length=64,
-                                              blank=True, default="Экскурсия без посторонних людей")
-
-    advantage3_title = models.CharField("Время (заголовок)", max_length=32,
-                                        blank=True, default="2 часа")
-    advantage3_description = models.CharField("Время (описание)", max_length=64,
-                                              blank=True, default="Включая 15-минутный инструктаж")
-
-    advantage4_title = models.CharField("Дети (заголовок)", max_length=32,
-                                        blank=True, default="Можно с детьми")
-    advantage4_description = models.CharField("Дети (описание)",  max_length=64,
-                                              blank=True, default="Дети старше 14 лет допускаются к управлению")
-
-    advantage5_title = models.CharField("Предоплата (заголовок)", max_length=32,
-                                        blank=True,  default="Без предоплаты")
-    advantage5_description = models.CharField("Предоплата (описание)", max_length=64,
-                                              blank=True, default="Бронируйте экскурсию без предоплаты")
 
     price = models.PositiveIntegerField("Цена")
     image = models.ImageField("Основная фотография")
@@ -284,6 +259,21 @@ class Tour(models.Model):
             print("Ошибка, рейтинг для этого города обнулён, так как данная экскурсия в нем отсутствует")
 
         return city_rating
+
+
+class Advantage(models.Model):
+    TRANSFER_CHOICES = (
+        ("children", "Дети"),
+        ("time", "Время"),
+        ("transfer", "Трансфер"),
+        ("group", "Группа"),
+        ("prepay", "Предоплата"),
+    )
+
+    tour = models.ForeignKey(Tour, verbose_name="Экскурсия", on_delete=models.PROTECT)
+    type = models.CharField("Тип", max_length=10, choices=TRANSFER_CHOICES)
+    title = models.CharField("Заголовок", max_length=32, blank=True)
+    description = models.CharField("Описание", max_length=64, blank=True)
 
 
 class Like(models.Model):
