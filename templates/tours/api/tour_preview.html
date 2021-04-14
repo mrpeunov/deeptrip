@@ -3,11 +3,9 @@
 <a href="{{ preview.get_absolute_url }}"  >
     <div class="preview">
         <div class="preview_gallery owl-carousel owl-theme preview_gallery_item">
-            <img src="{{ preview.image.url }}" alt="">
-            <img src="{{ preview.image.url }}" alt="">
-            <img src="{{ preview.image.url }}" alt="">
-            <img src="{{ preview.image.url }}" alt="">
-            <img src="{{ preview.image.url }}" alt="">
+            {% for image in preview.images %}
+                <img src="{{ image.image.url }}" alt="">
+            {% endfor %}
         </div>
         <div  class="preview_content">
             <div class="preview_content_title">{{ preview.title }}</div>

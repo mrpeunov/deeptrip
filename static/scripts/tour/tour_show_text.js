@@ -1,14 +1,13 @@
-$(document).ready(function() {
-    function show_text() {
-        let $text = $("#all_text")
-        let $button = $("#show_text_button");
+function show_text() {
 
-        if ($text.css("display") === "none") {
-            $button.html("Скрыть");
-        } else {
-            $button.html("Показать полностью");
-        }
+    let $text = $("#all_text")
+    let $button = $("#show_text_button");
 
-        $text.slideToggle(300);
+    if ($text.css("display") === "none") {
+        $button.html("Скрыть");
+    } else {
+        $button.html("Показать полностью");
     }
-})
+
+    $text.slideToggle(300);
+}

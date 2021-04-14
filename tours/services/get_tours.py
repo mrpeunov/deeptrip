@@ -1,6 +1,6 @@
 from typing import List, Dict, Union
 from django.db.models import QuerySet, Q
-from tours.models import Tour, City
+from tours.models import Tour, City, ImageItem
 
 
 def get_tours(page: int, city: City) -> Dict[str, Union[list, bool]]:
@@ -64,7 +64,10 @@ def get_count(page: int) -> int:
 
 
 def get_all_tours(city: City) -> QuerySet[City]:
-    return Tour.objects.filter(Q(cities__exact=city) | Q(city=city)).distinct().order_by("id")
+    tours = Tour.objects.filter(Q(cities__exact=city) | Q(city=city)).distinct().order_by("id")
+    for tour in tours:
+        tour.images = ImageItem.objects.filter(tour=tour)
+    return tours
 
 
 def get_maximum(city: City) -> int:

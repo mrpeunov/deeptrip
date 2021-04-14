@@ -1,9 +1,9 @@
 <a href="{{ city_item.get_absolute_url }}" class="towns_item">
     <div class="towns_item_img"
          {% if city_item.image %}
-            style="background: url('{{ city_item.image.url }}')"
+            style="background: url('{{ city_item.image.url }}'); background-size: contain;"
          {% else %}
-            style="background: #caffa5"
+            style="background: #caffa5; background-size: contain;"
          {% endif %}>
     </div>
     <div class="towns_item_content">

@@ -2,7 +2,7 @@ from typing import Dict
 
 from django.db.models import Q
 
-from tours.models import Tour
+from tours.models import Tour, ImageItem
 
 
 def get_recommended_for_tours(tour: Tour, page: int) -> Dict:
@@ -44,6 +44,9 @@ def get_recommended_for_tours(tour: Tour, page: int) -> Dict:
     if tours.count() <= finish:
         finish = tours.count()
         more = False
+
+    for tour in tours:
+        tour.images = ImageItem.objects.filter(tour=tour)
 
     return {"tours": tours[start: finish],
             "more": more}

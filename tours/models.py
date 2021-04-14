@@ -122,80 +122,51 @@ class Period(models.Model):
 
 
 class Tour(models.Model):
-    GROUP_CHOICES = (
-        (True, "Групповая"),
-        (False, "Одиночная")
-    )
+    GROUP_CHOICES = ((True, "Групповая"),
+                     (False, "Одиночная"))
 
-    TRANSFER_CHOICES = (
-        ("y", "Есть"),
-        ("n", "Нет"),
-        ("yn", "Есть + Нет")
-    )
+    TRANSFER_CHOICES = (("y", "Есть"),
+                        ("n", "Нет"),
+                        ("yn", "Есть + Нет"))
 
     title = models.CharField("Название экскурсии", max_length=64)
     slug = models.SlugField("Slug (название в URL)", max_length=64, unique=True)
 
-    cluster = models.ForeignKey(Cluster,
-                                verbose_name="Кластер",
-                                on_delete=models.PROTECT)
-
-    city = ChainedForeignKey(City,
-                             verbose_name="Основной город",
-                             chained_field="cluster",
-                             chained_model_field="cluster",
-                             on_delete=models.PROTECT,
-                             related_name="main_city")
-
-    cities = ChainedManyToManyField(City,
-                                    blank=True,
-                                    horizontal=True,
-                                    verbose_name="Дополнительные города",
-                                    related_name="add_cities",
-                                    chained_field="cluster",
-                                    chained_model_field="cluster")
+    cluster = models.ForeignKey(Cluster, verbose_name="Кластер", on_delete=models.PROTECT)
+    city = ChainedForeignKey(City, verbose_name="Основной город", chained_field="cluster",
+                             chained_model_field="cluster", on_delete=models.PROTECT, related_name="main_city")
+    cities = ChainedManyToManyField(City, blank=True, horizontal=True, verbose_name="Дополнительные города",
+                                    related_name="add_cities", chained_field="cluster", chained_model_field="cluster")
 
     seo_title = models.CharField("Заговок страницы (SEO)", max_length=64)
     seo_description = models.CharField("Описание страницы (SEO)", max_length=128)
 
+    categories = models.ManyToManyField(Category, blank=True, verbose_name="Категории")
+
     description_mini = models.TextField("Описание экскурсии (мини)")
     description = models.TextField("Описание экскурсии (полное)")
 
-    include_list = ArrayField(
-        models.CharField(max_length=30, blank=True),
-        verbose_name="Включено",
-        size=6,
-        blank=True)
+    include_list = ArrayField(models.CharField(max_length=30, blank=True), verbose_name="Включено", size=6, blank=True)
+    add_price_list = ArrayField(models.CharField(max_length=30, blank=True),
+                                verbose_name="За дополнительную плату", size=6, blank=True)
 
-    add_price_list = ArrayField(
-        models.CharField(max_length=30, blank=True),
-        verbose_name="За дополнительную плату",
-        size=6,
-        blank=True)
+    start_list = ArrayField(models.TimeField(), verbose_name="Начало", size=4, blank=True, null=True)
 
-    start_list = ArrayField(
-        models.TimeField(),
-        verbose_name="Начало",
-        size=4,
-        blank=True, null=True)
+    price = models.PositiveIntegerField("Цена (для главной)")
+    price_for = models.CharField("За что?", max_length=20)
 
-    price = models.PositiveIntegerField("Цена")
-    image = models.ImageField("Основная фотография")
-    groups = models.BooleanField("Тип", choices=GROUP_CHOICES)
-    time = models.CharField("Продолжительность экскурсии", max_length=32)
+    prepay = models.BooleanField("Есть предоплата?", default=True)
+    prepay_percent = models.PositiveIntegerField("Предоплата (%)")
 
-    seat_request = models.BooleanField("Показывать блок 'Запросить места'", default=True)
+    time = models.CharField("Продолжительность", max_length=32)
+
     count_comment = models.SmallIntegerField('Количество отзывов', default=0)
     rating = models.FloatField("Рейтинг", validators=[MinValueValidator(0), MaxValueValidator(5)], default=5)
 
     offer = models.CharField("Специальное предложение", max_length=20, blank=True)
-
-    categories = models.ManyToManyField(Category, blank=True, verbose_name="Категории")
-
-    notes = models.CharField("Примечания", blank=True, max_length=64)
-
     gid = models.BooleanField("Проверенный гид", default=False)
     auto_gid = models.BooleanField("Автоматизировать провернный гид", default=True)
+
     video = models.URLField("Ссылка на видео", blank=True)
 
     transfer = models.CharField("Трансфер", max_length=2, choices=TRANSFER_CHOICES, default="yn")
@@ -210,6 +181,8 @@ class Tour(models.Model):
     transfer_yes_second = models.CharField("2 строка (Трансфер есть)", max_length=64)
 
     period = models.ForeignKey(Period, verbose_name="Период года", on_delete=models.PROTECT)
+
+    notes = models.CharField("Примечания", blank=True, max_length=64)
 
     def __str__(self):
         return "Экскурсия '{}'".format(self.title)

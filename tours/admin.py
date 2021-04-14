@@ -71,7 +71,7 @@ class TourAdmin(admin.ModelAdmin, DynamicArrayMixin):
     search_fields = ('title', 'notes')
     actions_on_top = False
     actions_on_bottom = True
-    inlines = [AdvantageInline, VariableInline]
+    inlines = [ImageItemInline, AdvantageInline, VariableInline]
     filter_horizontal = ('categories', 'positions', 'transfer_points')
 
 
