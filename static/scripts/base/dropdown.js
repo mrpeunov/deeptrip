@@ -118,9 +118,6 @@ $(document).ready(function() {
 
         let prepay = parseInt($calculate_price.data("prepay"))
 
-        if(prepay !== 0){
-            $('.prepay_count').html(result_price * prepay/100);
-        }
-
+        $('.prepay_count').html(result_price * prepay/100);
     }
 })

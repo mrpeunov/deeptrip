@@ -155,8 +155,7 @@ class Tour(models.Model):
     price = models.PositiveIntegerField("Цена (для главной)")
     price_for = models.CharField("За что?", max_length=20)
 
-    prepay = models.BooleanField("Есть предоплата?", default=True)
-    prepay_percent = models.PositiveIntegerField("Предоплата (%)")
+    prepay = models.PositiveIntegerField("Предоплата (%)")
 
     time = models.CharField("Продолжительность", max_length=32)
 
