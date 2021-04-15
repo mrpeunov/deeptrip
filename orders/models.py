@@ -5,11 +5,11 @@ from tours.models import Tour, Position
 class Order(models.Model):
     name = models.CharField("Имя", max_length=32)
     phone = models.CharField("Телефон", max_length=32)
-    mail = models.CharField("Почта", max_length=64)
+    mail = models.CharField("Почта", max_length=64, blank=True)
     tour = models.ForeignKey(Tour, verbose_name="Экскурсия", on_delete=models.PROTECT)
     date_tour = models.DateField("Дата")
     start_tour = models.TimeField("Начало")
-    datetime_order = models.DateTimeField("Дата и время создания", auto_created=True)
+    datetime_order = models.DateTimeField("Дата и время создания", auto_now_add=True)
     rate = models.CharField("Тариф", max_length=32, blank=True)
     group = models.CharField("Группа", max_length=32, blank=True)
     children = models.CharField("Дети", max_length=32, blank=True)

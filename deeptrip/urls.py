@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('chaining/', include('smart_selects.urls')),
     path('', include('base.urls')),
+    path('', include('orders.urls')),
     path('', include('tours.urls.api')),
     path('_nested_admin/', include('nested_admin.urls')),
     path('magazine/', include('articles.urls')),

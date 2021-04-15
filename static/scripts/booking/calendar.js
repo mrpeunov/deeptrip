@@ -120,6 +120,10 @@ function choiceOnClick($elem) {
 }
 
 function update_date() {
-    $(".booking-date").html(choiceDay + " " +
+    let $booking_date = $(".booking-date");
+    $booking_date.html(choiceDay + " " +
             monthNameParent[choiceMonth] + " " + choiceYear);
+    $booking_date.attr("data-day", choiceDay);
+    $booking_date.attr("data-month", choiceMonth);
+    $booking_date.attr("data-year", choiceYear);
 }
