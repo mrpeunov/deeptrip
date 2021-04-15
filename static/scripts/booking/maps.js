@@ -17,13 +17,17 @@ function init() {
 }
 
 $("input[name='transfer']").click(function () {
+    let $booking_map = $('#booking_map');
+
     $(".booking_transfer_text").addClass("none");
     $("#transfer_text_" + $(this).val()).removeClass("none");
 
     if ($(this).val() === "yes") {
         create_map_y();
+        $booking_map.attr("data-bool", "True")
     } else {
         create_map_n();
+        $booking_map.attr("data-bool", "False")
     }
 })
 

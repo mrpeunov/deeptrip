@@ -179,6 +179,7 @@ class Tour(models.Model):
     transfer_yes_first = models.CharField("1 строка (Трансфер есть)", max_length=64)
     transfer_yes_second = models.CharField("2 строка (Трансфер есть)", max_length=64)
 
+    commission = models.IntegerField("Коммиссия (%)")
     period = models.ForeignKey(Period, verbose_name="Период года", on_delete=models.PROTECT)
     notes = models.CharField("Примечания", blank=True, max_length=64)
 
@@ -343,7 +344,7 @@ class Rate(models.Model):
     variable = models.ForeignKey(Variable, on_delete=models.PROTECT, blank=True)
 
     def __str__(self):
-        return "Вариант для переменной {}".format(self.variable)
+        return "{} ({})".format(self.name, self.price)
 
     class Meta:
         verbose_name = "Вариант переменной"

@@ -1,5 +1,5 @@
 from django.db import models
-from tours.models import Tour, Position
+from tours.models import Tour, Position, Variable, Rate
 
 
 class Order(models.Model):
@@ -10,9 +10,9 @@ class Order(models.Model):
     date_tour = models.DateField("Дата")
     start_tour = models.TimeField("Начало")
     datetime_order = models.DateTimeField("Дата и время создания", auto_now_add=True)
-    rate = models.CharField("Тариф", max_length=32, blank=True)
-    group = models.CharField("Группа", max_length=32, blank=True)
-    children = models.CharField("Дети", max_length=32, blank=True)
+    rate = models.ForeignKey(Rate, verbose_name="Тариф", related_name="rate", blank=True, on_delete=models.PROTECT)
+    group = models.ForeignKey(Rate, verbose_name="Группа", related_name="group", blank=True, on_delete=models.PROTECT)
+    children = models.ForeignKey(Rate, verbose_name="Дети", related_name="children", blank=True, on_delete=models.PROTECT)
     amount = models.FloatField("Общая сумма заказа")
     prepay = models.FloatField("Внесённая предоплата")
     payment = models.FloatField("Остаток оплаты")

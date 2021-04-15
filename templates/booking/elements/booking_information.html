@@ -2,8 +2,13 @@
     <h2 class="standard_h2">Информация для связи</h2>
     <div class="booking_information_content">
         <input type="text" id="booking_name" class="standard_input"
-               placeholder="Имя" name="name" required="">
+               placeholder="Имя" name="name">
         <input type="text"  id="booking_phone" class="standard_input phone_input" placeholder="Телефон"
-               name="phone" maxlength="13" required="">
+               name="phone" maxlength="25">
+
+        {% if tour.prepay > 0 %}
+            <input type="email" id="booking_mail" class="standard_input" placeholder="Email"
+               name="mail">
+        {% endif %}
     </div>
 </div>
