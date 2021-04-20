@@ -372,6 +372,19 @@ img {
   position: absolute;
   bottom: 0;
 }
+.standard_close {
+  width: 25px;
+  height: 25px;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.standard_close:hover {
+  -webkit-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
+}
 .menu {
   position: fixed;
   bottom: 0;
@@ -2361,5 +2374,39 @@ footer .not-empty {
 .booking_table_prepay td:last-child {
   color: #333333 !important;
   font-weight: bold;
+}
+/*Страница фильтров*/
+.filter_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+}
+.filter_menu {
+  position: fixed;
+  bottom: 0;
+}
+.filter_tours {
+  display: flex;
+  flex-wrap: wrap;
+}
+.filter_tours_item {
+  width: calc(100%/3);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.filter_tours .view {
+  width: 30%;
+}
+.filter_tours .view:nth-of-type(3n+2) {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.filter_prices_range {
+  width: 30%;
+}
+.filter_prices_range_results {
+  display: flex;
+  justify-content: space-between;
 }
 /*# sourceMappingURL=style.css.map */

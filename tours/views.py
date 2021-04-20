@@ -12,7 +12,7 @@ from tours.services.get_comments_for_tour import get_comments_for_tour
 from tours.services.get_h2 import get_h2
 from tours.services.get_prices import get_prices_for_tour
 from tours.services.get_recommended_for_tours import get_recommended_for_tours
-from tours.services.get_tours import get_tours, get_maximum
+from tours.services.get_tours import get_tours, get_maximum, get_all_tours
 
 
 class CityPage(FooterAndMenuTemplateView):
@@ -33,17 +33,6 @@ class CityPage(FooterAndMenuTemplateView):
         context['magazine'] = get_articles(context['city'])
         context['h2'] = get_h2()
         context['not_empty'] = False
-
-
-class FilterPage(FooterAndMenuTemplateView):
-    """
-    Страница на которой показывается фильтр экскурсий
-    """
-    template_name = 'city/elements/city_filter.html'
-
-    def add_in_context(self, context):
-        context['city'] = City.objects.get(slug=context['city_slug'])
-        context['tours'] = Tour.objects.all()
 
 
 class TourPage(FooterAndMenuTemplateView):
@@ -98,9 +87,20 @@ class MapPage(FooterAndMenuTemplateView):
     def add_in_context(self, context):
         pass
 
+
+class FilterPage(FooterAndMenuTemplateView):
+    """
+    Страница на которой показывается фильтр экскурсий
+    """
+    template_name = 'filter/filter.html'
+
+    def add_in_context(self, context):
+        context['city'] = City.objects.get(slug=context['city_slug'])
+        context['categories'] = get_filters_queryset(context['city'])
+        context['tours'] = get_all_tours(context['city'])
+
+
 # api
-
-
 def get_more_tours(request):
     """
     обработка AJAX

@@ -1,0 +1,10 @@
+<div class="filter_categories container">
+    <div class="filters_categories">
+        {% for category in categories %}
+            <label class="filters_category {% if forloop.counter > 6 %} filters_category_none {% endif %}">
+                <div class="filters_category_name">{{ category.title }}</div>
+                <input type="checkbox" class="filter_item" value="{{ category.slug }}">
+            </label>
+        {% endfor %}
+    </div>
+</div>

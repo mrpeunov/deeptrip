@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'filter/elements/filter_header.html' %}
+    {% include 'filter/elements/filter_prices.html' %}
+    {% include 'filter/elements/filter_categories.html' %}
+    {% include 'filter/elements/filter_tours.html' %}
+{% endblock %}
+
+{% block menu %}
+    {% include 'filter/elements/filter_menu.html' %}
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block one_page_scripts %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static 'scripts/filter/range.js' %}"></script>
+{% endblock %}
+

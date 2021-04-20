@@ -313,6 +313,21 @@ img{
       bottom: 0;
     }
   }
+
+  &_close{
+    width: 25px;
+    height: 25px;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover{
+      -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
 }
 
 .menu{
@@ -2674,6 +2689,56 @@ footer{
         color: #colors[dark3]!important;
         font-weight: bold;
       }
+    }
+  }
+}
+
+/*Страница фильтров*/
+.filter{
+  &_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+  }
+
+  &_menu{
+    position: fixed;
+    bottom: 0;
+  }
+
+  &_tours{
+    display: flex;
+    flex-wrap: wrap;
+
+    &_item{
+      width: calc(100%/3);
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .view{
+      width: 30%;
+    }
+
+    .view:nth-of-type(3n+2){
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }
+
+  &_prices{
+    &_range{
+      width: 30%;
+
+      &_results{
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &_prepay{
+
     }
   }
 }
