@@ -2387,26 +2387,50 @@ footer .not-empty {
   bottom: 0;
 }
 .filter_tours {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap: 5%;
+  grid-auto-flow: row;
+  margin-top: 50px;
 }
-.filter_tours_item {
-  width: calc(100%/3);
-  margin-top: 20px;
-  margin-bottom: 20px;
+.filter_prices {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap: 5%;
+  margin-top: 50px;
 }
-.filter_tours .view {
-  width: 30%;
-}
-.filter_tours .view:nth-of-type(3n+2) {
-  margin-left: 5%;
-  margin-right: 5%;
-}
-.filter_prices_range {
-  width: 30%;
+.filter_prices_cities_text {
+  padding: 15px 0;
 }
 .filter_prices_range_results {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
+}
+.filter_prices_range .ui-slider {
+  margin-top: 20px;
+}
+.filter_prices_range .ui-state-default {
+  background: url("../img/filter/range.png");
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  top: -12px;
+  outline: none;
+  border: none;
+}
+.filter_prices_range .ui-slider-horizontal {
+  height: 6px;
+  background: #cccccc;
+}
+.filter_prices_range .ui-widget-header {
+  background: #333333;
+  height: 6px;
+}
+.filter_prices_range .ui-widget.ui-widget-content {
+  border: none;
+}
+.filter_format {
+  margin: 40px 0 20px 0;
 }
 /*# sourceMappingURL=style.css.map */

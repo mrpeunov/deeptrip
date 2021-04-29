@@ -1,4 +1,31 @@
 <div class="filter_prices container">
+    <div class="filter_prices_cities">
+        <div class="standard_text_strong">
+           Город
+        </div>
+        <div class="standard_text_gray filter_prices_cities_text">
+           Город или район для поиска экскурсии
+        </div>
+        <div class="standard_dropdown">
+            <div class="standard_dropdown_wrap">
+                <div class="standard_dropdown_choice standard_text_strong"
+                     id="dropdown_cities"
+                     data-type="{{ key }}" data-price="{{city.slug}}">
+                    {{city.name}}
+                </div>
+                <div class="standard_dropdown_list none" id="dropdown_cities_list">
+                    {% for city in cities %}
+                        <div class="standard_dropdown_list_item"
+                             data-choice_id="dropdown_cities"
+                             data-price="{{ city.slug }}">
+                            {{ city.name }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="filter_prices_range">
         <div class="standard_text_strong">
            Цена за экскурсию
@@ -23,5 +50,21 @@
             </div>
         </div>
     </div>
-    <div class="filter_prices_prepay"></div>
+
+    <div class="filter_prices_prepay">
+        <div class="standard_text_strong">
+           Город
+        </div>
+        <div class="filter_prices_prepay_table filter_prices_cities_text">
+            <div class="standard_text_gray">
+               Город или район для поиска экскурсии
+            </div>
+            <div class="filter_prices_prepay_table_choice">
+                здесь что-то будет
+            </div>
+        </div>
+    </div>
 </div>
+<h2 class="standard_text_strong filter_format container">
+    Формат экскурсии
+</h2>

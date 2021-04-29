@@ -2708,37 +2708,67 @@ footer{
   }
 
   &_tours{
-    display: flex;
-    flex-wrap: wrap;
-
-    &_item{
-      width: calc(100%/3);
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .view{
-      width: 30%;
-    }
-
-    .view:nth-of-type(3n+2){
-      margin-left: 5%;
-      margin-right: 5%;
-    }
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 5%;
+    grid-auto-flow: row;
+    margin-top: 50px;
   }
 
   &_prices{
-    &_range{
-      width: 30%;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 5%;
+    margin-top: 50px;
 
+    &_cities{
+      &_text{
+        padding: 15px 0;
+      }
+    }
+
+    &_range{
       &_results{
         display: flex;
         justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .ui-slider{
+        margin-top: 20px;
+      }
+
+      .ui-state-default{
+        background: url("../img/filter/range.png");
+        background-size: contain;
+        width: 30px;
+        height: 30px;
+        top: -12px;
+        outline: none;
+        border: none;
+      }
+
+      .ui-slider-horizontal{
+        height: 6px;
+        background: #cccccc;
+      }
+
+      .ui-widget-header{
+        background: #333333;
+        height: 6px;
+      }
+
+      .ui-widget.ui-widget-content{
+        border: none;
       }
     }
 
     &_prepay{
 
     }
+  }
+
+  &_format{
+    margin: 40px 0 20px 0;
   }
 }

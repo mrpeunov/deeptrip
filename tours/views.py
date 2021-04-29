@@ -98,6 +98,7 @@ class FilterPage(FooterAndMenuTemplateView):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['categories'] = get_filters_queryset(context['city'])
         context['tours'] = get_all_tours(context['city'])
+        context['cities'] = City.objects.filter(cluster=context['city'].cluster)
 
 
 # api

@@ -1,6 +1,6 @@
 <div class="container filter_tours" id="tours">
     {% for preview in tours %}
-        <div class="filter_tours_item view"
+        <div class="filter_tours_item"
              data-categories="{% for category in preview.categories.all %}{{ category.slug }};{% endfor %}"
              data-price="{{ preview.price }}" data-prepay="{% if preview.prepay %}+{% else %}-{% endif %}">
             {% include 'tours/api/tour_preview.html' %}
