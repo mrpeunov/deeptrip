@@ -385,6 +385,41 @@ img {
   -ms-transform: scale(0.9);
   transform: scale(0.9);
 }
+.standard_ok {
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+  position: relative;
+  background: #cccccc;
+  cursor: pointer;
+}
+.standard_ok_slider {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  top: 3px;
+  left: 3px;
+  right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.standard_ok_slider img {
+  display: none;
+  width: 12px;
+}
+.standard_ok.active {
+  background: #333333;
+}
+.standard_ok.active div {
+  right: 3px;
+  left: auto;
+}
+.standard_ok.active img {
+  display: block;
+}
 .menu {
   position: fixed;
   bottom: 0;
@@ -2382,10 +2417,6 @@ footer .not-empty {
   align-items: center;
   margin: 30px 0;
 }
-.filter_menu {
-  position: fixed;
-  bottom: 0;
-}
 .filter_tours {
   display: grid;
   grid-template-columns: 30% 30% 30%;
@@ -2430,7 +2461,32 @@ footer .not-empty {
 .filter_prices_range .ui-widget.ui-widget-content {
   border: none;
 }
+.filter_prices_prepay_table {
+  display: flex;
+}
 .filter_format {
   margin: 40px 0 20px 0;
+}
+.filter_menu {
+  height: 60px;
+}
+.filter_menu_content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter_menu_content_drop {
+  font-weight: bold;
+  cursor: pointer;
+}
+.filter_menu_content_view {
+  display: flex;
+  align-items: center;
+}
+.filter_menu_content_view_button {
+  margin-left: 15px;
+  border-radius: 10px;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */

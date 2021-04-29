@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="filter_prices container">
     <div class="filter_prices_cities">
         <div class="standard_text_strong">
@@ -53,18 +55,22 @@
 
     <div class="filter_prices_prepay">
         <div class="standard_text_strong">
-           Город
+           Без предоплаты
         </div>
         <div class="filter_prices_prepay_table filter_prices_cities_text">
             <div class="standard_text_gray">
-               Город или район для поиска экскурсии
+               Только экскурсии не требующие внесения предоплаты онлайн
             </div>
             <div class="filter_prices_prepay_table_choice">
-                здесь что-то будет
+                <div class="standard_ok active">
+                    <div class="standard_ok_slider "><img src="{% static 'img/filter/ok.png' %}" alt=""> </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <h2 class="standard_text_strong filter_format container">
     Формат экскурсии
 </h2>
