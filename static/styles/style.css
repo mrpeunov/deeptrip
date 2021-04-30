@@ -392,6 +392,7 @@ img {
   position: relative;
   background: #cccccc;
   cursor: pointer;
+  transition: 0.5s;
 }
 .standard_ok_slider {
   width: 24px;
@@ -405,20 +406,25 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.5s;
 }
 .standard_ok_slider img {
-  display: none;
+  opacity: 0;
+  transition: 0.5s;
   width: 12px;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .standard_ok.active {
   background: #333333;
 }
 .standard_ok.active div {
-  right: 3px;
-  left: auto;
+  left: 23px;
 }
 .standard_ok.active img {
-  display: block;
+  opacity: 1;
 }
 .menu {
   position: fixed;
@@ -439,30 +445,22 @@ img {
   text-align: center;
   font-weight: 500;
   transition: 0.2s;
+  position: relative;
 }
-.menu_item_map {
-  transition: 0.2s;
-  background-image: url("../img/city/map.png");
+.menu_item .active {
+  opacity: 0;
 }
-.menu_item_like {
-  transition: 0.2s;
-  background-image: url("../img/city/like.png");
-}
-.menu_item_filter {
-  transition: 0.2s;
-  background-image: url("../img/city/filter.png");
-}
-.menu_item:hover .menu_item_map {
-  background-image: url("../img/city/map-active.png");
-}
-.menu_item:hover .menu_item_like {
-  background-image: url("../img/city/like-active.png");
-}
-.menu_item:hover .menu_item_filter {
-  background-image: url("../img/city/filter-active.png");
+.menu_item .non_active {
+  opacity: 1;
 }
 .menu_item:hover .menu_item_name {
   color: #333333;
+}
+.menu_item:hover .active {
+  opacity: 1;
+}
+.menu_item:hover .non_active {
+  opacity: 0;
 }
 .menu_item_icon {
   margin: 0 auto;
@@ -470,6 +468,13 @@ img {
   background-repeat: no-repeat;
   width: 20px;
   height: 20px;
+}
+.menu_item_icon img {
+  position: absolute;
+  width: 20px;
+  left: 50%;
+  margin-left: -10px;
+  transition: 0.2s;
 }
 .menu_item .circle {
   position: relative;
@@ -483,9 +488,6 @@ img {
   height: 4px;
   border-radius: 50%;
   background: #47cacc;
-}
-.menu_item img {
-  width: 25px;
 }
 .menu_item_name {
   font-size: 0.7rem;
@@ -1048,6 +1050,10 @@ header {
   overflow: hidden;
   display: inline-block;
   letter-spacing: normal;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .filters_category_name:after {
   content: '';
@@ -2420,9 +2426,12 @@ footer .not-empty {
 .filter_tours {
   display: grid;
   grid-template-columns: 30% 30% 30%;
-  grid-gap: 5%;
+  grid-gap: 0 5%;
   grid-auto-flow: row;
   margin-top: 50px;
+}
+.filter_tours .filter_tours_item {
+  margin-bottom: 30px;
 }
 .filter_prices {
   display: grid;
@@ -2447,6 +2456,7 @@ footer .not-empty {
   width: 28px;
   height: 28px;
   top: -12px;
+  margin-left: -14px;
   outline: none;
   border: none;
 }
@@ -2488,5 +2498,12 @@ footer .not-empty {
   margin-left: 15px;
   border-radius: 10px;
   font-weight: bold;
+}
+.filter_footer {
+  padding-bottom: 150px;
+}
+.filter_footer .standard_text_strong {
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,6 @@
 {% load static %}
 
-<a href="{{ preview.get_absolute_url }}"  >
+<a href="{{ preview.get_absolute_url }}">
     <div class="preview">
         <div class="preview_gallery owl-carousel owl-theme preview_gallery_item">
             {% for image in preview.images %}
@@ -30,7 +30,7 @@
             <img class="active" src="{% static 'img/preview/like-active.png' %}" alt="">
         </div>
         {% if preview.offer %}
-        <div class="preview_offer">{{ preview.offer|upper }}</div>
+            <div class="preview_offer">{{ preview.offer|upper }}</div>
         {% endif %}
     </div>
 </a>

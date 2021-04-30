@@ -2,15 +2,24 @@
 
 <nav class="menu">
     <a href="" class="menu_item">
-        <div class="menu_item_map menu_item_icon"></div>
+        <div class="menu_item_map menu_item_icon">
+            <img class="non_active" src="{% static 'img/city/map.png' %}" alt="">
+            <img class="active" src="{% static 'img/city/map-active.png' %}" alt="">
+        </div>
         <div class="menu_item_name">Карта</div>
     </a>
     <a href="" class="menu_item">
-        <div class="menu_item_like menu_item_icon"></div>
+        <div class="menu_item_like menu_item_icon">
+            <img class="non_active" src="{% static 'img/city/like.png' %}" alt="">
+            <img class="active" src="{% static 'img/city/like-active.png' %}" alt="">
+        </div>
         <div class="menu_item_name" id="favorites">Избранное</div>
     </a>
     <a href="" class="menu_item">
-        <div class="menu_item_filter menu_item_icon"></div>
+        <div class="menu_item_filter menu_item_icon">
+            <img class="non_active" src="{% static 'img/city/filter.png' %}" alt="">
+            <img class="active" src="{% static 'img/city/filter-active.png' %}" alt="">
+        </div>
         <div class="menu_item_name">Фильтры</div>
     </a>
 </nav>

@@ -336,6 +336,7 @@ img{
     position: relative;
     background: #cccccc;
     cursor: pointer;
+    transition: 0.5s;
 
     &_slider{
       width: 24px;
@@ -349,10 +350,16 @@ img{
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: 0.5s;
 
       img{
-        display: none;
+        opacity: 0;
+        transition: 0.5s;
         width: 12px;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
       }
     }
 
@@ -360,12 +367,11 @@ img{
       background: #333333;
 
       div{
-        right: 3px;
-        left: auto;
+        left: 23px;
       }
 
       img{
-        display: block;
+        opacity: 1;
       }
     }
   }
@@ -390,37 +396,27 @@ img{
     text-align: center;
     font-weight: 500;
     transition: 0.2s;
+    position: relative;
 
-    &_map{
-      transition: 0.2s;
-      background-image: url("../img/city/map.png");
+    .active{
+      opacity: 0;
     }
 
-    &_like{
-      transition: 0.2s;
-      background-image: url("../img/city/like.png");
-    }
-
-    &_filter{
-      transition: 0.2s;
-      background-image: url("../img/city/filter.png");
+    .non_active{
+      opacity: 1;
     }
 
     &:hover{
-      .menu_item_map{
-        background-image: url("../img/city/map-active.png");
-      }
-
-      .menu_item_like{
-        background-image: url("../img/city/like-active.png");
-      }
-
-      .menu_item_filter{
-        background-image: url("../img/city/filter-active.png");
-      }
-
       .menu_item_name{
         color: #colors[dark3];
+      }
+
+      .active{
+        opacity: 1;
+      }
+
+      .non_active{
+        opacity: 0;
       }
     }
 
@@ -430,6 +426,14 @@ img{
       background-repeat: no-repeat;
       width: 20px;
       height: 20px;
+
+      img{
+        position: absolute;
+        width: 20px;
+        left: 50%;
+        margin-left: -10px;
+        transition: 0.2s;
+      }
     }
 
     .circle{
@@ -445,10 +449,6 @@ img{
         border-radius: 50%;
         background: #colors[cian];
       }
-    }
-
-    img{
-      width: 25px;
     }
 
     &_name{
@@ -1094,6 +1094,10 @@ header{
       overflow: hidden;
       display: inline-block;
       letter-spacing: normal;
+      -ms-user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
 
       &:after{
         content: '';
@@ -2746,9 +2750,13 @@ footer{
   &_tours{
     display: grid;
     grid-template-columns: 30% 30% 30%;
-    grid-gap: 5%;
+    grid-gap: 0 5%;
     grid-auto-flow: row;
     margin-top: 50px;
+
+    .filter_tours_item{
+      margin-bottom: 30px;
+    }
   }
 
   &_prices{
@@ -2780,6 +2788,7 @@ footer{
         width: 28px;
         height: 28px;
         top: -12px;
+        margin-left: -14px;
         outline: none;
         border: none;
       }
@@ -2834,6 +2843,15 @@ footer{
           font-weight: bold;
         }
       }
+    }
+  }
+
+  &_footer{
+    padding-bottom: 150px;
+
+    .standard_text_strong{
+      font-size: 0.95rem;
+      cursor: pointer;
     }
   }
 }

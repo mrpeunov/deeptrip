@@ -39,7 +39,7 @@
                     Мин. цена
                 </div>
                 <div class="standard_h2">
-                    <span type="text" id="min" readonly>500</span> руб.
+                    <span type="text" id="min" data-min="{{ min_price }}" readonly>{{ min_price }}</span> руб.
                 </div>
             </div>
             <div class="filter_prices_range_item">
@@ -47,7 +47,7 @@
                     Макс. цена
                 </div>
                 <div class="standard_h2">
-                    <span type="text" id="max" readonly>1500</span> руб.
+                    <span type="text" id="max" data-max="{{ max_price }}" readonly>{{ max_price }}</span> руб.
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                Только экскурсии не требующие внесения предоплаты онлайн
             </div>
             <div class="filter_prices_prepay_table_choice">
-                <div class="standard_ok active">
+                <div id="ok" class="standard_ok">
                     <div class="standard_ok_slider "><img src="{% static 'img/filter/ok.png' %}" alt=""> </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@
     {% include 'filter/elements/filter_prices.html' %}
     {% include 'filter/elements/filter_categories.html' %}
     {% include 'filter/elements/filter_tours.html' %}
+    {% include 'filter/elements/filter_footer.html' %}
 {% endblock %}
 
 {% block menu %}
@@ -15,7 +16,10 @@
 {% block footer %}{% endblock %}
 
 {% block one_page_scripts %}
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{% static 'scripts/filter/range.js' %}"></script>
+    <script
+  src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"
+  integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI="
+  crossorigin="anonymous"></script>
+    <script src="{% static 'scripts/filter/filters.js' %}"></script>
 {% endblock %}
 

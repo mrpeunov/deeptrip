@@ -10,6 +10,7 @@ from tours.services.get_cities import get_cities_for_city
 from tours.services.filters import get_count_tours, get_filters_queryset
 from tours.services.get_comments_for_tour import get_comments_for_tour
 from tours.services.get_h2 import get_h2
+from tours.services.get_min_max_price import get_min_max_price
 from tours.services.get_prices import get_prices_for_tour
 from tours.services.get_recommended_for_tours import get_recommended_for_tours
 from tours.services.get_tours import get_tours, get_maximum, get_all_tours
@@ -98,6 +99,7 @@ class FilterPage(FooterAndMenuTemplateView):
         context['city'] = City.objects.get(slug=context['city_slug'])
         context['categories'] = get_filters_queryset(context['city'])
         context['tours'] = get_all_tours(context['city'])
+        context['min_price'], context['max_price'] = get_min_max_price(context['tours'])
         context['cities'] = City.objects.filter(cluster=context['city'].cluster)
 
 
