@@ -27,6 +27,7 @@ class City(models.Model):
     tours_count = models.IntegerField("Количество экскурсий в городе", default=0)
     orders_count = models.IntegerField("Количество заказов в городе", default=0)
     importance = models.PositiveIntegerField("Важность города", default=0)
+    icon = models.ImageField("Изображение")
     image = models.ImageField("Изображение")
 
     def get_absolute_url(self):

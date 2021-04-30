@@ -1,5 +1,6 @@
-function show_text() {
+//открыть текст для просмотра описания
 
+function show_text() {
     let $text = $("#all_text")
     let $button = $("#show_text_button");
 
