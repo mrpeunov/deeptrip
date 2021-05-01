@@ -607,14 +607,14 @@ header {
   margin-bottom: 10px;
   margin-top: 50px;
   color: #ffffff;
-  text-shadow: 0px 3px 15.52px rgba(1, 1, 1, 0.12);
+  text-shadow: 0 3px 15.52px rgba(1, 1, 1, 0.12);
 }
 .header_subtitle {
   font-size: 1.3rem;
   font-weight: bold;
   margin: 0;
   color: #ffffff;
-  text-shadow: 0px 3px 15.52px rgba(1, 1, 1, 0.16);
+  text-shadow: 0 3px 15.52px rgba(1, 1, 1, 0.16);
 }
 .header_button {
   display: block;
@@ -2421,7 +2421,9 @@ footer .not-empty {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 30px 0;
+  margin: 15px 0 0 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eeeeee;
 }
 .filter_tours {
   display: grid;
@@ -2429,6 +2431,18 @@ footer .not-empty {
   grid-gap: 0 5%;
   grid-auto-flow: row;
   margin-top: 50px;
+}
+@media (max-width: 992px) {
+  .filter_tours {
+    grid-template-columns: 47% 47%;
+    grid-gap: 0 6%;
+  }
+}
+@media (max-width: 768px) {
+  .filter_tours {
+    grid-template-columns: 100%;
+    grid-gap: 0;
+  }
 }
 .filter_tours .filter_tours_item {
   margin-bottom: 30px;
@@ -2438,6 +2452,22 @@ footer .not-empty {
   grid-template-columns: 30% 30% 30%;
   grid-gap: 5%;
   margin-top: 50px;
+}
+@media (max-width: 992px) {
+  .filter_prices {
+    grid-template-columns: 47% 47%;
+    grid-gap: 35px 6%;
+  }
+  .filter_prices_item {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eeeeee;
+  }
+}
+@media (max-width: 768px) {
+  .filter_prices {
+    grid-template-columns: 100%;
+    grid-gap: 35px;
+  }
 }
 .filter_prices_cities_text {
   padding: 15px 0;
@@ -2459,6 +2489,7 @@ footer .not-empty {
   margin-left: -14px;
   outline: none;
   border: none;
+  cursor: pointer;
 }
 .filter_prices_range .ui-slider-horizontal {
   height: 6px;
@@ -2473,6 +2504,7 @@ footer .not-empty {
 }
 .filter_prices_prepay_table {
   display: flex;
+  justify-content: space-between;
 }
 .filter_format {
   margin: 40px 0 20px 0;
@@ -2498,6 +2530,19 @@ footer .not-empty {
   margin-left: 15px;
   border-radius: 10px;
   font-weight: bold;
+}
+.filter_menu .blocked {
+  background: #cccccc;
+}
+.filter_menu .blocked:hover {
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+@media (max-width: 768px) {
+  .filter_menu .filter_menu_content_view_count {
+    display: none;
+  }
 }
 .filter_footer {
   padding-bottom: 150px;

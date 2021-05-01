@@ -1,11 +1,19 @@
 $(function() {
-    let $ok = $("#ok");
+    let $ok = $("#ok"); //блок с предоплатой
+    let $slider_range = $( "#slider-range" ); //слайдер
+    let $filter_item = $(".filter_item"); //элемент с галочкой
 
-    let min_price = parseInt($("#min").data("min"));
-    let max_price = parseInt($("#max").data("max"));
+    //максимальные и минимальные блоки
+    let $min_block = $("#min");
+    let $max_block = $("#max");
+    let min_price = parseInt($min_block.data("min"));
+    let max_price = parseInt($max_block.data("max"));
+
+    let show_button = false;
+    let $show = $("#show");
 
     //слайдер для выбора цены
-    $( "#slider-range" ).slider({
+    $slider_range.slider({
           range: true,
           min: min_price,
           max: max_price,
@@ -18,30 +26,56 @@ $(function() {
               min_price = ui.values[0];
               max_price = ui.values[1];
 
+              show_button = true;
+              update_view_button();
               update_count();
+
           }
     });
 
+    //при клике на блок с предоплатой
     $ok.on("click", function () {
         $(this).toggleClass("active");
+        show_button = true;
+        update_view_button();
         update_count();
     })
 
-    $("#show").on("click", function () {
-        update_view();
+    //при клике на показать обновляем отображение экскурсий
+    $show.on("click", function () {
+        //если кнопка не заблокирована, обновить
+        if(!$show.hasClass("blocked")) {
+            update_view();
+            show_button = false;
+            update_view_button();
+        }
     })
 
-    $(".filter_item").on("click", function () {
+    $filter_item.on("click", function () {
+        show_button = true;
+        update_view_button();
         update_count();
     })
 
+    //при клике на сбросить сбрасываем настройки
     $("#reset").on("click", function () {
         reset();
     })
 
+    //при клике на сбросить в меню сбрасываем настройки
+    $("#reset_menu").on("click", function () {
+        reset();
+    })
+
+    //обновление количества экскурсий
     function update_count() {
         let count = get_count_view_tours();
-        $("#count").html(count);
+        $("#count").html("Найдено " + count + " экскурсий");
+
+        if (count === 0){
+            show_button = false;
+            update_view_button();
+        }
     }
 
     //получить количество видимых экскурсий
@@ -72,6 +106,7 @@ $(function() {
         if(choice_category_array.length !== 0){
             let items = $('.filter_tours_item');
             let array_items = $.makeArray(items);
+
             array_items.sort(function(a, b) {
                 let rating_a = get_rating_for_tour($(a), choice_category_array);
                 let rating_b = get_rating_for_tour($(b), choice_category_array);
@@ -83,36 +118,69 @@ $(function() {
 
         //перебираем все эскурсии
         $('.filter_tours_item').each(function () {
+            //изначально видимая
             $(this).removeClass("none");
 
+            //получаем видимость экскурсии
             let view = get_view_tour($(this), min_price, max_price, prepay, choice_category_array)
 
-            //если экскурсия видимая то
+            //если экскурсия невидимая то, убираем видимость
             if(view === false){
                 $(this).addClass("none")
             }
         })
 
+        let count = get_count_view_tours();
+        $("#count").html("Отображено " + count + " экскурсий");
+
+        let destination = $("#tours").offset().top - 20;
+        $('html, body').animate({
+            scrollTop: destination
+        }, 300);
     }
 
+    //сбросить настройки
     function reset() {
+        //убрать все поставленныегалоки в категориях
         $(".filter_item").prop('checked', false);
-        min_price = parseInt($("#min").data("min"));
-        max_price = parseInt($("#max").data("max"));
-        console.log(min_price, max_price);
-        $("#min").html(min_price);
-        $("#max").html(max_price);
-        $("#slider-range").slider("values", [min_price, max_price])
-        $("ok").removeClass("active");
+
+        //получить максимальную и минимальную цену
+        min_price = parseInt($min_block.data("min"));
+        max_price = parseInt($max_block.data("max"));
+
+        //установить максимальную и минимальную цену на странице
+        $min_block.html(min_price);
+        $max_block.html(max_price);
+
+        //установить максимальную и минимальную цену в слайдере
+        $slider_range.slider("values", [min_price, max_price])
+
+        //убрать галочку
+        $("#ok").removeClass("active");
+
+        //обновить видимость кнопки
+        show_button = false;
+        update_view_button();
+        //обновить отображение
         update_view();
+
+
+
+        $("#count").html("Отображены все экскурсии");
+
+        $('html,body').animate({
+            scrollTop: 0
+        }, 300);
     }
 
+    //нужна или нет предоплата
     function get_prepay(){
-        let prepay = true; //изначально предоплата допустима
+        //return true если предоплата возможно
+        //return false если нужны только экскурсии без предоплаты
+        let prepay = true;
         if($ok.hasClass("active")){
             prepay = false;
         }
-
         return prepay;
     }
 
@@ -168,4 +236,19 @@ $(function() {
 
         return view;
     }
+
+    //обновить видимость кнопки
+    function update_view_button() {
+        if(show_button === false){
+            $show.addClass("blocked");
+        } else {
+            $show.removeClass("blocked");
+        }
+    }
+
+    $(".standard_dropdown_list_item").on("click", function () {
+        let city = $(this).data("price");
+        window.location.href = window.location.origin + "/" + city + "/filter/"
+    })
+
 });

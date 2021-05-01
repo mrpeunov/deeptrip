@@ -25,6 +25,7 @@ class CityPage(FooterAndMenuTemplateView):
     def add_in_context(self, context):
         context['tour_page_number'] = 0
         context['city'] = City.objects.get(slug=context['city_slug'])
+        context['title'] = context["city"].seo_title
         result_dict = get_tours(context['tour_page_number'], context['city'])
         context['tours'] = result_dict['list']
         context['more'] = result_dict['more']
@@ -47,6 +48,7 @@ class TourPage(FooterAndMenuTemplateView):
             city__slug=context['city_slug'],
             slug=context['tour_slug'])
         context['tour'] = tour
+        context['title'] = tour.seo_title
 
         comments = get_comments_for_tour(0, tour)
         context['comments'] = comments['list']

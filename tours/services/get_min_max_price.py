@@ -1,5 +1,5 @@
 def get_min_max_price(tours):
-    min_price = tours[0].price
+    min_price = 1000000000
     max_price = 0
     for tour in tours:
         if tour.price > max_price:
