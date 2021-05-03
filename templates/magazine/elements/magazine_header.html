@@ -1,0 +1,13 @@
+{% load static %}
+<div class="container">
+    <div class="header_info magazine_header">
+        <div class="header_info_logo">
+            <img src="{% static 'img/logo.png' %}" alt="">
+        </div>
+        <div class="header_info_links">
+            <a href="/">Экскурсии</a>
+            <a class="header_info_links_active" href="">Журнал</a>
+        </div>
+        <a href="" class="header_info_place">{{ config.number_phone }}</a>
+    </div>
+</div>

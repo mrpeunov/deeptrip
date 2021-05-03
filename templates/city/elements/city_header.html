@@ -1,16 +1,6 @@
 <header  style="background-image: url('{{ city.image.url }}')">
     <div class="header container">
-        <div class="header_info">
-            <div class="header_info_logo">
-                <div class="header_info_logo_first">{{ config.site_name }}</div>
-                <div class="header_info_logo_second">{{ config.site_description }}</div>
-            </div>
-            <div class="header_info_links">
-                <a class="header_info_links_active" href="">Экскурсии</a>
-                <a href="/magazine/">Журнал</a>
-            </div>
-            <a href="" class="header_info_place">{{ config.number_phone }}</a>
-        </div>
+        {% include 'city/elements/city_header_info.html' %}
         <h1 class="header_title">Экскурсии в {{ city.name }}</h1>
         <h2 class="header_subtitle">{{h2}}</h2>
         <a href="map/" class="header_button standard_button">Карта экскурсий</a>

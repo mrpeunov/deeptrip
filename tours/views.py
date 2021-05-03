@@ -32,7 +32,7 @@ class CityPage(FooterAndMenuTemplateView):
         context['maximum'] = get_maximum(context['city'])
         context['cities'] = get_cities_for_city(context['city'])
         context['categories'] = get_filters_queryset(context['city'])
-        context['magazine'] = get_articles(context['city'])
+        context['magazine'] = get_articles(context['city'])[:3]
         context['h2'] = get_h2()
         context['not_empty'] = False
 

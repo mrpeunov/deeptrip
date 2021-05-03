@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    Тута
-</body>
-</html>
+{% extends 'base/base.html' %}
+
+
+{% block header %}
+    {% include 'magazine/elements/magazine_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% include 'magazine/elements/magazine_title.html' %}
+        {% include 'magazine/elements/magazine_main.html' %}
+        {% include 'magazine/elements/magazine_footer.html' %}
+    </div>
+{% endblock %}
+
+{% block menu %}{% endblock %}

@@ -1,0 +1,24 @@
+{% load static %}
+<a href="{{ article.get_absolute_url }}" class="magazine_preview">
+    <div class="photo">
+        <img src="{{ article.image.url }}" alt="">
+    </div>
+    <div class="title">
+        {{ article.title }}
+    </div>
+    <div class="footer">
+        <div class="footer_date standard_text_gray">{{ article.date|date:"F Y г." }}</div>
+        <div class="footer_view">
+            <img src="{% static 'img/magazine/view.png' %}" alt="">
+            <div class="footer_count standard_text_gray">
+                {{ article.views }}
+            </div>
+        </div>
+        <div class="footer_view">
+            <img src="{% static 'img/magazine/comment.png' %}" alt="">
+            <div class="footer_count standard_text_gray">
+                {{ article.comments }}
+            </div>
+        </div>
+    </div>
+</a>

@@ -23,6 +23,10 @@ html, body{
   padding: 0;
 }
 
+body{
+
+}
+
 html{
   font-size: 16px;
 
@@ -1450,6 +1454,7 @@ header{
 }
 
 footer{
+
   .not-empty{
     margin-bottom: 0;
   }
@@ -2897,6 +2902,106 @@ footer{
     .standard_text_strong{
       font-size: 0.95rem;
       cursor: pointer;
+    }
+  }
+}
+
+/*Страница журнала*/
+.magazine{
+  &_header{
+    margin-bottom: 50px;
+
+    .header_info_logo{
+      width: 150px;
+    }
+
+    .header_info_links a{
+      color: #333333;
+    }
+
+    .header_info_place{
+      color: #333333;
+    }
+
+    .header_info_links_active{
+      &:before{
+        background: #333333;
+      }
+    }
+  }
+
+  &_title{
+    h1{
+      font-size: 2.3rem;
+      font-weight: 300;
+    }
+
+    h2{
+      font-size: 1.23rem;
+      font-weight: 300;
+      margin-bottom: 50px;
+    }
+  }
+
+  &_main{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 0 5%;
+    grid-auto-flow: row;
+
+    @media @max992{
+      grid-template-columns: 47% 47%;
+      grid-gap: 0 6%;
+    }
+
+    @media @max768{
+      grid-template-columns: 100%;
+      grid-gap: 0;
+    }
+  }
+
+  &_preview{
+    .title{
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .photo{
+      position: relative;
+
+      &:after{
+        display: block;
+        content: "";
+        padding-bottom: 68.75%;
+      }
+
+      img{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+
+    .footer{
+      display: flex;
+      background: none;
+      align-items: center;
+
+      &_view{
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+
+        img{
+          width: 20px;
+          margin-right: 5px;
+        }
+      }
     }
   }
 }
