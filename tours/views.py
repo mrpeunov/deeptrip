@@ -85,10 +85,12 @@ class MapPage(FooterAndMenuTemplateView):
     """
     Страница карт
     """
-    template_name = "map/maps.html"
+    template_name = "map/map.html"
 
     def add_in_context(self, context):
-        pass
+        context['city'] = City.objects.get(slug=context['city_slug'])
+        context['tours'] = get_all_tours(context['city'])
+        context['points'] = Position.objects.all()
 
 
 class FilterPage(FooterAndMenuTemplateView):

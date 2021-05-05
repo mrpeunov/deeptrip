@@ -1,0 +1,7 @@
+<div class="map_tours">
+    {% for preview in tours %}
+        <div class="wrap" data-tour_id="{{ preview.id }}" data-points="{% for point in preview.transfer_points.all %}{{ point.id }};{% endfor %}">
+            {% include 'tours/api/tour_preview.html' %}
+        </div>
+    {% endfor %}
+</div>

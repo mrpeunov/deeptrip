@@ -1,0 +1,15 @@
+<div class="map_main">
+    <div class="map_main_map" id="map"></div>
+    <div class="map_main_points">
+        {% for point in points %}
+            <div class="point"
+                 data-id="{{ point.id }}"
+                 data-name="{{ point.name }}"
+                 data-lon="{{ point.lon }}"
+                 data-lat="{{ point.lat }}"></div>
+        {% endfor %}
+    </div>
+    <div class="map_main_search">
+
+    </div>
+</div>

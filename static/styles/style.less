@@ -3005,3 +3005,56 @@ footer{
     }
   }
 }
+
+/*Страница карт*/
+.map{
+  &_content{
+    display: flex;
+  }
+
+  &_header{
+    height: 10vh;
+
+    .filter_header{
+      margin: 0;
+      padding: 20px;
+      border: none;
+      box-sizing: border-box;
+    }
+  }
+
+  &_tours{
+    width: 60%;
+    height: 90vh;
+    overflow: auto;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .wrap{
+      padding-bottom: 20px;
+
+      .preview{
+        display: flex;
+
+        &_gallery{
+          width: 50%;
+        }
+
+        &_content{
+          width: 50%;
+        }
+
+         .owl-nav {height: auto}
+      }
+    }
+  }
+
+  &_main{
+    width: 40%;
+    height: 90vh;
+  }
+
+  #map{
+    height: 90vh;
+  }
+}

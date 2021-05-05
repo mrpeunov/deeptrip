@@ -2630,4 +2630,46 @@ footer .not-empty {
   width: 20px;
   margin-right: 5px;
 }
+/*Страница карт*/
+.map_content {
+  display: flex;
+}
+.map_header {
+  height: 10vh;
+}
+.map_header .filter_header {
+  margin: 0;
+  padding: 20px;
+  border: none;
+  box-sizing: border-box;
+}
+.map_tours {
+  width: 60%;
+  height: 90vh;
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.map_tours .wrap {
+  padding-bottom: 20px;
+}
+.map_tours .wrap .preview {
+  display: flex;
+}
+.map_tours .wrap .preview_gallery {
+  width: 50%;
+}
+.map_tours .wrap .preview_content {
+  width: 50%;
+}
+.map_tours .wrap .preview .owl-nav {
+  height: auto;
+}
+.map_main {
+  width: 40%;
+  height: 90vh;
+}
+.map #map {
+  height: 90vh;
+}
 /*# sourceMappingURL=style.css.map */
