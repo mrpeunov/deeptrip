@@ -1,15 +1,22 @@
-ymaps.ready(init);
-let mainMap;
-let objectManager;
+/*
+* Блок работы с яндекс картами
+* Здесь всё что касается API
+*/
+
+ymaps.ready(init); //при готовности инициализируем
+let mainMap; //сама карта
+let objectManager; //менеджер объектов
 
 //инициализация карты
 function init() {
     mainMap = new ymaps.Map("map", {
         center: [43.585472, 39.723089],
         zoom: 9, // от 0 (весь мир) до 19.
-        controls: []
+        controls: ['searchControl']
     }, {
-        searchControlProvider: 'yandex#search'
+        searchControlProvider: 'yandex#map',
+        noPopup: true,
+        preset: 'islands#geolocationIcon'
     });
 
     objectManager = new ymaps.ObjectManager({
@@ -18,11 +25,11 @@ function init() {
         clusterDisableClickZoom: true
     });
 
-    objectManager.objects.options.set('preset', 'islands#nightCircleDotIcon');
-    objectManager.clusters.options.set('preset', 'islands#nightClusterIcons');
+    objectManager.objects.options.set('preset', 'islands#blackDotIcon');
+    objectManager.clusters.options.set('preset', 'islands#blackClusterIcons');
     mainMap.geoObjects.add(objectManager);
 
-    create_map();
+    create_points_on_map();
 }
 
 //создание точки на карте
@@ -41,8 +48,8 @@ function get_point_from_block($elem) {
     };
 }
 
-//создание карты
-function create_map(){
+//создание точек на карте
+function create_points_on_map(){
     //создаим json под точки
     let points = {
         type: 'FeatureCollection',
@@ -58,24 +65,62 @@ function create_map(){
     objectManager.add(points);
 }
 
-let $wrap = $(".wrap");
-$wrap.mouseenter(function() {
-    //при наведении на мышку
-    let tour_id = $(this).data("tour_id");
-    let points_id_array = block_to_points_array($(this));
-    set_active_tour(tour_id, points_id_array);
-})
-$wrap.mouseleave(function(){
-    remove_active_tour();
-});
+//установка активного тура
+function set_active_tour(tour_id, points_id_array){
+    remove_active_tour(); //убираем следы прыдудщего активного тура
+    points_set_active(points_id_array); //подсвечиваем точки, которые соотвествуют активному туру
+}
 
-let active_tour;
+//удаление активного тура
+function remove_active_tour() {
+    all_points_set_default();
+}
+
+//сделать точки и кластеры с этими точками активными
+function points_set_active(points_id_array) {
+    points_id_array.forEach(function (point_id) {
+        objectManager.objects.setObjectOptions(point_id, {
+            preset: 'islands#blueDotIcon'
+        });
+    })
+
+    objectManager.clusters.getAll().forEach(function (cluster) {
+        cluster.properties.geoObjects.forEach(function (object) {
+            if(object.id in points_id_array){
+                objectManager.clusters.setClusterOptions(cluster.id, {
+                    preset: 'islands#blueClusterIcons'
+                });
+            }
+        })
+    })
+}
+
+//устанавливает все точки и кластеры в дефолтное состояние
+function all_points_set_default() {
+    objectManager.clusters.getAll().forEach(function (cluster) {
+        objectManager.clusters.setClusterOptions(cluster.id, {
+            preset: 'islands#blackClusterIcons'
+        });
+    })
+
+    objectManager.objects.getAll().forEach(function (objects) {
+        objectManager.objects.setObjectOptions(objects.id, {
+            preset: 'islands#blackDotIcon'
+        });
+    })
+}
+
+/*
+* Блок обработки кнопок и действий на странице
+* */
+
+let $tour = $(".wrap");
 
 //получает из блока экскурсии массив из id точек на карте
-function block_to_points_array($block) {
+function block_to_points_array($tour) {
     let int_array = [];
 
-    let points_str_array = $block.data("points").split(";");
+    let points_str_array = $tour.data("points").split(";");
     points_str_array.forEach(function (value) {
         if(value) int_array.push(parseInt(value));
     })
@@ -83,39 +128,41 @@ function block_to_points_array($block) {
     return int_array;
 }
 
-//устанавливаем активный тур
-function set_active_tour(tour_id, points_id_array){
-    //убираем следы прыдудщего активного тура
-    remove_active_tour();
+//при наведении на экскурсию
+$tour.mouseenter(function() {
+    let tour_id = parseInt($(this).data("tour_id"));
+    let points_id_array = block_to_points_array($(this));
 
-    active_tour = tour_id;
+    set_active_tour(tour_id, points_id_array); //устанавливаем активный тур
+})
 
-    console.log(points_id_array);
-    //подсвечиваем точки, которые соотвествуют активному туру
-    points_set_active(points_id_array);
+$("body").css("overflow", "hidden")
+
+let mobile;
+
+$(window).on('load', function () {
+    if ($(this).width() <= 992) {
+        mobile_tours();
+        mobile = true;
+    } else {
+        mobile = false;
+    }
+})
+
+let slider_settings = {
+    loop: false,
+    nav: false,
+    dots: true,
+    margin: 0,
+    items: 1,
+    mouseDrag: false,
+    //onChanged: callback_mobile,
+    //onInitialized: callback_mobile_initialized,
 }
 
-function remove_active_tour(){
-    clear_all_points();
-    //перебиваем все точки и устанавливаем их в дефолтное состояние
-}
+let $map_tours = $(".map_slider");
 
-
-function points_set_active(points_id_array) {
-    points_id_array.forEach(function (point_id) {
-        objectManager.objects.setObjectOptions(point_id, {
-            preset: 'islands#greenIcon'
-        });
-    })
-}
-
-function clear_point(point) {
-    point.options.set('iconImageHref', '/static/img/booking/standard.png');
-}
-
-function clear_all_points() {
-    /*
-    points.forEach(function (point) {
-        point.options.set('iconImageHref', '/static/img/booking/standard.png');;
-    })*/
+function mobile_tours() {
+    console.log("Въезали")
+    $map_tours.owlCarousel(slider_settings);
 }
